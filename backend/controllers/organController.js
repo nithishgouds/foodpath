@@ -16,26 +16,44 @@ const foodEffects = {
 };
 
 let consumedFoods = [];
-
-
-app.post('/add-food', (req, res) => {
+// controllers/organController.js
+const addFood = (req, res) => {
     const { foodItem, quantity } = req.body;
 
     if (!foodItem || !quantity) {
         return res.status(400).json({ error: 'Food item and quantity are required.' });
     }
 
-    if (!foodEffects[foodItem]) {
-        return res.status(400).json({ error: 'Unknown food item.' });
-    }
+    // Add the food item logic here...
+
+    res.json({ message: 'Food added successfully' });
+};
+
+const getLiverStatus = (req, res) => {
+    // Logic for getting liver status
+};
+
+module.exports = { addFood, getLiverStatus };
+
+
+// app.post('/add-food', (req, res) => {
+//     const { foodItem, quantity } = req.body;
+
+//     if (!foodItem || !quantity) {
+//         return res.status(400).json({ error: 'Food item and quantity are required.' });
+//     }
+
+//     if (!foodEffects[foodItem]) {
+//         return res.status(400).json({ error: 'Unknown food item.' });
+//     }
 
    
-    consumedFoods.push({ foodItem, quantity });
+//     consumedFoods.push({ foodItem, quantity });
 
-    res.json({ message: 'Food item added successfully!', consumedFoods });
-});
+//     res.json({ message: 'Food item added successfully!', consumedFoods });
+// });
 
-module.exports = { app, consumedFoods };
+// module.exports = { app, consumedFoods };
 
 const PORT = 3000;
 app.listen(PORT, () => {

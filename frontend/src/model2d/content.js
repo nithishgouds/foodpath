@@ -1,8 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './contentstyle.css';
 import Organstructure from './organstructure.js';
 
 function Content(){
+
+  const [selectedItem, setSelectedItem] = useState('');
+  const [quantity, setquantity] = useState('');
+
+  const handleAddItem = async () => {
+    if (!selectedItem) {
+        
+        return;
+    }
+    try {
+        const response = await axios.post('http://localhost:3000/api/organs/add-food', {
+            selectedItem,quantity
+        });
+        
+       
+    } catch (error) {
+       
+    }
+  };
+
+
   return(
     <div className='mainelements'>
       <div class="organinfo">
@@ -23,7 +45,7 @@ function Content(){
       <div class="inputinfo">
         <p class="inputinfoheading">Food Item:</p>
         {/* <label>Food item:</label> */}
-        <select class="foodtype">
+        <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
           <option>idli</option>
           <option>Upma</option>
           <option>Bonda</option>
@@ -36,8 +58,8 @@ function Content(){
           <option>Salmon</option>
         </select>
         <p class="inputinfoheading">Quantity:</p>
-        <input type='number' class="quantity"></input>
-        <button class="inputbuttons">Add Food</button>
+        <input type='number' class="quantity" value={quantity} onChange={(e) => setquantity(e.target.value)}></input>
+        <button class="inputbuttons" onClick={handleAddItem}>Add Food</button>
         <p class="inputinfoheading">Food In Cart:</p>
         <textarea readOnly class="textareas">
           1 Banana
