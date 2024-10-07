@@ -9,11 +9,11 @@ function Content(){
       <input readOnly></input>
         <label style={{display:"block"}}>Status:</label>
       <input readOnly></input>
-        <label style={{display:"block"}}>Parameter 1:</label>
+        <label style={{display:"block"}}>Oxygen:</label>
       <input readOnly></input>
-        <label style={{display:"block"}}>Parameter 2:</label>
+        <label style={{display:"block"}}>Serotonin:</label>
       <input readOnly></input>
-        <label style={{display:"block"}}>Parameter 3:</label>
+        <label style={{display:"block"}}>Glucose:</label>
       <input readOnly></input>
       </div>
       <div class="model2d">
@@ -33,14 +33,13 @@ function Content(){
         <p class="inputinfoheading">Quantity:</p>
         <input type='number' class="quantity"></input>
         <button class="inputbuttons">Add Food</button>
-        {/* <textarea readOnly class="textareas">
-          HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello
-        </textarea>
-        <button class="inputbuttons">Eat</button> */}
-        <p class="inputinfoheading">Consumed Food:</p>
+        <p class="inputinfoheading">Food In Cart:</p>
         <textarea readOnly class="textareas">
-          HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello
+          1 Banana
         </textarea>
+        <button class="inputbuttons">Simulate</button>
+        <button class="inputbuttons" style={{marginTop:"50px"}}>Reset Model</button>
+        
       </div>
     </div>
   )
