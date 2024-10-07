@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'RobotoSlab-Regular';
+  src: url('../../fonts/RobotoSlab-Regular.ttf');
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.mainelements{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height:calc(100vh - 70px);
+  text-align: center;
+}
+
+.organinfo{
+  background-color: rgb(219, 219, 219);
+  flex:3;
+}
+
+.model2d{
+  background-color: rgb(123, 123, 123);
+  flex:5;
+}
+
+.inputinfo{
+  font-family: RobotoSlab-Regular;
+  background-color: rgb(219, 219, 219);
+  flex:3;
+  text-align: center;
+}
+
+.inputinfoheading{
+  text-align: start;
+  margin-left:9%;
+  padding:0;
+}
+
+.foodtype{
+  width:80%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.quantity{
+  width:80%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align:start;
+}
+.inputbuttons{
+  display: block;
+  margin:10px auto;
+  padding:5px 10px 5px 10px;
+  background-color: rgb(42, 42, 42);
+  color: white;
+  border-color: rgb(42, 42, 42);
+  border-radius: 5px;
+  border-style: none;
+}
