@@ -1,5 +1,6 @@
 import React from 'react';
 import './contentstyle.css';
+import Organstructure from './organstructure.js';
 
 function Content(){
   return(
@@ -8,7 +9,7 @@ function Content(){
         <p>Organ Information</p>
       </div>
       <div class="model2d">
-        <p>2D Model</p>
+       <Organstructure />
       </div>
       <div class="inputinfo">
         <p class="inputinfoheading">Food Item:</p>
