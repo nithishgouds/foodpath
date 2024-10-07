@@ -17,6 +17,7 @@ html, body {
 }
 
 .organinfo{
+  display:block;
   background-color: rgb(219, 219, 219);
   flex:3;
 }

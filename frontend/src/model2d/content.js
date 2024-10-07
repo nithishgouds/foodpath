@@ -5,7 +5,16 @@ function Content(){
   return(
     <div className='mainelements'>
       <div class="organinfo">
-        <p>Organ Information</p>
+        <label style={{display:"block"}}>Organ:</label>
+      <input readOnly></input>
+        <label style={{display:"block"}}>Status:</label>
+      <input readOnly></input>
+        <label style={{display:"block"}}>Parameter 1:</label>
+      <input readOnly></input>
+        <label style={{display:"block"}}>Parameter 2:</label>
+      <input readOnly></input>
+        <label style={{display:"block"}}>Parameter 3:</label>
+      <input readOnly></input>
       </div>
       <div class="model2d">
         <p>2D Model</p>
