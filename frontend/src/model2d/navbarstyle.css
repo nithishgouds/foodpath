@@ -9,7 +9,7 @@
 
 
 .navbarstyle{
-  background-color: #ffffff;
+  background-color: rgb(59, 211, 82);
   display:flex;
   flex-direction:row;
   justify-content: space-between;
@@ -26,7 +26,7 @@
 .navbutton{
   border:none;
   color:black;
-  background-color: #ffffff;
+  background:none;
   font-family:Kanit-Regular;
   text-decoration: none;
   align-items: end;
@@ -38,7 +38,7 @@
 }
 .dropdown-content{
   display: block;
-  background-color: #ffffff;
+  background:white;
   position: absolute;
   max-width:140px;
   z-index: 1;
