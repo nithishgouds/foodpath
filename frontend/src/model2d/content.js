@@ -24,12 +24,16 @@ function Content(){
         <p class="inputinfoheading">Food Item:</p>
         {/* <label>Food item:</label> */}
         <select class="foodtype">
-          <option>Potato</option>
-          <option>Potato</option>
-          <option>Potato</option>
-          <option>Hello</option>
-          <option>Potato</option>
-          <option>Potato</option>
+          <option>idli</option>
+          <option>Upma</option>
+          <option>Bonda</option>
+          <option>Puri</option>
+          <option>Apple</option>
+          <option>Grapes</option>
+          <option>Beans</option>
+          <option>FriedFoods</option>
+          <option>Yogurt</option>
+          <option>Salmon</option>
         </select>
         <p class="inputinfoheading">Quantity:</p>
         <input type='number' class="quantity"></input>
