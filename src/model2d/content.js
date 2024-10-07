@@ -11,8 +11,8 @@ function Content(){
         <p>2D Model</p>
       </div>
       <div class="inputinfo">
-        <p class="inputinfoheading">Food Item:</p>
-        {/* <label>Select Food:</label> */}
+        {/* <p class="inputinfoheading">Food Item:</p> */}
+        <label>Food item:</label>
         <select class="foodtype">
           <option>Potato</option>
           <option>Potato</option>

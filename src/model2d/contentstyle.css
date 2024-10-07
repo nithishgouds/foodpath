@@ -34,17 +34,20 @@ html, body {
 }
 
 .inputinfoheading{
+  font-size: x-large;
   text-align: start;
   margin-left:9%;
   padding:0;
 }
 
 .foodtype{
+  font-size: x-large;
   width:80%;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 .quantity{
+  font-size: x-large;
   width:80%;
   padding-top: 10px;
   padding-bottom: 10px;
