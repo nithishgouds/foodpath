@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'Kanit';
+  src: url('../../fonts/Kanit-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Kanit-Regular';
+  src: url('../../fonts/Kanit-Regular.ttf') format('truetype');
+}
+
+
+.navbarstyle{
+  background-color: #ffffff;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items:center;
+  height:70px;
+}
+.navtitle{
+  font-family:Kanit;
+  color:black;
+  font-size: xx-large;
+  font-weight: bold;
+  margin-left:30px;
+}
+.navbutton{
+  border:none;
+  color:black;
+  background-color: #ffffff;
+  font-family:Kanit-Regular;
+  text-decoration: none;
+  align-items: end;
+  margin-right:40px;
+  font-size: large;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  cursor:pointer;
+}
+.dropdown-content{
+  display: block;
+  background-color: #ffffff;
+  position: absolute;
+  max-width:140px;
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+}
