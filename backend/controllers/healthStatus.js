@@ -1,9 +1,7 @@
-// organStatus.js
-const express = require('express');
+// Importing consumedFoods from another module (assumed addFood.js)
 const { consumedFoods } = require('./addFood');
-const app = express();
-app.use(express.json());
 
+// Defining food effects for different food items
 const foodEffects = {
     "idli": { oxygen: 5, serotonin: 3, glucose: 8 },
     "Upma": { oxygen: 4, serotonin: 2, glucose: 7 },
@@ -17,7 +15,7 @@ const foodEffects = {
     "Salmon": { oxygen: 7, serotonin: 3, glucose: 6 }
 };
 
-// Function to assess organ status based on total values
+// Helper function to calculate organ status based on total oxygen, serotonin, and glucose values
 function assessOrganStatus(totalOxygen, totalSerotonin, totalGlucose) {
     if (totalOxygen > 5 && totalSerotonin > 5 && totalGlucose > 5) {
         return "Healthy";
@@ -46,13 +44,13 @@ function assessOrganStatus(totalOxygen, totalSerotonin, totalGlucose) {
     return "Neutral";
 }
 
-// GET route to return only the status of each organ
-app.get('/organ-status', (req, res) => {
+// Function to get the statuses of all organs based on consumed foods
+function getAllOrganStatus(consumedFoods) {
     let totalOxygen = 0;
     let totalSerotonin = 0;
     let totalGlucose = 0;
 
-    // Compute total values from consumed foods
+    // Calculate the totals for oxygen, serotonin, and glucose from consumed foods
     consumedFoods.forEach(item => {
         const { foodItem, quantity } = item;
         const effects = foodEffects[foodItem];
@@ -63,7 +61,7 @@ app.get('/organ-status', (req, res) => {
         }
     });
 
-    // Compute organ statuses
+    // Calculate the status of each organ
     const liverStatus = assessOrganStatus(totalOxygen, totalSerotonin, totalGlucose);
     const heartStatus = assessOrganStatus(totalOxygen - 1, totalSerotonin - 2, totalGlucose - 3);
     const brainStatus = assessOrganStatus(totalOxygen + 2, totalSerotonin + 3, totalGlucose + 1);
@@ -71,15 +69,21 @@ app.get('/organ-status', (req, res) => {
     const stomachStatus = assessOrganStatus(totalOxygen - 2, totalSerotonin + 1, totalGlucose - 1);
     const lungsStatus = assessOrganStatus(totalOxygen, totalSerotonin + 1, totalGlucose + 1);
 
-    // Send only the status of all organs as a JSON response
-    res.json({
+    // Return statuses for all organs
+    return {
         liver: liverStatus,
         heart: heartStatus,
         brain: brainStatus,
         intestine: intestineStatus,
         stomach: stomachStatus,
         lungs: lungsStatus
-    });
-});
+    };
+}
 
-module.exports = app;
+// Controller function to handle the '/organ-status' route
+const getOrganStatus = (req, res) => {
+    const organStatuses = getAllOrganStatus(consumedFoods);
+    res.json(organStatuses);
+};
+
+module.exports = { getOrganStatus };
