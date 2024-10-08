@@ -25,7 +25,7 @@ const Navbar = () => {
         <button className="navbutton" onClick={toggleDropdown}>Healthy Foods!</button>
         {isDropdownOpen && (
           <div className="dropdown-content">
-            <a href="#" onClick={Brain()}> For Brain</a>
+            <a href="../guides/brain" > For Brain</a>
             <a href="#">For Lungs</a>
             <a href="#">For Heart</a>
             <a href="#">For Stomach</a>
