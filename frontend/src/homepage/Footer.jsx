@@ -3,7 +3,7 @@ import './homepagestyle.css';
 
 function Footer() {
     return (
-        <div> {/* Added a container div */}
+        <div>
             <footer className="footer">
                 <div className="footer-content">
                     <p id="nameisbig">FoodPath</p>
@@ -16,7 +16,7 @@ function Footer() {
                     </div>
 
                     <p id="copyright">
-                        &copy; {new Date().getFullYear()} FoodPath. All rights reserved.
+                        &copy; 2024 FoodPath. All rights reserved.
                     </p>
                 </div>
             </footer>
