@@ -1,4 +1,6 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './contentstyle.css';
 //import Organstructure from './organstructure.js';
 
@@ -113,12 +115,16 @@ const handleAddItem = async () => {
       <div class="inputinfo">
         <p class="inputinfoheading">Food Item:</p>
         <select class="foodtype">
-          <option>Potato</option>
-          <option>Potato</option>
-          <option>Potato</option>
-          <option>Hello</option>
-          <option>Potato</option>
-          <option>Potato</option>
+          <option>idli</option>
+          <option>Upma</option>
+          <option>Bonda</option>
+          <option>Puri</option>
+          <option>Apple</option>
+          <option>Grapes</option>
+          <option>Beans</option>
+          <option>Fried Foods</option>
+          <option>Yougurt</option>
+          <option>Salmon</option>
         </select>
         <p class="inputinfoheading">Quantity:</p>
         <input type='number' class="quantity"></input>
