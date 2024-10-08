@@ -9,12 +9,14 @@
 
 
 .navbarstyle{
-  background-color: rgb(59, 211, 82);
+  position:fixed;
+  background-color: #ffbdbd;
   display:flex;
   flex-direction:row;
   justify-content: space-between;
   align-items:center;
   height:70px;
+  width:100%;
 }
 .navtitle{
   font-family:Kanit;
