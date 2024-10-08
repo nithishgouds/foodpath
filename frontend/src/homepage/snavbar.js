@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './homepagestyle.css';
+import {Link} from 'react-router-dom';
+
 function Snavbar() {
     const [showHeader, setShowHeader] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);

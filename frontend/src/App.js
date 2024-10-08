@@ -11,18 +11,18 @@ import Stomach from './guides/stomach';
 import Liver from './guides/liver';
 function App() {
   return (
-        <Router>
-            <Routes>
-              <Route path='/' element={<Homepage/>}></Route>
-              <Route path='/model2dpage' element={<Model2dpage/>}></Route>
-                <Route path="/guides/brain" element={<Brain />} />
-                <Route path="/guides/lungs" element={<Lungs />} />
-                <Route path="/guides/heart" element={<Heart />} />
-                <Route path="/guides/intestine" element={<Intestine />} />
-                <Route path="/guides/stomach" element={<Stomach />} />
-                <Route path="/guides/liver" element={<Liver />} />
+      <Router>
+          <Routes>
+            <Route path='/' element={<Homepage/>}/>
+            <Route path='/model2dpage' element={<Model2dpage/>}/>
+              <Route path="/guides/brain" element={<Brain />} />
+              <Route path="/guides/lungs" element={<Lungs />} />
+               <Route path="/guides/heart" element={<Heart />} />
+              <Route path="/guides/intestine" element={<Intestine />} />
+              <Route path="/guides/stomach" element={<Stomach />} />
+               <Route path="/guides/liver" element={<Liver />} />
             </Routes>
-        </Router>
+      </Router>
   );
 }
 
