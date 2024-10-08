@@ -1,6 +1,8 @@
-Instructions to use FoodPath-\n
+Instructions to use FoodPath-
 1.First install the node package manager  in the backend directory by entering the command in the terminal as-
+<br>
   npm init -y
+<br>
 and also install the following plugins for the backend server-
   npm install express cors body-parser
   npm install dotenv
