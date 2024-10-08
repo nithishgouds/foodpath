@@ -1,22 +1,22 @@
 @font-face {
-  font-family: 'Marcellus';
+  font-family: Marcellus;
   src: url('../../fonts/Marcellus-Regular.ttf');
 }
+
 @font-face {
-  font-family: 'Helveticaa';
+  font-family: Helveticaa;
   src: url('../../fonts/HelveticaW0Roman.ttf');
 }
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: Montserrat;
   src: url('../../fonts/Montserrat-VariableFont_wght.ttf');
 }
 
 @font-face {
-  font-family: 'Monterchi';
+  font-family: Monterchi;
   src: url('../../fonts/Monterchi-Book-trial.ttf');
 }
-
 
 html,
 body {

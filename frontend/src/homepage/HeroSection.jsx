@@ -1,8 +1,14 @@
-// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import './homepagestyle.css';
+import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
+
+    const navigate = useNavigate();
+
+    const handleModelButtonClick = () => {
+        navigate('/model2dpage');
+    };
     return (
         <div className="home-page">
             <h1 className="main-heading">
@@ -16,7 +22,7 @@ const HeroSection = () => {
 
             <div className="model-section">
                 <h2 className="section-heading">Visualize with FoodPath!</h2>
-                <button className="proceed-button">Proceed to Model</button>
+                <button className="proceed-button" onClick={handleModelButtonClick}>Proceed to Model</button>
             </div>
 
             <div className="guides-section">
@@ -24,7 +30,7 @@ const HeroSection = () => {
                 <h3 className="section-sub-heading">
                     View Guides on the various kinds of foods
                 </h3>
-                <button className="proceed-button">Proceed to Guides</button>
+                <button className="proceed-button" >Proceed to Guides</button>
             </div>
         </div>
     );

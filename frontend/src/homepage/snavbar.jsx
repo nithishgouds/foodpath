@@ -29,9 +29,9 @@ function Snavbar() {
                     <nav className="links">
                         <a href="/">HOME</a>
                         <a href="/model2dpage">2D MODEL</a>
-                        <div className="dropdown"> {/* Added dropdown container */}
+                        <div className="dropdown">
                             <a href="/guides">HOW TO EAT HEALTHY?</a>
-                            <div className="dropdown-content"> {/* Dropdown content */}
+                            <div className="dropdown-content">
                                 <a href="/guides/brain">BRAIN FOCUSED</a>
                                 <a href="/guides/lungs">LUNG FOCUSED</a>
                                 <a href="/guides/heart">HEART FOCUSED</a>
