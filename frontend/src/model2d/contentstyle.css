@@ -100,26 +100,26 @@ html,body{
 
 
 .path-heart:hover {
-  fill: blue;
-  fill-opacity: 0.7; /* Change color on hover */
+ 
+  fill-opacity: 0.2; /* Change color on hover */
 }
 .path-lungs:hover {
-  fill: blue;
-  fill-opacity: 0.7; /* Change color on hover */
+ 
+  fill-opacity: 0.2; /* Change color on hover */
 }
 .path-brain:hover {
-  fill: blue;
-  fill-opacity: 0.7; /* Change color on hover */
+ 
+  fill-opacity: 0.2; /* Change color on hover */
 }
 .path-stomach:hover {
-  fill: blue;
-  fill-opacity: 0.7; /* Change color on hover */
+  
+  fill-opacity: 0.2; /* Change color on hover */
 }
 .path-liver:hover {
-  fill: blue;
-  fill-opacity: 0.7; /* Change color on hover */
+  
+  fill-opacity: 0.2; /* Change color on hover */
 }
 .path-intestine:hover {
-  fill: blue;
-  fill-opacity: 0.7; /* Change color on hover */
+ 
+  fill-opacity: 0.2; /* Change color on hover */
 }

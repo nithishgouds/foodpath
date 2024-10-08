@@ -11,7 +11,7 @@ router.post('/add-food', addFood);
 
 router.get('/organ-status', getOrganStatus);
 
-router.get('/organ-status/:organ', getSpecificOrganStatus);
+router.get('/ind-organ-status/:organ', getSpecificOrganStatus);
 
 router.post('/reset-consumed-foods', resetConsumedFoods);
 
