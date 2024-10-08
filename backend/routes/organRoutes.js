@@ -5,6 +5,6 @@ const { addFood, getLiverStatus } = require('../controllers/organController');
 router.post('/add-food', addFood);
 
 
-router.get('/liver-status', getLiverStatus);
+router.get('/organ-status', getOrganStatus);
 
 module.exports = router;
