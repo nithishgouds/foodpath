@@ -39,9 +39,49 @@ const addFood = (req, res) => {
 };
 
 const resetConsumedFoods = (req, res) => {
-    consumedFoods = []; // Reset the array
+    consumedFoods = [];
+    const resetStatuses = {
+        liver: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        heart: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        brain: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        intestine: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        stomach: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        lungs: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        }
+    };
+     // Reset the array
     res.json({ 
-        message: 'Food deleted successfully', 
+        message: 'Food deleted successfully', resetStatuses,
+
         consumedFoods // Send back the entire consumedFoods array
     });
 };

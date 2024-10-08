@@ -95,11 +95,11 @@ const handleAddItem = async () => {
         const response = await axios.post('http://localhost:3001/api/organs/reset-consumed-foods')
         setConsumedFoods(response.data.consumedFoods);
         setOpacity(0);
-        // setIOstatus(' ');
-        // setIOglucose(' ');
-        // setIOserotonin(' ');
-        // setIOoxygen(' ');
-        // setIOorgan(' ');
+        setIOstatus(' ');
+        setIOglucose(' ');
+         setIOserotonin(' ');
+         setIOoxygen(' ');
+        setIOorgan(' ');
         setBrainColor('');
         setlungsColor('');
         setheartColor('');
