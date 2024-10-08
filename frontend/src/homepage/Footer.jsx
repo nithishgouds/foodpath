@@ -1,4 +1,5 @@
 import React from 'react';
+import './homepagestyle.css';
 
 function Footer() {
     return (
