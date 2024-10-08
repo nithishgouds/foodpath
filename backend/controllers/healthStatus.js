@@ -1,5 +1,5 @@
-const { addFood} = require('../controllers/organController');
-const { consumedFoods } = require('./addFood');
+
+const { addFood, resetConsumedFoods } = require('./organController');
 
 
 const foodEffects = {
