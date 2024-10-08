@@ -4,8 +4,6 @@ import './organstructure.css'
 
 
 const Organstructure = ({ bc, lc, hc, sc, livc, inc, op }) => {
-
-  
   return(
     <svg
     overflow-y="auto"
