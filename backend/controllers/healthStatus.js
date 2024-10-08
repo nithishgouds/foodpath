@@ -3,6 +3,8 @@ const { consumedFoods } = require('./addFood');
 
 const { addFood, resetConsumedFoods } = require('./organController');
 
+const { addFood, resetConsumedFoods,consumedFoods } = require('./organController');
+
 
 const foodEffects = {
     "idli": { oxygen: 5, serotonin: 3, glucose: 8 },
@@ -22,26 +24,26 @@ function assessOrganStatus(totalOxygen, totalSerotonin, totalGlucose) {
     let color;
 
     if (totalOxygen > 5 && totalSerotonin > 5 && totalGlucose > 5) {
-        color = "green"; // Healthy
+        color = "#008000"; // Healthy
     } else {
         const positiveLarge = (totalOxygen > 5 ? 1 : 0) + (totalSerotonin > 5 ? 1 : 0) + (totalGlucose > 5 ? 1 : 0);
         const positiveSmall = (totalOxygen >= 0 && totalOxygen <= 5 ? 1 : 0) + (totalSerotonin >= 0 && totalSerotonin <= 5 ? 1 : 0) + (totalGlucose >= 0 && totalGlucose <= 5 ? 1 : 0);
 
         if (positiveLarge === 2 || (positiveSmall === 3 && positiveLarge === 1)) {
-            color = "lightgreen"; // Slightly Healthy
+            color = "#90EE90"; // Slightly Healthy
         } else if ((totalOxygen > 0 || totalSerotonin > 0 || totalGlucose > 0) && !(totalOxygen < -5 || totalSerotonin < -5 || totalGlucose < -5)) {
-            color = "yellow"; // Neutral
+            color = "#FFFF00"; // Neutral
         } else {
             const negativeSmall = (totalOxygen < 0 && totalOxygen >= -5 ? 1 : 0) + (totalSerotonin < 0 && totalSerotonin >= -5 ? 1 : 0) + (totalGlucose < 0 && totalGlucose >= -5 ? 1 : 0);
             if (negativeSmall >= 2) {
-                color = "orange"; // Slightly Unhealthy
+                color = "#FFA500"; // Slightly Unhealthy
             }
 
             const negativeLarge = (totalOxygen < -5 ? 1 : 0) + (totalSerotonin < -5 ? 1 : 0) + (totalGlucose < -5 ? 1 : 0);
             if (negativeLarge >= 2) {
-                color = "red"; // Unhealthy
+                color = "#FF0000"; // Unhealthy
             } else {
-                color = "yellow"; // Neutral
+                color = "#FFFF00"; // Neutral
             }
         }
     }
@@ -79,7 +81,7 @@ function getAllOrganStatusColors(consumedFoods) {
         brain: brainColor,
         intestine: intestineColor,
         stomach: stomachColor,
-        lungs: lungsColor
+        lungs: stomachColor
     };
 }
 
