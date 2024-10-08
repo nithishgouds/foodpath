@@ -38,11 +38,8 @@ const addFood = (req, res) => {
     });
 };
 
-const getLiverStatus = (req, res) => {
-    // Logic for getting liver status (if needed)
-};
 
-module.exports = { addFood, getLiverStatus };
+module.exports = { addFood, consumedFoods };
 
 
 
