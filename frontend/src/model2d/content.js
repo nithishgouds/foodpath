@@ -115,7 +115,8 @@ const handleAddItem = async () => {
       <div class="inputinfo">
         <p class="inputinfoheading">Food Item:</p>
         <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
-          <option>idli</option>
+          <option>Select Food</option>
+          <option>Idli</option>
           <option>Upma</option>
           <option>Bonda</option>
           <option>Puri</option>

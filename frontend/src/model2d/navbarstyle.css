@@ -10,7 +10,7 @@
 
 .navbarstyle{
   position:fixed;
-  background-color: #ffbdbd;
+  background-color: rgb(247,240,225);
   display:flex;
   flex-direction:row;
   justify-content: space-between;

@@ -1,7 +1,7 @@
-const { addFood} = require('../controllers/organController');
-const { consumedFoods } = require('./addFood');
+// const { addFood} = require('../controllers/organController');
+// const { consumedFoods } = require('./addFood');
 
-const { addFood, resetConsumedFoods } = require('./organController');
+// const { addFood, resetConsumedFoods } = require('./organController');
 
 const { addFood, resetConsumedFoods,consumedFoods } = require('./organController');
 
