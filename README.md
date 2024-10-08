@@ -6,6 +6,8 @@ Instructions to use FoodPath-
 and also install the following plugins for the backend server-
 <br>
   npm install express cors body-parser
+<br>
+<br>
   npm install dotenv
 <br>
 2.And then start the server by entering the command in the terminal as-
@@ -23,7 +25,7 @@ and also install the following plugins for the backend server-
 
 Note: If anything is missing or error occurs use the following command in the terminal-
 <br>
-  npm install <missing-components>
+  **npm install <missing-components>**(without the stars)
 <br>
 
 
