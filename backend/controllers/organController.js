@@ -15,8 +15,10 @@ const foodEffects = {
     "Salmon": { oxygen: 7, serotonin: 3, glucose: 6 }
 };
 
-let consumedFoods = [];
+
 // controllers/organController.js
+let consumedFoods = [];
+
 const addFood = (req, res) => {
     const { foodItem, quantity } = req.body;
 
@@ -24,16 +26,45 @@ const addFood = (req, res) => {
         return res.status(400).json({ error: 'Food item and quantity are required.' });
     }
 
-    // Add the food item logic here...
+    // Create a new object for the added food item
+    const newFood = { foodItem, quantity };
+    // Add the new food item to the consumedFoods array
+    consumedFoods.push(newFood);
 
-    res.json({ message: 'Food added successfully' });
+    // Respond with a success message and the newly added food item
+    res.json({ 
+        message: 'Food added successfully', 
+        consumedFoods // Send back the entire consumedFoods array
+    });
 };
 
 const getLiverStatus = (req, res) => {
-    // Logic for getting liver status
+    // Logic for getting liver status (if needed)
 };
 
 module.exports = { addFood, getLiverStatus };
+
+
+
+// let consumedFoods = [];
+// // controllers/organController.js
+// const addFood = (req, res) => {
+//     const { foodItem, quantity } = req.body;
+
+//     if (!foodItem || !quantity) {
+//         return res.status(400).json({ error: 'Food item and quantity are required.' });
+//     }
+
+//     // Add the food item logic here...
+
+//     res.json({ message: 'Food added successfully' });
+// };
+
+// const getLiverStatus = (req, res) => {
+//     // Logic for getting liver status
+// };
+
+// module.exports = { addFood, getLiverStatus };
 
 
 // app.post('/add-food', (req, res) => {
@@ -55,7 +86,7 @@ module.exports = { addFood, getLiverStatus };
 
 // module.exports = { app, consumedFoods };
 
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Add Food service running on port ${PORT}`);
-});
+// const PORT = 3001;
+// app.listen(PORT, () => {
+//     console.log(`Add Food service running on port ${PORT}`);
+// });

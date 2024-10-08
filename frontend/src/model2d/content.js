@@ -1,29 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './contentstyle.css';
 import Organstructure from './organstructure.js';
 
 function Content(){
 
+  console.log("entered content function");
+
   const [selectedItem, setSelectedItem] = useState('');
   const [quantity, setquantity] = useState('');
+  const [consumedFoods, setConsumedFoods] = useState([]);
 
-  const handleAddItem = async () => {
-    if (!selectedItem) {
-        
+const handleAddItem = async () => {
+  console.log("button working");
+    if (!selectedItem || !quantity) {
+        console.log('Please select an item and enter a quantity.');
         return;
     }
-    try {
-        const response = await axios.post('http://localhost:3000/api/organs/add-food', {
-            selectedItem,quantity
-        });
-        
-       
-    } catch (error) {
-       
-    }
-  };
 
+    try {
+        const response = await axios.post('http://localhost:3001/api/organs/add-food', {
+            foodItem: selectedItem,
+            quantity: quantity
+        });
+        setConsumedFoods(response.data.consumedFoods);
+        //setConsumedFoods(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
+        console.log('Food item added successfully:', response.data);
+    } catch (error) {
+        console.error('Error adding food item:', error);
+    }
+};
+
+  const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity: ${item.quantity}`).join('\n');
+  //consumedFoodsText
 
   return(
     <div className='mainelements'>
@@ -61,8 +70,8 @@ function Content(){
         <input type='number' class="quantity" value={quantity} onChange={(e) => setquantity(e.target.value)}></input>
         <button class="inputbuttons" onClick={handleAddItem}>Add Food</button>
         <p class="inputinfoheading">Food In Cart:</p>
-        <textarea readOnly class="textareas">
-          1 Banana
+        <textarea readOnly class="textareas" value={consumedFoodsText} >
+          
         </textarea>
         <button class="inputbuttons">Simulate</button>
         <button class="inputbuttons" style={{marginTop:"50px"}}>Reset Model</button>
