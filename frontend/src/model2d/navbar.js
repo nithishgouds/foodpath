@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Brain from "../guides/brain";
+import Heart from "../guides/heart";
+import Intestine from "../guides/intestine";
+import Liver from "../guides/liver";
+import Lungs from "../guides/lungs";
+import Stomach from "../guides/stomach";
 import './navbarstyle.css';
 
 const Navbar = () => { 
