@@ -26,24 +26,67 @@ const addFood = (req, res) => {
         return res.status(400).json({ error: 'Food item and quantity are required.' });
     }
 
-    // Create a new object for the added food item
+    
     const newFood = { foodItem, quantity };
-    // Add the new food item to the consumedFoods array
+  
     consumedFoods.push(newFood);
 
-    // Respond with a success message and the newly added food item
+    
     res.json({ 
         message: 'Food added successfully', 
-        consumedFoods // Send back the entire consumedFoods array
+        consumedFoods 
     });
 };
 
 const resetConsumedFoods = (req, res) => {
-    consumedFoods = []; // Reset the array
-    res.status(200).json({ message: "Consumed foods reset successfully." });
+    consumedFoods = [];
+    const resetStatuses = {
+        liver: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        heart: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        brain: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        intestine: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        stomach: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        lungs: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        }
+    };
+     
+    res.json({ 
+        message: 'Food deleted successfully', resetStatuses,
+
+        consumedFoods 
+    });
 };
 
-// Export the functions for use in routes
+
 module.exports = { addFood, resetConsumedFoods, consumedFoods };
 
 
