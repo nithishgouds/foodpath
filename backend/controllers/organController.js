@@ -38,8 +38,13 @@ const addFood = (req, res) => {
     });
 };
 
+const resetConsumedFoods = (req, res) => {
+    consumedFoods = []; // Reset the array
+    res.status(200).json({ message: "Consumed foods reset successfully." });
+};
 
-module.exports = { addFood, consumedFoods };
+// Export the functions for use in routes
+module.exports = { addFood, resetConsumedFoods, consumedFoods };
 
 
 

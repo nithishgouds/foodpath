@@ -1,6 +1,8 @@
 const { addFood} = require('../controllers/organController');
 const { consumedFoods } = require('./addFood');
 
+const { addFood, resetConsumedFoods } = require('./organController');
+
 
 const foodEffects = {
     "idli": { oxygen: 5, serotonin: 3, glucose: 8 },
