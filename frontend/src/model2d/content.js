@@ -114,7 +114,7 @@ const handleAddItem = async () => {
       </div>
       <div class="inputinfo">
         <p class="inputinfoheading">Food Item:</p>
-        <select class="foodtype">
+        <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
           <option>idli</option>
           <option>Upma</option>
           <option>Bonda</option>
@@ -122,16 +122,16 @@ const handleAddItem = async () => {
           <option>Apple</option>
           <option>Grapes</option>
           <option>Beans</option>
-          <option>Fried Foods</option>
-          <option>Yougurt</option>
+          <option>FriedFoods</option>
+          <option>Yogurt</option>
           <option>Salmon</option>
         </select>
         <p class="inputinfoheading">Quantity:</p>
-        <input type='number' class="quantity"></input>
-        <button class="inputbuttons">Add Food</button>
+        <input type='number' class="quantity" value={quantity} onChange={(e) => setquantity(e.target.value)}></input>
+        <button class="inputbuttons" onClick={handleAddItem}>Add Food</button>
         <p class="inputinfoheading">Food In Cart:</p>
-        <textarea readOnly class="textareas">
-          1 Banana
+        <textarea readOnly class="textareas" value={consumedFoodsText} >
+          
         </textarea>
         <button class="inputbuttons" onClick={fetchOrganColors}>Simulate</button>
         <button class="inputbuttons" style={{marginTop:"50px"}}>Reset Model</button>
