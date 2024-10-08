@@ -1,7 +1,7 @@
-// Importing consumedFoods from another module (assumed addFood.js)
+
 const { consumedFoods } = require('./addFood');
 
-// Defining food effects for different food items
+
 const foodEffects = {
     "idli": { oxygen: 5, serotonin: 3, glucose: 8 },
     "Upma": { oxygen: 4, serotonin: 2, glucose: 7 },
@@ -15,42 +15,43 @@ const foodEffects = {
     "Salmon": { oxygen: 7, serotonin: 3, glucose: 6 }
 };
 
-// Helper function to calculate organ status based on total oxygen, serotonin, and glucose values
+
 function assessOrganStatus(totalOxygen, totalSerotonin, totalGlucose) {
+    let color;
+
     if (totalOxygen > 5 && totalSerotonin > 5 && totalGlucose > 5) {
-        return "Healthy";
-    }
-    const positiveLarge = (totalOxygen > 5 ? 1 : 0) + (totalSerotonin > 5 ? 1 : 0) + (totalGlucose > 5 ? 1 : 0);
-    const positiveSmall = (totalOxygen >= 0 && totalOxygen <= 5 ? 1 : 0) + (totalSerotonin >= 0 && totalSerotonin <= 5 ? 1 : 0) + (totalGlucose >= 0 && totalGlucose <= 5 ? 1 : 0);
+        color = "green"; // Healthy
+    } else {
+        const positiveLarge = (totalOxygen > 5 ? 1 : 0) + (totalSerotonin > 5 ? 1 : 0) + (totalGlucose > 5 ? 1 : 0);
+        const positiveSmall = (totalOxygen >= 0 && totalOxygen <= 5 ? 1 : 0) + (totalSerotonin >= 0 && totalSerotonin <= 5 ? 1 : 0) + (totalGlucose >= 0 && totalGlucose <= 5 ? 1 : 0);
 
-    if (positiveLarge === 2 || (positiveSmall === 3 && positiveLarge === 1)) {
-        return "Slightly Healthy";
+        if (positiveLarge === 2 || (positiveSmall === 3 && positiveLarge === 1)) {
+            color = "lightgreen"; // Slightly Healthy
+        } else if ((totalOxygen > 0 || totalSerotonin > 0 || totalGlucose > 0) && !(totalOxygen < -5 || totalSerotonin < -5 || totalGlucose < -5)) {
+            color = "yellow"; // Neutral
+        } else {
+            const negativeSmall = (totalOxygen < 0 && totalOxygen >= -5 ? 1 : 0) + (totalSerotonin < 0 && totalSerotonin >= -5 ? 1 : 0) + (totalGlucose < 0 && totalGlucose >= -5 ? 1 : 0);
+            if (negativeSmall >= 2) {
+                color = "orange"; // Slightly Unhealthy
+            }
+
+            const negativeLarge = (totalOxygen < -5 ? 1 : 0) + (totalSerotonin < -5 ? 1 : 0) + (totalGlucose < -5 ? 1 : 0);
+            if (negativeLarge >= 2) {
+                color = "red"; // Unhealthy
+            } else {
+                color = "yellow"; // Neutral
+            }
+        }
     }
 
-    if ((totalOxygen > 0 || totalSerotonin > 0 || totalGlucose > 0) && !(totalOxygen < -5 || totalSerotonin < -5 || totalGlucose < -5)) {
-        return "Neutral";
-    }
-
-    const negativeSmall = (totalOxygen < 0 && totalOxygen >= -5 ? 1 : 0) + (totalSerotonin < 0 && totalSerotonin >= -5 ? 1 : 0) + (totalGlucose < 0 && totalGlucose >= -5 ? 1 : 0);
-    if (negativeSmall >= 2) {
-        return "Slightly Unhealthy";
-    }
-
-    const negativeLarge = (totalOxygen < -5 ? 1 : 0) + (totalSerotonin < -5 ? 1 : 0) + (totalGlucose < -5 ? 1 : 0);
-    if (negativeLarge >= 2) {
-        return "Unhealthy";
-    }
-
-    return "Neutral";
+    return color;
 }
 
-// Function to get the statuses of all organs based on consumed foods
-function getAllOrganStatus(consumedFoods) {
+function getAllOrganStatusColors(consumedFoods) {
     let totalOxygen = 0;
     let totalSerotonin = 0;
     let totalGlucose = 0;
 
-    // Calculate the totals for oxygen, serotonin, and glucose from consumed foods
     consumedFoods.forEach(item => {
         const { foodItem, quantity } = item;
         const effects = foodEffects[foodItem];
@@ -61,29 +62,29 @@ function getAllOrganStatus(consumedFoods) {
         }
     });
 
-    // Calculate the status of each organ
-    const liverStatus = assessOrganStatus(totalOxygen, totalSerotonin, totalGlucose);
-    const heartStatus = assessOrganStatus(totalOxygen - 1, totalSerotonin - 2, totalGlucose - 3);
-    const brainStatus = assessOrganStatus(totalOxygen + 2, totalSerotonin + 3, totalGlucose + 1);
-    const intestineStatus = assessOrganStatus(totalOxygen + 1, totalSerotonin - 1, totalGlucose + 2);
-    const stomachStatus = assessOrganStatus(totalOxygen - 2, totalSerotonin + 1, totalGlucose - 1);
-    const lungsStatus = assessOrganStatus(totalOxygen, totalSerotonin + 1, totalGlucose + 1);
 
-    // Return statuses for all organs
+    const liverColor = assessOrganStatus(totalOxygen, totalSerotonin, totalGlucose);
+    const heartColor = assessOrganStatus(totalOxygen - 1, totalSerotonin - 2, totalGlucose - 3);
+    const brainColor = assessOrganStatus(totalOxygen + 2, totalSerotonin + 3, totalGlucose + 1);
+    const intestineColor = assessOrganStatus(totalOxygen + 1, totalSerotonin - 1, totalGlucose + 2);
+    const stomachColor = assessOrganStatus(totalOxygen - 2, totalSerotonin + 1, totalGlucose - 1);
+    const lungsColor = assessOrganStatus(totalOxygen, totalSerotonin + 1, totalGlucose + 1);
+
+
     return {
-        liver: liverStatus,
-        heart: heartStatus,
-        brain: brainStatus,
-        intestine: intestineStatus,
-        stomach: stomachStatus,
-        lungs: lungsStatus
+        liver: liverColor,
+        heart: heartColor,
+        brain: brainColor,
+        intestine: intestineColor,
+        stomach: stomachColor,
+        lungs: lungsColor
     };
 }
 
-// Controller function to handle the '/organ-status' route
+
 const getOrganStatus = (req, res) => {
-    const organStatuses = getAllOrganStatus(consumedFoods);
-    res.json(organStatuses);
+    const organColors = getAllOrganStatusColors(consumedFoods);
+    res.json(organColors);
 };
 
 module.exports = { getOrganStatus };
