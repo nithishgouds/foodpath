@@ -6,22 +6,33 @@ function Content(){
   return(
     <div className='mainelements'>
       <div class="organinfo">
-        <label style={{display:"block",marginTop:"30%"}}>Organ:</label>
-      <input readOnly></input>
-        <label style={{display:"block"}}>Status:</label>
-      <input readOnly></input>
-        <label style={{display:"block"}}>Oxygen:</label>
-      <input readOnly></input>
-        <label style={{display:"block"}}>Serotonin:</label>
-      <input readOnly></input>
-        <label style={{display:"block"}}>Glucose:</label>
-      <input readOnly></input>
+        <div class="organinfostats">
+          <div class="organstats">
+            <label>Organ:</label>
+            <input readOnly class="organinfoinputs"></input>
+          </div>
+          <div class="organstats">
+            <label>Status:</label>
+            <input readOnly class="organinfoinputs"></input>
+          </div>
+          <div class="organstats">
+            <label>Glucose:</label>
+            <input readOnly class="organinfoinputs"></input>
+          </div>
+          <div class="organstats">
+            <label>Serotonin:</label>
+            <input readOnly class="organinfoinputs"></input>
+          </div>
+          <div class="organstats">
+            <label >Organ:</label>
+            <input readOnly class="organinfoinputs"></input>
+          </div>
+        </div>
       </div>
       <div class="model2d">
-       {/* <Organstructure /> */}
+       <Organstructure />
       </div>
       <div class="inputinfo">
-        <div class="inputinfostuff">
         <p class="inputinfoheading">Food Item:</p>
         <select class="foodtype">
           <option>Potato</option>
@@ -40,9 +51,6 @@ function Content(){
         </textarea>
         <button class="inputbuttons">Simulate</button>
         <button class="inputbuttons" style={{marginTop:"50px"}}>Reset Model</button>
-        </div>
-        
-        
       </div>
     </div>
   )
