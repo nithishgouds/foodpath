@@ -25,7 +25,7 @@ and also install the following plugins for the backend server-
 
 Note: If anything is missing or error occurs use the following command in the terminal-
 <br>
-  **npm install <missing-components>**(without the stars)
+  //npm install <missing-components>
 <br>
 
 
