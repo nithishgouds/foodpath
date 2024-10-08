@@ -1,43 +1,12 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import './contentstyle.css';
 import Organstructure from './organstructure.js';
 
 function Content(){
-
-  console.log("entered content function");
-
-  const [selectedItem, setSelectedItem] = useState('');
-  const [quantity, setquantity] = useState('');
-  const [consumedFoods, setConsumedFoods] = useState([]);
-
-const handleAddItem = async () => {
-  console.log("button working");
-    if (!selectedItem || !quantity) {
-        console.log('Please select an item and enter a quantity.');
-        return;
-    }
-
-    try {
-        const response = await axios.post('http://localhost:3001/api/organs/add-food', {
-            foodItem: selectedItem,
-            quantity: quantity
-        });
-        setConsumedFoods(response.data.consumedFoods);
-        //setConsumedFoods(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
-        console.log('Food item added successfully:', response.data);
-    } catch (error) {
-        console.error('Error adding food item:', error);
-    }
-};
-
-  const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity: ${item.quantity}`).join('\n');
-  //consumedFoodsText
-
   return(
     <div className='mainelements'>
       <div class="organinfo">
-        <label style={{display:"block"}}>Organ:</label>
+        <label style={{display:"block",marginTop:"30%"}}>Organ:</label>
       <input readOnly></input>
         <label style={{display:"block"}}>Status:</label>
       <input readOnly></input>
@@ -49,32 +18,30 @@ const handleAddItem = async () => {
       <input readOnly></input>
       </div>
       <div class="model2d">
-       <Organstructure />
+       {/* <Organstructure /> */}
       </div>
       <div class="inputinfo">
+        <div class="inputinfostuff">
         <p class="inputinfoheading">Food Item:</p>
-        {/* <label>Food item:</label> */}
-        <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
-          <option>idli</option>
-          <option>Upma</option>
-          <option>Bonda</option>
-          <option>Puri</option>
-          <option>Apple</option>
-          <option>Grapes</option>
-          <option>Beans</option>
-          <option>FriedFoods</option>
-          <option>Yogurt</option>
-          <option>Salmon</option>
+        <select class="foodtype">
+          <option>Potato</option>
+          <option>Potato</option>
+          <option>Potato</option>
+          <option>Hello</option>
+          <option>Potato</option>
+          <option>Potato</option>
         </select>
         <p class="inputinfoheading">Quantity:</p>
-        <input type='number' class="quantity" value={quantity} onChange={(e) => setquantity(e.target.value)}></input>
-        <button class="inputbuttons" onClick={handleAddItem}>Add Food</button>
+        <input type='number' class="quantity"></input>
+        <button class="inputbuttons">Add Food</button>
         <p class="inputinfoheading">Food In Cart:</p>
-        <textarea readOnly class="textareas" value={consumedFoodsText} >
-          
+        <textarea readOnly class="textareas">
+          1 Banana
         </textarea>
         <button class="inputbuttons">Simulate</button>
         <button class="inputbuttons" style={{marginTop:"50px"}}>Reset Model</button>
+        </div>
+        
         
       </div>
     </div>
