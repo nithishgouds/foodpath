@@ -1,4 +1,4 @@
-
+const { addFood} = require('../controllers/organController');
 const { consumedFoods } = require('./addFood');
 
 
