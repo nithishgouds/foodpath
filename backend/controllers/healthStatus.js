@@ -1,8 +1,8 @@
+// organStatus.js
 const express = require('express');
 const { consumedFoods } = require('./addFood');
 const app = express();
 app.use(express.json());
-
 
 const foodEffects = {
     "idli": { oxygen: 5, serotonin: 3, glucose: 8 },
@@ -17,12 +17,11 @@ const foodEffects = {
     "Salmon": { oxygen: 7, serotonin: 3, glucose: 6 }
 };
 
-
+// Function to assess organ status based on total values
 function assessOrganStatus(totalOxygen, totalSerotonin, totalGlucose) {
     if (totalOxygen > 5 && totalSerotonin > 5 && totalGlucose > 5) {
         return "Healthy";
     }
-
     const positiveLarge = (totalOxygen > 5 ? 1 : 0) + (totalSerotonin > 5 ? 1 : 0) + (totalGlucose > 5 ? 1 : 0);
     const positiveSmall = (totalOxygen >= 0 && totalOxygen <= 5 ? 1 : 0) + (totalSerotonin >= 0 && totalSerotonin <= 5 ? 1 : 0) + (totalGlucose >= 0 && totalGlucose <= 5 ? 1 : 0);
 
@@ -47,43 +46,40 @@ function assessOrganStatus(totalOxygen, totalSerotonin, totalGlucose) {
     return "Neutral";
 }
 
-
-app.get('/simulate-health-status', (req, res) => {
+// GET route to return only the status of each organ
+app.get('/organ-status', (req, res) => {
     let totalOxygen = 0;
     let totalSerotonin = 0;
     let totalGlucose = 0;
 
+    // Compute total values from consumed foods
     consumedFoods.forEach(item => {
         const { foodItem, quantity } = item;
         const effects = foodEffects[foodItem];
-        totalOxygen += effects.oxygen * quantity;
-        totalSerotonin += effects.serotonin * quantity;
-        totalGlucose += effects.glucose * quantity;
+        if (effects) {
+            totalOxygen += effects.oxygen * quantity;
+            totalSerotonin += effects.serotonin * quantity;
+            totalGlucose += effects.glucose * quantity;
+        }
     });
 
+    // Compute organ statuses
     const liverStatus = assessOrganStatus(totalOxygen, totalSerotonin, totalGlucose);
-    const heartOxygen = totalOxygen - 1, heartSerotonin = totalSerotonin - 2, heartGlucose = totalGlucose - 3;
-    const heartStatus = assessOrganStatus(heartOxygen, heartSerotonin, heartGlucose);
-    const brainOxygen = totalOxygen + 2, brainSerotonin = totalSerotonin + 3, brainGlucose = totalGlucose + 1;
-    const brainStatus = assessOrganStatus(brainOxygen, brainSerotonin, brainGlucose);
-    const intestineOxygen = totalOxygen + 1, intestineSerotonin = totalSerotonin - 1, intestineGlucose = totalGlucose + 2;
-    const intestineStatus = assessOrganStatus(intestineOxygen, intestineSerotonin, intestineGlucose);
-    const stomachOxygen = totalOxygen - 2, stomachSerotonin = totalSerotonin + 1, stomachGlucose = totalGlucose - 1;
-    const stomachStatus = assessOrganStatus(stomachOxygen, stomachSerotonin, stomachGlucose);
-    const lungsOxygen = totalOxygen, lungsSerotonin = totalSerotonin + 1, lungsGlucose = totalGlucose + 1;
-    const lungsStatus = assessOrganStatus(lungsOxygen, lungsSerotonin, lungsGlucose);
+    const heartStatus = assessOrganStatus(totalOxygen - 1, totalSerotonin - 2, totalGlucose - 3);
+    const brainStatus = assessOrganStatus(totalOxygen + 2, totalSerotonin + 3, totalGlucose + 1);
+    const intestineStatus = assessOrganStatus(totalOxygen + 1, totalSerotonin - 1, totalGlucose + 2);
+    const stomachStatus = assessOrganStatus(totalOxygen - 2, totalSerotonin + 1, totalGlucose - 1);
+    const lungsStatus = assessOrganStatus(totalOxygen, totalSerotonin + 1, totalGlucose + 1);
 
+    // Send only the status of all organs as a JSON response
     res.json({
-        liver: { status: liverStatus, totalOxygen, totalSerotonin, totalGlucose },
-        heart: { status: heartStatus, totalOxygen: heartOxygen, totalSerotonin: heartSerotonin, totalGlucose: heartGlucose },
-        brain: { status: brainStatus, totalOxygen: brainOxygen, totalSerotonin: brainSerotonin, totalGlucose: brainGlucose },
-        intestine: { status: intestineStatus, totalOxygen: intestineOxygen, totalSerotonin: intestineSerotonin, totalGlucose: intestineGlucose },
-        stomach: { status: stomachStatus, totalOxygen: stomachOxygen, totalSerotonin: stomachSerotonin, totalGlucose: stomachGlucose },
-        lungs: { status: lungsStatus, totalOxygen: lungsOxygen, totalSerotonin: lungsSerotonin, totalGlucose: lungsGlucose }
+        liver: liverStatus,
+        heart: heartStatus,
+        brain: brainStatus,
+        intestine: intestineStatus,
+        stomach: stomachStatus,
+        lungs: lungsStatus
     });
 });
 
-// const PORT = 3002;
-// app.listen(PORT, () => {
-//     console.log(`Health Status Simulation running on port ${PORT}`);
-// });
+module.exports = app;
