@@ -1,4 +1,4 @@
-Instructions to use FoodPath-
+Instructions to use FoodPath-\n
 1.First install the node package manager  in the backend directory by entering the command in the terminal as-
   npm init -y
 and also install the following plugins for the backend server-
