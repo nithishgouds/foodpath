@@ -1,3 +1,23 @@
+@font-face {
+  font-family: 'Marcellus';
+  src: url('../../fonts/Marcellus-Regular.ttf');
+}
+@font-face {
+  font-family: 'Helveticaa';
+  src: url('../../fonts/HelveticaW0Roman.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../fonts/Montserrat-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'Monterchi';
+  src: url('../../fonts/Monterchi-Book-trial.ttf');
+}
+
+
 html,
 body {
   background-color: rgb(247, 240, 225);
@@ -6,7 +26,7 @@ body {
 }
 
 .header {
-  font-family: 'Marcellus', serif;
+  font-family: Marcellus;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -18,39 +38,32 @@ body {
   color: inherit;
   transition: top 0.6s ease-in-out;
   position: sticky;
-  /* Make the header sticky */
   top: 0;
-  /* Stick it to the top */
   width: 100%;
   z-index: 100;
 }
 
 .dropdown {
   position: relative;
-  /* To position the dropdown content */
   display: inline-block;
-  /* To keep the dropdown within the flow */
   transition: background-color 250ms, color 250ms;
 }
 
 .dropdown-content {
   display: none;
-  /* Hide the dropdown content by default */
-  font-family: 'Marcellus', serif;
+  font-family: Marcellus;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
   border-radius: 10px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  top:130%;
+  top:100%;
   border: 1px solid black;
-  /* Ensure dropdown is on top */
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
-  /* Show the dropdown on hover */
   border-radius: 10px;
 }
 
@@ -59,7 +72,6 @@ body {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  /* Make links stack vertically */
   font-size: 6px;
   transition: color 0.05s ease-in-out, background-color 0.05s ease-in-out;
 }
@@ -85,7 +97,6 @@ body {
 
 .header.hidden {
   top: -80px;
-  /* Adjust this value if needed */
 }
 
 .title {
@@ -100,27 +111,22 @@ body {
 }
 
 .links a {
-  font-family: 'Helvetica W01 Roman', sans-serif;
+  font-family: Helveticaa;
   font-size: 14px;
   text-decoration: none;
-  /* Remove underline from all links in .links */
   color: inherit;
 }
 
 .links a:hover {
   text-decoration: underline;
-  /* Add underline on hover for other links */
 }
 
 .dropdown a {
-  /* Specifically target the dropdown trigger link */
   text-decoration: none;
-  /* Remove underline */
 }
 
 .dropdown a:hover {
   text-decoration: none;
-  /* No underline on hover for the dropdown trigger */
 }
 
 .main-heading {
@@ -128,7 +134,7 @@ body {
   padding-top: 190px;
   padding-left: 5rem;
   line-height: 1.3em;
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat;
   font-weight: 500;
   font-size: 48px;
 }
@@ -136,39 +142,36 @@ body {
 .sub-heading {
   padding-left: 5rem;
   line-height: 1.5em;
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat;
   font-size: 18px;
 }
 
 .model-section {
-  /*Visualize_with_FoodPath*/
   padding-top: 5rem;
   padding-left: 5rem;
   padding-bottom: 1rem;
   line-height: 1.5em;
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat;
   font-size: 20px;
 }
 
 .guides-section {
-  /*What's good and bad for your organs?*/
   padding-top: 3rem;
   padding-left: 5rem;
   padding-bottom: 2rem;
   line-height: 1em;
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat;
   font-size: 20px;
 }
 
 .section-sub-heading {
-  /*View Guides on the various kinds of foods*/
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat;
   font-size: 18px;
 
 }
 
 .proceed-button {
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat;
   background-color: transparent;
   border-radius: 28px;
   border-width: 2px;
@@ -191,7 +194,7 @@ body {
   background-color: white;
   margin-top: 10rem;
   color: black;
-  font-family: 'Monterchi', serif;
+  font-family: Monterchi;
   padding: 1rem;
   text-align: center;
   margin-top: 1rem;
@@ -216,23 +219,15 @@ body {
   margin-bottom: 1rem;
   font-size: 18px;
   display: flex;
-  /* Make the links container a flexbox */
-  /* Align items to the right */
   margin-bottom: 16px;
   justify-content: space-around;
-  /* Or space-between, or space-evenly */
   gap: 5rem;
-  /* Add more gap between the links */
 
 }
 
 .footer-links a {
   display: block;
-  /* Make each link a block element */
   margin-bottom: 1.5rem;
-  /* Add space between links */
   color: inherit;
-  /* Inherit color from the footer */
   text-decoration: none;
-  /* Remove underlines */
 }
