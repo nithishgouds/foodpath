@@ -8,7 +8,8 @@ const Organstructure = ({ bc, lc, hc, sc, livc, inc, op }) => {
   
   return(
     <svg
-    width="800"
+    overflow-y="auto"
+    width="100%"
     height="100%"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"

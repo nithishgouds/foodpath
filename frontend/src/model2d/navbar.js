@@ -34,18 +34,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-// import React from "react";
-
-// function NavBar(){
-//   return(
-//       <div class="navbarstyle">
-//         <div class="navtitle">
-//           FoodPath
-//         </div>
-//         <select></select>
-//       </div>
-//   );
-// }
-
-// export default NavBar;

@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import './contentstyle.css';
 //import Organstructure from './organstructure.js';
 
@@ -64,16 +63,28 @@ const handleAddItem = async () => {
   return(
     <div className='mainelements'>
       <div class="organinfo">
-        <label style={{display:"block"}}>Organ:</label>
-      <input readOnly></input>
-        <label style={{display:"block"}}>Status:</label>
-      <input readOnly></input>
-        <label style={{display:"block"}}>Oxygen:</label>
-      <input readOnly></input>
-        <label style={{display:"block"}}>Serotonin:</label>
-      <input readOnly></input>
-        <label style={{display:"block"}}>Glucose:</label>
-      <input readOnly></input>
+        <div class="organinfostats">
+          <div class="organstats">
+            <label>Organ:</label>
+            <input readOnly class="organinfoinputs"></input>
+          </div>
+          <div class="organstats">
+            <label>Status:</label>
+            <input readOnly class="organinfoinputs"></input>
+          </div>
+          <div class="organstats">
+            <label>Glucose:</label>
+            <input readOnly class="organinfoinputs"></input>
+          </div>
+          <div class="organstats">
+            <label>Serotonin:</label>
+            <input readOnly class="organinfoinputs"></input>
+          </div>
+          <div class="organstats">
+            <label >Organ:</label>
+            <input readOnly class="organinfoinputs"></input>
+          </div>
+        </div>
       </div>
       <div class="model2d">
       <svg
@@ -101,29 +112,23 @@ const handleAddItem = async () => {
       </div>
       <div class="inputinfo">
         <p class="inputinfoheading">Food Item:</p>
-        {/* <label>Food item:</label> */}
-        <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
-          <option>idli</option>
-          <option>Upma</option>
-          <option>Bonda</option>
-          <option>Puri</option>
-          <option>Apple</option>
-          <option>Grapes</option>
-          <option>Beans</option>
-          <option>FriedFoods</option>
-          <option>Yogurt</option>
-          <option>Salmon</option>
+        <select class="foodtype">
+          <option>Potato</option>
+          <option>Potato</option>
+          <option>Potato</option>
+          <option>Hello</option>
+          <option>Potato</option>
+          <option>Potato</option>
         </select>
         <p class="inputinfoheading">Quantity:</p>
-        <input type='number' class="quantity" value={quantity} onChange={(e) => setquantity(e.target.value)}></input>
-        <button class="inputbuttons" onClick={handleAddItem}>Add Food</button>
+        <input type='number' class="quantity"></input>
+        <button class="inputbuttons">Add Food</button>
         <p class="inputinfoheading">Food In Cart:</p>
-        <textarea readOnly class="textareas" value={consumedFoodsText} >
-          
+        <textarea readOnly class="textareas">
+          1 Banana
         </textarea>
         <button class="inputbuttons" onClick={fetchOrganColors}>Simulate</button>
         <button class="inputbuttons" style={{marginTop:"50px"}}>Reset Model</button>
-        
       </div>
     </div>
   )
