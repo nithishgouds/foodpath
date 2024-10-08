@@ -18,7 +18,6 @@ html,body{
 .organinfo{
   font-family: Arial, Helvetica, sans-serif;
   font-size: large;
-  margin-top: 50px;
   background-color: rgb(247,240,225);
   flex:3;
 }
@@ -46,7 +45,6 @@ html,body{
 }
 
 .model2d{
-  margin-top: 50px;
   flex:5;
   background-color: #C0C0C0;
 }
@@ -54,7 +52,6 @@ html,body{
 .inputinfo{
   font-family: Arial, Helvetica, sans-serif;
   height:91vh;
-  margin-top: 50px;
   background-color: rgb(247,240,225);
   flex:3;
   margin-bottom:0;

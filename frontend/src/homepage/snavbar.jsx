@@ -27,12 +27,12 @@ function Snavbar() {
                 </div>
                 <div className="links-container">
                     <nav className="links">
-                        <a href="/public">HOME</a>
-                        <a href="/2d-model">2D MODEL</a>
+                        <a href="/">HOME</a>
+                        <a href="/model2dpage">2D MODEL</a>
                         <div className="dropdown"> {/* Added dropdown container */}
                             <a href="/guides">HOW TO EAT HEALTHY?</a>
                             <div className="dropdown-content"> {/* Dropdown content */}
-                                <a href="../guides/brain.js">BRAIN FOCUSED</a>
+                                <a href="/guides/brain">BRAIN FOCUSED</a>
                                 <a href="/guides/lungs">LUNG FOCUSED</a>
                                 <a href="/guides/heart">HEART FOCUSED</a>
                                 <a href="/guides/intestines">INTESTINES FOCUSED</a>
