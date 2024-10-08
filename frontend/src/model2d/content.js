@@ -136,7 +136,7 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity
             <input readOnly class="organinfoinputs" value={IOserotonin}></input>
           </div>
           <div class="organstats">
-            <label >Oxygen:</label>
+            <label >Acetylcholine:</label>
             <input readOnly class="organinfoinputs" value={IOoxygen}></input>
           </div>
         </div>

@@ -26,15 +26,15 @@ const addFood = (req, res) => {
         return res.status(400).json({ error: 'Food item and quantity are required.' });
     }
 
-    // Create a new object for the added food item
+    
     const newFood = { foodItem, quantity };
-    // Add the new food item to the consumedFoods array
+  
     consumedFoods.push(newFood);
 
-    // Respond with a success message and the newly added food item
+    
     res.json({ 
         message: 'Food added successfully', 
-        consumedFoods // Send back the entire consumedFoods array
+        consumedFoods 
     });
 };
 
@@ -78,15 +78,15 @@ const resetConsumedFoods = (req, res) => {
             glucose: 0
         }
     };
-     // Reset the array
+     
     res.json({ 
         message: 'Food deleted successfully', resetStatuses,
 
-        consumedFoods // Send back the entire consumedFoods array
+        consumedFoods 
     });
 };
 
-// Export the functions for use in routes
+
 module.exports = { addFood, resetConsumedFoods, consumedFoods };
 
 
