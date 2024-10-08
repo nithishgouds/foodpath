@@ -88,7 +88,7 @@ const handleAddItem = async () => {
           </div>
         </div>
       </div>
-      <div class="model2d">
+      <div class="model2d" >
       <svg
     width="800"
     height="100%"
@@ -128,7 +128,7 @@ const handleAddItem = async () => {
           <option>Salmon</option>
         </select>
         <p class="inputinfoheading">Quantity:</p>
-        <input type='number' class="quantity" value={quantity} onChange={(e) => setquantity(e.target.value)}></input>
+        <input type='number' class="quantity"  min={0} max={10} value={quantity} onChange={(e) => setquantity(e.target.value)}></input>
         <button class="inputbuttons" onClick={handleAddItem}>Add Food</button>
         <p class="inputinfoheading">Food In Cart:</p>
         <textarea readOnly class="textareas" value={consumedFoodsText} >
