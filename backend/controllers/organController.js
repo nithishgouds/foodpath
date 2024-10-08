@@ -39,9 +39,56 @@ const addFood = (req, res) => {
 };
 
 const resetConsumedFoods = (req, res) => {
-    consumedFoods = []; // Reset the array
-    res.status(200).json({ message: "Consumed foods reset successfully." });
+    // Reset the consumed foods array
+    consumedFoods = [];
+
+    // Reset the individual organ statuses to default values
+    const resetStatuses = {
+        liver: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        heart: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        brain: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        intestine: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        stomach: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        },
+        lungs: {
+            status: "Neutral",
+            oxygen: 0,
+            serotonin: 0,
+            glucose: 0
+        }
+    };
+
+    // Send a response with the reset data
+    res.status(200).json({
+        message: "Consumed foods and organ statuses reset successfully.",
+        resetStatuses
+    });
 };
+
 
 // Export the functions for use in routes
 module.exports = { addFood, resetConsumedFoods, consumedFoods };
