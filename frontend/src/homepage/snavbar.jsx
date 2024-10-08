@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import './homepagestyle.css';
 function Snavbar() {
@@ -33,7 +32,7 @@ function Snavbar() {
                         <div className="dropdown"> {/* Added dropdown container */}
                             <a href="/guides">HOW TO EAT HEALTHY?</a>
                             <div className="dropdown-content"> {/* Dropdown content */}
-                                <a href="/guides/brain">BRAIN FOCUSED</a>
+                                <a href="../guides/brain.js">BRAIN FOCUSED</a>
                                 <a href="/guides/lungs">LUNG FOCUSED</a>
                                 <a href="/guides/heart">HEART FOCUSED</a>
                                 <a href="/guides/intestines">INTESTINES FOCUSED</a>
