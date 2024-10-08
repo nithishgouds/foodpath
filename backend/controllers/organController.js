@@ -40,7 +40,10 @@ const addFood = (req, res) => {
 
 const resetConsumedFoods = (req, res) => {
     consumedFoods = []; // Reset the array
-    res.status(200).json({ message: "Consumed foods reset successfully." });
+    res.json({ 
+        message: 'Food deleted successfully', 
+        consumedFoods // Send back the entire consumedFoods array
+    });
 };
 
 // Export the functions for use in routes
