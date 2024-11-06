@@ -1,8 +1,10 @@
 
 import './Brain.css';
+import Snavbar from '../homepage/snavbar';
 function Intestine(){
     return (
         <div className="App">
+        <Snavbar />
         <header className="App-header">
           <h1>What's Good and Bad for Your Intestine?</h1>
         </header>

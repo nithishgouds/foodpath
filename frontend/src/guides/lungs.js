@@ -1,10 +1,12 @@
 
 import './Brain.css';
+import Snavbar from '../homepage/snavbar';
 function Lungs(){
 
        
   return (
     <div className="App">
+        <Snavbar />
       <header className="App-header">
         <h1>What's Good and Bad for Your Lungs?</h1>
       </header>

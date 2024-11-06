@@ -1,18 +1,22 @@
+// const { addFood} = require('../controllers/organController');
+// const { consumedFoods } = require('./addFood');
+
+// const { addFood, resetConsumedFoods } = require('./organController');
 
 const { addFood, resetConsumedFoods,consumedFoods } = require('./organController');
 
 
 const foodEffects = {
-    "idli": { oxygen: 5, serotonin: 3, glucose: 8 },
-    "Upma": { oxygen: 4, serotonin: 2, glucose: 7 },
-    "Bonda": { oxygen: -2, serotonin: 1, glucose: 18 },
-    "Puri": { oxygen: -1, serotonin: 2, glucose: 16 },
-    "Apple": { oxygen: 4, serotonin: 2, glucose: 10 },
-    "Grapes": { oxygen: 3, serotonin: 3, glucose: 9 },
-    "Beans": { oxygen: 6, serotonin: 5, glucose: 4 },
-    "Fried Foods": { oxygen: -5, serotonin: -2, glucose: 16 },
-    "Yogurt": { oxygen: 5, serotonin: 3, glucose: 4 },
-    "Salmon": { oxygen: 7, serotonin: 3, glucose: 6 }
+    "idli": { oxygen: 0.5, serotonin: 3, glucose: 8 },
+    "Upma": { oxygen: 0.4, serotonin: 2, glucose: 7 },
+    "Bonda": { oxygen: -0.2, serotonin: 1, glucose: 18 },
+    "Puri": { oxygen: -0.1, serotonin: 2, glucose: 16 },
+    "Apple": { oxygen: 0.4, serotonin: 2, glucose: 10 },
+    "Grapes": { oxygen: 0.3, serotonin: 3, glucose: 9 },
+    "Beans": { oxygen: 0.6, serotonin: 5, glucose: 4 },
+    "Fried Foods": { oxygen: -0.5, serotonin: -2, glucose: 16 },
+    "Yogurt": { oxygen: 0.5, serotonin: 3, glucose: 4 },
+    "Salmon": { oxygen: 0.7, serotonin: 3, glucose: 6 }
 };
 
 
