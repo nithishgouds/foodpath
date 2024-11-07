@@ -11,7 +11,8 @@ import Stomach from './guides/stomach';
 import Liver from './guides/liver';
 function App() {
   return (
-      <Router>
+      
+      <Router>ṭ
           <Routes>
             <Route path='/' element={<Homepage/>}/>
             <Route path='/model2dpage' element={<Model2dpage/>}/>
