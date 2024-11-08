@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './loginsignup/login';
 import Homepage from './homepage/HomePage';
 import Model2dpage from './model2dpage';
 import Brain from './guides/brain';
@@ -21,6 +22,7 @@ function App() {
               <Route path="/guides/intestine" element={<Intestine />} />
               <Route path="/guides/stomach" element={<Stomach />} />
                <Route path="/guides/liver" element={<Liver />} />
+              <Route path="/login" element={<Login/>}/>
             </Routes>
       </Router>
   );

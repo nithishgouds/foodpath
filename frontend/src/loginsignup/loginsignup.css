@@ -1,0 +1,20 @@
+.loginelements{
+  display:flex;
+  flex-direction: row;
+}
+.emptyspace{
+  background-color: white;
+  margin:0;
+  padding:0;
+  flex:1;
+  height:calc(100vh - 100px);
+  opacity:0;
+}
+.loginpage{
+  min-width: 300px;
+  margin:0;
+  padding:0;
+  flex:1;
+  height:100%;
+  height:calc(100vh - 100px);
+}
