@@ -1,0 +1,16 @@
+.mnavbar{
+  display : flex;
+}
+
+.navgap{
+  flex:4;
+}
+
+.navtitle{
+  flex:3
+}
+
+.navbuttons{
+  flex:1
+}
+
