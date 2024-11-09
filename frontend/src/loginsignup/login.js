@@ -57,10 +57,10 @@ export default function Login() {
     console.log(password);
     console.log(isSignup);
     try{
-      console.log("in login nithish");
-      const response = await Axios.post(`http://localhost:3001/auth/${isSignup ? 'signup' : 'login'}`, {
-        username: username,
-        password: password
+    const response = await Axios.post('http://localhost:3001/authRoutes', {
+        // pagetype:isSignup,
+        email:username,
+        password:password
       });
       
       console.log(response);
