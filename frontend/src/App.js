@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './loginsignup/login';
-import Homepage from './homepage/HomePage';
+import HomePage from "./homepagenew/components/HomePage";
 import Model2dpage from './model2dpage';
 import Brain from './guides/brain';
 import Lungs from './guides/lungs';
@@ -15,9 +15,9 @@ import Model3dpage from './model3dpage';
 function App() {
   return (
       
-      <Router>ṭ
+      <Router>
           <Routes>
-            <Route path='/' element={<Homepage/>}/>
+            <Route path='/' element={<HomePage/>}/>
             <Route path='/model2dpage' element={<Model2dpage/>}/>
             <Route path='/model3dpage' element={<Model3dpage/>}/>
               <Route path="/guides/brain" element={<Brain />} />
