@@ -62,9 +62,11 @@ export default function Login() {
         username:username,
         password:password
       });
+      console.log(response);
     }catch(e){
       console.log(e)
     }
+
   }
 
   return (
