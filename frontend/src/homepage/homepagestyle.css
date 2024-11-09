@@ -1,37 +1,21 @@
-@font-face {
-  font-family: 'Marcellus';
-  src: url('../../fonts/Marcellus-Regular.ttf');
-}
-@font-face {
-  font-family: 'Helveticaa';
-  src: url('../../fonts/HelveticaW0Roman.ttf');
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../../fonts/Montserrat-VariableFont_wght.ttf');
-}
-
-@font-face {
-  font-family: 'Monterchi';
-  src: url('../../fonts/Monterchi-Book-trial.ttf');
-}
-
-
 html,
 body {
   background-color: rgb(247, 240, 225);
   margin: 0;
   padding: 0;
+  text-align:start;
 }
 
 .header {
-  font-family: Marcellus;
+  max-width: 100%;
+  display: none;
+  font-family: 'Marcellus', serif;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
   padding: 1rem;
-  padding-left: 20px;
+  padding-right:0px;
+  padding-left: 0px;
   padding-bottom: 19px;
   height: 50px;
   background-color: rgb(247, 240, 225);
@@ -51,7 +35,7 @@ body {
 
 .dropdown-content {
   display: none;
-  font-family: Marcellus;
+  font-family: 'Marcellus', serif;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
@@ -97,6 +81,7 @@ body {
 
 .header.hidden {
   top: -80px;
+  /* Adjust this value if needed */
 }
 
 .title {
@@ -107,11 +92,11 @@ body {
 .links {
   display: flex;
   gap: 4rem;
-  padding-right: 40px;
+  padding-right: 0px;
 }
 
 .links a {
-  font-family: Helveticaa;
+  font-family: 'Helvetica W01 Roman', sans-serif;
   font-size: 14px;
   text-decoration: none;
   color: inherit;
@@ -134,7 +119,7 @@ body {
   padding-top: 190px;
   padding-left: 5rem;
   line-height: 1.3em;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 48px;
 }
@@ -142,36 +127,39 @@ body {
 .sub-heading {
   padding-left: 5rem;
   line-height: 1.5em;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
 }
 
 .model-section {
+  /*Visualize_with_FoodPath*/
   padding-top: 5rem;
   padding-left: 5rem;
   padding-bottom: 1rem;
   line-height: 1.5em;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-size: 20px;
 }
 
 .guides-section {
+  /*What's good and bad for your organs?*/
   padding-top: 3rem;
   padding-left: 5rem;
   padding-bottom: 2rem;
   line-height: 1em;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-size: 20px;
 }
 
 .section-sub-heading {
-  font-family: Montserrat;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
 
 }
 
 .proceed-button {
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   background-color: transparent;
   border-radius: 28px;
   border-width: 2px;
@@ -194,9 +182,9 @@ body {
   background-color: white;
   margin-top: 10rem;
   color: black;
-  font-family: Monterchi;
+  font-family: 'Monterchi', serif;
   padding: 1rem;
-  text-align: center;
+  text-align: left;
   margin-top: 1rem;
 }
 
@@ -219,15 +207,23 @@ body {
   margin-bottom: 1rem;
   font-size: 18px;
   display: flex;
+  /* Make the links container a flexbox */
+  /* Align items to the right */
   margin-bottom: 16px;
   justify-content: space-around;
+  /* Or space-between, or space-evenly */
   gap: 5rem;
+  /* Add more gap between the links */
 
 }
 
 .footer-links a {
   display: block;
+  /* Make each link a block element */
   margin-bottom: 1.5rem;
+  /* Add space between links */
   color: inherit;
+  /* Inherit color from the footer */
   text-decoration: none;
+  /* Remove underlines */
 }

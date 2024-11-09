@@ -1,0 +1,52 @@
+.loginelements{
+  display:flex;
+  flex-direction: row;
+  height:calc(100vh - 86.5px);
+  background-image: url('./loginbgi_enhanced1.jpg');
+  background-size: cover;
+  padding-bottom:0px;
+  padding-top: 0px;
+  background-position:left top;
+  /* background-position: center ; */
+}
+.emptyspace{
+  margin:0;
+  padding:0;
+  flex:6;
+  opacity:0;
+}
+.emptyspace1{
+  background-color: white;
+  margin:0;
+  padding:0;
+  flex:1;
+  opacity:0;
+}
+.loginpage{
+  margin:0;
+  padding:0;
+  flex:3;
+  height:100%;
+  display: flex;
+}
+.loginfield{
+  width:100%;
+  margin-top: 40px;
+  margin-left:10px;
+  margin-right:10px;
+  margin-bottom:40px;
+  background-color: lightyellow;
+  border-radius:20px;
+  display:flex;
+  flex-direction: column; 
+}
+.loginheadtitle{
+  margin-top:10%;
+  font-size: xx-large;
+  text-shadow: 1px #808080;
+  text-align: center;
+  padding:0;
+}
+.logintitle{
+  padding-top:1px;
+}

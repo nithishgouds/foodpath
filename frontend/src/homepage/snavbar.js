@@ -1,6 +1,7 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import './homepagestyle.css';
+import {Link} from 'react-router-dom';
+
 function Snavbar() {
     const [showHeader, setShowHeader] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -28,11 +29,11 @@ function Snavbar() {
                 </div>
                 <div className="links-container">
                     <nav className="links">
-                        <a href="/public">HOME</a>
-                        <a href="/2d-model">2D MODEL</a>
-                        <div className="dropdown"> {/* Added dropdown container */}
+                        <a href="/">HOME</a>
+                        <a href="/model2dpage">2D MODEL</a>
+                        {/* <div className="dropdown">
                             <a href="/guides">HOW TO EAT HEALTHY?</a>
-                            <div className="dropdown-content"> {/* Dropdown content */}
+                            <div className="dropdown-content">
                                 <a href="/guides/brain">BRAIN FOCUSED</a>
                                 <a href="/guides/lungs">LUNG FOCUSED</a>
                                 <a href="/guides/heart">HEART FOCUSED</a>
@@ -40,8 +41,8 @@ function Snavbar() {
                                 <a href="/guides/stomach">STOMACH FOCUSED</a>
                                 <a href="/guides/liver">LIVER FOCUSED</a>
                             </div>
-                        </div>
-
+                        </div> */}
+                        <a href="/login">LOGIN</a>
                     </nav>
                 </div>
             </header>
