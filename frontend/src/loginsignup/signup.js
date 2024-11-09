@@ -44,7 +44,7 @@ import React from 'react';
 import Axios from 'axios';
 
 export default function Login(){
-  const [username,setUsername]=useState("");
+  const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
   // const [isSignup, setIsSignup] = useState(false);
 
@@ -53,18 +53,18 @@ export default function Login(){
   // };
 
   const handleButton = async () => {
-    console.log(username);
+    console.log(email);
     console.log(password);
     // console.log(isSignup);
     try{
-    const response = await Axios.post('http://localhost:3001/authRoutes', {
+    const response = await Axios.post('http://localhost:3001/auth/signup', {
         // pagetype:isSignup,
-        email:username,
+        email:email,
         password:password
       });
       console.log(response.data);
     }catch(e){
-      console.log(e)
+      console.log("Error found")
     }
 
   }
@@ -80,18 +80,18 @@ export default function Login(){
         <div class="loginpage">
           <div class="loginfield">
             <div class="loginheadtitle">
-              Log In
+              Create Account
             </div>
             <text class="logintitle">
               Email
             </text>
-            <input class="logininput" onChange={(e)=>{setUsername(e.target.value)}}></input>
+            <input class="logininput" onChange={(e)=>{setEmail(e.target.value)}}></input>
             <text class="logintitle">
               Password
             </text>
             <input class="logininput" onChange={(e)=>{setPassword(e.target.value)}}></input>
             <button class="loginbutton" onClick={handleButton}>Login</button>
-            <t class="logint"  >No account?<a class="logina" href="/signup">Sign Up</a></t>
+            <t class="logint"  >Have an account?<a class="logina" href="/login">Login</a></t>
           </div>
         </div>
         <div class="emptyspace">

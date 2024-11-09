@@ -5,24 +5,26 @@ import React from 'react';
 import Axios from 'axios';
 
 export default function Login(){
-  const [username,setUsername]=useState("");
+  const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
-  // const [isSignup, setIsSignup] = useState(false);
+  const [isSignup, setIsSignup] = useState(false);
 
   // const toggleMode = () => {
   //   setIsSignup(!isSignup);
   // };
 
   const handleButton = async () => {
-    console.log(username);
+    console.log(email);
     console.log(password);
     // console.log(isSignup);
     try{
-    const response = await Axios.post('http://localhost:3001/authRoutes', {
-        // pagetype:isSignup,
-        email:username,
-        password:password
-      });
+      console.log("Top In Try Login");
+      const response = await Axios.post('http://localhost:3001/auth/login', {
+          // pagetype:isSignup,
+          email:email,
+          password:password
+        });
+      console.log("In Try Login");
       
       console.log(response.data);
     }catch(e){
@@ -47,13 +49,13 @@ export default function Login(){
             <text class="logintitle">
               Email
             </text>
-            <input class="logininput" onChange={(e)=>{setUsername(e.target.value)}}></input>
+            <input class="logininput" onChange={(e)=>{setEmail(e.target.value)}}></input>
             <text class="logintitle">
               Password
             </text>
             <input class="logininput" onChange={(e)=>{setPassword(e.target.value)}}></input>
             <button class="loginbutton" onClick={handleButton}>Login</button>
-            <t class="logint"  >No account?<a class="logina" href="/signup">Sign Up</a></t>
+            <t class="logint"  >No account?<a class="logina" href="/signup" >Sign Up</a></t>
           </div>
         </div>
         <div class="emptyspace">

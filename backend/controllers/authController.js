@@ -40,22 +40,28 @@ const signup=async(req,res)=>
 
 
 const login = async (req, res) => {
+    console.log(req.body);
     const { email, password } = req.body;  // Change from username to email
   
     try {
+      console.log("In try")
       const user = await User.findOne({ email });  // Find by email instead of username
       if (!user) {
+        console.log("if")
         return res.status(400).json({ message: 'User not found' });
       }
   
       const found = await bcrypt.compare(password, user.password);
       if (!found) {
+        console.log("if")
         return res.status(400).json({ message: 'Invalid credentials' });
       }
-  
+      console.log("Befor Token")
       const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: '1h' });
+      console.log("Token found")
       res.status(200).json({ message: 'Login successful', token });
     } catch (error) {
+      console.error("Backend error")
       console.error('Error in login:', error);
       res.status(500).json({ message: 'Error in logging in', error: error.message });
     }

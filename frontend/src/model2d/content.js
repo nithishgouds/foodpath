@@ -5,7 +5,7 @@ import './contentstyle.css';
 //import Organstructure from './organstructure.js';
 
 
-function Content(){
+function Content3d(){
 
   console.log("entered content function");
   const [braincolor, setBrainColor] = useState('');
@@ -167,7 +167,7 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} `).join('\
       </div>
       <div class="inputinfo">
         <p class="inputinfoheading">Enter Food </p>
-        <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
+        {/* <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
           <option>Select Food</option>
           <option>Idli</option>
           <option>Upma</option>
@@ -179,7 +179,7 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} `).join('\
           <option>FriedFoods</option>
           <option>Yogurt</option>
           <option>Salmon</option>
-        </select>
+        </select> */}
         <input value={selectedItem} onChange={(event) => setSelectedItem(event.target.value)} class="textareas" type="text"></input>
         {/* <p class="inputinfoheading">Quantity:</p> */}
         {/* <input type='number' class="quantity"  min={0} max={10} value={quantity} onChange={(e) => setquantity(e.target.value)}></input> */}
@@ -195,4 +195,4 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} `).join('\
   )
 };
 
-export default Content;
+export default Content3d;
