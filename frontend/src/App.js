@@ -18,7 +18,7 @@ function App() {
               <Route path="/guides/brain" element={<Brain />} />
               <Route path="/guides/lungs" element={<Lungs />} />
                <Route path="/guides/heart" element={<Heart />} />
-              <Route path="/guides/intestine" element={<Intestine />} />
+              <Route path="/guides/intestines" element={<Intestine />} />
               <Route path="/guides/stomach" element={<Stomach />} />
                <Route path="/guides/liver" element={<Liver />} />
             </Routes>

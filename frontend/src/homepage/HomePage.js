@@ -9,7 +9,7 @@ import Navbar from '../model2d/navbar.js';
 const HomePage = () => {
     return (
         <div>
-        <Snavbar/>
+        {/* <Snavbar/> */}
         <HeroSection/>
         <Footer/>
         </div>

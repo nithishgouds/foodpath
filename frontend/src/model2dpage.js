@@ -6,7 +6,7 @@ import Snavbar from "./homepage/snavbar";
 function Model2dpage(){
     return(
         <div>
-            <Snavbar />
+            {/* <Snavbar /> */}
             <Content />
         </div>
     );
