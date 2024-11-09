@@ -5,7 +5,7 @@ import './contentstyle.css';
 //import Organstructure from './organstructure.js';
 
 
-function Content(){
+function Content3d(){
 
   console.log("entered content function");
   const [braincolor, setBrainColor] = useState('');
@@ -195,4 +195,4 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} `).join('\
   )
 };
 
-export default Content;
+export default Content3d;

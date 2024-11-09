@@ -22,6 +22,8 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/organs', organRoutes);
+app.use('/auth',authRoutes);
+
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

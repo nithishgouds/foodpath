@@ -31,6 +31,7 @@ function Snavbar() {
                     <nav className="links">
                         <a href="/">HOME</a>
                         <a href="/model2dpage">2D MODEL</a>
+                        <a href="/model3dpage">3D MODEL</a>
                         {/* <div className="dropdown">
                             <a href="/guides">HOW TO EAT HEALTHY?</a>
                             <div className="dropdown-content">

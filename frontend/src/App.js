@@ -11,12 +11,15 @@ import Intestine from './guides/intestine';
 import Stomach from './guides/stomach';
 import Liver from './guides/liver';
 import Signup from './loginsignup/signup';
+import Model3dpage from './model3dpage';
 function App() {
   return (
-      <Router>
+      
+      <Router>ṭ
           <Routes>
             <Route path='/' element={<Homepage/>}/>
             <Route path='/model2dpage' element={<Model2dpage/>}/>
+            <Route path='/model3dpage' element={<Model3dpage/>}/>
               <Route path="/guides/brain" element={<Brain />} />
               <Route path="/guides/lungs" element={<Lungs />} />
                <Route path="/guides/heart" element={<Heart />} />
