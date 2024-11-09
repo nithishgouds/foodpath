@@ -58,8 +58,8 @@ export default function Login() {
     console.log(isSignup);
     try{
     const response = await Axios.post('http://localhost:3001/authRoutes', {
-        pagetype:isSignup,
-        username:username,
+        // pagetype:isSignup,
+        email:username,
         password:password
       });
       console.log(response);
