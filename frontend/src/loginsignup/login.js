@@ -44,7 +44,7 @@ import React from 'react';
 import Axios from 'axios';
 
 export default function Login() {
-  const [username,setUsername]=useState("");
+  const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
   const [isSignup, setIsSignup] = useState(false);
 
@@ -53,17 +53,20 @@ export default function Login() {
   };
 
   const handleButton = async () => {
-    console.log(username);
+    console.log(email);
     console.log(password);
     console.log(isSignup);
     try{
-    const response = await Axios.post('http://localhost:3001/authRoutes', {
-        // pagetype:isSignup,
-        email:username,
-        password:password
-      });
+      const response = await Axios.post(
+        `http://localhost:3001/auth/${isSignup ? 'signup' : 'login'}`, 
+        {
+          email: email,
+          password: password
+        }
+      );
       
-      console.log(response);
+      
+      console.log(response.data);
     }catch(e){
       console.log(e)
     }
@@ -83,7 +86,7 @@ export default function Login() {
                 {isSignup ? 'Create Account' : 'Log In'}
               </div>
               <label className="logintitle">Username</label>
-              <input className="logininput" type="text" onChange={(e)=>{setUsername(e.target.value)}} />
+              <input className="logininput" type="text" onChange={(e)=>{setEmail(e.target.value)}} />
 
               <label className="logintitle">Password</label>
               <input className="logininput" type="password" onChange={(e)=>{setPassword(e.target.value)}}/>
