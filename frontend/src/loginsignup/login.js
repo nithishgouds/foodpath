@@ -150,6 +150,7 @@ import { useEffect, useState, alert, navigate } from 'react';
 import React from 'react';
 import Axios from 'axios';
 import Birds from 'vanta/src/vanta.birds';
+import Header from "../homepagenew/components/Header";
 
 export default function Login(){
   const [email,setEmail]=useState("");
@@ -199,7 +200,7 @@ export default function Login(){
 
   return(
     <>
-      <Snavbar/>
+      <Header/>
       <div className="loginelements">
       <div className="vantaelements" id="vanta"></div>
       <div className="loginfields">
