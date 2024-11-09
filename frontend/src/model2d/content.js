@@ -49,7 +49,7 @@ const handleAddItem = async () => {
     try {
         const response = await axios.post('http://localhost:3001/api/organs/add-food', {
             foodItem: selectedItem,
-            quantity: quantity
+            // quantity: quantity
         });
         setConsumedFoods(response.data.consumedFoods);
         //setConsumedFoods(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
@@ -181,8 +181,8 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity
           <option>Salmon</option>
         </select> */}
         <input value={selectedItem} onChange={(event) => setSelectedItem(event.target.value)} class="textareas" type="text"></input>
-        {/* <p class="inputinfoheading">Quantity:</p>
-        <input type='number' class="quantity"  min={0} max={10} value={quantity} onChange={(e) => setquantity(e.target.value)}></input> */}
+        {/* <p class="inputinfoheading">Quantity:</p> */}
+        {/* <input type='number' class="quantity"  min={0} max={10} value={quantity} onChange={(e) => setquantity(e.target.value)}></input> */}
         <button class="inputbuttons" onClick={handleAddItem}>Add Food</button>
         <p class="inputinfoheading">Food In Cart:</p>
         <textarea readOnly class="textareas" value={consumedFoodsText} >
