@@ -20,14 +20,14 @@ const foodEffects = {
 let consumedFoods = [];
 
 const addFood = (req, res) => {
-    const { foodItem, quantity } = req.body;
+    const foodItem = req.body;
 
-    if (!foodItem || !quantity) {
+    if (!foodItem ) {
         return res.status(400).json({ error: 'Food item and quantity are required.' });
     }
 
     
-    const newFood = { foodItem, quantity };
+    const newFood = foodItem;
   
     consumedFoods.push(newFood);
 
