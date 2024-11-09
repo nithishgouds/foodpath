@@ -10,6 +10,7 @@ import Heart from './guides/heart';
 import Intestine from './guides/intestine';
 import Stomach from './guides/stomach';
 import Liver from './guides/liver';
+import Signup from './loginsignup/signup';
 function App() {
   return (
       <Router>
@@ -23,6 +24,7 @@ function App() {
               <Route path="/guides/stomach" element={<Stomach />} />
                <Route path="/guides/liver" element={<Liver />} />
               <Route path="/login" element={<Login/>}/>
+              <Route path="/signup" element={<Signup/>}/>
             </Routes>
       </Router>
   );
