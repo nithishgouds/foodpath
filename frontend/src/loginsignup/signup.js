@@ -48,14 +48,14 @@ export default function Login(){
   const [password,setPassword]=useState("");
   // const [isSignup, setIsSignup] = useState(false);
 
-  const toggleMode = () => {
-    setIsSignup(!isSignup);
-  };
+  // const toggleMode = () => {
+  //   setIsSignup(!isSignup);
+  // };
 
   const handleButton = async () => {
     console.log(username);
     console.log(password);
-    console.log(isSignup);
+    // console.log(isSignup);
     try{
     const response = await Axios.post('http://localhost:3001/authRoutes', {
         // pagetype:isSignup,
