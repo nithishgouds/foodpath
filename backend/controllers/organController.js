@@ -81,7 +81,7 @@ const resetConsumedFoods = (req, res) => {
      
     res.json({ 
         message: 'Food deleted successfully', resetStatuses,
-
+        
         consumedFoods 
     });
 };

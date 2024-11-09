@@ -18,7 +18,7 @@ const HomePage = () => {
     };
     return (
         <div>
-        <Snavbar/>
+        {/* <Snavbar/> */}
         <HeroSection/>
         <Footer/>
         <button onClick={handleLoginButtonClick}>Go to Login</button>
