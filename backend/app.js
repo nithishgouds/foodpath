@@ -11,6 +11,11 @@ const authRoutes=require('./routes/authRoutes');
 dotenv.config({ path: path.resolve(__dirname, '../frontend/.env') });
 
 
+if (!process.env.SECRET_KEY) {
+    throw new Error("SECRET_KEY is not defined. Set it in the .env file");
+  }
+  
+
 const app = express();
 const port = process.env.PORT || 3001;
 
