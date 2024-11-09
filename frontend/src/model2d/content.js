@@ -41,15 +41,15 @@ function Content(){
 
 const handleAddItem = async () => {
   console.log("button working");
-    if (selectedItem || !quantity) {
+    if (!selectedItem ) {
         console.log('Please select an item and enter a quantity.');
         return;
     }
 
     try {
         const response = await axios.post('http://localhost:3001/api/organs/add-food', {
-            foodItem: selectedItem,
-            // quantity: quantity
+            foodItem: selectedItem
+            
         });
         setConsumedFoods(response.data.consumedFoods);
         //setConsumedFoods(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
@@ -113,7 +113,7 @@ const handleAddItem = async () => {
     }
 };
 
-const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity: ${item.quantity}`).join('\n');
+const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} `).join('\n');
 
   return(
     <div className='mainelements'>
