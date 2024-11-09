@@ -9,12 +9,12 @@
   height:calc(100vh - 86.5px);
   width:100%;
   background-image:url('./loginbgi_enhanced1.jpg');
-  background-size: contain;
+  background-size: cover;
   background-color:rgba(0,0,0,0.5);
   padding-bottom:0px;
   padding-top: 0px;
   background-repeat: no-repeat;
-  background-position: center  ;
+  background-position: top left  ;
 }
 
 .emptyspace{
@@ -115,7 +115,7 @@
 .logint{ 
   padding-top:5%;
   font-size: 27px;
-  margin-bottom: 2%;
+  margin-left: 0px;
   text-align: center;
 }
 
