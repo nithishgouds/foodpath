@@ -146,7 +146,7 @@
 // }
 import './loginsignup.css';
 import Snavbar from '../homepage/snavbar';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, alert, navigate } from 'react';
 import React from 'react';
 import Axios from 'axios';
 import Birds from 'vanta/src/vanta.birds';
@@ -180,15 +180,16 @@ export default function Login(){
     console.log(password);
     // console.log(isSignup);
     try{
-      console.log("Top In Try Login");
       const response = await Axios.post('http://localhost:3001/auth/login', {
           // pagetype:isSignup,
           email:email,
           password:password
         });
-      console.log("In Try Login");
+      alert(response.message);
+      if(response.message == "User created successfully"){
+        navigate('/login');
+      }
       
-      console.log(response.data);
     }catch(e){
       console.log(e)
     }

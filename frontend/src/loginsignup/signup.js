@@ -138,7 +138,7 @@ export default function Login(){
     // console.log(isSignup);
     try{
       console.log("Top In Try Login");
-      const response = await Axios.post('http://localhost:3001/auth/login', {
+      const response = await Axios.post('http://localhost:3001/auth/signup', {
           // pagetype:isSignup,
           email:email,
           password:password
@@ -161,11 +161,11 @@ export default function Login(){
       <div className="loginfields">
         <div className="emptyspacetop"></div>
         <label className="signupfieldtitle">Create Account</label>
-        <label className="loginfieldlabel" onChange={(e) => {setEmail(e.target.value)}}>Username</label>
-        <input className="logininput"></input>
-        <label className="loginfieldlabel" onChange={(e) => {setPassword(e.target.value)}}>Password</label>
-        <input className="logininput"></input>
-        <button className="loginbutton" onClick={handleButton()}>Sign Up</button>
+        <label className="loginfieldlabel" >Username</label>
+        <input className="logininput" onChange={(e) => {setEmail(e.target.value)}}></input>
+        <label className="loginfieldlabel" >Password</label>
+        <input className="logininput" onChange={(e) => {setPassword(e.target.value)}}></input>
+        <button className="loginbutton" onClick={handleButton}>Sign Up</button>
         <div className="asksignup">
           <label className="asulabel">Have an Account? </label>
           <a className="asua" href='/login'>Log In</a>
