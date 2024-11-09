@@ -5,7 +5,7 @@ import './contentstyle.css';
 //import Organstructure from './organstructure.js';
 
 
-function Content(){
+function Content3d(){
 
   console.log("entered content function");
   const [braincolor, setBrainColor] = useState('');
@@ -41,15 +41,15 @@ function Content(){
 
 const handleAddItem = async () => {
   console.log("button working");
-    if (selectedItem || !quantity) {
+    if (!selectedItem ) {
         console.log('Please select an item and enter a quantity.');
         return;
     }
 
     try {
         const response = await axios.post('http://localhost:3001/api/organs/add-food', {
-            foodItem: selectedItem,
-            // quantity: quantity
+            foodItem: selectedItem
+            
         });
         setConsumedFoods(response.data.consumedFoods);
         //setConsumedFoods(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
@@ -113,7 +113,7 @@ const handleAddItem = async () => {
     }
 };
 
-const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity: ${item.quantity}`).join('\n');
+const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} `).join('\n');
 
   return(
     <div className='mainelements'>
@@ -167,7 +167,7 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity
       </div>
       <div class="inputinfo">
         <p class="inputinfoheading">Enter Food </p>
-        <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
+        {/* <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
           <option>Select Food</option>
           <option>Idli</option>
           <option>Upma</option>
@@ -179,7 +179,7 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity
           <option>FriedFoods</option>
           <option>Yogurt</option>
           <option>Salmon</option>
-        </select>
+        </select> */}
         <input value={selectedItem} onChange={(event) => setSelectedItem(event.target.value)} class="textareas" type="text"></input>
         {/* <p class="inputinfoheading">Quantity:</p> */}
         {/* <input type='number' class="quantity"  min={0} max={10} value={quantity} onChange={(e) => setquantity(e.target.value)}></input> */}
@@ -195,4 +195,4 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity
   )
 };
 
-export default Content;
+export default Content3d;
