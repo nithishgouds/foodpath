@@ -167,7 +167,7 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity
       </div>
       <div class="inputinfo">
         <p class="inputinfoheading">Enter Food </p>
-        {/* <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
+        <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
           <option>Select Food</option>
           <option>Idli</option>
           <option>Upma</option>
@@ -179,7 +179,7 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity
           <option>FriedFoods</option>
           <option>Yogurt</option>
           <option>Salmon</option>
-        </select> */}
+        </select>
         <input value={selectedItem} onChange={(event) => setSelectedItem(event.target.value)} class="textareas" type="text"></input>
         {/* <p class="inputinfoheading">Quantity:</p> */}
         {/* <input type='number' class="quantity"  min={0} max={10} value={quantity} onChange={(e) => setquantity(e.target.value)}></input> */}
