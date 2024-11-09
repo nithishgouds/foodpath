@@ -41,7 +41,7 @@ function Content(){
 
 const handleAddItem = async () => {
   console.log("button working");
-    if (!selectedItem || !quantity) {
+    if (selectedItem || !quantity) {
         console.log('Please select an item and enter a quantity.');
         return;
     }
