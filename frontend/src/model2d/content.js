@@ -35,7 +35,7 @@ function Content(){
     }
   };
 
-  const [selectedItem, setSelectedItem] = useState('');
+  const [selectedItem, setSelectedItem] = useState("");
   const [quantity, setquantity] = useState('');
   const [consumedFoods, setConsumedFoods] = useState([]);
 
@@ -166,8 +166,8 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity
     </svg>
       </div>
       <div class="inputinfo">
-        <p class="inputinfoheading">Food Item:</p>
-        <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
+        <p class="inputinfoheading">Enter Food </p>
+        {/* <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
           <option>Select Food</option>
           <option>Idli</option>
           <option>Upma</option>
@@ -179,9 +179,10 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity
           <option>FriedFoods</option>
           <option>Yogurt</option>
           <option>Salmon</option>
-        </select>
-        <p class="inputinfoheading">Quantity:</p>
-        <input type='number' class="quantity"  min={0} max={10} value={quantity} onChange={(e) => setquantity(e.target.value)}></input>
+        </select> */}
+        <input value={selectedItem} onChange={(event) => setSelectedItem(event.target.value)} class="textareas" type="text"></input>
+        {/* <p class="inputinfoheading">Quantity:</p>
+        <input type='number' class="quantity"  min={0} max={10} value={quantity} onChange={(e) => setquantity(e.target.value)}></input> */}
         <button class="inputbuttons" onClick={handleAddItem}>Add Food</button>
         <p class="inputinfoheading">Food In Cart:</p>
         <textarea readOnly class="textareas" value={consumedFoodsText} >

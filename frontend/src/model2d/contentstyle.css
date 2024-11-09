@@ -127,25 +127,25 @@ html,body{
 
 .path-heart:hover {
  
-  fill-opacity: 0.2; /* Change color on hover */
+  fill-opacity: 0.2;
 }
 .path-lungs:hover {
  
-  fill-opacity: 0.2; /* Change color on hover */
+  fill-opacity: 0.2; 
 }
 .path-brain:hover {
  
-  fill-opacity: 0.2; /* Change color on hover */
+  fill-opacity: 0.2; 
 }
 .path-stomach:hover {
   
-  fill-opacity: 0.2; /* Change color on hover */
+  fill-opacity: 0.2;
 }
 .path-liver:hover {
   
-  fill-opacity: 0.2; /* Change color on hover */
+  fill-opacity: 0.2;
 }
 .path-intestine:hover {
  
-  fill-opacity: 0.2; /* Change color on hover */
+  fill-opacity: 0.2; 
 }
