@@ -1,70 +1,78 @@
-import './loginsignup.css';
-import Snavbar from '../homepage/snavbar';
-import { useState } from 'react';
-import React from 'react';
-import Axios from 'axios';
+// import './loginsignup.css';
+// import Snavbar from '../homepage/snavbar';
+// import { useEffect, useState } from 'react';
+// import React from 'react';
+// import Axios from 'axios';
+// import Birds from 'vanta/src/vanta.birds';
 
-export default function Login(){
-  const [email,setEmail]=useState("");
-  const [password,setPassword]=useState("");
-  const [isSignup, setIsSignup] = useState(false);
+// export default function Login(){
+//   const [email,setEmail]=useState("");
+//   const [password,setPassword]=useState("");
+//   const [isSignup, setIsSignup] = useState(false);
 
-  // const toggleMode = () => {
-  //   setIsSignup(!isSignup);
-  // };
+//   useEffect(() => {
+//     Birds({
+//       el:'#vanta'
+//     })
+//   },[])
+//   // const toggleMode = () => {
+//   //   setIsSignup(!isSignup);
+//   // };
 
-  const handleButton = async () => {
-    console.log(email);
-    console.log(password);
-    // console.log(isSignup);
-    try{
-      console.log("Top In Try Login");
-      const response = await Axios.post('http://localhost:3001/auth/login', {
-          // pagetype:isSignup,
-          email:email,
-          password:password
-        });
-      console.log("In Try Login");
+//   const handleButton = async () => {
+//     console.log(email);
+//     console.log(password);
+//     // console.log(isSignup);
+//     try{
+//       console.log("Top In Try Login");
+//       const response = await Axios.post('http://localhost:3001/auth/login', {
+//           // pagetype:isSignup,
+//           email:email,
+//           password:password
+//         });
+//       console.log("In Try Login");
       
-      console.log(response.data);
-    }catch(e){
-      console.log(e)
-    }
+//       console.log(response.data);
+//     }catch(e){
+//       console.log(e)
+//     }
 
-  }
+//   }
   
 
-  return(
-    <>
-      <Snavbar/>
-      <div>
-      <div class="loginelements">
-        <div class="emptyspace1">
-        </div>
-        <div class="loginpage">
-          <div class="loginfield">
-            <div class="loginheadtitle">
-              Log In
-            </div>
-            <text class="logintitle">
-              Email
-            </text>
-            <input class="logininput" onChange={(e)=>{setEmail(e.target.value)}}></input>
-            <text class="logintitle">
-              Password
-            </text>
-            <input class="logininput" onChange={(e)=>{setPassword(e.target.value)}}></input>
-            <button class="loginbutton" onClick={handleButton}>Login</button>
-            <t class="logint"  >No account?<a class="logina" href="/signup" >Sign Up</a></t>
-          </div>
-        </div>
-        <div class="emptyspace">
-        </div>
-      </div>
-      </div>
-    </>
-  );
-}
+//   return(
+//     <>
+//       <Snavbar/>
+//       <div>
+//       <div style={{position : "absolute"}} id="vanta">
+//       <div className="loginelements">
+//         <div className="emptyspace1">
+//         </div>
+//         <div className="loginpage">
+//           <div className="loginfield">
+//             <div className="loginheadtitle">
+//               Log In
+//             </div>
+//             <text className="logintitle">
+//               Email
+//             </text>
+//             <input className="logininput" onChange={(e)=>{setEmail(e.target.value)}}></input>
+//             <text className="logintitle">
+//               Password
+//             </text>
+//             <input className="logininput" onChange={(e)=>{setPassword(e.target.value)}}></input>
+//             <button className="loginbutton" onClick={handleButton}>Login</button>
+//             <t className="logint"  >No account?<a className="logina" href="/signup" >Sign Up</a></t>
+//           </div>
+//         </div>
+//         <div className="emptyspace">
+//         </div>
+//       </div>
+//       </div>
+//       </div>
+//     </>
+//   );
+// }
 //------------------------
 // import './loginsignup.css';
 // import Snavbar from '../homepage/snavbar';
@@ -136,3 +144,77 @@ export default function Login(){
 //     </>
 //   );
 // }
+import './loginsignup.css';
+import Snavbar from '../homepage/snavbar';
+import { useEffect, useState } from 'react';
+import React from 'react';
+import Axios from 'axios';
+import Birds from 'vanta/src/vanta.birds';
+
+export default function Login(){
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
+  const [isSignup, setIsSignup] = useState(false);
+
+  useEffect(() => {
+    Birds({
+      el:'#vanta',
+      backgroundColor: "#1c2e3b",
+      color1: "#ff0b0b",
+      color2: "#ef9d39",
+      quantity: 5,
+      birdSize: 1.3,
+      wingSpan: 21,
+      speedLimit: 7,
+      separation: 17,
+      alignment: 20,
+      cohesion: 22
+    })
+  },[])
+  // const toggleMode = () => {
+  //   setIsSignup(!isSignup);
+  // };
+
+  const handleButton = async () => {
+    console.log(email);
+    console.log(password);
+    // console.log(isSignup);
+    try{
+      console.log("Top In Try Login");
+      const response = await Axios.post('http://localhost:3001/auth/login', {
+          // pagetype:isSignup,
+          email:email,
+          password:password
+        });
+      console.log("In Try Login");
+      
+      console.log(response.data);
+    }catch(e){
+      console.log(e)
+    }
+
+  }
+  
+
+  return(
+    <>
+      <Snavbar/>
+      <div className="loginelements">
+      <div className="vantaelements" id="vanta"></div>
+      <div className="loginfields">
+        <div className="emptyspacetop"></div>
+        <label className="loginfieldtitle">Log In</label>
+        <label className="loginfieldlabel">Username</label>
+        <input className="logininput"></input>
+        <label className="loginfieldlabel">Password</label>
+        <input className="logininput"></input>
+        <button className="loginbutton">Login</button>
+        <div className="asksignup">
+          <label className="asulabel">No Account? </label>
+          <a className="asua" href='/signup'>Register</a>
+        </div>
+      </div>
+      </div>
+    </>
+  );
+}

@@ -1,36 +1,100 @@
+// // import './loginsignup.css';
+// // import Snavbar from '../homepage/snavbar';
+// // import { useState } from 'react';
+
+
+// // export default function (){
+
+
+// //   return(
+// //     <>
+// //       <Snavbar/>
+// //       <div>
+// //       <div className="loginelements">
+// //         <div className="emptyspace1">
+// //         </div>
+// //         <div className="loginpage">
+// //           <div className="loginfield">
+// //             <div className="loginheadtitle">
+// //               Create Account
+// //             </div>
+// //             <text className="logintitle">
+// //               Username
+// //             </text>
+// //             <input className="logininput"></input>
+// //             <text className="logintitle">
+// //               Password
+// //             </text>
+// //             <input className="logininput"></input>
+// //             <button className="loginbutton">Sign Up</button>
+// //             <t className="logint"  >Go Back to <a className="logina" href="/login">Login</a></t>
+// //           </div>
+// //         </div>
+// //         <div className="emptyspace">
+// //         </div>
+// //       </div>
+// //       </div>
+// //     </>
+// //   );
+// // }
 // import './loginsignup.css';
 // import Snavbar from '../homepage/snavbar';
 // import { useState } from 'react';
+// import React from 'react';
+// import Axios from 'axios';
 
+// export default function Login(){
+//   const [email,setEmail]=useState("");
+//   const [password,setPassword]=useState("");
+//   // const [isSignup, setIsSignup] = useState(false);
 
-// export default function (){
+//   // const toggleMode = () => {
+//   //   setIsSignup(!isSignup);
+//   // };
 
+//   const handleButton = async () => {
+//     console.log(email);
+//     console.log(password);
+//     // console.log(isSignup);
+//     try{
+//     const response = await Axios.post('http://localhost:3001/auth/signup', {
+//         // pagetype:isSignup,
+//         email:email,
+//         password:password
+//       });
+//       console.log(response.data);
+//     }catch(e){
+//       console.log("Error found")
+//     }
+
+//   }
+  
 
 //   return(
 //     <>
 //       <Snavbar/>
 //       <div>
-//       <div class="loginelements">
-//         <div class="emptyspace1">
+//       <div className="loginelements">
+//         <div className="emptyspace1">
 //         </div>
-//         <div class="loginpage">
-//           <div class="loginfield">
-//             <div class="loginheadtitle">
+//         <div className="loginpage">
+//           <div className="loginfield">
+//             <div className="loginheadtitle">
 //               Create Account
 //             </div>
-//             <text class="logintitle">
-//               Username
+//             <text className="logintitle">
+//               Email
 //             </text>
-//             <input class="logininput"></input>
-//             <text class="logintitle">
+//             <input className="logininput" onChange={(e)=>{setEmail(e.target.value)}}></input>
+//             <text className="logintitle">
 //               Password
 //             </text>
-//             <input class="logininput"></input>
-//             <button class="loginbutton">Sign Up</button>
-//             <t class="logint"  >Go Back to <a class="logina" href="/login">Login</a></t>
+//             <input className="logininput" onChange={(e)=>{setPassword(e.target.value)}}></input>
+//             <button className="loginbutton" onClick={handleButton}>Login</button>
+//             <t className="logint"  >Have an account?<a className="logina" href="/login">Login</a></t>
 //           </div>
 //         </div>
-//         <div class="emptyspace">
+//         <div className="emptyspace">
 //         </div>
 //       </div>
 //       </div>
@@ -39,15 +103,31 @@
 // }
 import './loginsignup.css';
 import Snavbar from '../homepage/snavbar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
 import Axios from 'axios';
+import Birds from 'vanta/src/vanta.birds';
 
 export default function Login(){
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
-  // const [isSignup, setIsSignup] = useState(false);
+  const [isSignup, setIsSignup] = useState(false);
 
+  useEffect(() => {
+    Birds({
+      el:'#vanta',
+      backgroundColor: "#1c2e3b",
+      color1: "#ff0b0b",
+      color2: "#ef9d39",
+      quantity: 5,
+      birdSize: 1.3,
+      wingSpan: 21,
+      speedLimit: 7,
+      separation: 17,
+      alignment: 20,
+      cohesion: 22
+    })
+  },[])
   // const toggleMode = () => {
   //   setIsSignup(!isSignup);
   // };
@@ -57,14 +137,17 @@ export default function Login(){
     console.log(password);
     // console.log(isSignup);
     try{
-    const response = await Axios.post('http://localhost:3001/auth/signup', {
-        // pagetype:isSignup,
-        email:email,
-        password:password
-      });
+      console.log("Top In Try Login");
+      const response = await Axios.post('http://localhost:3001/auth/login', {
+          // pagetype:isSignup,
+          email:email,
+          password:password
+        });
+      console.log("In Try Login");
+      
       console.log(response.data);
     }catch(e){
-      console.log("Error found")
+      console.log(e)
     }
 
   }
@@ -73,28 +156,19 @@ export default function Login(){
   return(
     <>
       <Snavbar/>
-      <div>
-      <div class="loginelements">
-        <div class="emptyspace1">
-        </div>
-        <div class="loginpage">
-          <div class="loginfield">
-            <div class="loginheadtitle">
-              Create Account
-            </div>
-            <text class="logintitle">
-              Email
-            </text>
-            <input class="logininput" onChange={(e)=>{setEmail(e.target.value)}}></input>
-            <text class="logintitle">
-              Password
-            </text>
-            <input class="logininput" onChange={(e)=>{setPassword(e.target.value)}}></input>
-            <button class="loginbutton" onClick={handleButton}>Login</button>
-            <t class="logint"  >Have an account?<a class="logina" href="/login">Login</a></t>
-          </div>
-        </div>
-        <div class="emptyspace">
+      <div className="loginelements">
+      <div className="vantaelements" id="vanta"></div>
+      <div className="loginfields">
+        <div className="emptyspacetop"></div>
+        <label className="signupfieldtitle">Create Account</label>
+        <label className="loginfieldlabel" onChange={(e) => {setEmail(e.target.value)}}>Username</label>
+        <input className="logininput"></input>
+        <label className="loginfieldlabel" onChange={(e) => {setPassword(e.target.value)}}>Password</label>
+        <input className="logininput"></input>
+        <button className="loginbutton" onClick={handleButton()}>Sign Up</button>
+        <div className="asksignup">
+          <label className="asulabel">Have an Account? </label>
+          <a className="asua" href='/login'>Log In</a>
         </div>
       </div>
       </div>
