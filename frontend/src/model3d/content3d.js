@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import './contentstyle.css';
+import './contentstyle3d.css';
 import { Model3d } from './model3d';
 import * as THREE from 'three';
 import { Canvas } from '@react-three/fiber';

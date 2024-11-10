@@ -1,11 +1,10 @@
-@font-face {
+/* @font-face {
   font-family: 'RobotoSlab-Regular';
   src: url('../../fonts/RobotoSlab-Regular.ttf');
 }
 
 html,body{ 
   height:100% ;
-  /* background-color: #C0C0C0; */
 }
 
 .mainelements{
@@ -148,4 +147,4 @@ html,body{
 .path-intestine:hover {
  
   fill-opacity: 0.2; 
-}
+} */
