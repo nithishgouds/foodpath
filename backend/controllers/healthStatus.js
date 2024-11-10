@@ -85,7 +85,7 @@ function getAllOrganStatusColors(consumedFoods) {
     };
 }
 
-
+const foods="dosa idly vada";
 const getOrganStatus = (req, res) => {
     const organColors = getAllOrganStatusColors(consumedFoods);
     res.json(organColors);
