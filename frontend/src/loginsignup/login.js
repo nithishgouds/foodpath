@@ -74,7 +74,7 @@ import Snavbar from '../homepage/snavbar';
 import { useEffect, useState, navigate } from 'react';
 import React from 'react';
 import Axios from 'axios';
-import Birds from 'vanta/src/vanta.birds';
+import Birds from 'vanta/src/vanta.waves';
 import Header from "../homepagenew/components/Header";
 import { useNavigate } from 'react-router-dom';
 
@@ -86,49 +86,82 @@ export default function Login(){
   useEffect(() => {
     Birds({
       el:'#vanta',
-      backgroundColor: "#1c2e3b",
-      color1: "#ff0b0b",
-      color2: "#ef9d39",
-      quantity: 5,
-      birdSize: 1.3,
-      wingSpan: 21,
-      speedLimit: 7,
-      separation: 17,
-      alignment: 20,
-      cohesion: 22
+      color: "#1c2e3b",
+      shininess:67,
+      waveHeight:11.5,
+      zoom:0.7
+      // color1: "#ff0b0b",
+      // color2: "#ef9d39",
+      // quantity: 5,
+      // birdSize: 1.3,
+      // wingSpan: 10,
+      // speedLimit: 7,
+      // separation: 17,
+      // alignment: 20,
+      // cohesion: 22
     })
   },[])
-  // const toggleMode = () => {
-  //   setIsSignup(!isSignup);
-  // };
-
-  const handleButton = async () => {
-    console.log(email);
-    console.log(password);
-    // console.log(isSignup);
-    try{
-      if(email.length<0||email.length>8){
-
-      }
-      const response = await Axios.post('http://localhost:3001/auth/login', {
-          email:email,
-          password:password
-        });
-        console.log("Recieved message ",response.message, response.token)
-        if('token' in response.data){
-          console.log("Login Successful");
-          alert('Login Successful');
-          navigate('/');
-
-        }
-        else{
-          console.log("Not valid credentials");
-        }
-    }catch(e){
-      console.log(e)
+  useEffect(() => {
+    // Check if token exists and redirect if already logged in
+    const token = localStorage.getItem('jwtToken');
+    if (token) {
+      navigate('/'); // Redirect to a protected route, e.g., /dashboard
     }
+  }, [navigate]);
 
-  }
+
+  // const handleButton = async () => {
+  //   console.log(email);
+  //   console.log(password);
+  //   try{
+  //     if(email.length<0||email.length>8){
+
+  //     }
+  //     const response = await Axios.post('http://localhost:3001/auth/login', {
+  //         email:email,
+  //         password:password
+  //       });
+  //       console.log("Recieved message ",response.message, response.token)
+  //       if('token' in response.data){
+  //         console.log("Login Successful");
+  //         alert('Login Successful');
+  //         navigate('/');
+
+  //       }
+  //       else{
+  //         console.log("Not valid credentials");
+  //       }
+  //   }catch(e){
+  //     console.log(e)
+  //   }
+
+  // }
+  const handleButton = async () => {
+    console.log("Email:", email);
+    console.log("Password:", password);
+    
+    try {
+      const response = await Axios.post('http://localhost:3001/auth/login', {
+        email: email,
+        password: password,
+      });
+      console.log("Response:", response.data);
+
+      if (response.data.token) {
+        // Store the token in localStorage
+        localStorage.setItem('jwtToken', response.data.token);
+        // Redirect to a protected route after login
+        navigate('/'); // example path
+      } else {
+        alert("Login failed: No token received");
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+      alert("Login failed: Please check your credentials and try again.");
+    }
+  };
+
+  
   
 
   return(
