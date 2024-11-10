@@ -103,15 +103,17 @@
 // }
 import './loginsignup.css';
 import Header from '../homepagenew/components/Header';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, navigate } from 'react';
 import React from 'react';
 import Axios from 'axios';
 import Birds from 'vanta/src/vanta.birds';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login(){
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
   const [isSignup, setIsSignup] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     Birds({
@@ -137,7 +139,9 @@ export default function Login(){
           email:email,
           password:password
         });
-      
+      if(response.data.message == "User created successfully"){
+        navigate('/login');
+      }
       console.log(response.data);
     }catch(e){
       console.log(e)
