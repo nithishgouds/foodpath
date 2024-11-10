@@ -44,13 +44,39 @@
 // };
 
 // export default Header;
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 const Header = () => {
+    const [loggedin,setLoggedin]=useState(false);//false for not logged in
+    const [login,setLogin]=useState("LOGIN");
+    const [path,setPath]=useState("/login");
+    const navigate=useNavigate();
+    useEffect(() => {
+      // Check if token exists and redirect if already logged in
+      const token = localStorage.getItem('jwtToken');
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i); // Get the key at index i
+        const value = localStorage.getItem(key); // Get the value associated with the key
+        console.log(i, `${key}: ${value}`);
+      }
+      if (token) {
+        setLoggedin(true);
+        setLogin("LOGOUT");
+        setPath("/signup");
+      }
+    }, []);
+
+    const handleAClick = () =>{
+        if(loggedin){
+            localStorage.removeItem('jwtToken')
+        }
+    }
     return (
         <header className="bg-custom-blue text-white shadow-md w-[95%] m-auto mt-7 rounded-full">
             <div className="container mx-auto flex items-center py-4 px-6">
 
                 {/* Left-aligned title */}
-                <h1 className="text-2xl  pl-8 font-marcellus" >FoodPath</h1>
+                <a href="/" className="text-2xl  pl-8 font-marcellus" >FoodPath</a>
 
                 {/* Centered navigation */}
                 <nav className="flex-1 font-helvetica">
@@ -80,8 +106,8 @@ const Header = () => {
 
                 {/* Right-aligned login */}
                 <div className="flex items-center space-x-2 pr-8 font-helvetica">
-                    <a href="/login" className="hover:text-customHoverColor transition duration-300">
-                        LOGIN
+                    <a href={path} className="hover:text-customHoverColor transition duration-300" onClick={handleAClick()}>
+                        {login}
                     </a>
                 </div>
             </div>
