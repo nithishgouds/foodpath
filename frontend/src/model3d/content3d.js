@@ -2,31 +2,37 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './contentstyle.css';
+import { Model3d } from './model3d';
+import * as THREE from 'three';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
 //import Organstructure from './organstructure.js';
 
 
 function Content(){
 
   console.log("entered content function");
-  const [braincolor, setBrainColor] = useState('');
-  const [lungscolor, setlungsColor] = useState('');
-  const [heartcolor, setheartColor] = useState('#000000');
-  const [livercolor, setliverColor] = useState('#000000');
-  const [stomachcolor, setstomachColor] = useState('#000000');
-  const [intestinecolor, setintestineColor] = useState('#000000');
-  const [opacity, setOpacity] = useState(0); 
+  const [stomachcolor, setstomachcolor] = useState('#66ff66');
+  const [heartcolor, setheartcolor] = useState('#ff0000');
+  const [braincolor, setbraincolor] = useState('#ff9999');
+  const [lungscolor, setlungscolor] = useState('#cc9900');
+  const [kidneycolor, setkidneycolor] = useState('#ff0000');
+  const [livercolor, setlivercolor] = useState('#993300');
+  const [intestinecolor, setintestinecolor] = useState('#ffff00');
 
   const fetchOrganColors = async () => {
     try {
          const response = await axios.get('http://localhost:3001/api/organs/organ-status');
-          setBrainColor(response.data.brain);
-         setlungsColor(response.data.lungs);
-         setheartColor(response.data.heart);
-          setliverColor(response.data.liver);
-          setstomachColor(response.data.stomach);
-         setintestineColor(response.data.lungs);
+       
+          setbraincolor(response.data.brain);
+         setlungscolor(response.data.lungs);
+         setheartcolor(response.data.heart);
+          setlivercolor(response.data.liver);
+          setstomachcolor(response.data.stomach);
+         setintestinecolor(response.data.intestine);
+         setkidneycolor(response.data.kideny);
         
-        setOpacity(0.5);
+       
         
       
         
@@ -70,11 +76,12 @@ const handleAddItem = async () => {
   const [IOserotonin, setIOserotonin] = useState('');
   const [IOoxygen, setIOoxygen] = useState('');
 
-  const handleSvgClick = async (svgName) => {
+
+  const handleOrganClick = async (OrgName) => {
 
     try {
-      setIOorgan(svgName);
-      const response = await fetch(`http://localhost:3001/api/organs/ind-organ-status/${svgName}`);
+      setIOorgan(OrgName);
+      const response = await fetch(`http://localhost:3001/api/organs/ind-organ-status/${OrgName}`);
       const data = await response.json();
       setIOstatus(data.status);
       setIOglucose(data.glucose);
@@ -94,18 +101,19 @@ const handleAddItem = async () => {
     try {
         const response = await axios.post('http://localhost:3001/api/organs/reset-consumed-foods')
         setConsumedFoods(response.data.consumedFoods);
-        setOpacity(0);
+        
         setIOstatus(' ');
         setIOglucose(' ');
          setIOserotonin(' ');
          setIOoxygen(' ');
         setIOorgan(' ');
-        setBrainColor('');
-        setlungsColor('');
-        setheartColor('');
-         setliverColor('');
-         setstomachColor('');
-        setintestineColor('');
+        setbraincolor('');
+        setlungscolor('');
+        setheartcolor('');
+         setlivercolor('');
+         setstomachcolor('');
+        setintestinecolor('');
+        setkidneycolor('');
         //setConsumedFoods(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
         console.log('Food item added successfully:', response.data);
     } catch (error) {
@@ -141,8 +149,29 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity
           </div>
         </div>
       </div>
-      <div class="model2d" >
-        {/* INSERT 3D MODEL HERE*/}
+      <div class="model3d" >
+      <div style={{ height: '100vh' }}>
+      <Canvas
+        camera={{ position: [0, 1, 5], fov: 50 }} // Camera position and field of view
+      >
+        <ambientLight intensity={1} />
+        <pointLight position={[10, 10, 10]} />
+        
+        {/* Render the 3D Model with increased scale */}
+        <Model3d scale={1} handleClick={handleOrganClick}  stomachcolor={stomachcolor} heartcolor={heartcolor} braincolor={braincolor} lungscolor={lungscolor} livercolor={livercolor} kidneycolor={kidneycolor} intestinecolor={intestinecolor} />
+        
+        {/* Add OrbitControls for interactivity */}
+        <OrbitControls 
+          enablePan={false}         // Enable panning (dragging the model)
+          enableZoom={false}        // Enable zooming
+          enableRotate={true}      // Enable rotating
+         // minDistance={25}          // Minimum zoom distance
+         // maxDistance={25}         // Maximum zoom distance
+          maxPolarAngle={Math.PI/2}  // Restrict vertical rotation
+          minPolarAngle={Math.PI/2}        // Restrict vertical rotation
+        />
+      </Canvas>
+    </div>
       </div>
       <div class="inputinfo">
         <p class="inputinfoheading">Enter Food </p>
@@ -162,12 +191,11 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity
         <input value={selectedItem} onChange={(event) => setSelectedItem(event.target.value)} class="textareas" type="text"></input>
         {/* <p class="inputinfoheading">Quantity:</p> */}
         {/* <input type='number' class="quantity"  min={0} max={10} value={quantity} onChange={(e) => setquantity(e.target.value)}></input> */}
-        <button class="inputbuttons" onClick={handleAddItem}>Add Food</button>
+        {/* <button class="inputbuttons" onClick={handleAddItem}>Add Food</button>
         <p class="inputinfoheading">Food In Cart:</p>
         <textarea readOnly class="textareas" value={consumedFoodsText} >
-          
-        </textarea>
-        <button class="inputbuttons" onClick={fetchOrganColors}>Simulate</button>
+        </textarea> */}
+        <button class="inputbuttons" onClick={fetchOrganColors}>Add Food</button>
         <button class="inputbuttons" onClick={ResetModel} style={{marginTop:"50px"}}>Reset Model</button>
       </div>
     </div>
