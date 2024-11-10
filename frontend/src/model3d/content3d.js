@@ -21,6 +21,7 @@ function Content(){
   const [intestinecolor, setintestinecolor] = useState('#ffff00');
 
   const fetchOrganColors = async () => {
+    handleAddItem()
     try {
          const response = await axios.get('http://localhost:3001/api/organs/organ-status');
        
