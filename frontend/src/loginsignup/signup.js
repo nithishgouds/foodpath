@@ -102,7 +102,7 @@
 //   );
 // }
 import './loginsignup.css';
-import Snavbar from '../homepage/snavbar';
+import Header from '../homepagenew/components/Header';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import Axios from 'axios';
@@ -155,11 +155,11 @@ export default function Login(){
 
   return(
     <>
-      <Snavbar/>
+      <Header/>
       <div className="loginelements">
       <div className="vantaelements" id="vanta"></div>
       <div className="loginfields">
-        <div className="emptyspacetop"></div>
+        {/* <div className="emptyspacetop"></div> */}
         <label className="signupfieldtitle">Create Account</label>
         <label className="loginfieldlabel" >Username</label>
         <input className="logininput" onChange={(e) => {setEmail(e.target.value)}}></input>
