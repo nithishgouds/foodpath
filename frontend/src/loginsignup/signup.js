@@ -128,22 +128,15 @@ export default function Login(){
       cohesion: 22
     })
   },[])
-  // const toggleMode = () => {
-  //   setIsSignup(!isSignup);
-  // };
 
   const handleButton = async () => {
     console.log(email);
     console.log(password);
-    // console.log(isSignup);
     try{
-      console.log("Top In Try Login");
       const response = await Axios.post('http://localhost:3001/auth/signup', {
-          // pagetype:isSignup,
           email:email,
           password:password
         });
-      console.log("In Try Login");
       
       console.log(response.data);
     }catch(e){

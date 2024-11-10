@@ -71,16 +71,17 @@
 // }
 import './loginsignup.css';
 import Snavbar from '../homepage/snavbar';
-import { useEffect, useState, alert, navigate } from 'react';
+import { useEffect, useState, navigate } from 'react';
 import React from 'react';
 import Axios from 'axios';
 import Birds from 'vanta/src/vanta.birds';
 import Header from "../homepagenew/components/Header";
+import { useNavigate } from 'react-router-dom';
 
 export default function Login(){
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
-  const [isSignup, setIsSignup] = useState(false);
+  const navigate=useNavigate();
 
   useEffect(() => {
     Birds({
@@ -106,16 +107,23 @@ export default function Login(){
     console.log(password);
     // console.log(isSignup);
     try{
+      if(email.length<0||email.length>8){
+
+      }
       const response = await Axios.post('http://localhost:3001/auth/login', {
-          // pagetype:isSignup,
           email:email,
           password:password
         });
-      alert(response.message);
-      if(response.message == "User created successfully"){
-        navigate('/login');
-      }
-      
+        console.log("Recieved message ",response.message, response.token)
+        if('token' in response.data){
+          console.log("Login Successful");
+          alert('Login Successful');
+          navigate('/');
+
+        }
+        else{
+          console.log("Not valid credentials");
+        }
     }catch(e){
       console.log(e)
     }
@@ -132,10 +140,10 @@ export default function Login(){
         <div className="emptyspacetop"></div>
         <label className="loginfieldtitle">Log In</label>
         <label className="loginfieldlabel">Username</label>
-        <input className="logininput"></input>
+        <input className="logininput" onChange={(e) => {setEmail(e.target.value)}}></input>
         <label className="loginfieldlabel">Password</label>
-        <input className="logininput"></input>
-        <button className="loginbutton">Login</button>
+        <input className="logininput" onChange={(e) => {setPassword(e.target.value)}}></input>
+        <button className="loginbutton" onClick={handleButton}>Login</button>
         <div className="asksignup">
           <label className="asulabel">No Account? </label>
           <a className="asua" href='/signup'>Register</a>
