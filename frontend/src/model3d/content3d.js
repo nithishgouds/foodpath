@@ -21,8 +21,11 @@ function Content(){
   const [intestinecolor, setintestinecolor] = useState('#ffff00');
 
   const fetchOrganColors = async () => {
+    handleAddItem();
     try {
-         const response = await axios.get('http://localhost:3001/api/organs/organ-status');
+         const response = await axios.get('http://localhost:3001/api/organs/organ-status',
+          {token:localStorage.getItem("jwtToken")}
+         );
        
           setbraincolor(response.data.brain);
          setlungscolor(response.data.lungs);
@@ -55,7 +58,7 @@ const handleAddItem = async () => {
     try {
         const response = await axios.post('http://localhost:3001/api/organs/add-food', {
             foodItem: selectedItem,
-            // quantity: quantity
+            token:localStorage.getItem("jwtToken")
         });
         setConsumedFoods(response.data.consumedFoods);
         //setConsumedFoods(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
@@ -81,7 +84,9 @@ const handleAddItem = async () => {
 
     try {
       setIOorgan(OrgName);
-      const response = await fetch(`http://localhost:3001/api/organs/ind-organ-status/${OrgName}`);
+      const response = await fetch(`http://localhost:3001/api/organs/ind-organ-status/${OrgName}`,
+        {token:localStorage.getItem("jwtToken")}
+      );
       const data = await response.json();
       setIOstatus(data.status);
       setIOglucose(data.glucose);
@@ -99,7 +104,9 @@ const handleAddItem = async () => {
 
   
     try {
-        const response = await axios.post('http://localhost:3001/api/organs/reset-consumed-foods')
+        const response = await axios.post('http://localhost:3001/api/organs/reset-consumed-foods',
+          {token:localStorage.getItem("jwtToken")}
+        )
         setConsumedFoods(response.data.consumedFoods);
         
         setIOstatus(' ');

@@ -70,8 +70,7 @@
 //   );
 // }
 import './loginsignup.css';
-import Snavbar from '../homepage/snavbar';
-import { useEffect, useState, navigate } from 'react';
+import { useEffect, useState} from 'react';
 import React from 'react';
 import Axios from 'axios';
 import Birds from 'vanta/src/vanta.waves';
@@ -139,7 +138,9 @@ export default function Login(){
   const handleButton = async () => {
     console.log("Email:", email);
     console.log("Password:", password);
-    
+    if(email.length<5 || email.length>12){
+
+    }
     try {
       const response = await Axios.post('http://localhost:3001/auth/login', {
         email: email,
@@ -148,10 +149,8 @@ export default function Login(){
       console.log("Response:", response.data);
 
       if (response.data.token) {
-        // Store the token in localStorage
         localStorage.setItem('jwtToken', response.data.token);
-        // Redirect to a protected route after login
-        navigate('/'); // example path
+        navigate('/'); 
       } else {
         alert("Login failed: No token received");
       }
@@ -175,7 +174,7 @@ export default function Login(){
         <label className="loginfieldlabel">Username</label>
         <input className="logininput" onChange={(e) => {setEmail(e.target.value)}}></input>
         <label className="loginfieldlabel">Password</label>
-        <input className="logininput" onChange={(e) => {setPassword(e.target.value)}}></input>
+        <input type='password' className="logininput" onChange={(e) => {setPassword(e.target.value)}}></input>
         <button className="loginbutton" onClick={handleButton}>Login</button>
         <div className="asksignup">
           <label className="asulabel">No Account? </label>

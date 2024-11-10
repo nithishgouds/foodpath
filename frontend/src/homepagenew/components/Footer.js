@@ -1,5 +1,6 @@
 
     function Footer() {
+        
         return (
             <div> {/* Added a container div */}
                 <footer className="footer">

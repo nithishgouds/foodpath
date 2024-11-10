@@ -104,6 +104,7 @@
 import './loginsignup.css';
 import Header from '../homepagenew/components/Header';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import Axios from 'axios';
 import Birds from 'vanta/src/vanta.birds';
@@ -112,6 +113,8 @@ export default function Login(){
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
   const [isSignup, setIsSignup] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     Birds({
@@ -137,6 +140,9 @@ export default function Login(){
           email:email,
           password:password
         });
+        if(response.data.message == "User created successfully" ){
+          navigate('/login');
+        }
       
       console.log(response.data);
     }catch(e){
@@ -157,7 +163,7 @@ export default function Login(){
         <label className="loginfieldlabel" >Username</label>
         <input className="logininput" onChange={(e) => {setEmail(e.target.value)}}></input>
         <label className="loginfieldlabel" >Password</label>
-        <input className="logininput" onChange={(e) => {setPassword(e.target.value)}}></input>
+        <input type='password' className="logininput" onChange={(e) => {setPassword(e.target.value)}}></input>
         <button className="loginbutton" onClick={handleButton}>Sign Up</button>
         <div className="asksignup">
           <label className="asulabel">Have an Account? </label>
