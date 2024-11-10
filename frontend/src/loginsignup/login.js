@@ -101,13 +101,13 @@ export default function Login(){
       // cohesion: 22
     })
   },[])
-  useEffect(() => {
-    // Check if token exists and redirect if already logged in
-    const token = localStorage.getItem('jwtToken');
-    if (token) {
-      navigate('/'); // Redirect to a protected route, e.g., /dashboard
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   // Check if token exists and redirect if already logged in
+  //   const token = localStorage.getItem('jwtToken');
+  //   if (token) {
+  //     navigate('/'); // Redirect to a protected route, e.g., /dashboard
+  //   }
+  // }, [navigate]);
 
 
   // const handleButton = async () => {

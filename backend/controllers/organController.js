@@ -2,136 +2,80 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-const foodEffects = {
-    "idli": { oxygen: 5, serotonin: 3, glucose: 8 },
-    "Upma": { oxygen: 4, serotonin: 2, glucose: 7 },
-    "Bonda": { oxygen: -2, serotonin: 1, glucose: 18 },
-    "Puri": { oxygen: -1, serotonin: 2, glucose: 16 },
-    "Apple": { oxygen: 4, serotonin: 2, glucose: 10 },
-    "Grapes": { oxygen: 3, serotonin: 3, glucose: 9 },
-    "Beans": { oxygen: 6, serotonin: 5, glucose: 4 },
-    "Fried Foods": { oxygen: -5, serotonin: -2, glucose: 16 },
-    "Yogurt": { oxygen: 5, serotonin: 3, glucose: 4 },
-    "Salmon": { oxygen: 7, serotonin: 3, glucose: 6 }
-};
+const { Credentials } = require('../models/user');
+const { run } = require('../Gemini_API/modelStatusAPI');
 
+const addFood = async (req, res) => {
+    const { foodItems } = req.body;
 
-// controllers/organController.js
-let consumedFoods = [];
-
-const addFood = (req, res) => {
-    const foodItem = req.body;
-
-    if (!foodItem ) {
-        return res.status(400).json({ error: 'Food item and quantity are required.' });
+    if (!foodItems || !Array.isArray(foodItems) || foodItems.length === 0) {
+        return res.status(400).json({ error: 'At least one food item is required.' });
     }
 
-    
-    const newFood = foodItem;
-  
-    consumedFoods.push(newFood);
+    const email = req.email;
 
-    
-    res.json({ 
-        message: 'Food added successfully', 
-        consumedFoods 
-    });
-};
+    if (!email) {
+        return res.status(400).json({ error: 'Email not found in token.' });
+    }
 
-const resetConsumedFoods = (req, res) => {
-    consumedFoods = [];
-    const resetStatuses = {
-        liver: {
-            status: "Neutral",
-            oxygen: 0,
-            serotonin: 0,
-            glucose: 0
-        },
-        heart: {
-            status: "Neutral",
-            oxygen: 0,
-            serotonin: 0,
-            glucose: 0
-        },
-        brain: {
-            status: "Neutral",
-            oxygen: 0,
-            serotonin: 0,
-            glucose: 0
-        },
-        intestine: {
-            status: "Neutral",
-            oxygen: 0,
-            serotonin: 0,
-            glucose: 0
-        },
-        stomach: {
-            status: "Neutral",
-            oxygen: 0,
-            serotonin: 0,
-            glucose: 0
-        },
-        lungs: {
-            status: "Neutral",
-            oxygen: 0,
-            serotonin: 0,
-            glucose: 0
+    try {
+       const user = await Credentials.findOne({ email });
+
+       if (!user) {
+           return res.status(404).json({ error: 'User not found.' });
+       }
+
+        const newFoods = foodItems.map(item => ({ foodItem: item }));
+
+        user.consumedFoods.push(...newFoods);
+
+        await user.save();
+
+        const foodItemsString = user.consumedFoods.map(item => item.foodItem).join(' ');
+
+        try {
+            const aiResponse = await run(foodItemsString);
+
+            res.json({
+                message: 'Foods added successfully',
+                consumedFoods: foodItemsString,
+                aiResponse: aiResponse
+                
+            });
+        } catch (aiError) {
+            res.status(500).json({ error: 'Error processing food data in AI', details: aiError.message });
         }
-    };
-     
-    res.json({ 
-        message: 'Food deleted successfully', resetStatuses,
-        
-        consumedFoods 
-    });
+
+    } catch (error) {
+        res.status(500).json({ error: 'Error adding food to the user account' });
+    }
 };
 
+const resetFoods = async (req, res) => {
+    const email = req.email;
 
-module.exports = { addFood, resetConsumedFoods, consumedFoods };
+    if (!email) {
+        return res.status(400).json({ error: 'Email not found in token.' });
+    }
 
+    try {
+        const user = await Credentials.findOne({ email });
 
+        if (!user) {
+            return res.status(404).json({ error: 'User not found.' });
+        }
 
-// let consumedFoods = [];
-// // controllers/organController.js
-// const addFood = (req, res) => {
-//     const { foodItem, quantity } = req.body;
+        user.consumedFoods = [];
 
-//     if (!foodItem || !quantity) {
-//         return res.status(400).json({ error: 'Food item and quantity are required.' });
-//     }
+        await user.save();
 
-//     // Add the food item logic here...
+        res.json({
+            message: 'All foods have been reset successfully.',
+            consumedFoods: user.consumedFoods
+        });
+    } catch (error) {
+        res.status(500).json({ error: 'Error resetting food data for the user account' });
+    }
+};
 
-//     res.json({ message: 'Food added successfully' });
-// };
-
-// const getLiverStatus = (req, res) => {
-//     // Logic for getting liver status
-// };
-
-// module.exports = { addFood, getLiverStatus };
-
-
-// app.post('/add-food', (req, res) => {
-//     const { foodItem, quantity } = req.body;
-
-//     if (!foodItem || !quantity) {
-//         return res.status(400).json({ error: 'Food item and quantity are required.' });
-//     }
-
-//     if (!foodEffects[foodItem]) {
-//         return res.status(400).json({ error: 'Unknown food item.' });
-//     }
-
-   
-//     consumedFoods.push({ foodItem, quantity });
-
-//     res.json({ message: 'Food item added successfully!', consumedFoods });
-// });
-
-// module.exports = { app, consumedFoods };
-
-// const PORT = 3001;
-// app.listen(PORT, () => {
-//     console.log(`Add Food service running on port ${PORT}`);
-// });
+module.exports = { addFood, resetFoods };

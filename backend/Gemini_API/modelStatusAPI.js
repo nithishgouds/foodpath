@@ -1,4 +1,4 @@
-require('dotenv').config({ path: './.env' });
+require('dotenv').config({ path: '../frontend/.env' });
 
 
 const {
@@ -106,6 +106,7 @@ const {
   
     const result = await chatSession.sendMessage(`status ${Foods_eaten}`);
     console.log(result.response.text());
+    return result.response.text();
   }
   
   run("dosa");

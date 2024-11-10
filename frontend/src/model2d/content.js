@@ -51,7 +51,7 @@ const handleAddItem = async () => {
             foodItem: selectedItem
             
         });
-        setConsumedFoods(response.data.consumedFoods);
+        setConsumedFoods(response.data);
         //setConsumedFoods(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
         console.log('Food item added successfully:', response.data);
     } catch (error) {
