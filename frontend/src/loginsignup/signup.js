@@ -128,29 +128,8 @@ export default function Login() {
       cohesion: 22,
     });
   }, []);
-  const renderEmailLengthDiv = () => {
-    if (emailLength) {
-      console.log("In el");
-      return (
-        <label className="asulabel" style={{ color: "red" }}>
-          Enter a valid username with 6-20 characters
-        </label>
-      );
-    }
-    return null;
-  };
-  const renderPWLengthDiv = () => {
-    if (pwLength) {
-      console.log("In pl");
-      return (
-        <label className="asulabel" style={{ color: "red" }}>
-          Enter a valid username with 6-20 characters
-        </label>
-      );
-    }
-    return null;
-  };
 
+  
   const handleButton = async () => {
     console.log(email);
     console.log(password);
@@ -158,7 +137,7 @@ export default function Login() {
       console.log("low email");
       setEmailLength(true);
     } else {
-      setEmailLength(true);
+      setEmailLength(false);
     }
     if (password.length < 6 || password.length > 20) {
       console.log("low pw");
@@ -166,21 +145,20 @@ export default function Login() {
     } else {
       setPWLength(false);
     }
-    if (pwLength && emailLength) {
-      return;
-    }
-    try {
-      const response = await Axios.post("http://localhost:3001/auth/signup", {
-        email: email,
-        password: password,
-      });
-      if (response.data.message == "User created successfully") {
-        navigate("/login");
-      }
+    if (!pwLength && !emailLength) {
+      try {
+        const response = await Axios.post("http://localhost:3001/auth/signup", {
+          email: email,
+          password: password,
+        });
+        if (response.data.message == "User created successfully") {
+          navigate("/login");
+        }
 
-      console.log(response.data);
-    } catch (e) {
-      console.log(e);
+        console.log(response.data);
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
 
@@ -202,7 +180,7 @@ export default function Login() {
           {/* <div>{renderEmailLengthDiv}</div> */}
           <div>
             {emailLength && (
-              <label className="asulabel" style={{ color: "red" }}>
+              <label className="asulabel" style={{ color: "#fc2828", marginBottom : "6px" }}>
                 Enter a valid username with 6-20 characters
               </label>
             )}
