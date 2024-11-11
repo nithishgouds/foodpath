@@ -1,6 +1,8 @@
 import './Brain.css';
 import Snavbar from '../homepage/snavbar';
 function Brain() {
+
+  
     return (
       
       <div className="App">
