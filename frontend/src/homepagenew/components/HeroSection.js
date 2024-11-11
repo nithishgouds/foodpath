@@ -6,7 +6,6 @@ const HeroSection = () => {
     const cutoutRef = useRef(null);
     const h1Ref = useRef(null);
     const h3Ref = useRef(null);
-
     useEffect(() => {
         const handleScroll = () => {
             const cutout = cutoutRef.current;
