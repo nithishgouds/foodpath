@@ -11,6 +11,8 @@ export default function Login(){
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
   const [isSignup, setIsSignup] = useState(false);
+  const [emailLength, setEmailLength] = useState(false);
+  const [pwLength, setPWLength] = useState(false);
   const navigate = useNavigate();
 
 

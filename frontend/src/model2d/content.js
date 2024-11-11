@@ -132,43 +132,41 @@ if (token) {
   const [selectedItem, setSelectedItem] = useState("");
   const [quantity, setquantity] = useState('');
   const [consumedFoods, setConsumedFoods] = useState("");
-  let handleAddRes;
+
+
+const [handleAddRes, setHandleAddRes] = useState(null);
 
 const handleAddItem = async () => {
   console.log("button working");
-    if (!selectedItem ) {
-        console.log('Please select an item and enter a quantity.');
-        return;
-    }
+  if (!selectedItem) {
+    console.log("Please select an item and enter a quantity.");
+    return;
+  }
 
-    try {
-      
-      console.log(selectedItem);
-        //const response = await 
-        axios.post('http://localhost:3001/api/organs/add-food', {
-            foodItems: selectedItem,
-            email:email
-            
-        }).then(response => {
-          let { message, consumedFoods, aiResponse } = response.data;
-          console.log( "something ios happeniong");
-          setConsumedFoods(aiResponse.health_status.brain.rating);
-          handleAddRes=response; // Update the state with consumed foods
+  try {
+    console.log(selectedItem);
+    const response = await axios.post("http://localhost:3001/api/organs/add-food", {
+      foodItems: selectedItem,
+      email: email,
+    });
 
-          setBrainColor(colourrating(aiResponse.health_status.brain.rating));
-          
-          setlungsColor(colourrating(aiResponse.health_status.lungs.rating));
-          setheartColor(colourrating(aiResponse.health_status.heart.rating));
-          setliverColor(colourrating(aiResponse.health_status.liver.rating));
-          setstomachColor(colourrating(aiResponse.health_status.stomach.rating));
-          setintestineColor(colourrating(aiResponse.health_status.intestines.rating));
-          setOpacity(0.5)
-        
-    
-        });
-    } catch (error) {
-        console.error('Error adding food item:', error);
-    }
+    const { aiResponse } = response.data;
+    console.log("something is happening");
+    setConsumedFoods(aiResponse.health_status.brain.rating);
+    setHandleAddRes(aiResponse); // Update state with aiResponse
+
+    // Update the state with color changes
+    setBrainColor(colourrating(aiResponse.health_status.brain.rating));
+    setlungsColor(colourrating(aiResponse.health_status.lungs.rating));
+    setheartColor(colourrating(aiResponse.health_status.heart.rating));
+    setliverColor(colourrating(aiResponse.health_status.liver.rating));
+    setstomachColor(colourrating(aiResponse.health_status.stomach.rating));
+    setintestineColor(colourrating(aiResponse.health_status.intestines.rating));
+    setOpacity(0.5);
+
+  } catch (error) {
+    console.error("Error adding food item:", error);
+  }
 };
 
  
@@ -182,26 +180,30 @@ const handleAddItem = async () => {
 
   
 
-  const handleSvgClick = async (svgName) => {
+  
 
+  const handleSvgClick = async (svgName) => {
     try {
       setIOorgan(svgName);
-      // const response = await fetch(
-      //   `http://localhost:3001/api/organs/ind-organ-status/${svgName}`,
-      //   {
-      //     token: localStorage.getItem("jwtToken"),
-      //   }
-      // );
-      let { aiResponse } = handleAddRes.data;
-      setIOstatus(Ostatus(aiResponse.health_status[svgName].rating));
-      setIOglucose(aiResponse.post_consumption_values.blood_glucose_levels[svgName]);
-      setIOcalories(aiResponse.post_consumption_values.calorie_levels[svgName]);
-      setIOoxygen(aiResponse.post_consumption_values.oxygen_levels[svgName]);
-
+  
+      if (!handleAddRes) {
+        console.error("Error: handleAddRes is not set. Please call handleAddItem first.");
+        return;
+      }
+  
+      console.log(`svg clicked ${svgName}`);
+      console.log(handleAddRes.health_status.intestines.rating); // Debug to check if it exists
+  
+      // Access properties from handleAddRes directly
+      setIOstatus(Ostatus(handleAddRes.health_status[svgName].rating));
+      setIOglucose(handleAddRes.post_consumption_values.blood_glucose_levels[svgName]);
+      setIOcalories(handleAddRes.post_consumption_values.calorie_levels[svgName]);
+      setIOoxygen(handleAddRes.post_consumption_values.oxygen_levels[svgName]);
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
+  
 
   const ResetModel = async () => {
 
@@ -224,6 +226,7 @@ const handleAddItem = async () => {
          setliverColor('');
          setstomachColor('');
         setintestineColor('');
+        setHandleAddRes(null);
         //setConsumedFoods(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
         console.log('Food item added successfully:', response.data);
     } catch (error) {
@@ -260,22 +263,6 @@ const consumedFoodsText = consumedFoods;//.map(item => `${item.foodItem} `).join
             <button class="inputbuttons" style={{ marginLeft: "20px" }}>
               Go to Guides
             </button>
-          </div>
-          <div class="organstats">
-            <label>Status:</label>
-            <input readOnly class="organinfoinputs" value={IOstatus}></input>
-          </div>
-          <div class="organstats">
-            <label>Glucose:</label>
-            <input readOnly class="organinfoinputs" value={IOglucose}></input>
-          </div>
-          <div class="organstats">
-            <label>Serotonin:</label>
-            <input readOnly class="organinfoinputs" value={IOserotonin}></input>
-          </div>
-          <div class="organstats">
-            <label >Acetylcholine:</label>
-            <input readOnly class="organinfoinputs" value={IOoxygen}></input>
           </div>
         </div>
       </div>
