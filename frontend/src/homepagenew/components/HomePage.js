@@ -8,7 +8,7 @@ import About from "./About.js";
 
 const HomePage = () => {
     return (
-        <div className="main-background bg-gray-500 flex flex-col min-h-screen items-center  px-4">
+        <div className="main-background bg-gray-500 flex flex-col items-center  px-4">
             {/* Added w-full to main-background */}
             <Header/>
             <div className="content-overlay flex-grow  w-full max-w-9xl">
