@@ -21,13 +21,14 @@
 
 .loginelements{
   display:flex;
-  height:calc(100vh - 64px);
+  height:calc(100vh - 84px);
   width:100%;
   background-color:#1C2E3B;
 
 }
 .vantaelements{
   flex:5;
+  height:calc(100vh - 84px);
   padding-right:100px;
 }
 .loginfields{
@@ -44,21 +45,22 @@
   font-family: 'Work Sans';
   margin-top:100px;
   font-size: 60px;
-  margin-bottom:15%;
+  margin-bottom:calc(15% - 10px);
 }
 .signupfieldtitle{
   font-family: 'Work Sans';
   margin-top:100px;
   font-size: 50px;
-  margin-bottom:15%;
+  margin-bottom:calc(15% - 10px);
 }
 .loginfieldlabel{
   font-family: 'Helvetica W01 Light';
   margin-bottom: 18px;
+  margin-top: 10px;
 }
 .logininput{
   font-family: 'Helvetica W01 Light';
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-width: 0px;
   border-bottom-width:1px;
   border-bottom-color: white ;

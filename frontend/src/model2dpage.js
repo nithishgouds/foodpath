@@ -5,7 +5,8 @@ import Header from "./homepagenew/components/Header";
 
 function Model2dpage(){
     return(
-        <div>
+        
+        <div className="main-background bg-gray-500 flex flex-col min-h-screen items-center  px-4">
             <Header/>
             <Content />
         </div>
