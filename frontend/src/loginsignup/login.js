@@ -86,28 +86,17 @@ export default function Login(){
     Birds({
       el:'#vanta',
       color: "#1c2e3b",
-      shininess:67,
-      waveHeight:11.5,
-      zoom:0.7
-      // color1: "#ff0b0b",
-      // color2: "#ef9d39",
-      // quantity: 5,
-      // birdSize: 1.3,
-      // wingSpan: 10,
-      // speedLimit: 7,
-      // separation: 17,
-      // alignment: 20,
-      // cohesion: 22
-    })
-  },[])
-  // useEffect(() => {
-  //   // Check if token exists and redirect if already logged in
-  //   const token = localStorage.getItem('jwtToken');
-  //   if (token) {
-  //     navigate('/'); // Redirect to a protected route, e.g., /dashboard
-  //   }
-  // }, [navigate]);
-
+      shininess: 67,
+      waveHeight: 11.5,
+      zoom: 0.7,
+    });
+  }, []);
+  useEffect(() => {
+    const token = localStorage.getItem("jwtToken");
+    if (token) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const handleButton = async () => {
     console.log("Email:", email);
