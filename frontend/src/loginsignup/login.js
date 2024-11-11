@@ -109,32 +109,6 @@ export default function Login(){
   // }, [navigate]);
 
 
-  // const handleButton = async () => {
-  //   console.log(email);
-  //   console.log(password);
-  //   try{
-  //     if(email.length<0||email.length>8){
-
-  //     }
-  //     const response = await Axios.post('http://localhost:3001/auth/login', {
-  //         email:email,
-  //         password:password
-  //       });
-  //       console.log("Recieved message ",response.message, response.token)
-  //       if('token' in response.data){
-  //         console.log("Login Successful");
-  //         alert('Login Successful');
-  //         navigate('/');
-
-  //       }
-  //       else{
-  //         console.log("Not valid credentials");
-  //       }
-  //   }catch(e){
-  //     console.log(e)
-  //   }
-
-  // }
   const handleButton = async () => {
     console.log("Email:", email);
     console.log("Password:", password);

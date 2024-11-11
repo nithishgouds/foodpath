@@ -9,7 +9,7 @@ import { OrbitControls } from '@react-three/drei';
 //import Organstructure from './organstructure.js';
 
 
-function Content(){
+function Content3d(){
 
   console.log("entered content function");
   const [stomachcolor, setstomachcolor] = useState('#66ff66');
@@ -209,4 +209,4 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} - Quantity
   )
 };
 
-export default Content;
+export default Content3d;

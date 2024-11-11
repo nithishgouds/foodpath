@@ -2,80 +2,68 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-const { Credentials } = require('../models/user');
-const { run } = require('../Gemini_API/modelStatusAPI');
+const ConsumedFoods = require('../models/consumedFoodSchema'); // Ensure this path is correct
+const { run } = require('../Gemini_API/modelStatusAPI'); // If you're using the AI function
 
+// Route handler for adding food items
 const addFood = async (req, res) => {
-    const { foodItems } = req.body;
+    const { email, foodItems } = req.body;
 
-    if (!foodItems || !Array.isArray(foodItems) || foodItems.length === 0) {
-        return res.status(400).json({ error: 'At least one food item is required.' });
-    }
+    console.log('Received body:', req.body);
 
-    const email = req.email;
-
+    // Ensure email and foodItems are provided
     if (!email) {
-        return res.status(400).json({ error: 'Email not found in token.' });
+        return res.status(400).json({ error: 'Email is required.' });
     }
+
+    if (!foodItems) {
+        return res.status(400).json({ error: 'Food items string is required.' });
+    }
+
+    // Split the foodItems string by spaces and filter out any empty items
+    const foodItemsArray = foodItems.split(' ').filter(item => item.trim() !== '');
 
     try {
-       const user = await Credentials.findOne({ email });
+        // Find the user in ConsumedFoods or create a new entry if not found
+        let user = await ConsumedFoods.findOne({ email });
 
-       if (!user) {
-           return res.status(404).json({ error: 'User not found.' });
-       }
+        if (!user) {
+            // If the user doesn't exist, create a new user document with an empty consumedFoods array
+            user = new ConsumedFoods({ email, consumedFoods: [] });
+        }
 
-        const newFoods = foodItems.map(item => ({ foodItem: item }));
+        // Map the food items into the required format
+        const newFoods = foodItemsArray.map(item => ({ foodItem: item }));
 
+        // Add new food items to the consumedFoods array
         user.consumedFoods.push(...newFoods);
 
+        // Save the updated user data to the database
         await user.save();
 
+        // Prepare the food items as a string to send back
         const foodItemsString = user.consumedFoods.map(item => item.foodItem).join(' ');
 
+        // Optionally process the food items with AI
         try {
-            const aiResponse = await run(foodItemsString);
+            let aiResponse = await run(foodItemsString);
+
+            console.log(aiResponse);
+            aiResponse = JSON.parse(aiResponse);
 
             res.json({
-                message: 'Foods added successfully',
-                consumedFoods: foodItemsString,
-                aiResponse: aiResponse
                 
+                message: 'Foods added successfully',
+                consumedFoods: user.consumedFoods, // You can return the food items as a string
+                aiResponse: aiResponse
             });
         } catch (aiError) {
             res.status(500).json({ error: 'Error processing food data in AI', details: aiError.message });
         }
 
     } catch (error) {
-        res.status(500).json({ error: 'Error adding food to the user account' });
+        res.status(500).json({ error: 'Error adding food to the user account', details: error.message });
     }
 };
 
-const resetFoods = async (req, res) => {
-    const email = req.email;
-
-    if (!email) {
-        return res.status(400).json({ error: 'Email not found in token.' });
-    }
-
-    try {
-        const user = await Credentials.findOne({ email });
-
-        if (!user) {
-            return res.status(404).json({ error: 'User not found.' });
-        }
-
-        user.consumedFoods = [];
-
-        await user.save();
-
-        res.json({
-            message: 'All foods have been reset successfully.',
-            consumedFoods: user.consumedFoods
-        });
-    } catch (error) {
-        res.status(500).json({ error: 'Error resetting food data for the user account' });
-    }
-};
-
-module.exports = { addFood, resetFoods };
+module.exports = { addFood };

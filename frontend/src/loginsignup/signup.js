@@ -158,7 +158,7 @@ export default function Login() {
       console.log("low email");
       setEmailLength(true);
     } else {
-      setEmailLength(true);
+      setEmailLength(false);
     }
     if (password.length < 6 || password.length > 20) {
       console.log("low pw");

@@ -106,7 +106,7 @@ const Header = () => {
 
                 {/* Right-aligned login */}
                 <div className="flex items-center space-x-2 pr-8 font-helvetica">
-                    <a href={path} className="hover:text-customHoverColor transition duration-300" onClick={handleAClick()}>
+                    <a href={path} className="hover:text-customHoverColor transition duration-300" onClick={handleAClick} >
                         {login}
                     </a>
                 </div>

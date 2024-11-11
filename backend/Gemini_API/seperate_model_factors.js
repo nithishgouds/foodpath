@@ -57,4 +57,4 @@ const {
     return result.response.text();
   }
   
-  runseperate("bonda");
+ // runseperate("bonda");
