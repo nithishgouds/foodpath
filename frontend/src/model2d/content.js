@@ -124,7 +124,7 @@ function Content() {
     .join("\n");
 
   return (
-    <div className="main-background bg-gray-500 flex flex-col min-h-screen items-center  px-4">
+    // <div className="main-background bg-gray-500 flex flex-col min-h-screen items-center  px-4">
       <div className="mainelements">
         <div class="organinfo">
           <div class="organinfostats" style={{ marginTop: "50px" }}>
@@ -278,7 +278,7 @@ function Content() {
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 }
 
