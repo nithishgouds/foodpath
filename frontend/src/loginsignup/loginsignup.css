@@ -21,13 +21,14 @@
 
 .loginelements{
   display:flex;
-  height:calc(100vh - 64px);
+  height:calc(100vh - 84px);
   width:100%;
   background-color:#1C2E3B;
 
 }
 .vantaelements{
   flex:5;
+  height:calc(100vh - 84px);
   padding-right:100px;
 }
 .loginfields{

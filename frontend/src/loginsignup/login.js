@@ -1,74 +1,3 @@
-//------------------------
-// import './loginsignup.css';
-// import Snavbar from '../homepage/snavbar';
-// import { useState } from 'react';
-// import React from 'react';
-// import Axios from 'axios';
-
-// export default function Login() {
-//   const [username,setUsername]=useState("");
-//   const [password,setPassword]=useState("");
-//   const [isSignup, setIsSignup] = useState(false);
-
-//   const toggleMode = () => {
-//     setIsSignup(!isSignup);
-//   };
-
-//   const handleButton = async () => {
-//     console.log(username);
-//     console.log(password);
-//     console.log(isSignup);
-//     try{
-//     const response = await Axios.post('http://localhost:3001/authRoutes', {
-//         // pagetype:isSignup,
-//         email:username,
-//         password:password
-//       });
-//       console.log(response.data);
-//     }catch(e){
-//       console.log(e)
-//     }
-
-//   }
-
-//   return (
-//     <>
-//       <Snavbar />
-//       <div>
-//         <div className="loginelements">
-//           <div className="emptyspace1">
-//           </div>
-//           <div className="loginpage" >
-//             <div className="loginfield">
-//               <div className="loginheadtitle">
-//                 {isSignup ? 'Create Account' : 'Log In'}
-//               </div>
-//               <label className="logintitle">Username</label>
-//               <input className="logininput" type="text" onChange={(e)=>{setUsername(e.target.value)}} />
-
-//               <label className="logintitle">Password</label>
-//               <input className="logininput" type="password" onChange={(e)=>{setPassword(e.target.value)}}/>
-
-//               <button className="loginbutton" onClick={handleButton}>
-//                 {isSignup ? 'Sign Up' : 'Login'}
-//               </button>
-
-//               <div className="logint">
-//                 {isSignup ? (
-//                   <>Already have an account? <a className="logina" onClick={toggleMode}>Log In</a></>
-//                 ) : (
-//                   <>No account? <a className="logina" onClick={toggleMode}>Sign Up</a></>
-//                 )}
-//               </div>
-//             </div>
-//           </div>
-//           <div className="emptyspace">
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
 import "./loginsignup.css";
 import { useEffect, useState } from "react";
 import React from "react";
@@ -93,15 +22,6 @@ export default function Login() {
       shininess: 67,
       waveHeight: 11.5,
       zoom: 0.7,
-      // color1: "#ff0b0b",
-      // color2: "#ef9d39",
-      // quantity: 5,
-      // birdSize: 1.3,
-      // wingSpan: 10,
-      // speedLimit: 7,
-      // separation: 17,
-      // alignment: 20,
-      // cohesion: 22
     });
   }, []);
   useEffect(() => {
@@ -145,15 +65,15 @@ export default function Login() {
         console.error("Error logging in:", error);
         setMsg("Invalid Login Credentials");
         setIsMsg(true);
-        // alert("Login failed: Please check your credentials and try again.");
       }
     }
   };
 
   return (
     <>
+      <div className="main-background bg-gray-500 flex flex-col min-h-screen items-center  px-4">
       <Header />
-      <div className="loginelements">
+      <div className="loginelements" style={{marginTop:'25px'}}>
         <div className="vantaelements" id="vanta"></div>
         <div className="loginfields">
           <div className="emptyspacetop"></div>
@@ -207,6 +127,7 @@ export default function Login() {
             </a>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

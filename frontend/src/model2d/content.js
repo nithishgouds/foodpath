@@ -112,31 +112,31 @@
 
 //   return(
 //     <div className='mainelements'>
-//       <div className="organinfo">
-//         <div className="organinfostats">
-//           <div className="organstats">
+//       <div class="organinfo">
+//         <div class="organinfostats">
+//           <div class="organstats">
 //             <label>Organ:</label>
-//             <input readOnly className="organinfoinputs" value={IOorgan}></input>
+//             <input readOnly class="organinfoinputs" value={IOorgan}></input>
 //           </div>
-//           <div className="organstats">
+//           <div class="organstats">
 //             <label>Status:</label>
-//             <input readOnly className="organinfoinputs" value={IOstatus}></input>
+//             <input readOnly class="organinfoinputs" value={IOstatus}></input>
 //           </div>
-//           <div className="organstats">
+//           <div class="organstats">
 //             <label>Glucose:</label>
-//             <input readOnly className="organinfoinputs" value={IOglucose}></input>
+//             <input readOnly class="organinfoinputs" value={IOglucose}></input>
 //           </div>
-//           <div className="organstats">
+//           <div class="organstats">
 //             <label>Serotonin:</label>
-//             <input readOnly className="organinfoinputs" value={IOserotonin}></input>
+//             <input readOnly class="organinfoinputs" value={IOserotonin}></input>
 //           </div>
-//           <div className="organstats">
+//           <div class="organstats">
 //             <label >Acetylcholine:</label>
-//             <input readOnly className="organinfoinputs" value={IOoxygen}></input>
+//             <input readOnly class="organinfoinputs" value={IOoxygen}></input>
 //           </div>
 //         </div>
 //       </div>
-//       <div className="model2d" >
+//       <div class="model2d" >
 //       <svg
 //     width="800"
 //     height="100%"
@@ -160,9 +160,9 @@
 //      </g>
 //     </svg>
 //       </div>
-//       <div className="inputinfo">
-//         <p className="inputinfoheading">Enter Food </p>
-//         {/* <select className="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
+//       <div class="inputinfo">
+//         <p class="inputinfoheading">Enter Food </p>
+//         {/* <select class="foodtype" value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
 //           <option>Select Food</option>
 //           <option>Idli</option>
 //           <option>Upma</option>
@@ -175,16 +175,16 @@
 //           <option>Yogurt</option>
 //           <option>Salmon</option>
 //         </select> */}
-//         <input value={selectedItem} onChange={(event) => setSelectedItem(event.target.value)} className="textareas" type="text"></input>
-//         {/* <p className="inputinfoheading">Quantity:</p> */}
-//         {/* <input type='number' className="quantity"  min={0} max={10} value={quantity} onChange={(e) => setquantity(e.target.value)}></input> */}
-//         <button className="inputbuttons" onClick={handleAddItem}>Add Food</button>
-//         <p className="inputinfoheading">Food In Cart:</p>
-//         <textarea readOnly className="textareas" value={consumedFoodsText} >
+//         <input value={selectedItem} onChange={(event) => setSelectedItem(event.target.value)} class="textareas" type="text"></input>
+//         {/* <p class="inputinfoheading">Quantity:</p> */}
+//         {/* <input type='number' class="quantity"  min={0} max={10} value={quantity} onChange={(e) => setquantity(e.target.value)}></input> */}
+//         <button class="inputbuttons" onClick={handleAddItem}>Add Food</button>
+//         <p class="inputinfoheading">Food In Cart:</p>
+//         <textarea readOnly class="textareas" value={consumedFoodsText} >
 
 //         </textarea>
-//         <button className="inputbuttons" onClick={fetchOrganColors}>Simulate</button>
-//         <button className="inputbuttons" onClick={ResetModel} style={{marginTop:"50px"}}>Reset Model</button>
+//         <button class="inputbuttons" onClick={fetchOrganColors}>Simulate</button>
+//         <button class="inputbuttons" onClick={ResetModel} style={{marginTop:"50px"}}>Reset Model</button>
 //       </div>
 //     </div>
 //   )
@@ -319,32 +319,32 @@ function Content() {
 
   return (
     <div className="mainelements">
-      <div className="organinfo">
-        <div className="organinfostats" style={{marginTop:'50px'}}>
-          {/* <div className="organstats"> */}
-          <label className="organinfolabel">Organ</label>
-          <input readOnly className="organinfoinputs" value={IOorgan}></input>
+      <div class="organinfo">
+        <div class="organinfostats" style={{marginTop:'50px'}}>
+          {/* <div class="organstats"> */}
+          <label class="organinfolabel">Organ</label>
+          <input readOnly class="organinfoinputs" value={IOorgan}></input>
           {/* </div> */}
-          {/* <div className="organstats"> */}
-          <label className="organinfolabel">Status</label>
-          <input readOnly className="organinfoinputs" value={IOstatus}></input>
+          {/* <div class="organstats"> */}
+          <label class="organinfolabel">Status</label>
+          <input readOnly class="organinfoinputs" value={IOstatus}></input>
           {/* </div> */}
-          {/* <div className="organstats"> */}
-          <label className="organinfolabel">Glucose</label>
-          <input readOnly className="organinfoinputs" value={IOglucose}></input>
+          {/* <div class="organstats"> */}
+          <label class="organinfolabel">Glucose</label>
+          <input readOnly class="organinfoinputs" value={IOglucose}></input>
           {/* </div> */}
-          {/* <div className="organstats"> */}
-          <label className="organinfolabel">Serotonin</label>
-          <input readOnly className="organinfoinputs" value={IOserotonin}></input>
+          {/* <div class="organstats"> */}
+          <label class="organinfolabel">Serotonin</label>
+          <input readOnly class="organinfoinputs" value={IOserotonin}></input>
           {/* </div> */}
-          {/* <div className="organstats"> */}
-          <label className="organinfolabel">Acetylcholine</label>
-          <input readOnly className="organinfoinputs" value={IOoxygen}></input>
+          {/* <div class="organstats"> */}
+          <label class="organinfolabel">Acetylcholine</label>
+          <input readOnly class="organinfoinputs" value={IOoxygen}></input>
           {/* </div> */}
-          <button className='inputbuttons' style={{marginLeft:'20px'}}>Go to Guides</button>
+          <button class='inputbuttons' style={{marginLeft:'20px'}}>Go to Guides</button>
         </div>
       </div>
-      <div className="model2d">
+      <div class="model2d">
         <svg
           width="800"
           height="100%"
@@ -434,33 +434,33 @@ function Content() {
           </g>
         </svg>
       </div>
-      <div className="inputinfo">
-        <div className="inputinfoelements">
-          <p className="inputinfoheading" style={{ marginTop: "100px" }}>
+      <div class="inputinfo">
+        <div class="inputinfoelements">
+          <p class="inputinfoheading" style={{ marginTop: "100px" }}>
             Enter Food{" "}
           </p>
           <textarea
             value={selectedItem}
             style={{ marginTop: "10px" }}
             onChange={(event) => setSelectedItem(event.target.value)}
-            className="inputaddfood"
+            class="inputaddfood"
             type="text"
           ></textarea>
           <button
-            className="inputbuttons "
+            class="inputbuttons"
             style={{ marginTop: "20px",marginBottom:"30px" }}
             onClick={handleAddItem}
           >
             Add Food
           </button>
-          <p className="inputinfoheading">Food Eaten</p>
+          <p class="inputinfoheading">Food Eaten</p>
           <textarea
             readOnly
-            className="textareas"
+            class="textareas"
             value={consumedFoodsText}
           ></textarea>
           <button
-            className="inputbuttons"
+            class="inputbuttons"
             onClick={ResetModel}
             style={{ marginTop: "30px" }}
           >
