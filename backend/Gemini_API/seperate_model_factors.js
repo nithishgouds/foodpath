@@ -21,7 +21,7 @@ const {
     responseMimeType: "application/json",
   };
   
-  async function run(Foods_eaten) {
+  async function runseperate(Foods_eaten) {
     const chatSession = model.startChat({
       generationConfig,
       history: [
@@ -57,4 +57,4 @@ const {
     return result.response.text();
   }
   
-  run("bonda");
+ // runseperate("bonda");

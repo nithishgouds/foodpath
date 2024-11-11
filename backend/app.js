@@ -8,6 +8,7 @@ const organRoutes = require('./routes/organRoutes');
 const authRoutes=require('./routes/authRoutes');
 
 
+
 dotenv.config({ path: path.resolve(__dirname, '../frontend/.env') });
 
 
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/api/organs', organRoutes);
 app.use('/auth',authRoutes);

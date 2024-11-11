@@ -2,136 +2,68 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-const foodEffects = {
-    "idli": { oxygen: 5, serotonin: 3, glucose: 8 },
-    "Upma": { oxygen: 4, serotonin: 2, glucose: 7 },
-    "Bonda": { oxygen: -2, serotonin: 1, glucose: 18 },
-    "Puri": { oxygen: -1, serotonin: 2, glucose: 16 },
-    "Apple": { oxygen: 4, serotonin: 2, glucose: 10 },
-    "Grapes": { oxygen: 3, serotonin: 3, glucose: 9 },
-    "Beans": { oxygen: 6, serotonin: 5, glucose: 4 },
-    "Fried Foods": { oxygen: -5, serotonin: -2, glucose: 16 },
-    "Yogurt": { oxygen: 5, serotonin: 3, glucose: 4 },
-    "Salmon": { oxygen: 7, serotonin: 3, glucose: 6 }
-};
+const ConsumedFoods = require('../models/consumedFoodSchema'); // Ensure this path is correct
+const { run } = require('../Gemini_API/modelStatusAPI'); // If you're using the AI function
 
+// Route handler for adding food items
+const addFood = async (req, res) => {
+    const { email, foodItems } = req.body;
 
-// controllers/organController.js
-let consumedFoods = [];
+    console.log('Received body:', req.body);
 
-const addFood = (req, res) => {
-    const foodItem = req.body;
-
-    if (!foodItem ) {
-        return res.status(400).json({ error: 'Food item and quantity are required.' });
+    // Ensure email and foodItems are provided
+    if (!email) {
+        return res.status(400).json({ error: 'Email is required.' });
     }
 
-    
-    const newFood = foodItem;
-  
-    consumedFoods.push(newFood);
+    if (!foodItems) {
+        return res.status(400).json({ error: 'Food items string is required.' });
+    }
 
-    
-    res.json({ 
-        message: 'Food added successfully', 
-        consumedFoods 
-    });
-};
+    // Split the foodItems string by spaces and filter out any empty items
+    const foodItemsArray = foodItems.split(' ').filter(item => item.trim() !== '');
 
-const resetConsumedFoods = (req, res) => {
-    consumedFoods = [];
-    const resetStatuses = {
-        liver: {
-            status: "Neutral",
-            oxygen: 0,
-            serotonin: 0,
-            glucose: 0
-        },
-        heart: {
-            status: "Neutral",
-            oxygen: 0,
-            serotonin: 0,
-            glucose: 0
-        },
-        brain: {
-            status: "Neutral",
-            oxygen: 0,
-            serotonin: 0,
-            glucose: 0
-        },
-        intestine: {
-            status: "Neutral",
-            oxygen: 0,
-            serotonin: 0,
-            glucose: 0
-        },
-        stomach: {
-            status: "Neutral",
-            oxygen: 0,
-            serotonin: 0,
-            glucose: 0
-        },
-        lungs: {
-            status: "Neutral",
-            oxygen: 0,
-            serotonin: 0,
-            glucose: 0
+    try {
+        // Find the user in ConsumedFoods or create a new entry if not found
+        let user = await ConsumedFoods.findOne({ email });
+
+        if (!user) {
+            // If the user doesn't exist, create a new user document with an empty consumedFoods array
+            user = new ConsumedFoods({ email, consumedFoods: [] });
         }
-    };
-     
-    res.json({ 
-        message: 'Food deleted successfully', resetStatuses,
-        
-        consumedFoods 
-    });
+
+        // Map the food items into the required format
+        const newFoods = foodItemsArray.map(item => ({ foodItem: item }));
+
+        // Add new food items to the consumedFoods array
+        user.consumedFoods.push(...newFoods);
+
+        // Save the updated user data to the database
+        await user.save();
+
+        // Prepare the food items as a string to send back
+        const foodItemsString = user.consumedFoods.map(item => item.foodItem).join(' ');
+
+        // Optionally process the food items with AI
+        try {
+            let aiResponse = await run(foodItemsString);
+
+            console.log(aiResponse);
+            aiResponse = JSON.parse(aiResponse);
+
+            res.json({
+                
+                message: 'Foods added successfully',
+                consumedFoods: user.consumedFoods, // You can return the food items as a string
+                aiResponse: aiResponse
+            });
+        } catch (aiError) {
+            res.status(500).json({ error: 'Error processing food data in AI', details: aiError.message });
+        }
+
+    } catch (error) {
+        res.status(500).json({ error: 'Error adding food to the user account', details: error.message });
+    }
 };
 
-
-module.exports = { addFood, resetConsumedFoods, consumedFoods };
-
-
-
-// let consumedFoods = [];
-// // controllers/organController.js
-// const addFood = (req, res) => {
-//     const { foodItem, quantity } = req.body;
-
-//     if (!foodItem || !quantity) {
-//         return res.status(400).json({ error: 'Food item and quantity are required.' });
-//     }
-
-//     // Add the food item logic here...
-
-//     res.json({ message: 'Food added successfully' });
-// };
-
-// const getLiverStatus = (req, res) => {
-//     // Logic for getting liver status
-// };
-
-// module.exports = { addFood, getLiverStatus };
-
-
-// app.post('/add-food', (req, res) => {
-//     const { foodItem, quantity } = req.body;
-
-//     if (!foodItem || !quantity) {
-//         return res.status(400).json({ error: 'Food item and quantity are required.' });
-//     }
-
-//     if (!foodEffects[foodItem]) {
-//         return res.status(400).json({ error: 'Unknown food item.' });
-//     }
-
-   
-//     consumedFoods.push({ foodItem, quantity });
-
-//     res.json({ message: 'Food item added successfully!', consumedFoods });
-// });
-
-// module.exports = { app, consumedFoods };
-
-// const PORT = 3001;
-// app.listen(PORT, () => {
-//     console.log(`Add Food service running on port ${PORT}`);
-// });
+module.exports = { addFood };
