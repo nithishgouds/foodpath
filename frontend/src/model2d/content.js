@@ -197,7 +197,7 @@ import axios from "axios";
 import "./contentstyle.css";
 //import Organstructure from './organstructure.js';
 
-function Content3d() {
+function Content() {
   console.log("entered content function");
   const [braincolor, setBrainColor] = useState("");
   const [lungscolor, setlungsColor] = useState("");
@@ -472,4 +472,4 @@ function Content3d() {
   );
 }
 
-export default Content3d;
+export default Content;

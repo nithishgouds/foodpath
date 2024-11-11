@@ -7,7 +7,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 //import Organstructure from './organstructure.js';
 
-function Content() {
+function Content3d() {
   console.log("entered content function");
   const [stomachcolor, setstomachcolor] = useState("#66ff66");
   const [heartcolor, setheartcolor] = useState("#ff0000");
@@ -151,7 +151,7 @@ function Content() {
         </div>
       </div>
       <div class="model2d">
-        <div style={{ height: "100vh" }}>
+        <div style={{ height: "calc(100vh - 64px)" }}>
           <Canvas
             camera={{ position: [0, 1, 5], fov: 50 }} // Camera position and field of view
           >
@@ -185,7 +185,8 @@ function Content() {
         </div>
       </div>
       <div class="inputinfo">
-        <p class="inputinfoheading">Enter Food </p>
+      <div class="inputinfoelements">
+        <p class="inputinfoheading" style={{marginTop:"50px"}}>Enter Food </p>
         <textarea
           value={selectedItem}
           onChange={(event) => setSelectedItem(event.target.value)}
@@ -209,8 +210,9 @@ function Content() {
           Reset Model
         </button>
       </div>
+      </div>
     </div>
   );
 }
 
-export default Content;
+export default Content3d;
