@@ -12,12 +12,14 @@ import Stomach from './guides/stomach';
 import Liver from './guides/liver';
 import Signup from './loginsignup/signup';
 import Model3dpage from './model3dpage';
+import Faq from "./homepagenew/components/Faq";
 function App() {
   return (
       
       <Router>
           <Routes>
             <Route path='/' element={<HomePage/>}/>
+              <Route path='/faq' element={<Faq/>}/>
             <Route path='/model2dpage' element={<Model2dpage/>}/>
             <Route path='/model3dpage' element={<Model3dpage/>}/>
               <Route path="/guides/brain" element={<Brain />} />
