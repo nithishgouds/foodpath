@@ -1,6 +1,18 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const Tomodel = () => {
+    const navigate = useNavigate('');
+
+    const handle2dclick = () => {
+        console.log("Here baby")
+        navigate('/model2dpage');
+    }
+
+    const handle3dclick = () => {
+        navigate('/model3dpage');
+    }
+
     return (
         <div className="container mx-auto flex flex-col ml-12 lg:flex-row items-start ">
             <div className='mt-80 pt-10 ml-12'>
@@ -23,7 +35,7 @@ const Tomodel = () => {
                     >
                         Checkout our latest<br /> feature!
                     </motion.p>
-                    <button className="px-6 py-3 border text-sm border-black text-black font-worksans font-light w-[174px] h-[61px] hover:bg-custom-blue hover:text-white transition duration-300">
+                    <button onClick={handle3dclick} className="px-6 py-3 border text-sm border-black text-black font-worksans font-light w-[174px] h-[61px] hover:bg-custom-blue hover:text-white transition duration-300">
                         3D MODEL
                     </button>
                 </div>
@@ -47,7 +59,7 @@ const Tomodel = () => {
                 >
                     Explore our 2D model and discover the intricate relationship between food and your internal well-being
                 </motion.p>
-                <button className="but3d px-6 py-3 border text-sm border-black text-black font-worksans font-light w-[174px] h-[61px] hover:bg-custom-blue hover:text-white hover:font-light transition duration-300">
+                <button onClick={handle2dclick} className="but3d px-6 py-3 border text-sm border-black text-black font-worksans font-light w-[174px] h-[61px] hover:bg-custom-blue hover:text-white hover:font-light transition duration-300">
                     2D MODEL
                 </button>
             </div>
