@@ -1,12 +1,11 @@
-// import Navbar from "./model2d/navbar";
 import Content3d from "./model3d/content3d";
 import React from "react";
-import Snavbar from "./homepage/snavbar";
+import Header from "./homepagenew/components/Header";
 
 function Model3dpage(){
     return(
         <div>
-            <Snavbar />
+            <Header />
             <Content3d />
         </div>
     );
