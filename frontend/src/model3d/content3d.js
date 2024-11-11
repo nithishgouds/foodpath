@@ -7,7 +7,9 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 //import Organstructure from './organstructure.js';
 
-function Content3d() {
+
+function Content3d(){
+
   console.log("entered content function");
   const [stomachcolor, setstomachcolor] = useState("#66ff66");
   const [heartcolor, setheartcolor] = useState("#ff0000");

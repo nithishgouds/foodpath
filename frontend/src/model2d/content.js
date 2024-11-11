@@ -202,12 +202,65 @@
 // export default Content3d;
 //--------------------------------------------
 import React, { useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
+ 
 import './contentstyle.css';
 //import Organstructure from './organstructure.js';
 
+ 
 
-function Content3d(){
+
+
+// Assuming the JWT token is stored in localStorage
+
+
+
+function Content(){
+
+
+  // Ensure jwt-decode is imported
+
+  let email;
+
+const token = localStorage.getItem('jwtToken');
+console.log(token);
+
+if (token) {
+    try {
+        console.log("Entered token check");
+
+        // Decode the JWT token to extract the payload
+        const decodedToken = jwtDecode(token);
+        console.log(decodedToken.email);
+
+        // Check if the decoded token contains the email property
+        if (decodedToken && decodedToken.email) {
+          email = decodedToken.email || decodedToken.userId;
+            console.log("Decoded email:", email);
+
+            // Prepare the data to be sent to the backend
+            const data = { email, foodItems: ['idly', 'dosa'] }; // Example food items
+
+            // Send the data to the backend via Axios
+            axios.post('http://localhost:3001/organ/add-food', data)
+                .then(response => {
+                    console.log('Food added successfully:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error adding food item:', error);
+                });
+        } else {
+            console.log('Email not found in token payload.');
+        }
+
+    } catch (error) {
+        console.error('Failed to decode token:', error);
+    }
+} else {
+    console.log('No JWT token found in localStorage.');
+}
+
 
   console.log("entered content function");
   const [braincolor, setBrainColor] = useState('');
@@ -243,7 +296,7 @@ function Content3d(){
 
   const [selectedItem, setSelectedItem] = useState("");
   const [quantity, setquantity] = useState('');
-  const [consumedFoods, setConsumedFoods] = useState([]);
+  const [consumedFoods, setConsumedFoods] = useState("");
 
 const handleAddItem = async () => {
   console.log("button working");
@@ -253,14 +306,25 @@ const handleAddItem = async () => {
     }
 
     try {
-        const response = await axios.post('http://localhost:3001/api/organs/add-food', {
-            foodItem: selectedItem,
-            token:localStorage.getItem("jwtToken")
+      
+      console.log(selectedItem);
+        //const response = await 
+        axios.post('http://localhost:3001/api/organs/add-food', {
+            foodItems: selectedItem,
+            email:email
             
+        }).then(response => {
+          let { message, consumedFoods, aiResponse } = response.data;
+          console.log(aiResponse);
+          setConsumedFoods(aiResponse.health_status.brain.rating); // Update the state with consumed foods
+         // setAiResponse(aiResponse); // Update the state with AI response
+          //console.log(message); // For debugging, show success message
         });
-        setConsumedFoods(response.data.aiResponse);
-        //setConsumedFoods(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
-        console.log('Food item added successfully:', response.data);
+        //setConsumedFoods(response.data.aiResponse);
+        // console.log(response.data);
+        // const data= await response.json();
+        // setConsumedFoods(data.aiResponse.health_status.brain.rating); // Add new food item to the array
+        //console.log('Food item added successfully:', response.data);
     } catch (error) {
         console.error('Error adding food item:', error);
     }
@@ -305,7 +369,7 @@ const handleAddItem = async () => {
           token:localStorage.getItem("jwtToken")
           
          });
-        setConsumedFoods(response.data.consumedFoods);
+       // setConsumedFoods(response.data.consumedFoods);
         setOpacity(0);
         setIOstatus(' ');
         setIOglucose(' ');
@@ -325,7 +389,7 @@ const handleAddItem = async () => {
     }
 };
 
-const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} `).join('\n');
+const consumedFoodsText = consumedFoods;//.map(item => `${item.foodItem} `).join('\n');
 
   return(
     <div className='mainelements'>
@@ -407,4 +471,4 @@ const consumedFoodsText = consumedFoods.map(item => `${item.foodItem} `).join('\
   )
 };
 
-export default Content3d;
+export default Content;

@@ -108,7 +108,7 @@ const {
     console.log(result.response.text());
     return result.response.text();
   }
-  
-  run("dosa");
+  module.exports={run};
+ // run("dosa");
   
   

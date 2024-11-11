@@ -33,15 +33,30 @@ export default function Login(){
   const handleButton = async () => {
     console.log(email);
     console.log(password);
-    try{
-      const response = await Axios.post('http://localhost:3001/auth/signup', {
-          email:email,
-          password:password
-        });
-        if(response.data.message == "User created successfully" ){
-          navigate('/login');
-        }
-      
+    if (email.length < 6 || email.length > 20) {
+      console.log("low email");
+      setEmailLength(true);
+    } else {
+      setEmailLength(false);
+    }
+    if (password.length < 6 || password.length > 20) {
+      console.log("low pw");
+      setPWLength(true);
+    } else {
+      setPWLength(false);
+    }
+    if (pwLength && emailLength) {
+      return;
+    }
+    try {
+      const response = await Axios.post("http://localhost:3001/auth/signup", {
+        email: email,
+        password: password,
+      });
+      if (response.data.message == "User created successfully") {
+        navigate("/login");
+      }
+
       console.log(response.data);
     }catch(e){
       console.log(e)
