@@ -13,7 +13,7 @@ const { getSpecificOrganStatus } = require('../controllers/individualOrganStatus
 router.post('/add-food', addFood);
 router.get('/organ-status', getOrganStatus);
 router.get('/ind-organ-status/:organ', getSpecificOrganStatus);
-// router.post('/reset-consumed-foods', resetConsumedFoods);
+router.post('/reset-consumed-foods', resetConsumedFoods);
 
 // Routes for body models
 // router.get('/body-model/2d', get2DModel); // Route for 2D model

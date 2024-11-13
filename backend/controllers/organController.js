@@ -5,6 +5,7 @@ app.use(express.json());
 const ConsumedFoods = require('../models/consumedFoodSchema'); // Ensure this path is correct
 const { run } = require('../Gemini_API/modelStatusAPI'); // If you're using the AI function
 
+
 // Route handler for adding food items
 const addFood = async (req, res) => {
     const { email, foodItems } = req.body;
@@ -66,4 +67,43 @@ const addFood = async (req, res) => {
     }
 };
 
-module.exports = { addFood };
+
+const resetConsumedFoods= async(req,res)=>
+{
+
+    console.log("Entered the reset");
+    const { email }=req.body;
+
+    if(!email)
+    {
+        return res.status(400).json({error:"Email required"});
+    }
+    try
+    {
+        let user=await ConsumedFoods.findOne({email});
+
+        if(!user)
+        {
+            return res.status(400).json({error:"No user found"});
+        }
+
+        user.consumedFoods=[];
+
+        await user.save();
+
+        res.json
+        (
+            {
+                message:'Reset foods successful',
+                consumedFoods:user.consumedFoods
+            }
+        );
+
+    } 
+    catch(error)
+    {
+        res.status(500).json({error:'Error in resetting the consumed foods of the user',details:error.message});
+    }
+};
+
+module.exports = { addFood , resetConsumedFoods };
