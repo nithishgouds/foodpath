@@ -1,6 +1,10 @@
 import './loginsignup.css';
 import Snavbar from '../homepage/snavbar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Birds from 'vanta/src/vanta.birds';
+import { useNavigate } from 'react-router-dom';
+import Header from '../homepagenew/components/Header'
+import Axios from 'axios';
 
 // // export default function (){
 
