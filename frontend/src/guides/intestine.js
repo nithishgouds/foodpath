@@ -13,6 +13,9 @@ function Intestine(){
 
       <h3 className='head3'>Current Status Of The Intestine</h3>
 
+      <br></br>
+      <br></br>
+      <br></br>
       
           <h2  className='heading'>Status of the Intestine :</h2>
           <div class="containernew">
@@ -21,7 +24,7 @@ function Intestine(){
      <p className='guides_intestine_status_text'>
      {guides_intestine_status_text}
     
-     </p>
+     </p><br></br><br></br>
      </div>
      
    
@@ -31,7 +34,7 @@ function Intestine(){
        
   <p className='guides_intestine_consumed_text'>
 {guides_intestine_consumed_text}
-  </p>
+  </p><br></br><br></br>
     </div><h2 className='heading'>Info about the Intestine :</h2>
           <div class="containernew">
          

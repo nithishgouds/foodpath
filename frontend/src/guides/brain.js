@@ -14,7 +14,9 @@ function Brain() {
 
       <h3 className='head3'  >Current Status Of The Brain</h3>
 
-      
+      <br></br>
+      <br></br>
+      <br></br>
           <h2  className='heading'>Status of the Organ :</h2>
           <div class="containernew">
       
@@ -22,7 +24,7 @@ function Brain() {
      <p className='guides_brain_status_text'>
      {guides_brain_status_text}
     
-     </p>
+     </p><br></br><br></br>
      </div>
      
    
@@ -32,7 +34,7 @@ function Brain() {
        
   <p className='guides_brain_consumed_text'>
 {guides_brain_consumed_text}
-  </p>
+  </p><br></br><br></br>
        </div>
       <h2 className='heading'>Info about the brain :</h2>
           <div class="containernew">

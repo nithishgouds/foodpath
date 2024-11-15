@@ -13,7 +13,10 @@ function Heart(){
        <div className='newflex'>
    
           <h3 className='head3'>Current Status Of The Heart</h3>
-
+          
+      <br></br>
+      <br></br>
+      <br></br>
           
               <h2  className='heading'>Status of the Organ :</h2>
               <div class="containernew">
@@ -22,7 +25,7 @@ function Heart(){
          <p className='guides_heart_status_text'>
          {guides_heart_status_text}
         
-         </p>
+         </p><br></br><br></br>
          </div>
          
        
@@ -33,7 +36,7 @@ function Heart(){
            
       <p className='guides_heart_consumed_text' >
 {guides_heart_consumed_text}
-      </p>
+      </p><br></br><br></br>
             </div>
           <h2 className='heading'>Info about the organ :</h2>
           <div class="containernew">

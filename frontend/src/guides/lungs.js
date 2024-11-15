@@ -15,7 +15,9 @@ function Lungs(){
 
       <h3 className='head3'>Current Status Of The Lungs</h3>
 
-      
+      <br></br>
+      <br></br>
+      <br></br>
           <h2  className='heading'>Status of the Lungs :</h2>
             <div class="containernew">
       
@@ -23,7 +25,7 @@ function Lungs(){
      <p className='guides_lungs_status_text'>
      {guides_lungs_status_text}
     
-     </p>
+     </p><br></br><br></br>
      </div>
      
    
@@ -33,7 +35,7 @@ function Lungs(){
        
   <p className='guides_lungs_consumed_text'>
 {guides_lungs_consumed_text}
-  </p>
+  </p><br></br><br></br>
     </div><h2 className='heading'>Info about the Lungs :</h2>
             <div class="containernew">
         

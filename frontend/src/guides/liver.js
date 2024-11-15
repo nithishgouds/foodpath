@@ -14,6 +14,9 @@ function Liver(){
       <h3 className='head3'>Current Status Of The Liver</h3>
 
       
+      <br></br>
+      <br></br>
+      <br></br>
           <h2  className='heading'>Status of the Liver :</h2>
             <div class="containernew">
       
@@ -21,7 +24,7 @@ function Liver(){
      <p className='guides_liver_status_text'>
      {guides_liver_status_text}
     
-     </p>
+     </p><br></br><br></br>
      </div>
      
    
@@ -32,7 +35,7 @@ function Liver(){
        
   <p className='guides_liver_consumed_text'>
 {guides_liver_consumed_text}
-  </p>
+  </p><br></br><br></br>
     </div>
   <h2 className='heading'>Info about the liver :</h2>
             <div class="containernew">

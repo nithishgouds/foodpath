@@ -130,6 +130,7 @@ img
 .newflex{
   position: relative;
  direction: ltr;
+ padding-left: 5px;
 }
 
 @media (max-width: 768px) {
@@ -218,6 +219,7 @@ img
   border-radius: 1em;
   color: #de4331; 
   text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
 @keyframes textGlow {

@@ -11,15 +11,18 @@ function Kidney() {
      
       <div className='newflex'>
         <h3 className='head3'>Current Status Of The Kidney</h3>
+        
+      <br></br>
+      <br></br><br></br>
         <h2 className='heading'>Status of the Kidney:</h2>
           <div className="containernew">
-          <p className='guides_kidney_status_text'>{guides_kidney_status_text}</p>
+          <p className='guides_kidney_status_text'>{guides_kidney_status_text}</p><br></br><br></br>
         </div>
 
         <h2 className='heading'>Foods Consumed:</h2>
           <div className="containernew">
          
-            <p className='guides_kidney_consumed_text'>{guides_kidney_consumed_text}</p>
+            <p className='guides_kidney_consumed_text'>{guides_kidney_consumed_text}</p><br></br><br></br>
           </div>
        
 
