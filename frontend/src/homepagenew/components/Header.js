@@ -9,15 +9,10 @@ const Header = () => {
     useEffect(() => {
       // Check if token exists and redirect if already logged in
       const token = localStorage.getItem('jwtToken');
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i); // Get the key at index i
-        const value = localStorage.getItem(key); // Get the value associated with the key
-        console.log(i, `${key}: ${value}`);
-      }
       if (token) {
         setLoggedin(true);
         setLogin("LOGOUT");
-        setPath("/signup");
+        setPath("/login");
       }
     }, []);
 
@@ -27,7 +22,7 @@ const Header = () => {
         }
     }
     return (
-        <header className="bg-custom-blue text-white shadow-md w-[95%] m-auto mt-7 rounded-full">
+        <header className="bg-custom-blue text-white shadow-md w-[95%] m-auto mt-4 mb-4 rounded-full">
             <div className="container mx-auto flex items-center py-4 px-6">
 
                 {/* Left-aligned title */}

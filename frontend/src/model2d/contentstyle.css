@@ -5,7 +5,7 @@
 
 html,body{
   height:100% ;
-  background-color: #C0C0C0;
+  background-color: #D4D4D4;
 }
 
 .mainelements{
@@ -16,46 +16,71 @@ html,body{
 }
 
 .organinfo{
-  background-color: #CA8263;
-  width:calc(50vw - 422px);
+  background-color: #D4D4D4;
+  width:calc(50vw - 381px);
   display: flex;
   flex-direction: column;
+  
 }
+
 
 .organinfolabel{
   font-family: 'Helvetica W01 Light';
-  margin-left: 10px;
+  margin-left: 20px;
+  font-size: large;
+  min-width:100%;
+
 }
 
 .organinfoinputs{
 
   font-family: 'Helvetica W01 Light';
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border-width: 0px;
   border-bottom-width:1px;
   border-bottom-color: #1C2E3B ;
-  background-color: #CA8263;
-  margin-left: 10px;
+  background-color: #D4D4D4;
+  margin-left: 20px;
   padding-left:5px;
   padding-top:3px;
   padding-bottom:3px;
-  height:30px;
   width: 21vw;
   border-radius: 0px;
   font-size:17px;
   color:#1C2E3B;
+  resize: none;
+}
+
+.organinfoinputsingle{
+
+  font-family: 'Helvetica W01 Light';
+  margin-bottom: 20px;
+  border-width: 0px;
+  border-bottom-width:1px;
+  border-bottom-color: #1C2E3B ;
+  background-color: #D4D4D4;
+  margin-left: 20px;
+  padding-left:5px;
+  padding-top:3px;
+  padding-bottom:3px;
+  height:35px;
+  width: 21vw;
+  border-radius: 0px;
+  font-size:17px;
+  color:#1C2E3B;
+  resize: none;
 }
 
 .model2d{
   margin-left: 0px;;
   height:calc(100vh - 64px);
   width:845px;
-  background-color: #C0C0C0;
+  background-color: #D4D4D4;
 }
 
 .inputinfo{
-  background-color: #CA8263;
-  width:calc(50vw - 340px);
+  background-color: #D4D4D4;
+  width:calc(50vw - 381px);
 }
 
 .inputinfoelements{
@@ -65,13 +90,14 @@ html,body{
 }
 
 .inputinfoheading{
+  margin-left:30px;
   font-family: 'Helvetica W01 Light';
   color:#1C2E3B;
   margin-bottom: 18px;
-  margin-top: 10px;
+  margin-top: 30px;
   font-size:26px;
 }
-.inputaddfood{
+/* .inputaddfood{
   white-space: pre-wrap; 
   overflow-wrap: break-word;
   resize: none;
@@ -80,10 +106,11 @@ html,body{
   border-color: #1C2E3B;
   border-width: 1px;
   width:80%;
-}
+  margin-left:30px;
+} */
 .inputbuttons{
-  font-family: 'Helvetica W01 Light';
-  margin-top:20px;
+  margin-left:30px;
+  font-family: 'Helvetica W01 Light'; 
   font-size: medium;
   width: 178px;
   background-color: #1C2E3B;
@@ -93,6 +120,7 @@ html,body{
   color:white;
   height:40px;
   padding:8px 16px 10px 16px;
+  margin-bottom: 20px;
   transition: color 0.25s, border-color 0.3s, 
   background-color 0.3s, 
    border-width 0.3s;
@@ -107,12 +135,17 @@ html,body{
 
 .textareas{
   white-space: pre-wrap; 
+  background-color: #D4D4D4;
   overflow-wrap: break-word;
-  border-color: #1C2E3B;
-  border-width: 1px;
+  border-width: 0px;
+  border-bottom-width: 1px;
+  border-bottom-color: #1C2E3B;
   width:80%;
-  height:150px;
+  height: 30px;
+  max-height:150px;
   resize:none;
+  margin-left:30px;
+  margin-bottom: 20px;  ;
 }
 textarea::-webkit-scrollbar {
   width: 10px;
