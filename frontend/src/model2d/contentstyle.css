@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 @font-face {
   font-family: "RobotoSlab-Regular";
   src: url("../../fonts/RobotoSlab-Regular.ttf");
@@ -125,6 +125,22 @@ body {
   margin-bottom: 20px;
   transition: color 0.25s, border-color 0.3s, background-color 0.3s,
     border-width 0.3s;
+}
+
+.inputbuttons1{
+  margin-left: 30px;
+  font-family: "Helvetica W01 Light";
+  font-size: medium;
+  width: 178px;
+  background-color: #1c2e3b;
+  border-color: #1c2e3b;
+  border-width: 0px;
+  padding: 0;
+  color: white;
+  height: 40px;
+  padding: 8px 16px 10px 16px;
+  margin-bottom: 20px;
+  transition: color 0.25s, border-color 0.3s, background-color 0.3s,border-width 0.3s;
 }
 
 .inputbuttons:hover {
