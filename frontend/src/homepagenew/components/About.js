@@ -27,8 +27,8 @@ const About = () => {
             <motion.p
                 className="paragraph2 mt-10 font-helvetica font-extralight ml-25 max-w-screen-sm text-right"
                 style={{ lineHeight: "1.5", fontSize: "1.3rem" }}
-                initial={{ opacity: 0, x:780 }}
-                whileInView={{ opacity: 1, x: 730 }}
+                initial={{ opacity: 0, x:630 }}
+                whileInView={{ opacity: 1, x: 580 }}
                 transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
             >
                 This analysis helps you understand how food affects your energy and vitality.

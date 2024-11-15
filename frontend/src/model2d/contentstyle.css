@@ -24,8 +24,8 @@ body {
   width: calc(50vw - 381px);
   display: flex;
   flex-direction: column;
-  max-height: 80%;
-  overflow-y: auto; 
+  max-height: 95%;
+  overflow-y: auto; /* Enables vertical scrolling */
   overflow-x: hidden;
 }
 
