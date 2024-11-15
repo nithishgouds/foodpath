@@ -169,7 +169,7 @@ function Content() {
   //consumedFoodsText
 
   const [IOorgan, setIOorgan] = useState("");
-  const [isActive, setActive] = useState(false);
+  const [isActive, setActive] = useState(false);//for checking if an organ is selected
   const [isEat, setEat] = useState(true);
   const [IOstatus, setIOstatus] = useState("");
   const [IOglucose, setIOglucose] = useState("");
@@ -248,12 +248,14 @@ function Content() {
     <>
       {!isSignIn && 
       <div>
-      <div>Please sign in to use model</div>
-      <a href='/login'>Proceed to Log In</a>
+      <div>
+        <label className="inputinfoheading" style={{textAlign:'center', fontSize:'50px', minWidth:'100%', minHeight:'100%',marginLeft:'100px'}}> Please Sign In to use model</label>
+      </div>
+      <a href='/login' className="organinfolabel" style={{textDecoration:'underline', marginLeft:'100px',fontSize:'30px'}}>Proceed to Log In</a>
       </div>
       }
       {isSignIn && (
-        <div className="mainelements">
+        <div className="mainelements" style={{marginTop:'20px'}}>
           <div class="inputinfo">
             <div style={{ marginTop: "50px" }}></div>
             <p class="inputinfoheading">Enter Food </p>

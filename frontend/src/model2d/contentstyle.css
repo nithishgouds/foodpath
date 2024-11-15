@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @font-face {
   font-family: 'RobotoSlab-Regular';
   src: url('../../fonts/RobotoSlab-Regular.ttf');
@@ -5,7 +8,7 @@
 
 html,body{
   height:100% ;
-  background-color: #D4D4D4;
+  background-color: #C0C0C0;
 }
 
 .mainelements{
@@ -16,7 +19,7 @@ html,body{
 }
 
 .organinfo{
-  background-color: #D4D4D4;
+  background-color: #C0C0C0;
   width:calc(50vw - 381px);
   display: flex;
   flex-direction: column;
@@ -39,7 +42,7 @@ html,body{
   border-width: 0px;
   border-bottom-width:1px;
   border-bottom-color: #1C2E3B ;
-  background-color: #D4D4D4;
+  background-color: #C0C0C0;
   margin-left: 20px;
   padding-left:5px;
   padding-top:3px;
@@ -58,7 +61,7 @@ html,body{
   border-width: 0px;
   border-bottom-width:1px;
   border-bottom-color: #1C2E3B ;
-  background-color: #D4D4D4;
+  background-color: #C0C0C0;
   margin-left: 20px;
   padding-left:5px;
   padding-top:3px;
@@ -75,11 +78,11 @@ html,body{
   margin-left: 0px;;
   height:calc(100vh - 64px);
   width:845px;
-  background-color: #D4D4D4;
+  background-color: #C0C0C0;
 }
 
 .inputinfo{
-  background-color: #D4D4D4;
+  background-color: #C0C0C0;
   width:calc(50vw - 381px);
 }
 
@@ -135,7 +138,7 @@ html,body{
 
 .textareas{
   white-space: pre-wrap; 
-  background-color: #D4D4D4;
+  background-color: #C0C0C0;
   overflow-wrap: break-word;
   border-width: 0px;
   border-bottom-width: 1px;
