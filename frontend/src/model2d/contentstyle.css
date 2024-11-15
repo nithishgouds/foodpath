@@ -163,6 +163,7 @@ body {
   overflow-wrap: break-word;
   border-width: 0px;
   border-bottom-width: 1px;
+  border-radius: 6px;
   border-bottom-color: #1c2e3b;
   width: 80%;
   height: 30px;
