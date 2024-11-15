@@ -24,9 +24,9 @@ function Faq() {
   };
 
   return (
-    <div className="main-background2 bg-gray-500 flex flex-col min-h-screen items-center px-4">
+    <div className="main-background2 bg-gray-500 flex flex-col min-h-screen items-center px-4 pt-24">
       <Header />
-      <div className="content-overlay4 flex-grow w-full max-w-9xl">
+      <div className="content-overlay4 flex-grow w-full max-w-9xl mt-30px">
         {/* Q1 */}
         <div className="q1 mt-40 ml-20">
           <motion.p
