@@ -67,6 +67,11 @@ const Header = () => {
                         <li className="nav-item mr-12">
                             <a href="/model3dpage" className="hover:text-customHoverColor transition duration-300">3D MODEL</a>
                         </li>
+                        <li className="nav-item mr-12">
+                            <a href="/guides" className="hover:text-customHoverColor transition duration-300">
+                                GUIDES
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <div className="flex items-center space-x-2 pr-8 font-helvetica">
