@@ -270,12 +270,12 @@ function Content() {
             <button class="inputbuttons" onClick={handleAddItem}>
               Add Food
             </button>
-            {/* <p class="inputinfoheading">Eaten Food:</p>
+            <p class="inputinfoheading">Status</p>
             <textarea
               readOnly
               class="textareas"
               value={consumedFoodsText}
-            ></textarea> */}
+            ></textarea>
             <button
               class="inputbuttons"
               onClick={ResetModel}
@@ -381,7 +381,7 @@ function Content() {
                 {!isActive &&
                 <div>
                    <div>Click on organ to view its stats!</div>
-                <p class="inputinfoheading">Eaten Food:</p>
+                <p class="inputinfoheading">History</p>
                 <textarea
                   readOnly
                   class="textareas"
@@ -441,7 +441,7 @@ function Content() {
                       className="inputbuttons"
                       onClick={handleHistoryButton}
                     >
-                      View Eaten Food
+                      View History
                     </button>
                   </div>
                 )}
