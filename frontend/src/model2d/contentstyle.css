@@ -1,6 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://db.onlinewebfonts.com/c/e89eb1cff9eb261b0d77a4dea27f1ef1?family=Helvetica+W01+Light');
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+/*@tailwind base;*/
+/*@tailwind components;*/
+/*@tailwind utilities;*/
+
 @font-face {
   font-family: "RobotoSlab-Regular";
   src: url("../../fonts/RobotoSlab-Regular.ttf");
@@ -14,7 +18,7 @@ body {
 
 .mainelements {
   font-family: Arial, Helvetica, sans-serif;
-  height: calc(100vh - 70px);
+  height: calc(100vh);
   display: flex;
   flex-direction: row;
 }
@@ -25,7 +29,7 @@ body {
   display: flex;
   flex-direction: column;
   max-height: 95%;
-  overflow-y: auto; /* Enables vertical scrolling */
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
@@ -100,7 +104,7 @@ body {
   font-size: 26px;
 }
 /* .inputaddfood{
-  white-space: pre-wrap; 
+  white-space: pre-wrap;
   overflow-wrap: break-word;
   resize: none;
   background-color: #fffdf9;
