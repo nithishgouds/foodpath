@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import "../model2d/contentstyle.css";
 import { Model3d } from "./model3d";
@@ -6,6 +6,7 @@ import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from "react-router-dom";
 //import Organstructure from './organstructure.js';
 
 
@@ -45,6 +46,18 @@ function Content3d(){
     console.log('No JWT token found in localStorage.');
   }
 
+  const [isSignIn, setSingIn] = useState(false);
+  //const token = localStorage.getItem("jwtToken");
+  const checkSignIn = () => {
+    if (token) {
+      setSingIn(true);
+    }
+  };
+  useEffect(() => {
+    checkSignIn();
+  });
+
+  
   console.log("entered content function");
   const [stomachcolor, setstomachcolor] = useState("#66ff66");
   const [heartcolor, setheartcolor] = useState("#ff0000");
@@ -125,6 +138,7 @@ function Content3d(){
   const [selectedItem, setSelectedItem] = useState("");
   const [quantity, setquantity] = useState("");
   const [consumedFoods, setConsumedFoods] = useState([]);
+  const [isEat, setEat] = useState(false);
 
 
 
@@ -165,8 +179,8 @@ function Content3d(){
     }
   };
 
-  //consumedFoodsText
 
+  const [isActive, setActive] = useState(false);
   const [IOorgan, setIOorgan] = useState("");
   const [IOstatus, setIOstatus] = useState("");
   const [IOglucose, setIOglucose] = useState("");
@@ -175,6 +189,8 @@ function Content3d(){
 
   const handleOrganClick = async (OrgName) => {
     try {
+      setActive(false);
+      isActive()
       setIOorgan(OrgName);
       if (!handleAddRes) {
         console.error("Error: handleAddRes is not set. Please call handleAddItem first.");
@@ -225,42 +241,52 @@ function Content3d(){
   const consumedFoodsText = consumedFoods;  
 
   return (
-    <div className="mainelements">
-      <div class="organinfo">
-        <div class="organinfostats" style={{marginTop:'50px'}}>
-          {/* <div class="organstats"> */}
-            <label class="organinfolabel" >Organ:</label>
-            <input readOnly class="organinfoinputs" value={IOorgan}></input>
-          {/* </div> */}
-          {/* <div class="organstats"> */}
-            <label class="organinfolabel">Status:</label>
-            <input readOnly class="organinfoinputs" value={IOstatus}></input>
-          {/* </div> */}
-          {/* <div class="organstats"> */}
-          <label class="organinfolabel">Blood Glucose Levels</label>
-            <input readOnly class="organinfoinputs" value={IOglucose}></input>
-            {/* </div> */}
-            {/* <div class="organstats"> */}
-            <label class="organinfolabel">Calorie Levels</label>
-            <input readOnly class="organinfoinputs" value={IOcalories}></input>
-            {/* </div> */}
-            {/* <div class="organstats"> */}
-            <label class="organinfolabel">Oxygen Levels</label>
-            <input readOnly class="organinfoinputs" value={IOoxygen}></input>
-          {/* </div> */}
-          <button class='inputbuttons' style={{marginLeft:'20px'}}>Go to Guides</button>
-
-        </div>
+    <>
+    {!isSignIn && 
+      <div>
+      <div>
+        <label className="inputinfoheading" style={{textAlign:'center', fontSize:'50px', minWidth:'100%', minHeight:'100%',marginLeft:'100px'}}> Please Sign In to use model</label>
       </div>
+      <a href='/login' className="organinfolabel" style={{textDecoration:'underline', marginLeft:'100px',fontSize:'30px'}}>Proceed to Log In</a>
+      </div>
+      }
+    {isSignIn && (
+      <div className="mainelements">
+      <div class="inputinfo">
+            <div style={{ marginTop: "50px" }}></div>
+            <p class="inputinfoheading">Enter Food </p>
+            <input
+              value={selectedItem}
+              onChange={(event) => setSelectedItem(event.target.value)}
+              class="textareas"
+              type="text"
+            ></input>
+            <button class="inputbuttons" onClick={handleAddItem}>
+              Add Food
+            </button>
+            <p class="inputinfoheading">Eaten Food:</p>
+            <textarea
+              readOnly
+              class="textareas"
+              value={consumedFoodsText}
+            ></textarea>
+            <button
+              class="inputbuttons"
+              onClick={ResetModel}
+              style={{ marginTop: "20px" }}
+            >
+              Reset Model
+            </button>
+          </div>
+      
       <div class="model2d">
-        <div style={{ height: "calc(100vh - 64px)" }}>
+        <div style={{ height: "calc(100vh - 64px)", backgroundColor:'white' }}>
           <Canvas
-            camera={{ position: [0, 1, 5], fov: 50 }} // Camera position and field of view
+            camera={{ position: [0, 1, 5], fov: 50 }} 
           >
             <ambientLight intensity={1} />
             <pointLight position={[10, 10, 10]} />
 
-            {/* Render the 3D Model with increased scale */}
             <Model3d
               scale={1}
               handleClick={handleOrganClick}
@@ -286,34 +312,26 @@ function Content3d(){
           </Canvas>
         </div>
       </div>
-      <div class="inputinfo">
-      <div class="inputinfoelements">
-        <p class="inputinfoheading" style={{marginTop:"50px"}}>Enter Food </p>
-        <textarea
-          value={selectedItem}
-          onChange={(event) => setSelectedItem(event.target.value)}
-          class="inputaddfood"
-          type="text"
-        ></textarea>
-        <button class="inputbuttons" onClick={handleAddItem}>
-          Add Food
-        </button>
-        <p class="inputinfoheading">Food Eaten</p>
-        <textarea
-          readOnly
-          class="textareas"
-          value={consumedFoodsText}
-        ></textarea>
-        <button
-          class="inputbuttons"
-          onClick={ResetModel}
-          style={{ marginTop: "50px" }}
-        >
-          Reset Model
-        </button>
-      </div>
+      <div class="organinfo">
+        <div class="organinfostats" style={{marginTop:'50px'}}>
+            <label class="organinfolabel" >Organ:</label>
+            <input readOnly class="organinfoinputs" value={IOorgan}></input>
+            <label class="organinfolabel">Status:</label>
+            <input readOnly class="organinfoinputs" value={IOstatus}></input>
+            <label class="organinfolabel">Glucose:</label>
+            <input readOnly class="organinfoinputs" value={IOglucose}></input>
+            <label class="organinfolabel">Serotonin:</label>
+            <input readOnly class="organinfoinputs" value={IOserotonin}></input>
+            <label class="organinfolabel">Acetylcholine:</label>
+            <input readOnly class="organinfoinputs" value={IOoxygen}></input>
+          <button class='inputbuttons' style={{marginLeft:'20px'}}>Go to Guides</button>
+
+        </div>
       </div>
     </div>
+    )}
+    
+    </>
   );
 }
 

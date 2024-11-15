@@ -6,7 +6,9 @@ function Model3dpage(){
     return(
         <div>
             <Header />
+            <div className="3dmodelpage pt-28">
             <Content3d />
+            </div>
         </div>
     );
 }
