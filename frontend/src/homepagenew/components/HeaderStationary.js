@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-const Header = () => {
+const HeaderStationary = () => {
     const [loggedin,setLoggedin]=useState(false);//false for not logged in
     const [login,setLogin]=useState("LOGIN");
     const [path,setPath]=useState("/login");
@@ -60,4 +60,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default HeaderStationary;
