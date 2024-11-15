@@ -9,27 +9,28 @@
 html,
 body {
   height: 100%;
-  background-color: #c0c0c0;
+  background-color: #6B7280;
 }
 
 .mainelements {
   font-family: Arial, Helvetica, sans-serif;
-  height: calc(100vh - 70px);
+  height: 100%;
   display: flex;
   flex-direction: row;
 }
 
 .organinfo {
-  background-color: #c0c0c0;
+  background-color: #1c2e3b;
   width: calc(50vw - 381px);
   display: flex;
   flex-direction: column;
-  max-height: 95%;
-  overflow-y: auto; /* Enables vertical scrolling */
+  max-height: 80%;
+  overflow-y: auto; 
   overflow-x: hidden;
 }
 
 .organinfolabel {
+  color:#c0c0c0;
   font-family: "Helvetica W01 Light";
   margin-left: 20px;
   font-size: large;
@@ -81,7 +82,7 @@ body {
 }
 
 .inputinfo {
-  background-color: #c0c0c0;
+  background-color: #1c2e3b;
   width: calc(50vw - 381px);
 }
 
@@ -94,7 +95,7 @@ body {
 .inputinfoheading {
   margin-left: 30px;
   font-family: "Helvetica W01 Light";
-  color: #1c2e3b;
+  color: #c0c0c0;
   margin-bottom: 18px;
   margin-top: 30px;
   font-size: 26px;
@@ -116,8 +117,8 @@ body {
   font-size: medium;
   width: 178px;
   background-color: #1c2e3b;
-  border-color: #1c2e3b;
-  border-width: 0px;
+  border-color: white;
+  border-width: 1px;
   padding: 0;
   color: white;
   height: 40px;
@@ -133,14 +134,20 @@ body {
   font-size: medium;
   width: 178px;
   background-color: #1c2e3b;
-  border-color: #1c2e3b;
-  border-width: 0px;
+  border-color: white;
+  border-width: 1px;
   padding: 0;
   color: white;
   height: 40px;
   padding: 8px 16px 10px 16px;
   margin-bottom: 20px;
   transition: color 0.25s, border-color 0.3s, background-color 0.3s,border-width 0.3s;
+}
+.inputbuttons1:hover {
+  border-color: #1c2e3b;
+  border-width: 1px;
+  color: #1c2e3b;
+  background-color: #ca8263;
 }
 
 .inputbuttons:hover {
@@ -163,6 +170,8 @@ body {
   resize: none;
   margin-left: 30px;
   margin-bottom: 20px;
+  padding-top: 6px;
+  padding-left: 5px;
 }
 textarea::-webkit-scrollbar {
   width: 10px;

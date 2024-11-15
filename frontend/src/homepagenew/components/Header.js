@@ -39,7 +39,7 @@ const Header = () => {
         controls.start({
             y: visible ? 0 : -100,  // Moves out of view when scrolling down
             opacity: visible ? 1 : 0,
-            transition: { duration: 0.5 }
+            transition: { duration: 0.4 }
         });
     }, [visible, controls]);
 

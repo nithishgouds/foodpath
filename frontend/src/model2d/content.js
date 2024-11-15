@@ -3,10 +3,22 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import EatAnimation from "../pacanimation/pacmananimation";
-
+import { useRef } from "react";
 import "./contentstyle.css";
 
 function Content() {
+
+  
+
+
+  const textareaRef = useRef(null);
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = 'auto'; // Reset height
+      textarea.style.height = `${textarea.scrollHeight}px`; // Set to scroll height
+    }
+  }, []);
   // Ensure jwt-decode is imported
   const [isSignIn, setSingIn] = useState(false);
   const navigate = useNavigate();
@@ -152,7 +164,7 @@ function Content() {
       // setConsumedFoods(aiResponse.consumable);
 
       if (!aiResponse.consumable) {
-        setConsumedFoods("Food not fit for Consumption");
+        setConsumedFoods("You can't eat that!");
         return;
       }
 
@@ -177,7 +189,7 @@ function Content() {
       console.log("something is happening");
       setEating(false);
       setEat(true);
-      setConsumedFoods("Eaten");
+      setConsumedFoods("Food Consumed");
       setHandleAddRes(aiResponse); // Update state with aiResponse
 
       // Update the state with color changes
@@ -290,7 +302,6 @@ function Content() {
                 marginLeft: "100px",
               }}
             >
-              {" "}
               Please Sign In to use model
             </label>
           </div>
@@ -308,15 +319,16 @@ function Content() {
         </div>
       )}
       {isSignIn && (
-        <div className="mainelements" style={{ marginTop: "20px" }}>
+        <div className="mainelements" style={{ marginTop: "20px" }} >
           <div class="inputinfo">
             <div style={{ marginTop: "50px" }}></div>
-            <p class="inputinfoheading">Enter Food </p>
+            <p class="inputinfoheading">ENTER FOOD</p>
             <input
               value={selectedItem}
               onChange={(event) => setSelectedItem(event.target.value)}
               class="textareas"
               type="text"
+              style={{marginBottom:'50px'}}
             ></input>
             <button class="inputbuttons1" onClick={handleAddItem}>
               Add Food
@@ -359,7 +371,7 @@ function Content() {
                 <path
                   className="path-brain"
                   fill={braincolor}
-                  onClick={() => handleSvgClick("brain")}
+                  onClick={() => handleSvgClick("Brain")}
                   d="m400.58,57.88c3.51,0 -0.58,-35.13 2.42,-36.13s11,3.75 15,3.75s12.5,6.75 15,7.5s15.5,17.37 15.5,23.5c0,3.61 3.42,6.08 2.08,11c-1.33,4.92 2.17,4.08 1.09,7.92s1,8 -0.42,10.83c-1.41,2.83 -4.28,3.17 -3.5,5.58c2.58,8 -6.42,8.59 -4.67,11.34c0.83,1.29 -0.75,5 -0.08,6.16c0.67,1.17 0,5.59 -11.25,7.59s-20.08,0.58 -21.16,2.58c-1.09,2 -3.92,6.17 -9.34,6.17c-5.42,0 -9.42,-4.17 -10.42,-5.25c-1,-1.08 -9.41,-1.83 -12.66,-2s-8.34,-2.25 -12.42,-2.42s-9.83,-4.83 -8.42,-7.5s-1.52,-3.41 -0.22,-5.16c1.31,-1.75 0.22,-1.92 -1.78,-4.09s-3.66,-5.58 -2.66,-7.58s-4.34,-4.33 -3,-8.58c1.33,-4.25 -1.75,-7.17 0.41,-10.5c2.17,-3.34 -1.5,-5.09 0.67,-12.17s2.25,-8.58 4.92,-13.33s13.41,-14.84 17.33,-16.67s5.42,-4.25 9.67,-4.75s10.31,-3.98 13.41,-4.06c3,-0.07 2.77,1.58 2.87,3.72c0.47,11.09 -0.78,32.55 1.63,32.55z"
                   fillOpacity={opacity}
                   id="brain"
@@ -368,7 +380,7 @@ function Content() {
                 <path
                   className="path-lungs"
                   fill={lungscolor}
-                  onClick={() => handleSvgClick("lungs")}
+                  onClick={() => handleSvgClick("Lungs")}
                   d="m394.58,316.5c-1.75,2.33 0.72,2.33 0.4,5c-0.31,2.67 -1.91,11.17 -1.03,14.67c0.88,3.5 -0.62,16.66 -2.62,19s-6.08,8.24 -6.16,11.83c-0.08,3.13 -1.39,5.71 -3.6,7.82c-2.85,2.73 -7.21,4.65 -12.34,5.89c-12.21,2.98 -30.48,4.04 -60.06,7.46c-9,0 -18,3 -18.84,-6c-0.69,-7.52 0,-21 -1,-26.5s3.67,-27.67 4,-35.67s3.84,-22.67 11.5,-37.17s19.5,-26 24.34,-30.16c4.83,-4.17 7.83,-11 16.16,-17.5s13.17,-5.67 17,-6.67s14,0.67 15.34,4.17c1.33,3.5 11.5,7.33 12.5,17.16s3.33,13.17 3.33,17.34s1,9 1.08,11.41c0.03,2.45 0.19,6.58 0.36,11.24c0.42,11.03 0.87,25.04 -0.36,26.68zm115.67,17.88c0.25,-6.88 -2,-17.88 -2.25,-24.25s-4.37,-19.63 -14.12,-33.5s-24.25,-28.38 -26.25,-32.25s-11.46,-11.38 -15.75,-13.25s-17.25,-5.38 -23,-1.5s1.75,4.75 -8.38,9.12s-10.92,33.75 -11.25,38.83c0.76,3.89 1.19,7.41 1.42,10.61c1.23,17.46 -3.67,25.32 5.5,29.98c11.16,5.66 27.11,10.27 27.83,18c1.33,14.33 -13.33,19 -15.33,26.33c-1.08,3.94 -5,12.83 16.33,17.67c1.31,0.29 2.57,0.72 3.79,1.24c8.38,3.56 15.03,11.85 24.73,18.52c3.39,2.33 7.17,4.46 11.51,6.12c4.09,1.56 8.68,2.7 13.97,3.2c3.5,-0.75 7.25,1.38 8.88,-1.5s0.25,-24.12 2.39,-37.25c2.14,-13.12 -0.27,-29.25 -0.02,-36.12z"
                   fillOpacity={opacity}
                   id="lungs"
@@ -378,7 +390,7 @@ function Content() {
                 <path
                   className="path-heart"
                   fill={heartcolor}
-                  onClick={() => handleSvgClick("heart")}
+                  onClick={() => handleSvgClick("Heart")}
                   d="m447,331.83c-2.83,-1.83 2.67,-3 0.17,-8.66c-1.62,-3.68 5.5,-2.5 3.42,-6.17s-3.4,0.16 -5.09,-0.16c-2.25,-0.43 -4.71,-2.81 -3.73,-3.79c3.4,-3.38 -1.85,-6.11 -2.94,-5.38c-1,0.66 -2.13,3.14 -9.5,-3.84c-6.33,-6 -23.1,-4.11 -21.5,-5.33c2.65,-2.02 4.05,-1.18 6.15,-2.67c2.35,-1.66 2.99,-16.76 -0.65,-17.25c-7.5,-1 -12.33,0 -19.66,1.25c-2.97,0.51 -0.17,-3.66 -1.17,-6.5s-10.33,-11.16 -10.83,-8.66s-1,3.66 -1.84,2.33s-7.16,0 -10.5,0s-7.66,40.33 -8.5,43s-24,6 -28,5.5s-1,3.33 1.17,5.67s14.67,-0.5 18.27,-1c3.61,-0.5 5.56,-1.34 3.9,2.83s-11.34,0.67 -13.01,5.17c-1.66,4.5 10.01,0.66 10.17,4.33s-10.33,0.33 -10.16,4.83c0.16,4.5 5.5,3.17 9.83,2.84c-1.5,5.5 5.17,10.33 11.17,19c6,8.66 19.16,0.16 21.45,5.53c2.29,5.37 16.88,11.96 26.05,15.8c6.87,2.87 21.01,8.1 31.62,7.78c3.54,-0.1 6.69,-0.82 9.04,-2.45c26.15,-18.06 -2.5,-52.16 -5.33,-54zm-66.17,-26.66c-5,-1.67 2.84,-22.71 2.84,-20.17c0,6 2.16,21.83 -2.84,20.17z"
                   fillOpacity={opacity}
                   id="heart"
@@ -387,7 +399,7 @@ function Content() {
                 <path
                   className="path-stomach"
                   fill={stomachcolor}
-                  onClick={() => handleSvgClick("stomach")}
+                  onClick={() => handleSvgClick("Stomach")}
                   d="m485.03,406.05c-0.28,-6.13 -2.81,-10.88 -6.73,-14.5c-7.04,-6.5 -18.53,-9.38 -29.51,-10.14c-3.84,-0.26 -7.62,-0.27 -11.12,-0.08c-20.79,1.16 -22.84,-33.66 -23.5,-40.16c-3,0.16 -8.34,0 -11.5,0c0.39,5.02 2.85,21.37 7.4,35.7c0.39,1.23 0.81,2.44 1.25,3.62c3.14,8.45 7.34,15.73 9.01,18.84c4.67,8.67 11,13.34 1,16s-15,13.34 -29,11c-12.29,-2.05 -51.6,-1.52 -49.67,33.44c0.27,4.83 1.31,10.32 3.34,16.56c3.75,-2.83 5,-2.83 8.5,-3.08c-0.82,-2.89 -2.56,-14.3 3.8,-20.45c1.79,-1.73 4.5,-2.92 7.45,-3.65c4.15,0.3 4.54,1.39 7.42,2.02c2.52,0.55 10.55,6.79 17,9.88c3.71,5.95 8.56,11.75 23.66,13.2c20.57,1.97 49.34,-19.75 54.79,-26.11c1.63,-1.49 2.5,-3.26 4.88,-6.26c1.84,-2.5 4.61,-3.41 7.64,-13.66c1.15,-3.88 2.34,-9.09 3.53,-16.22c0.35,-2.12 0.45,-4.09 0.36,-5.95z"
                   fillOpacity={opacity}
                   id="stomach"
@@ -397,7 +409,7 @@ function Content() {
                 <path
                   className="path-liver"
                   fill={livercolor}
-                  onClick={() => handleSvgClick("liver")}
+                  onClick={() => handleSvgClick("Liver")}
                   d="m443.3,388.29c-5.21,-3.47 -21.3,-7.79 -31.63,-7.79c-0.12,0 -0.23,-0.01 -0.35,-0.01c-10.23,-0.08 -20.94,-3.9 -29.75,-5.67c-38.99,-7.82 -61.57,-0.49 -72.4,13.35c-4,7.16 -9.67,18.33 -7.84,29.5s9.67,22.96 12.8,31.71s8.37,18.12 9.87,20s11.25,-3.13 15.88,-6.63c0.93,-1.08 1.86,-2.07 2.78,-2.98c5.69,-5.62 11.25,-8.2 17.47,-10.6c8.6,-3.33 18.45,-6.35 31.62,-16.67c38.75,-0.75 54.5,-17.5 58.5,-25.75s-1.75,-15 -6.95,-18.46z"
                   fillOpacity={opacity}
                   id="liver"
@@ -407,7 +419,7 @@ function Content() {
                 <g
                   fillOpacity={opacity}
                   className="path-intestine"
-                  onClick={() => handleSvgClick("intestines")}
+                  onClick={() => handleSvgClick("Intestines")}
                   fill={intestinecolor}
                   id="intestine"
                   stroke="rgb(255, 128, 128)"
@@ -434,8 +446,10 @@ function Content() {
                     <p class="inputinfoheading">History</p>
                     <textarea 
                       readOnly
+                      ref={textareaRef}
                       class="textareas"
-                      value={consumedFoodsText}
+                      style={{paddingBottom:'20px',textAlign:'top',height:'auto', maxHeight:'300px'}}
+                      value=''/*{consumedFoodsText}*/
                     ></textarea>
                     <div
                       className="organinfoinputs"
