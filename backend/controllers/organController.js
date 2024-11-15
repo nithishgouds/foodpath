@@ -77,7 +77,7 @@ const addFood = async (req, res) => {
         try {
             let aiResponse = await run(foodItemsString);
 
-            console.log(aiResponse);
+            //console.log(aiResponse);
             aiResponse = JSON.parse(aiResponse);
 
             res.json({
