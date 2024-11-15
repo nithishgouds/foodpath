@@ -321,7 +321,7 @@ function Content3d(){
             <label class="organinfolabel">Glucose:</label>
             <input readOnly class="organinfoinputs" value={IOglucose}></input>
             <label class="organinfolabel">Serotonin:</label>
-            <input readOnly class="organinfoinputs" value={IOserotonin}></input>
+            <input readOnly class="organinfoinputs" value={IOcalories}></input>
             <label class="organinfolabel">Acetylcholine:</label>
             <input readOnly class="organinfoinputs" value={IOoxygen}></input>
           <button class='inputbuttons' style={{marginLeft:'20px'}}>Go to Guides</button>
