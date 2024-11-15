@@ -17,7 +17,7 @@ const Header = () => {
       if (token) {
         setLoggedin(true);
         setLogin("LOGOUT");
-        setPath("/signup");
+        setPath("/login");
       }
     }, []);
 

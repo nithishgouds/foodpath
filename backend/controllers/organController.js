@@ -4,7 +4,7 @@ app.use(express.json());
 
 const ConsumedFoods = require('../models/consumedFoodSchema'); // Ensure this path is correct
 const { run } = require('../Gemini_API/modelStatusAPI'); // If you're using the AI function
-
+const { runseparate } = require('../Gemini_API/separate_model_factors');
 
 // Route handler for adding food items
 const addFood = async (req, res) => {
@@ -48,9 +48,12 @@ const addFood = async (req, res) => {
         // Optionally process the food items with AI
         try {
             let aiResponse = await run(foodItemsString);
+            let aiResponseSeparate= await runseparate(foodItemsString);
+
 
             console.log(aiResponse);
             aiResponse = JSON.parse(aiResponse);
+            aiResponse
 
             res.json({
                 
@@ -70,8 +73,6 @@ const addFood = async (req, res) => {
 
 const resetConsumedFoods= async(req,res)=>
 {
-
-    console.log("Entered the reset");
     const { email }=req.body;
 
     if(!email)

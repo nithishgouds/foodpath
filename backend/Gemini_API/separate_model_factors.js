@@ -1,4 +1,4 @@
-require('dotenv').config({ path: 'C:/Users/honey/codei/testingsoftware/gemini testing/backend/.env' });
+require('dotenv').config({ path: '../frontend/.env' });
 const {
     GoogleGenerativeAI,
     HarmCategory,
@@ -21,7 +21,7 @@ const {
     responseMimeType: "application/json",
   };
   
-  async function runseperate(Foods_eaten) {
+  async function runseparate(Foods_eaten) {
     const chatSession = model.startChat({
       generationConfig,
       history: [
