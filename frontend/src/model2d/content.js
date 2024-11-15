@@ -284,9 +284,9 @@ function Content() {
       </div>
       }
       {isSignIn && (
-        <div className="mainelements" style={{marginTop:'20px'}}>
+        <div className="mainelements" s>
           <div class="inputinfo">
-            <div style={{ marginTop: "50px" }}></div>
+            {/* <div style={{ marginTop: "50px" }}></div> */}
             <p class="inputinfoheading">Enter Food </p>
             <input
               value={selectedItem}
