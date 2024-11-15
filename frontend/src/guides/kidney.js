@@ -8,9 +8,7 @@ function Kidney() {
 
   return (
     <div className="App">
-      <header className='newhead'>
-        <h1 className='para'>What's Good and Bad for Your Kidney?</h1>
-      </header>
+     
       <div className='newflex'>
         <h3 className='head3'>Current Status Of The Kidney</h3>
         <h2 className='heading'>Status of the Kidney:</h2>

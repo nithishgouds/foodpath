@@ -9,9 +9,7 @@ function Brain() {
   return(
 <div className='newapp'>
     <div className="App">
-    <header className='newhead'>
-      <h1 className='para'>What's Good and Bad for Your Brain?</h1>
-    </header>
+  
    <div className='newflex'>
 
       <h3 className='head3'  >Current Status Of The Brain</h3>

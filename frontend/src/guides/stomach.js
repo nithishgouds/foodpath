@@ -11,16 +11,14 @@ function Stomach(){
   return(
 
     <div className="App">
-    <header className='newhead'>
-      <h1  className='para' >What's Good and Bad for Your Stomach?</h1>
-    </header>
+  
    <div className='newflex'>
 
       <h3 className='head3'>Current Status Of The Stomach</h3>
 
       
           <h2  className='heading'>Status of the Stomach :</h2>
-          <div class="container">
+            <div class="containernew">
       
     
      <p className='guides_stomach_status_text'>
@@ -31,14 +29,14 @@ function Stomach(){
      
    
           <h2 className='heading'>Foods Consumed :</h2>
-          <div class="container"> 
+            <div class="containernew"> 
           
        
   <p className='guides_stomach_consumed_text'>
 {guides_stomach_consumed_text}
   </p>
     </div><h2 className='heading'>Info about the Stomach:</h2>
-          <div class="container">
+            <div class="containernew">
          
   <p className='guides_Stomach_info_text'> {guides_stomach_info_text}</p>
   <img src="https://pluspng.com/img-png/stomach-png-hd-stomach-png-238.png"

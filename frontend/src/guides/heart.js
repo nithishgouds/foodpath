@@ -9,9 +9,7 @@ function Heart(){
     return(
 
         <div className="App">
-        <header className='newhead'>
-          <h1  className='para'  >What's Good and Bad for Your Heart?</h1>
-        </header>
+       
        <div className='newflex'>
    
           <h3 className='head3'>Current Status Of The Heart</h3>

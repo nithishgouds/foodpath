@@ -10,16 +10,14 @@ function Lungs(){
   return(
 
     <div className="App">
-    <header className='newhead'>
-      <h1  className='para' >What's Good and Bad for Your Lungs?</h1>
-    </header>
+    
    <div className='newflex'>
 
       <h3 className='head3'>Current Status Of The Lungs</h3>
 
       
           <h2  className='heading'>Status of the Lungs :</h2>
-          <div class="container">
+            <div class="containernew">
       
     
      <p className='guides_lungs_status_text'>
@@ -30,14 +28,14 @@ function Lungs(){
      
    
           <h2 className='heading'>Foods Consumed :</h2>
-          <div class="container"> 
+            <div class="containernew"> 
         
        
   <p className='guides_lungs_consumed_text'>
 {guides_lungs_consumed_text}
   </p>
     </div><h2 className='heading'>Info about the Lungs :</h2>
-          <div class="container">
+            <div class="containernew">
         
   <p className='guides_lungs_info_text'> {guides_lungs_info_text}</p>
   <img src="https://static.vecteezy.com/system/resources/previews/035/589/357/original/ai-generated-3d-realistic-human-lungs-with-a-transparent-background-png.png"
