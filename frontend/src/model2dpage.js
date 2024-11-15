@@ -1,16 +1,17 @@
 // import Navbar from "./model2d/navbar";
 import Content from "./model2d/content";
 import React from "react";
-import HeaderStationary from "./homepagenew/components/HeaderStationary";
+import Header from "./homepagenew/components/Header";
+import './App.css'
 
 function Model2dpage() {
   return (
     <>
-      {/* <div className="main-background bg-gray-500 flex flex-col min-h-screen items-center  px-4"> */}
-      <HeaderStationary />
-      {/* <div className="2dmodelpage pt-24"> */}
+      <div style={{paddingTop:'95px'}}></div>
+      <Header />
+      <div className="Hi" style={{backgroundColor:'#1C2E3B',width:'94%',marginTop:'20px',borderRadius:'20px',padding:'20px',position:'relative',zIndex:'10',diplay:'flex',marginLeft:'53px',marginBottom:'7px'}}>
       <Content />
-       {/* </div>  */}
+      </div>
     </>
   );
 }

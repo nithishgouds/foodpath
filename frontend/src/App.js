@@ -13,6 +13,7 @@ import Liver from './guides/liver';
 import Signup from './loginsignup/signup';
 import Model3dpage from './model3dpage';
 import Faq from "./homepagenew/components/Faq";
+import TrophiesPage from './trophies/trophies';
 function App() {
   return (
       
@@ -22,6 +23,7 @@ function App() {
               <Route path='/faq' element={<Faq/>}/>
             <Route path='/model2dpage' element={<Model2dpage/>}/>
             <Route path='/model3dpage' element={<Model3dpage/>}/>
+            <Route path='/trophies' element={<TrophiesPage/>}/>
               <Route path="/guides/brain" element={<Brain />} />
               <Route path="/guides/lungs" element={<Lungs />} />
                <Route path="/guides/heart" element={<Heart />} />

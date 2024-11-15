@@ -3,10 +3,22 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import EatAnimation from "../pacanimation/pacmananimation";
-
+import { useRef } from "react";
 import "./contentstyle.css";
 
 function Content() {
+
+  
+
+
+  const textareaRef = useRef(null);
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = 'auto'; // Reset height
+      textarea.style.height = `${textarea.scrollHeight}px`; // Set to scroll height
+    }
+  }, []);
   // Ensure jwt-decode is imported
   const [isSignIn, setSingIn] = useState(false);
   const navigate = useNavigate();
@@ -152,7 +164,7 @@ function Content() {
       // setConsumedFoods(aiResponse.consumable);
 
       if (!aiResponse.consumable) {
-        setConsumedFoods("Food not fit for Consumption");
+        setConsumedFoods("You can't eat that!");
         return;
       }
 
@@ -177,7 +189,7 @@ function Content() {
       console.log("something is happening");
       setEating(false);
       setEat(true);
-      setConsumedFoods("Eaten");
+      setConsumedFoods("Food Consumed");
       setHandleAddRes(aiResponse); // Update state with aiResponse
 
       // Update the state with color changes
@@ -204,10 +216,12 @@ function Content() {
   const [IOglucose, setIOglucose] = useState("");
   const [IOcalories, setIOcalories] = useState("");
   const [IOoxygen, setIOoxygen] = useState("");
+  var svgCapitalName;
 
   const handleSvgClick = async (svgName) => {
     try {
-      setIOorgan(svgName);
+      svgCapitalName=svgName.charAt(0).toUpperCase() + svgName.slice(1);
+      setIOorgan(svgCapitalName);
 
       if (!handleAddRes) {
         setEat(false);
@@ -220,7 +234,6 @@ function Content() {
 
       console.log(`svg clicked ${svgName}`);
       console.log(handleAddRes.health_status.intestines.rating); // Debug to check if it exists
-
       // Access properties from handleAddRes directly
       setIOstatus(Ostatus(handleAddRes.health_status[svgName].rating));
       setIOglucose(
@@ -278,8 +291,8 @@ function Content() {
   return (
     <>
       {!isSignIn && (
-        <div>
-          <div>
+        <div >
+          <div className="Hi">
             <label
               className="inputinfoheading"
               style={{
@@ -290,7 +303,6 @@ function Content() {
                 marginLeft: "100px",
               }}
             >
-              {" "}
               Please Sign In to use model
             </label>
           </div>
@@ -308,15 +320,16 @@ function Content() {
         </div>
       )}
       {isSignIn && (
-        <div className="mainelements" style={{ marginTop: "20px" }}>
+        <div className="mainelements" style={{ marginTop: "20px" }} >
           <div class="inputinfo">
             <div style={{ marginTop: "50px" }}></div>
-            <p class="inputinfoheading">Enter Food </p>
+            <p class="inputinfoheading">ENTER FOOD</p>
             <input
               value={selectedItem}
               onChange={(event) => setSelectedItem(event.target.value)}
               class="textareas"
               type="text"
+              style={{marginBottom:'50px',borderRadius:'6px',paddingBottom:'20px',paddingTop:'20px',lineHeight:'50px',color:'#1c2e3b'}}
             ></input>
             <button class="inputbuttons1" onClick={handleAddItem}>
               Add Food
@@ -434,19 +447,21 @@ function Content() {
                     <p class="inputinfoheading">History</p>
                     <textarea 
                       readOnly
+                      ref={textareaRef}
                       class="textareas"
-                      value={consumedFoodsText}
+                      style={{paddingBottom:'20px',textAlign:'top',height:'auto', maxHeight:'300px'}}
+                      value=''/*{consumedFoodsText}*/
                     ></textarea>
                     <div
-                      className="organinfoinputs"
-                      style={{ borderWidth: "0px", fontSize: "20px" }}
+                      className="organinfolabel"
+                      style={{ paddingLeft:'10px',borderWidth: "0px", fontSize: "20px", fontSize:'23px' }}
                     >
                       Click on organ to view its stats!
                     </div>
                     {!isEat && (
                       <div
-                        className="organinfoinputs"
-                        style={{ borderWidth: "0px", fontSize: "20px" }}
+                        className="organinfolabel"
+                        style={{ paddingLeft:'10px',borderWidth: "0px", fontSize: "20px", fontSize:'23px' }}
                       >
                         Please Eat some food!
                       </div>
