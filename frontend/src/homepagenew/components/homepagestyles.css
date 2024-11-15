@@ -164,3 +164,6 @@ body {
 .but3d{
     transform: translate(300px,0px);
 }
+.z-custom{
+    z-index: 200;
+}

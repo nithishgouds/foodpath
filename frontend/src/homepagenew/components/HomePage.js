@@ -8,10 +8,10 @@ import About from "./About.js";
 
 const HomePage = () => {
     return (
-        <div className="main-background bg-gray-500 flex flex-col items-center  px-4">
+        <div className="main-background bg-gray-500 flex flex-col items-center pt-24  px-4">
             {/* Added w-full to main-background */}
             <Header/>
-            <div className="content-overlay flex-grow  w-full max-w-9xl">
+            <div className="content-overlay flex-grow  w-full max-w-9xl ">
                 <HeroSection/>
             </div>
             <div className="another-content-layer  w-full max-w-9xl">
