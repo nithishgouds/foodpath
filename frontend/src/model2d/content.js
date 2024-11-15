@@ -213,6 +213,8 @@ function Content() {
   };
 
   const ResetModel = async () => {
+    setActive(false);
+    setConsumedFoods("resetting...");
     try {
       const response = await axios.post(
         "http://localhost:3001/api/organs/reset-consumed-foods",
@@ -220,7 +222,7 @@ function Content() {
           email: email,
         }
       );
-      isActive(false);
+      setConsumedFoods("resetted...");
       // setConsumedFoods(response.data.consumedFoods);
       setOpacity(0);
       setIOstatus(" ");
@@ -268,12 +270,12 @@ function Content() {
             <button class="inputbuttons" onClick={handleAddItem}>
               Add Food
             </button>
-            <p class="inputinfoheading">Eaten Food:</p>
+            {/* <p class="inputinfoheading">Eaten Food:</p>
             <textarea
               readOnly
               class="textareas"
               value={consumedFoodsText}
-            ></textarea>
+            ></textarea> */}
             <button
               class="inputbuttons"
               onClick={ResetModel}
@@ -376,7 +378,16 @@ function Content() {
             <div class="organinfostats">
               <div class="organstats">
                 <div style={{ height: "50px" }}></div>
-                {!isActive && <div>Click on organ to view its stats!</div>}
+                {!isActive &&
+                <div>
+                   <div>Click on organ to view its stats!</div>
+                <p class="inputinfoheading">Eaten Food:</p>
+                <textarea
+                  readOnly
+                  class="textareas"
+                  value={consumedFoodsText}
+                ></textarea>
+                </div>}
                 {!isEat && <div>Please Eat some food!</div>}
                 {isActive && (
                   <div>
