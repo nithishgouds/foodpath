@@ -217,6 +217,7 @@ img
 .containernew{
   border-radius: 1em;
   color: #de4331; 
+  text-align: left;
 
 }
 @keyframes textGlow {
