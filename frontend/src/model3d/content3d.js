@@ -189,8 +189,8 @@ function Content3d(){
 
   const handleOrganClick = async (OrgName) => {
     try {
-      setActive(false);
-      isActive()
+      // setActive(false);
+      // isActive()
       setIOorgan(OrgName);
       if (!handleAddRes) {
         console.error("Error: handleAddRes is not set. Please call handleAddItem first.");
@@ -318,11 +318,11 @@ function Content3d(){
             <input readOnly class="organinfoinputs" value={IOorgan}></input>
             <label class="organinfolabel">Status:</label>
             <input readOnly class="organinfoinputs" value={IOstatus}></input>
-            <label class="organinfolabel">Glucose:</label>
+            <label class="organinfolabel">Blood Glucose Levels:</label>
             <input readOnly class="organinfoinputs" value={IOglucose}></input>
-            <label class="organinfolabel">Serotonin:</label>
+            <label class="organinfolabel">Calorie Levels:</label>
             <input readOnly class="organinfoinputs" value={IOcalories}></input>
-            <label class="organinfolabel">Acetylcholine:</label>
+            <label class="organinfolabel">Oxygen Levels:</label>
             <input readOnly class="organinfoinputs" value={IOoxygen}></input>
           <button class='inputbuttons' style={{marginLeft:'20px'}}>Go to Guides</button>
 
