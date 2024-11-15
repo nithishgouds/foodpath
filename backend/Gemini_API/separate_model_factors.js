@@ -56,6 +56,6 @@ const {
     console.log(result.response.text());
     return result.response.text();
   }
-  module.exports={runseperate};
+  module.exports={runseparate};
   
  // runseperate("bonda");

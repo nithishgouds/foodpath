@@ -51,7 +51,7 @@ const addFood = async (req, res) => {
     }
 
     // Split the foodItems string by spaces and filter out any empty items
-    const foodItemsArray = foodItems.split(' ').filter(item => item.trim() !== '');
+    const foodItemsArray = foodItems.split(',').filter(item => item.trim() !== '');
 
     try {
         // Find the user in ConsumedFoods or create a new entry if not found
@@ -80,15 +80,16 @@ const addFood = async (req, res) => {
             let aiResponseSeparate= await runseparate(foodItemsString);
 
 
-            console.log(aiResponse);
+           // console.log(aiResponse);
             aiResponse = JSON.parse(aiResponse);
-            aiResponse
+            aiResponse = JSON.parse(aiResponseSeparate);
 
             res.json({
                 
                 message: 'Foods added successfully',
                 consumedFoods: user.consumedFoods, // You can return the food items as a string
-                aiResponse: aiResponse
+                aiResponse: aiResponse,
+                aiResponseSeparate: aiResponseSeparate
             });
         } catch (aiError) {
             res.status(500).json({ error: 'Error processing food data in AI', details: aiError.message });
