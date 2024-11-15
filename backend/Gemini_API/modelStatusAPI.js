@@ -14,7 +14,7 @@ const {
   
   const model = genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
-    systemInstruction: "Analyze the impact of consuming [food item] on human health. Provide a detailed breakdown of its effects on various organs, including the brain, heart, liver, lungs, stomach, kidneys, and intestines. Quantify these effects by assigning a health status rating (0-4) to each organ, where 0 indicates severe damage, 1 indicates optimal health, 2 indicates moderate health, 3 indicates moderate damage, and 4 indicates severe damage. Additionally, provide estimated values for oxygen levels, blood glucose levels and calorie levels in each organ post-consumption compared to normal human body values. Present the results solely in a JSON format.",
+    systemInstruction: "Analyze the impact of consuming [food item] on human health. Provide a detailed breakdown of its effects on various organs, including the brain, heart, liver, lungs, stomach, kidneys, and intestines. Quantify these effects by assigning a health status rating (0-4) to each organ, where 0 indicates very severe damage, 1 indicates optimal health, 2 indicates moderate health, 3 indicates moderate damage, and 4 indicates severe damage. Additionally, provide estimated values for oxygen levels, blood glucose levels and calorie levels in each organ post-consumption compared to normal human body values. Present the results solely in a JSON format.",
   });
   
   const generationConfig = {
