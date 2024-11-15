@@ -190,7 +190,6 @@ function Content3d(){
   const handleOrganClick = async (OrgName) => {
     try {
       setActive(false);
-      isActive()
       setIOorgan(OrgName);
       if (!handleAddRes) {
         console.error("Error: handleAddRes is not set. Please call handleAddItem first.");
