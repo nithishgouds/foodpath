@@ -37,7 +37,7 @@ body {
 }
 
 .content-overlay {
-    background-color: #1C2E3B ; /* Slightly transparent for floating effect */
+    /* background-color: #1C2E3B ;  */
     width: 94%; /* Width of the main content area */
     margin-top: 20px;
     height: 280vh;
@@ -46,6 +46,7 @@ body {
     position: relative;
     z-index: 10; /* Ensures overlay is above the background */
     display: flex;
+        background: radial-gradient(circle at center, #1c2a3b 50%, #2a3d52 80%, #3e4b64 100%);
 }
 
 .hero-cutout {
@@ -154,6 +155,8 @@ body {
     position: relative;
     z-index: 10; /* Ensures overlay is above the background */
     display: flex;
+    background: linear-gradient(to bottom left, #e2b571,#d3a174, #CA8263, #ca8263);
+
 }
 .paragraph2{
     transform: translate(580px,70px);

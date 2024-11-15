@@ -17,6 +17,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: row;
+  
 }
 
 .organinfo {
@@ -27,6 +28,7 @@ body {
   max-height: 95%;
   overflow-y: auto; /* Enables vertical scrolling */
   overflow-x: hidden;
+  
 }
 
 .organinfolabel {
