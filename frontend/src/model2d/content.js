@@ -2,10 +2,23 @@ import React, { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import EatAnimation from "../pacanimation/pacmananimation";
+import { useRef } from "react";
 import "./contentstyle.css";
 
 function Content() {
+
+  
+
+
+  const textareaRef = useRef(null);
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = 'auto'; // Reset height
+      textarea.style.height = `${textarea.scrollHeight}px`; // Set to scroll height
+    }
+  }, []);
   // Ensure jwt-decode is imported
   const [isSignIn, setSingIn] = useState(false);
   const navigate = useNavigate();
@@ -125,7 +138,7 @@ function Content() {
 
   const [selectedItem, setSelectedItem] = useState("");
   const [consumedFoods, setConsumedFoods] = useState("");
-
+  const [isEating, setEating] = useState(false);
   const [handleAddRes, setHandleAddRes] = useState(null);
 
   const handleAddItem = async () => {
@@ -142,29 +155,26 @@ function Content() {
         "http://localhost:3001/api/organs/validatefood",
         {
           foodItems: selectedItem,
-     
         }
       );
 
       const { aiResponse } = response.data;
-      
+
       console.log("something is happening");
       // setConsumedFoods(aiResponse.consumable);
 
-      if(!aiResponse.consumable){
-        setConsumedFoods("cant consume");
+      if (!aiResponse.consumable) {
+        setConsumedFoods("You can't eat that!");
         return;
       }
 
       setConsumedFoods("consumable");
-     
-
-
     } catch (error) {
       console.error("Error adding food item:", error);
     }
 
     try {
+      setEating(true);
       setConsumedFoods("eating...");
       console.log(selectedItem);
       const response = await axios.post(
@@ -177,7 +187,9 @@ function Content() {
 
       const { aiResponse } = response.data;
       console.log("something is happening");
-      setConsumedFoods("ate...");
+      setEating(false);
+      setEat(true);
+      setConsumedFoods("Food Consumed");
       setHandleAddRes(aiResponse); // Update state with aiResponse
 
       // Update the state with color changes
@@ -186,7 +198,9 @@ function Content() {
       setheartColor(colourrating(aiResponse.health_status.heart.rating));
       setliverColor(colourrating(aiResponse.health_status.liver.rating));
       setstomachColor(colourrating(aiResponse.health_status.stomach.rating));
-      setintestineColor(colourrating(aiResponse.health_status.intestines.rating));
+      setintestineColor(
+        colourrating(aiResponse.health_status.intestines.rating)
+      );
       setOpacity(0.5);
     } catch (error) {
       console.error("Error adding food item:", error);
@@ -196,16 +210,18 @@ function Content() {
   //consumedFoodsText
 
   const [IOorgan, setIOorgan] = useState("");
-  const [isActive, setActive] = useState(false);//for checking if an organ is selected
+  const [isActive, setActive] = useState(false); //for checking if an organ is selected
   const [isEat, setEat] = useState(true);
   const [IOstatus, setIOstatus] = useState("");
   const [IOglucose, setIOglucose] = useState("");
   const [IOcalories, setIOcalories] = useState("");
   const [IOoxygen, setIOoxygen] = useState("");
+  var svgCapitalName;
 
   const handleSvgClick = async (svgName) => {
     try {
-      setIOorgan(svgName);
+      svgCapitalName=svgName.charAt(0).toUpperCase() + svgName.slice(1);
+      setIOorgan(svgCapitalName);
 
       if (!handleAddRes) {
         setEat(false);
@@ -218,7 +234,6 @@ function Content() {
 
       console.log(`svg clicked ${svgName}`);
       console.log(handleAddRes.health_status.intestines.rating); // Debug to check if it exists
-
       // Access properties from handleAddRes directly
       setIOstatus(Ostatus(handleAddRes.health_status[svgName].rating));
       setIOglucose(
@@ -275,34 +290,56 @@ function Content() {
 
   return (
     <>
-      {!isSignIn && 
-      <div>
-      <div>
-        <label className="inputinfoheading" style={{textAlign:'center', fontSize:'50px', minWidth:'100%', minHeight:'100%',marginLeft:'100px'}}> Please Sign In to use model</label>
-      </div>
-      <a href='/login' className="organinfolabel" style={{textDecoration:'underline', marginLeft:'100px',fontSize:'30px'}}>Proceed to Log In</a>
-      </div>
-      }
+      {!isSignIn && (
+        <div>
+          <div>
+            <label
+              className="inputinfoheading"
+              style={{
+                textAlign: "center",
+                fontSize: "50px",
+                minWidth: "100%",
+                minHeight: "100%",
+                marginLeft: "100px",
+              }}
+            >
+              Please Sign In to use model
+            </label>
+          </div>
+          <a
+            href="/login"
+            className="organinfolabel"
+            style={{
+              textDecoration: "underline",
+              marginLeft: "100px",
+              fontSize: "30px",
+            }}
+          >
+            Proceed to Log In
+          </a>
+        </div>
+      )}
       {isSignIn && (
-        <div className="mainelements" style={{marginTop:'20px'}}>
+        <div className="mainelements" style={{ marginTop: "20px" }} >
           <div class="inputinfo">
             <div style={{ marginTop: "50px" }}></div>
-            <p class="inputinfoheading">Enter Food </p>
+            <p class="inputinfoheading">ENTER FOOD</p>
             <input
               value={selectedItem}
               onChange={(event) => setSelectedItem(event.target.value)}
               class="textareas"
               type="text"
+              style={{marginBottom:'50px',borderRadius:'6px',paddingBottom:'20px',paddingTop:'20px',lineHeight:'50px',color:'#1c2e3b'}}
             ></input>
-            <button class="inputbuttons" onClick={handleAddItem}>
+            <button class="inputbuttons1" onClick={handleAddItem}>
               Add Food
             </button>
-            <p class="inputinfoheading">Status</p>
-            <textarea
-              readOnly
-              class="textareas"
-              value={consumedFoodsText}
-            ></textarea>
+            <p class="inputinfoheading">{consumedFoodsText}</p>
+            {isEating && (
+              <>
+                <EatAnimation />
+              </>
+            )}
             <button
               class="inputbuttons"
               onClick={ResetModel}
@@ -423,17 +460,32 @@ function Content() {
             <div class="organinfostats">
               <div class="organstats">
                 <div style={{ height: "50px" }}></div>
-                {!isActive &&
-                <div>
-                   <div>Click on organ to view its stats!</div>
-                <p class="inputinfoheading">History</p>
-                <textarea
-                  readOnly
-                  class="textareas"
-                  value={consumedFoodsText}
-                ></textarea>
-                </div>}
-                {!isEat && <div>Please Eat some food!</div>}
+                {!isActive && (
+                  <div>
+                    <p class="inputinfoheading">History</p>
+                    <textarea 
+                      readOnly
+                      ref={textareaRef}
+                      class="textareas"
+                      style={{paddingBottom:'20px',textAlign:'top',height:'auto', maxHeight:'300px'}}
+                      value=''/*{consumedFoodsText}*/
+                    ></textarea>
+                    <div
+                      className="organinfolabel"
+                      style={{ paddingLeft:'10px',borderWidth: "0px", fontSize: "20px", fontSize:'23px' }}
+                    >
+                      Click on organ to view its stats!
+                    </div>
+                    {!isEat && (
+                      <div
+                        className="organinfolabel"
+                        style={{ paddingLeft:'10px',borderWidth: "0px", fontSize: "20px", fontSize:'23px' }}
+                      >
+                        Please Eat some food!
+                      </div>
+                    )}
+                  </div>
+                )}
                 {isActive && (
                   <div>
                     <label className="organinfolabel">Organ:</label>
@@ -469,6 +521,22 @@ function Content() {
                     />
 
                     <label className="organinfolabel">Oxygen Levels</label>
+                    <textarea
+                      readOnly
+                      className="organinfoinputs"
+                      style={{ height: "auto" }}
+                      value={IOoxygen}
+                    />
+
+                    <label className="organinfolabel">dummy 1</label>
+                    <textarea
+                      readOnly
+                      className="organinfoinputs"
+                      style={{ height: "auto" }}
+                      value={IOoxygen}
+                    />
+
+                    <label className="organinfolabel">dummy 2</label>
                     <textarea
                       readOnly
                       className="organinfoinputs"

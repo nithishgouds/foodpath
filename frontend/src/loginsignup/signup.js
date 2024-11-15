@@ -3,7 +3,7 @@ import Snavbar from '../homepage/snavbar';
 import { useState, useEffect } from 'react';
 import Birds from 'vanta/src/vanta.birds';
 import { useNavigate } from 'react-router-dom';
-import Header from '../homepagenew/components/Header'
+import HeaderStationary from '../homepagenew/components/HeaderStationary';
 import Axios from 'axios';
 
 // // export default function (){
@@ -87,7 +87,7 @@ export default function Login(){
 
   return (
     <>
-      <Header />
+      <HeaderStationary />
       <div className="loginelements">
         <div className="vantaelements" id="vanta"></div>
         <div className="loginfields">

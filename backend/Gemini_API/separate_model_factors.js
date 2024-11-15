@@ -21,7 +21,7 @@ const {
     responseMimeType: "application/json",
   };
   
-  async function runseperate(Foods_eaten) {
+  async function runseparate(Foods_eaten) {
     const chatSession = model.startChat({
       generationConfig,
       history: [
@@ -56,6 +56,6 @@ const {
     console.log(result.response.text());
     return result.response.text();
   }
-  module.exports={runseperate};
+  module.exports={runseparate};
   
  // runseperate("bonda");

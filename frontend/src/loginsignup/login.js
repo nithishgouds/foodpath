@@ -74,7 +74,7 @@ import { useEffect, useState} from 'react';
 import React from 'react';
 import Axios from 'axios';
 import Birds from 'vanta/src/vanta.waves';
-import Header from "../homepagenew/components/Header";
+import HeaderStationary from "../homepagenew/components/HeaderStationary";
 import { useNavigate } from 'react-router-dom';
 
 export default function Login(){
@@ -89,6 +89,7 @@ export default function Login(){
       shininess: 67,
       waveHeight: 11.5,
       zoom: 0.7,
+      speed: 3
     });
   }, []);
   useEffect(() => {
@@ -125,7 +126,7 @@ export default function Login(){
 
   return(
     <>
-      <Header/>
+      <HeaderStationary/>
       <div className="loginelements">
       <div className="vantaelements" id="vanta"></div>
       <div className="loginfields">
