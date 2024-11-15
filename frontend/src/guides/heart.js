@@ -18,7 +18,7 @@ function Heart(){
 
           
               <h2  className='heading'>Status of the Organ :</h2>
-              <div class="container">
+              <div class="containernew">
           
         
          <p className='guides_heart_status_text'>
@@ -29,7 +29,7 @@ function Heart(){
          
        
               <h2 className='heading'>Foods Consumed :</h2>
-              <div class="container"> 
+              <div class="containernew"> 
               
          
            
@@ -38,7 +38,7 @@ function Heart(){
       </p>
             </div>
           <h2 className='heading'>Info about the organ :</h2>
-          <div class="container">
+          <div class="containernew">
         
   <p className='guides_heart_info_text'> {guides_heart_info_text}</p>
   <img src="https://png.pngtree.com/png-vector/20240722/ourmid/pngtree-real-human-heart-isolated-on-transparent-background-png-image_13102597.png"

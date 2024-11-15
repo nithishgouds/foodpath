@@ -17,7 +17,7 @@ function Intestine(){
 
       
           <h2  className='heading'>Status of the Intestine :</h2>
-          <div class="container">
+          <div class="containernew">
       
     
      <p className='guides_intestine_status_text'>
@@ -28,14 +28,14 @@ function Intestine(){
      
    
           <h2 className='heading'>Foods Consumed :</h2>
-          <div class="container"> 
+          <div class="containernew"> 
         
        
   <p className='guides_intestine_consumed_text'>
 {guides_intestine_consumed_text}
   </p>
     </div><h2 className='heading'>Info about the Intestine :</h2>
-          <div class="container">
+          <div class="containernew">
          
   <p className='guides_intestine_info_text'> {guides_intestine_info_text}</p>
   <img src="https://img.freepik.com/premium-photo/life-art_1139222-8704.jpg"

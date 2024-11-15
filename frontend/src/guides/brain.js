@@ -18,7 +18,7 @@ function Brain() {
 
       
           <h2  className='heading'>Status of the Organ :</h2>
-          <div class="container">
+          <div class="containernew">
       
     
      <p className='guides_brain_status_text'>
@@ -29,7 +29,7 @@ function Brain() {
      
    
           <h2 className='heading'>Foods Consumed :</h2>
-          <div class="container"> 
+          <div class="containernew"> 
           
        
   <p className='guides_brain_consumed_text'>
@@ -37,7 +37,7 @@ function Brain() {
   </p>
        </div>
       <h2 className='heading'>Info about the brain :</h2>
-          <div class="container">
+          <div class="containernew">
           
   <p className='guides_brain_info_text'> {guides_brain_info_text}</p>
 <img src="https://th.bing.com/th/id/R.3cd0ee5e418250f2d18a186841ce60cc?rik=vJb2qOAZkQJ8Zw&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f04%2fBrain-PNG-Image.png&ehk=cIrtlwwNSqpbI9itUL0CMD3%2b0C59yTt37Wj8jOauEAU%3d&risl=&pid=ImgRaw&r=0"

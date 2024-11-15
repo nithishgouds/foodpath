@@ -214,9 +214,9 @@ img
       text-shadow: 0 0 10px  #de4331;
   }
 }
-.container{
+.containernew{
   border-radius: 1em;
-  color: #de4331;
+  color: #de4331; 
 
 }
 @keyframes textGlow {

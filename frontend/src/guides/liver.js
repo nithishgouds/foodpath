@@ -17,7 +17,7 @@ function Liver(){
 
       
           <h2  className='heading'>Status of the Liver :</h2>
-          <div class="container">
+            <div class="containernew">
       
     
      <p className='guides_liver_status_text'>
@@ -28,7 +28,7 @@ function Liver(){
      
    
           <h2 className='heading'>Foods Consumed :</h2>
-          <div class="container"> 
+            <div class="containernew"> 
          
      
        
@@ -37,7 +37,7 @@ function Liver(){
   </p>
     </div>
   <h2 className='heading'>Info about the liver :</h2>
-          <div class="container">
+            <div class="containernew">
          
   <p className='guides_liver_info_text'> {guides_liver_info_text}</p>
   <img   src="https://pngfre.com/wp-content/uploads/Liver-21.png"

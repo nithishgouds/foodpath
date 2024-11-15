@@ -216,12 +216,14 @@ function Content() {
   const [IOglucose, setIOglucose] = useState("");
   const [IOcalories, setIOcalories] = useState("");
   const [IOoxygen, setIOoxygen] = useState("");
+  const [organName, setOrganName] = useState("");
   var svgCapitalName;
 
   const handleSvgClick = async (svgName) => {
     try {
       svgCapitalName=svgName.charAt(0).toUpperCase() + svgName.slice(1);
       setIOorgan(svgCapitalName);
+      setOrganName(svgName)
 
       if (!handleAddRes) {
         setEat(false);
@@ -253,6 +255,9 @@ function Content() {
   const handleHistoryButton = () => {
     setActive(false);
   };
+  const handleGuideButton = () => {
+    navigate('/guides/'+organName)
+  }
 
   const ResetModel = async () => {
     setActive(false);
@@ -529,6 +534,7 @@ function Content() {
                     <button
                       className="inputbuttons"
                       style={{ marginLeft: "20px" }}
+                      onClick={handleGuideButton}
                     >
                       Go to Guides
                     </button>

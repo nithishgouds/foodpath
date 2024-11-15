@@ -14,19 +14,19 @@ function Kidney() {
       <div className='newflex'>
         <h3 className='head3'>Current Status Of The Kidney</h3>
         <h2 className='heading'>Status of the Kidney:</h2>
-        <div className="container">
+          <div className="containernew">
           <p className='guides_kidney_status_text'>{guides_kidney_status_text}</p>
         </div>
 
         <h2 className='heading'>Foods Consumed:</h2>
-        <div className="container">
+          <div className="containernew">
          
             <p className='guides_kidney_consumed_text'>{guides_kidney_consumed_text}</p>
           </div>
        
 
         <h2 className='heading'>Info about the Kidney:</h2>
-        <div className="container">
+          <div className="containernew">
          
             <p className='guides_kidney_info_text'>{guides_kidney_info_text}</p>
         
