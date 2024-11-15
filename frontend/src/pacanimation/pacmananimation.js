@@ -1,0 +1,70 @@
+
+import React, { useEffect, useState } from "react";
+import "./pacmanstyle.css";
+import pmo from "./pmo.png";
+import pmc from "./pmc.png";
+
+import apple from './apple.png';
+import burger from './burger.png';
+
+import dot from "./dot.png";
+
+const pacmanStates = [pmo,pmc];
+const foodItems = [apple,burger];
+
+const generateInitialFoodQueue = () => {
+  const initialQueue = [];
+  for (let i = 0; i < 4; i++) {
+    initialQueue.push(dot);
+    initialQueue.push(foodItems[Math.floor(Math.random() * foodItems.length)]);
+    initialQueue.push(dot);
+  }
+  return initialQueue;
+};
+
+const EatAnimation = () => {
+  const [pacmanIndex, setPacmanIndex] = useState(0);
+  const [foodQueue, setFoodQueue] = useState(generateInitialFoodQueue());
+
+  useEffect(() => {
+    const pacmanInterval = setInterval(() => {
+      setPacmanIndex((prevIndex) => (prevIndex + 1) % pacmanStates.length);
+    }, 100);
+
+    const foodInterval = setInterval(() => {
+      setFoodQueue((prevQueue) => {
+        const newQueue = [...prevQueue.slice(1)];
+        var i=false;
+        if (newQueue.filter((item) => item !== dot).length < 3 && !i) {
+          var a = Math.floor(Math.random() * foodItems.length);
+          newQueue.push(foodItems[a]);
+          i=true;
+        } else {
+          newQueue.push(dot);
+          i=false;
+        }
+        return newQueue;
+      });
+    }, 500);
+
+    return () => {
+      clearInterval(pacmanInterval);
+      clearInterval(foodInterval);
+    };
+  }, []);
+
+  return (
+    <div className="pacman-container">
+      <div >
+        <img className="pacman" src={pacmanStates[pacmanIndex]} alt="Pacman" />
+      </div>
+      <div className="food-queue">
+        {foodQueue.map((item, index) => (
+          <img key={index} src={item} alt="Food item" />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default EatAnimation;

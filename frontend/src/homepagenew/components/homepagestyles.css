@@ -123,6 +123,10 @@ body {
 /* homepagestyles.css */
 /* ... other styles ... */
 
+.z-custom{
+    z-index: 200;
+}
+
 .journey-text {
     position: absolute;
     top: 210%; /* Position below the cutout */

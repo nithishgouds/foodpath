@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
@@ -17,7 +18,7 @@ const Header = () => {
         if (token) {
             setLoggedin(true);
             setLogin("LOGOUT");
-            setPath("/signup");
+            setPath("/login");
         }
     }, []);
 
