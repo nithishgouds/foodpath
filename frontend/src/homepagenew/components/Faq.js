@@ -31,7 +31,7 @@ function Faq() {
         <div className="q1 mt-40 ml-20">
           <motion.p
             id="q1que"
-            className="font-worksans text-5xl font-extralight"
+            className="font-worksans text-5xl font-light"
             variants={questionVariantsLeft}
             initial="hidden"
             whileInView="visible"
@@ -58,7 +58,7 @@ function Faq() {
           <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px] ml-auto mr-0"></div>
           <motion.p
             id="q2que"
-            className="font-worksans text-5xl font-extralight"
+            className="font-worksans text-5xl font-light"
             variants={questionVariantsRight}
             initial="hidden"
             whileInView="visible"
@@ -85,7 +85,7 @@ function Faq() {
           <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px]"></div>
           <motion.p
             id="q3que"
-            className="font-worksans text-5xl font-extralight"
+            className="font-worksans text-5xl font-light"
             variants={questionVariantsLeft}
             initial="hidden"
             whileInView="visible"
@@ -111,7 +111,7 @@ function Faq() {
           <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px] ml-auto mr-0"></div>
           <motion.p
             id="q4que"
-            className="font-worksans text-5xl font-extralight"
+            className="font-worksans text-5xl font-light"
             variants={questionVariantsRight}
             initial="hidden"
             whileInView="visible"
@@ -138,7 +138,7 @@ function Faq() {
           <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px]"></div>
           <motion.p
             id="q5que"
-            className="font-worksans text-5xl font-extralight max-w-screen-md"
+            className="font-worksans text-5xl font-light max-w-screen-md"
             variants={questionVariantsLeft}
             initial="hidden"
             whileInView="visible"
@@ -165,7 +165,7 @@ function Faq() {
           <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px] ml-auto mr-0"></div>
           <motion.p
             id="q6que"
-            className="font-worksans text-5xl font-extralight max-w-screen-md text-right"
+            className="font-worksans text-5xl font-light max-w-screen-md text-right"
             variants={questionVariantsRight}
             initial="hidden"
             whileInView="visible"
@@ -192,7 +192,7 @@ function Faq() {
           <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px]"></div>
           <motion.p
             id="q7que"
-            className="font-worksans text-5xl font-extralight max-w-screen-md"
+            className="font-worksans text-5xl font-light max-w-screen-md"
             variants={questionVariantsLeft}
             initial="hidden"
             whileInView="visible"
@@ -217,7 +217,7 @@ function Faq() {
           <div className="linex w-[421px] h-[1px] bg-black my-[10px] mb-[75px] ml-auto mr-0 "></div>
           <motion.p
             id="q8que"
-            className="font-worksans text-5xl font-extralight max-w-screen-md text-right"
+            className="font-worksans text-5xl font-light max-w-screen-md text-right"
             variants={questionVariantsRight}
             initial="hidden"
             whileInView="visible"
@@ -244,7 +244,7 @@ function Faq() {
           <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px]"></div>
           <motion.p
             id="q9que"
-            className="font-worksans text-5xl font-extralight max-w-screen-md"
+            className="font-worksans text-5xl font-light max-w-screen-md"
             variants={questionVariantsLeft}
             initial="hidden"
             whileInView="visible"
@@ -265,16 +265,16 @@ function Faq() {
         </div>
 
         {/* Q10 */}
-        <div className="q10 mt-40 mr-24 text-right">
+        {/* <div className="q10 mt-40 mr-24 text-right">
           <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px] ml-auto mr-0"></div>
           <motion.p
             id="q10que"
-            className="font-worksans text-5xl font-extralight max-w-screen-md"
+            className="font-worksans text-5xl font-light max-w-screen-md"
             variants={questionVariantsRight}
             initial="hidden"
             whileInView="visible"
           >
-            How can I get support if I have questions or issues?
+            Venky show dengutaada?
           </motion.p>
 
           <motion.p
@@ -284,10 +284,9 @@ function Faq() {
             initial="hidden"
             whileInView="visible"
           >
-            Contact Us at contact@foodpath.com
-            <br /> +91 1234567890
+            Yes
           </motion.p>
-        </div>
+        </div> */}
       </div>
       <Footer />
     </div>

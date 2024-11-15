@@ -280,7 +280,7 @@ function Content3d(){
           </div>
       
       <div class="model2d">
-        <div style={{ height: "calc(100vh - 64px)", backgroundColor:'white' }}>
+        <div style={{ height: "calc(100vh - 64px)", backgroundColor:'#c0c0c0' }}>
           <Canvas
             camera={{ position: [0, 1, 5], fov: 50 }} 
           >

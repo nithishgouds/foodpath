@@ -80,7 +80,6 @@ const addFood = async (req, res) => {
             let aiResponseSeparate= await runseparate(foodItemsString);
 
 
-           // console.log(aiResponse);
             aiResponse = JSON.parse(aiResponse);
             aiResponse = JSON.parse(aiResponseSeparate);
 
