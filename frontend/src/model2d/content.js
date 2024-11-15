@@ -137,6 +137,35 @@ function Content() {
     }
 
     try {
+      setConsumedFoods("checking food...");
+      console.log(selectedItem);
+      const response = await axios.post(
+        "http://localhost:3001/api/organs/validatefood",
+        {
+          foodItems: selectedItem,
+     
+        }
+      );
+
+      const { aiResponse } = response.data;
+      
+      console.log("something is happening");
+      // setConsumedFoods(aiResponse.consumable);
+
+      if(!aiResponse.consumable){
+        setConsumedFoods("cant consume");
+        return;
+      }
+
+      setConsumedFoods("consumable");
+     
+
+
+    } catch (error) {
+      console.error("Error adding food item:", error);
+    }
+
+    try {
       setConsumedFoods("eating...");
       console.log(selectedItem);
       const response = await axios.post(
@@ -158,9 +187,7 @@ function Content() {
       setheartColor(colourrating(aiResponse.health_status.heart.rating));
       setliverColor(colourrating(aiResponse.health_status.liver.rating));
       setstomachColor(colourrating(aiResponse.health_status.stomach.rating));
-      setintestineColor(
-        colourrating(aiResponse.health_status.intestines.rating)
-      );
+      setintestineColor(colourrating(aiResponse.health_status.intestines.rating));
       setOpacity(0.5);
     } catch (error) {
       console.error("Error adding food item:", error);

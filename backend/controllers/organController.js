@@ -4,9 +4,37 @@ app.use(express.json());
 
 const ConsumedFoods = require('../models/consumedFoodSchema'); // Ensure this path is correct
 const { run } = require('../Gemini_API/modelStatusAPI'); // If you're using the AI function
-
+const { validatefood } = require('../Gemini_API/foodvalidation');
 
 // Route handler for adding food items
+
+
+const validfood = async (req, res) => {
+    const {  foodItems } = req.body;
+
+    console.log('Received body:', req.body);
+
+    if (!foodItems) {
+        return res.status(400).json({ error: 'Food items string is required.' });
+    }
+
+       try {
+            let aiResponse = await validatefood(foodItems);
+
+            console.log(aiResponse);
+            aiResponse = JSON.parse(aiResponse);
+
+            res.json({
+                aiResponse: aiResponse
+            });
+        } catch (aiError) {
+            res.status(500).json({ error: 'Error validatng food in AI', details: aiError.message });
+        }
+
+
+};
+
+
 const addFood = async (req, res) => {
     const { email, foodItems } = req.body;
 
@@ -106,4 +134,4 @@ const resetConsumedFoods= async(req,res)=>
     }
 };
 
-module.exports = { addFood , resetConsumedFoods };
+module.exports = { addFood , resetConsumedFoods,validfood };

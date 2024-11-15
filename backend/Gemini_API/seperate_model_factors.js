@@ -1,4 +1,4 @@
-require('dotenv').config({ path: 'C:/Users/honey/codei/testingsoftware/gemini testing/backend/.env' });
+require('dotenv').config({ path: '../frontend/.env' });
 const {
     GoogleGenerativeAI,
     HarmCategory,
@@ -56,5 +56,6 @@ const {
     console.log(result.response.text());
     return result.response.text();
   }
+  module.exports={runseperate};
   
  // runseperate("bonda");
