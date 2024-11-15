@@ -318,7 +318,7 @@ function Content() {
               class="textareas"
               type="text"
             ></input>
-            <button class="inputbuttons" onClick={handleAddItem}>
+            <button class="inputbuttons1" onClick={handleAddItem}>
               Add Food
             </button>
             <p class="inputinfoheading">{consumedFoodsText}</p>
@@ -431,16 +431,28 @@ function Content() {
                 <div style={{ height: "50px" }}></div>
                 {!isActive && (
                   <div>
-                    <div>Click on organ to view its stats!</div>
                     <p class="inputinfoheading">History</p>
-                    <textarea
+                    <textarea 
                       readOnly
                       class="textareas"
                       value={consumedFoodsText}
                     ></textarea>
+                    <div
+                      className="organinfoinputs"
+                      style={{ borderWidth: "0px", fontSize: "20px" }}
+                    >
+                      Click on organ to view its stats!
+                    </div>
+                    {!isEat && (
+                      <div
+                        className="organinfoinputs"
+                        style={{ borderWidth: "0px", fontSize: "20px" }}
+                      >
+                        Please Eat some food!
+                      </div>
+                    )}
                   </div>
                 )}
-                {!isEat && <div>Please Eat some food!</div>}
                 {isActive && (
                   <div>
                     <label className="organinfolabel">Organ:</label>
