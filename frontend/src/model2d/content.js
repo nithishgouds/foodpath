@@ -126,7 +126,7 @@ function Content() {
 
   const [selectedItem, setSelectedItem] = useState("");
   const [consumedFoods, setConsumedFoods] = useState("");
-
+  const [isEating, setEating] = useState(false);
   const [handleAddRes, setHandleAddRes] = useState(null);
 
   const handleAddItem = async () => {
@@ -143,29 +143,26 @@ function Content() {
         "http://localhost:3001/api/organs/validatefood",
         {
           foodItems: selectedItem,
-     
         }
       );
 
       const { aiResponse } = response.data;
-      
+
       console.log("something is happening");
       // setConsumedFoods(aiResponse.consumable);
 
-      if(!aiResponse.consumable){
-        setConsumedFoods("cant consume");
+      if (!aiResponse.consumable) {
+        setConsumedFoods("Food not fit for Consumption");
         return;
       }
 
       setConsumedFoods("consumable");
-     
-
-
     } catch (error) {
       console.error("Error adding food item:", error);
     }
 
     try {
+      setEating(true);
       setConsumedFoods("eating...");
       console.log(selectedItem);
       const response = await axios.post(
@@ -178,7 +175,9 @@ function Content() {
 
       const { aiResponse } = response.data;
       console.log("something is happening");
-      setConsumedFoods("ate...");
+      setEating(false);
+      setEat(true);
+      setConsumedFoods("Eaten");
       setHandleAddRes(aiResponse); // Update state with aiResponse
 
       // Update the state with color changes
@@ -187,7 +186,9 @@ function Content() {
       setheartColor(colourrating(aiResponse.health_status.heart.rating));
       setliverColor(colourrating(aiResponse.health_status.liver.rating));
       setstomachColor(colourrating(aiResponse.health_status.stomach.rating));
-      setintestineColor(colourrating(aiResponse.health_status.intestines.rating));
+      setintestineColor(
+        colourrating(aiResponse.health_status.intestines.rating)
+      );
       setOpacity(0.5);
     } catch (error) {
       console.error("Error adding food item:", error);
@@ -320,12 +321,12 @@ function Content() {
             <button class="inputbuttons" onClick={handleAddItem}>
               Add Food
             </button>
-            <p class="inputinfoheading">Status</p>
-            <textarea
-              readOnly
-              class="textareas"
-              value={consumedFoodsText}
-            ></textarea>
+            <p class="inputinfoheading">{consumedFoodsText}</p>
+            {isEating && (
+              <>
+                <EatAnimation />
+              </>
+            )}
             <button
               class="inputbuttons"
               onClick={ResetModel}
@@ -475,6 +476,22 @@ function Content() {
                     />
 
                     <label className="organinfolabel">Oxygen Levels</label>
+                    <textarea
+                      readOnly
+                      className="organinfoinputs"
+                      style={{ height: "auto" }}
+                      value={IOoxygen}
+                    />
+
+                    <label className="organinfolabel">dummy 1</label>
+                    <textarea
+                      readOnly
+                      className="organinfoinputs"
+                      style={{ height: "auto" }}
+                      value={IOoxygen}
+                    />
+
+                    <label className="organinfolabel">dummy 2</label>
                     <textarea
                       readOnly
                       className="organinfoinputs"
