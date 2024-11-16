@@ -1,11 +1,87 @@
 import './Brain.css';
+import axios from "axios";
 import React, { useState } from 'react';
+import { jwtDecode } from "jwt-decode";
 
 function Brain() {
 
   const [guides_brain_status_text, setguides_brain_status_text] = useState("This is the initial text .");
   const [guides_brain_consumed_text, setguides_brain_consumed_text] = useState("This is the initial text.");
   const [guides_brain_info_text, setguides_brain_info_text] = useState("This is the initial text.");
+
+    // Ensure jwt-decode is imported
+    const [isSignIn, setSingIn] = useState(false);
+    const navigate = useNavigate();
+    let email;
+  
+    const token = localStorage.getItem("jwtToken");
+    console.log(token);
+  
+    const checkSignIn = () => {
+      if (token) {
+        setSingIn(true);
+      }
+    };
+  
+    useEffect(() => {
+      checkSignIn();
+    });
+  
+    if (token) {
+      try {
+        console.log("Entered token check");
+  
+        // Decode the JWT token to extract the payload
+        const decodedToken = jwtDecode(token);
+        console.log(decodedToken); // Log the entire decoded token to check its structure
+  
+        console.log(decodedToken.email);
+  
+        // Check if the decoded token contains the email property
+        if (decodedToken && decodedToken.email) {
+          email = decodedToken.email;
+          console.log("Decoded email:", email);
+        } else {
+          console.log("Email not found in token payload.");
+        }
+      } catch (error) {
+        console.error("Failed to decode token:", error);
+      }
+    } else {
+      console.log("No JWT token found in localStorage.");
+    }
+
+
+  const [organName, setOrganName] = useState("Brain");        // Set default or dynamic organ name
+
+  useEffect(() => {
+    // Make POST request with email and organName in the body
+    axios.post('http://localhost:3001/api/organs/organ-status', {
+      email: email,
+      organName: organName,
+    })
+      .then(response => {
+        // Update state with the response data
+        setguides_brain_status_text(response.data.status);
+        setguides_brain_consumed_text(response.data.foodsConsumed.join(', '));
+        setguides_brain_info_text(`
+          ${response.data.guides1}
+          ${response.data.guides2}
+          ${response.data.guides3}
+          ${response.data.guides4}
+          ${response.data.guides5}
+          ${response.data.guides6}
+          ${response.data.guides7}
+          ${response.data.guides8}
+        `);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, [email, organName]);
+
+  
+
   return(
 <div className='newapp'>
     <div className="App">

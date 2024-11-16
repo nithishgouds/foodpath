@@ -23,7 +23,7 @@ const validfood = async (req, res) => {
        try {
             let aiResponse = await validatefood(foodItems);
 
-            console.log(aiResponse);
+            //console.log(aiResponse);
             aiResponse = JSON.parse(aiResponse);
 
             res.json({

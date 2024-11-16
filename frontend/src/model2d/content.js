@@ -218,7 +218,52 @@ function Content() {
   const [IOcalories, setIOcalories] = useState("");
   const [IOoxygen, setIOoxygen] = useState("");
   const [organName, setOrganName] = useState("");
+
+  const [seperateFactor1label, setseperateFactor1label] = useState("SF1");
+  const [seperateFactor2label, setseperateFactor2label] = useState("SF2");
+  const [seperateFactor1value, setseperateFactor1value] = useState("SV1");
+  const [seperateFactor2value, setseperateFactor2value] = useState("SV2");
+  
+
   var svgCapitalName;
+
+  const getSeperateFactor1 = (svgName) => {
+    switch (svgName) {
+      case "brain":
+        return "Neurotransmitter_Levels";
+      case "heart":
+        return "Plant_Sterols";
+      case "liver":
+        return "Choline";
+      case "kidneys":
+        return "Phosphorus";
+      case "lungs":
+        return "Vitamin_C";
+      case "stomach":
+        return "Polyphenols";
+      case "intestines":
+        return "Prebiotics";
+      }
+  };
+
+  const getSeperateFactor2 = (svgName) => {
+    switch (svgName) {
+      case "brain":
+        return "Amino_Acids";
+      case "heart":
+        return "Magnesium";
+      case "liver":
+        return "Fats";
+      case "kidneys":
+        return "Potassium";
+      case "lungs":
+        return "Carotenoids";
+      case "stomach":
+        return "Zinc";
+      case "intestines":
+        return "Polyphenols";
+      }
+  };
 
   const handleSvgClick = async (svgName) => {
     try {
@@ -238,6 +283,14 @@ function Content() {
       console.log(`svg clicked ${svgName}`);
       console.log(handleAddRes.health_status.intestines.rating); // Debug to check if it exists
       // Access properties from handleAddRes directly
+      var sf1=getSeperateFactor1(svgName);
+      var sf2=getSeperateFactor2(svgName);
+
+      setseperateFactor1label(sf1);
+      setseperateFactor2label(sf2);
+      setseperateFactor1value(handleAddRes.post_consumption_values[sf1]);
+      setseperateFactor2value(handleAddRes.post_consumption_values[sf2]);
+
       setIOstatus(Ostatus(handleAddRes.health_status[svgName].rating));
       setIOglucose(
         handleAddRes.post_consumption_values.blood_glucose_levels
@@ -292,6 +345,8 @@ function Content() {
       console.error("Error adding food item:", error);
     }
   };
+
+
 
   const consumedFoodsText = consumedFoods; //.map(item => `${item.foodItem} `).join('\n');
 
@@ -536,20 +591,20 @@ function Content() {
                       value={IOoxygen}
                     />
 
-                    <label className="organinfolabel">dummy 1</label>
+                    <label className="organinfolabel"  >{seperateFactor1label}</label>
                     <textarea
                       readOnly
                       className="organinfoinputs"
                       style={{ height: "auto" }}
-                      value={IOoxygen}
+                      value={seperateFactor1value}
                     />
 
-                    <label className="organinfolabel">dummy 2</label>
+                    <label className="organinfolabel"  >{seperateFactor2label}</label>
                     <textarea
                       readOnly
                       className="organinfoinputs"
                       style={{ height: "auto" }}
-                      value={IOoxygen}
+                      value={seperateFactor2value}
                     />
 
                     <button

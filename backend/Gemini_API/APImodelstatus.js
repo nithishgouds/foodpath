@@ -10,7 +10,7 @@ const {
   const genAI = new GoogleGenerativeAI(apiKey);
   
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
+    model: "gemini-1.5-pro",
     systemInstruction: "Given a food item, analyze its impact on the health of the brain, heart, liver, lungs, stomach, kidneys, and intestines, rating each organ from 0 to 4 (0 = very severe damage, 1 = healthy, 2 = very healthy, 3 = unhealthy, 4 = very unhealthy). Also, provide the post-consumption values for oxygen levels, blood glucose, calorie levels, neurotransmitter levels, amino acids, vitamins, and other nutrients as follows:\ninput:status burger\noutput:\n{\n  \"health_status\": {\n    \"brain\": {\n      \"rating\": 2\n    },\n    \"heart\": {\n      \"rating\": 2\n    },\n    \"liver\": {\n      \"rating\": 2\n    },\n    \"lungs\": {\n      \"rating\": 1\n    },\n    \"stomach\": {\n      \"rating\": 2\n    },\n    \"kidneys\": {\n      \"rating\": 2\n    },\n    \"intestines\": {\n      \"rating\": 2\n    }\n  },\n  \"post_consumption_values\": {\n    \"oxygen_levels\": \"Minimal change\",\n    \"blood_glucose_levels\": \"Temporary increase followed by a decrease\",\n    \"calorie_levels\": \"Minimal change\",\n    \"Neurotransmitter_Levels\": \"no significant change\",\n    \"Amino_Acids\": \"moderate\",\n    \"Vitamin_C\": \"low\",\n    \"Carotenoids\": \"low\",\n    \"Potassium\": \"moderate\",\n    \"Phosphorus\": \"moderate\",\n    \"Fats\": \"moderate\",\n    \"Choline\": \"low\",\n    \"Polyphenols\": \"low\",\n    \"Zinc\": \"moderate\",\n    \"Prebiotics\": \"not present\",\n    \"Magnesium\": \"moderate\",\n    \"Plant_Sterols\": \"low\"\n  }\n}\n",
   });
   
