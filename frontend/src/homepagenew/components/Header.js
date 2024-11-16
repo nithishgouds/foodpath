@@ -73,6 +73,11 @@ const Header = () => {
                                 GUIDES
                             </a>
                         </li>
+                        <li className="nav-item mr-12">
+                            <a href="/trophies" className="hover:text-customHoverColor transition duration-300">
+                                TROPHIES
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <div className="flex items-center space-x-2 pr-8 font-helvetica">
