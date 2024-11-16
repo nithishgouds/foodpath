@@ -315,7 +315,7 @@ function Content() {
           email: email,
         }
       );
-      setConsumedFoods("resetted...");
+      setConsumedFoods("Model Reset Successfully");
       // setConsumedFoods(response.data.consumedFoods);
       setOpacity(0);
       setIOstatus(" ");

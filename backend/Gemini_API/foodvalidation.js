@@ -9,7 +9,7 @@ const {
   const genAI = new GoogleGenerativeAI(apiKey);
   
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-pro",
+    model: "gemini-1.5-flash-8b",
     systemInstruction: "Analyze whether the given item text can be classified as 'consumable.' An item is considered consumable if it is designed to be ingested, inhaled, absorbed, or otherwise used by humans in a way that affects the body. Provide a binary classification in JSON format:\n\n0 for 'Not Consumable' (e.g., non-edible objects, tools, or items not intended for consumption).\n1 for 'Consumable' (e.g., food, drinks, medicines, or products meant for consumption like cigarettes or chewing gum).\n\nInput: status cigarette\nOutput:\n{  \n  \"consumable\": 1  \n}",
   });
   

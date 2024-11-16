@@ -4,7 +4,6 @@ import axios from "axios";
 import React, { useState } from 'react';
 import { jwtDecode } from "jwt-decode";
 import { useEffect } from 'react';
-import React, { useState } from 'react';
 function Intestine(){
   const [guides_intestine_status_text, setguides_intestine_status_text] = useState("Analysing...");
   const [guides_intestine_consumed_text, setguides_intestine_consumed_text] = useState("Getting...");
