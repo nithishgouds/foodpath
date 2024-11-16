@@ -7,7 +7,7 @@ const ConsumedFoods = require('../models/consumedFoodSchema'); // Ensure this pa
 const { run } = require('../Gemini_API/APImodelstatus');
 const { runseparate } = require('../Gemini_API/separate_model_factors');
 const { validatefood } = require('../Gemini_API/foodvalidation');
-
+const {organGuide}= require('../Gemini_API/organGuidesAPI');
 // Route handler for adding food items
 
 
@@ -82,7 +82,7 @@ const addFood = async (req, res) => {
 
 
             aiResponse = JSON.parse(aiResponse);
-            //aiResponseSeparate = JSON.parse(aiResponseSeparate);
+            
 
             res.json({
                 
@@ -137,4 +137,103 @@ const resetConsumedFoods= async(req,res)=>
     }
 };
 
-module.exports = { addFood , resetConsumedFoods,validfood };
+
+
+// const validateOrganGuide = async (req, res) => {
+//     const { email, organName } = req.body;
+
+//     console.log('Received body:', req.body);
+
+//     if (!email) {
+//         return res.status(400).json({ error: 'Email is required.' });
+//     }
+
+//     if (!organName) {
+//         return res.status(400).json({ error: 'Organ name is required.' });
+//     }
+
+//     try {
+//         const user = await ConsumedFoods.findOne({ email });
+
+//         if (!user) {
+//             return res.status(404).json({ error: 'User not found.' });
+//         }
+
+//         try {
+//             const organGuideResponse = await organGuide(email, organName);
+//             const parsedResponse = JSON.parse(organGuideResponse);
+
+//             res.json({
+//                 message: 'Organ guide data retrieved successfully',
+//                 organGuide: parsedResponse,
+//             });
+//         } catch (apiError) {
+//             res.status(500).json({
+//                 error: 'Error processing organ guide data in AI',
+//                 details: apiError.message,
+//             });
+//         }
+//     } catch (dbError) {
+//         res.status(500).json({
+//             error: 'Error validating email in the database',
+//             details: dbError.message,
+//         });
+//     }
+// };
+
+
+const validateOrganGuide = async (req, res) => {
+    const { email, organName } = req.body;
+
+    console.log('Received body:', req.body);
+
+    // Ensure both email and organName are provided
+    if (!email) {
+        return res.status(400).json({ error: 'Email is required.' });
+    }
+
+    if (!organName) {
+        return res.status(400).json({ error: 'Organ name is required.' });
+    }
+
+    try {
+        // Check if the email exists in the database and fetch their consumedFoods
+        const user = await ConsumedFoods.findOne({ email });
+
+        if (!user || !user.consumedFoods || user.consumedFoods.length === 0) {
+            return res.status(404).json({ error: 'User not found or no consumed foods available.' });
+        }
+
+        // Extract food items from the user's consumedFoods array
+        const foodItemsArray = user.consumedFoods.map(item => item.foodItem).filter(item => item.trim() !== '');
+        const foodItemsString = foodItemsArray.join(','); // Prepare food items as a single string separated by commas
+
+        // Send data to the organGuides API
+        try {
+            const organGuideResponse = await organGuide(organName, foodItemsString);
+
+            // Assume organGuide returns a response in JSON format
+            const parsedResponse = JSON.parse(organGuideResponse);
+
+            res.json({
+                message: 'Organ guide data retrieved successfully',
+                AIorganGuideRes: parsedResponse,
+                consumedFoods: foodItemsString
+            });
+        } catch (apiError) {
+            res.status(500).json({
+                error: 'Error processing organ guide data in AI',
+                details: apiError.message,
+            });
+        }
+    } catch (dbError) {
+        res.status(500).json({
+            error: 'Error fetching user data from the database',
+            details: dbError.message,
+        });
+    }
+};
+
+
+
+module.exports = { addFood , resetConsumedFoods,validfood,validateOrganGuide };

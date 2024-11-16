@@ -1,12 +1,115 @@
 
 import './Brain.css';
+import axios from "axios";
 import React, { useState } from 'react';
+import { jwtDecode } from "jwt-decode";
+import { useEffect } from 'react';
 function Lungs(){
 
        
-  const [guides_lungs_status_text, setguides_lungs_status_text] = useState("This is the initial text .");
-  const [guides_lungs_consumed_text, setguides_lungs_consumed_text] = useState("This is the initial text.");
-  const [guides_lungs_info_text, setguides_lungs_info_text] = useState("This is the initial text.");
+  const [guides_lungs_status_text, setguides_lungs_status_text] = useState("Analysing...");
+  const [guides_lungs_consumed_text, setguides_lungs_consumed_text] = useState("Getting...");
+  const [guides_lungs_info_text, setguides_lungs_info_text] = useState("Analysing...");
+
+
+    // Ensure jwt-decode is imported
+    const [isSignIn, setSingIn] = useState(false);
+
+    let email;
+  
+    const token = localStorage.getItem("jwtToken");
+    console.log(token);
+  
+    const checkSignIn = () => {
+      if (token) {
+        setSingIn(true);
+      }
+    };
+  
+    useEffect(() => {
+      checkSignIn();
+    });
+  
+    if (token) {
+      try {
+        console.log("Entered token check");
+  
+        // Decode the JWT token to extract the payload
+        const decodedToken = jwtDecode(token);
+        console.log(decodedToken); // Log the entire decoded token to check its structure
+  
+        console.log(decodedToken.email);
+  
+        // Check if the decoded token contains the email property
+        if (decodedToken && decodedToken.email) {
+          email = decodedToken.email;
+          console.log("Decoded email:", email);
+        } else {
+          console.log("Email not found in token payload.");
+        }
+      } catch (error) {
+        console.error("Failed to decode token:", error);
+      }
+    } else {
+      console.log("No JWT token found in localStorage.");
+    }
+
+
+  const [organName, setOrganName] = useState("Lungs");
+  
+  function Ostatus(a) {
+    switch (a) {
+      case 0:
+        return "DEAD";
+        break;
+      case 1:
+        return "Healthy";
+        break;
+      case 2:
+        return "Very Healthy";
+        break;
+      case 3:
+        return "UnHealthy";
+        break;
+      case 4:
+        return "Very UnHealthy";
+        break;
+      default:
+        return "Normal";
+    }
+  }
+
+  useEffect(() => {
+    // Make POST request with email and organName in the body
+    axios.post('http://localhost:3001/api/organs/organGuides', {
+      email: email,
+      organName: organName,
+    })
+      .then(response => {
+        const { message, AIorganGuideRes, consumedFoods } = response.data;
+    
+        // Update state with the response data
+        setguides_lungs_status_text(Ostatus(AIorganGuideRes.rating)); // Set the status to the message received
+        // setguides_brain_consumed_text(consumedFoods.join(', '));
+        setguides_lungs_consumed_text(consumedFoods);  // Convert consumedFoods array to a comma-separated string
+        setguides_lungs_info_text(`
+        1) ${AIorganGuideRes.guide1}
+        2) ${AIorganGuideRes.guide2}
+        3) ${AIorganGuideRes.guide3}
+        4) ${AIorganGuideRes.guide4}
+        5) ${AIorganGuideRes.guide5}
+        6) ${AIorganGuideRes.guide6}
+        7) ${AIorganGuideRes.guide7}
+        8) ${AIorganGuideRes.guide8}
+        `); // Format guides in separate lines
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+    
+  }, [email, organName]);
+
+
   return(
 
     <div className="App">
@@ -39,7 +142,11 @@ function Lungs(){
     </div><h2 className='heading'>Info about the Lungs :</h2>
             <div class="containernew">
         
-  <p className='guides_lungs_info_text'> {guides_lungs_info_text}</p>
+            <div>
+    {guides_lungs_info_text.split('\n').map((line, index) => (
+      <p className='guides_brain_info_text'> {line}</p>
+    ))}
+  </div>
   <img src="https://static.vecteezy.com/system/resources/previews/035/589/357/original/ai-generated-3d-realistic-human-lungs-with-a-transparent-background-png.png"
 alt='.'
   className="food-image-i"/>
