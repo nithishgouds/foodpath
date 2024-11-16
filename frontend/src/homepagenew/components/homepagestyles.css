@@ -1,6 +1,8 @@
 @import url('https://db.onlinewebfonts.com/c/e89eb1cff9eb261b0d77a4dea27f1ef1?family=Helvetica+W01+Light');
 @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,7 +37,7 @@ body {
 }
 
 .content-overlay {
-    background-color: #1C2E3B ; /* Slightly transparent for floating effect */
+    /* background-color: #1C2E3B ;  */
     width: 94%; /* Width of the main content area */
     margin-top: 20px;
     height: 280vh;
@@ -44,6 +46,7 @@ body {
     position: relative;
     z-index: 10; /* Ensures overlay is above the background */
     display: flex;
+        background: radial-gradient(circle at center, #1c2a3b 50%, #2a3d52 80%, #3e4b64 100%);
 }
 
 .hero-cutout {
@@ -79,7 +82,7 @@ body {
     background-color: #FFFDF9 ; /* Slightly transparent for floating effect */
     width: 94%; /* Width of the main content area */
     margin-top: 20px;
-    height: 122vh;
+    height: 135vh;
     border-radius: 20px;
     padding: 20px;
     position: relative;
@@ -152,6 +155,8 @@ body {
     position: relative;
     z-index: 10; /* Ensures overlay is above the background */
     display: flex;
+    background: linear-gradient(to bottom left, #e2b571,#d3a174, #CA8263, #ca8263);
+
 }
 .paragraph2{
     position: absolute;
@@ -168,4 +173,7 @@ body {
 }
 .but3d{
     transform: translate(300px,0px);
+}
+.z-custom{
+    z-index: 200;
 }

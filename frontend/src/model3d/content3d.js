@@ -7,6 +7,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from "react-router-dom";
+import EatAnimation from "../pacanimation/pacmananimation";
 //import Organstructure from './organstructure.js';
 
 
@@ -139,6 +140,7 @@ function Content3d(){
   const [quantity, setquantity] = useState("");
   const [consumedFoods, setConsumedFoods] = useState([]);
   const [isEat, setEat] = useState(false);
+  const [isEating,setEating]=useState(false);
 
 
 
@@ -153,6 +155,7 @@ function Content3d(){
 
     try {
       setConsumedFoods("eating...");
+      setEating(true);
       console.log(selectedItem);
       const response = await axios.post("http://localhost:3001/api/organs/add-food", {
         foodItems: selectedItem,
@@ -162,6 +165,7 @@ function Content3d(){
       const { aiResponse } = response.data;
       console.log("something is happening");
       setConsumedFoods("ate...");
+      setEating(false);
       setHandleAddRes(aiResponse); // Update state with aiResponse
 
       // Update the state with color changes
@@ -175,6 +179,8 @@ function Content3d(){
       
 
     } catch (error) {
+      setEating(false);
+      setConsumedFoods('error!');
       console.error("Error adding food item:", error);
     }
   };
@@ -189,8 +195,9 @@ function Content3d(){
 
   const handleOrganClick = async (OrgName) => {
     try {
+      // setActive(false);
+      // isActive()
       setActive(false);
-      isActive()
       setIOorgan(OrgName);
       if (!handleAddRes) {
         console.error("Error: handleAddRes is not set. Please call handleAddItem first.");
@@ -242,17 +249,39 @@ function Content3d(){
 
   return (
     <>
-    {!isSignIn && 
-      <div>
-      <div>
-        <label className="inputinfoheading" style={{textAlign:'center', fontSize:'50px', minWidth:'100%', minHeight:'100%',marginLeft:'100px'}}> Please Sign In to use model</label>
-      </div>
-      <a href='/login' className="organinfolabel" style={{textDecoration:'underline', marginLeft:'100px',fontSize:'30px'}}>Proceed to Log In</a>
-      </div>
-      }
+    {!isSignIn && (
+        <div >
+          <div className="Hi" style={{height:'calc(100vh - 250px)',width:'100%',textAlign:'center'}}>
+            <div style={{height:'100px'}}></div>
+            <label
+              className="inputinfoheading"
+              style={{
+                textAlign: "center",
+                fontSize: "50px",
+                margin:'0px'
+              }}
+            >
+              Please Sign In to use model
+            </label><br></br>
+            <div style={{minHeight:'40px'}}></div>
+          <a
+            href="/login"
+            className="organinfolabel"
+            style={{
+              textDecoration: "underline",
+              fontSize: "30px",
+                margin:'0px',
+                marginTop:'40px'
+            }}
+          >
+            Proceed to Log In
+          </a>
+          </div>
+        </div>
+      )}
     {isSignIn && (
       <div className="mainelements">
-      <div class="inputinfo">
+      {/* <div class="inputinfo">
             <div style={{ marginTop: "50px" }}></div>
             <p class="inputinfoheading">Enter Food </p>
             <input
@@ -270,6 +299,33 @@ function Content3d(){
               class="textareas"
               value={consumedFoodsText}
             ></textarea>
+            <button
+              class="inputbuttons"
+              onClick={ResetModel}
+              style={{ marginTop: "20px" }}
+            >
+              Reset Model
+            </button>
+          </div> */}
+        <div class="inputinfo">
+            <div style={{ marginTop: "50px" }}></div>
+            <p class="inputinfoheading">ENTER FOOD</p>
+            <input
+              value={selectedItem}
+              onChange={(event) => setSelectedItem(event.target.value)}
+              class="textareas"
+              type="text"
+              style={{marginBottom:'50px',borderRadius:'6px',paddingBottom:'20px',paddingTop:'20px',lineHeight:'50px',color:'#1c2e3b'}}
+            ></input>
+            <button class="inputbuttons1" onClick={handleAddItem}>
+              Add Food
+            </button>
+            <p class="inputinfoheading">{consumedFoodsText}</p>
+            {isEating && (
+              <>
+                <EatAnimation />
+              </>
+            )}
             <button
               class="inputbuttons"
               onClick={ResetModel}
@@ -318,11 +374,11 @@ function Content3d(){
             <input readOnly class="organinfoinputs" value={IOorgan}></input>
             <label class="organinfolabel">Status:</label>
             <input readOnly class="organinfoinputs" value={IOstatus}></input>
-            <label class="organinfolabel">Glucose:</label>
+            <label class="organinfolabel">Blood Glucose Levels:</label>
             <input readOnly class="organinfoinputs" value={IOglucose}></input>
-            <label class="organinfolabel">Serotonin:</label>
+            <label class="organinfolabel">Calorie Levels:</label>
             <input readOnly class="organinfoinputs" value={IOcalories}></input>
-            <label class="organinfolabel">Acetylcholine:</label>
+            <label class="organinfolabel">Oxygen Levels:</label>
             <input readOnly class="organinfoinputs" value={IOoxygen}></input>
           <button class='inputbuttons' style={{marginLeft:'20px'}}>Go to Guides</button>
 

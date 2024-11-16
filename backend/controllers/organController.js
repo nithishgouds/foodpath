@@ -3,7 +3,8 @@ const app = express();
 app.use(express.json());
 
 const ConsumedFoods = require('../models/consumedFoodSchema'); // Ensure this path is correct
-const { run } = require('../Gemini_API/modelStatusAPI'); // If you're using the AI function
+//const { run } = require('../Gemini_API/modelStatusAPI'); // If you're using the AI function
+const { run } = require('../Gemini_API/APImodelstatus');
 const { runseparate } = require('../Gemini_API/separate_model_factors');
 const { validatefood } = require('../Gemini_API/foodvalidation');
 
@@ -22,7 +23,7 @@ const validfood = async (req, res) => {
        try {
             let aiResponse = await validatefood(foodItems);
 
-            console.log(aiResponse);
+            //console.log(aiResponse);
             aiResponse = JSON.parse(aiResponse);
 
             res.json({
@@ -77,7 +78,7 @@ const addFood = async (req, res) => {
         // Optionally process the food items with AI
         try {
             let aiResponse = await run(foodItemsString);
-            let aiResponseSeparate= await runseparate(foodItemsString);
+            //let aiResponseSeparate= await runseparate(foodItemsString);
 
 
             aiResponse = JSON.parse(aiResponse);
@@ -87,8 +88,8 @@ const addFood = async (req, res) => {
                 
                 message: 'Foods added successfully',
                 consumedFoods: user.consumedFoods, // You can return the food items as a string
-                aiResponse: aiResponse,
-                aiResponseSeparate: aiResponseSeparate
+                aiResponse: aiResponse
+                //aiResponseSeparate: aiResponseSeparate
             });
         } catch (aiError) {
             res.status(500).json({ error: 'Error processing food data in AI', details: aiError.message });

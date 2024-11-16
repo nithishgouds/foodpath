@@ -4,7 +4,7 @@ const About = () => {
     return (
         <div className="about-text ml-14 pl-3 mt-20 pt-9 text-custom-blue">
             <motion.p
-                className="about-heading text-6xl font-worksans font-extralight"
+                className="about-heading text-6xl font-worksans font-light"
                 style={{ lineHeight: "1.2" }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -27,8 +27,8 @@ const About = () => {
             <motion.p
                 className="paragraph2 mt-10 font-helvetica font-extralight ml-25 max-w-screen-sm text-right"
                 style={{ lineHeight: "1.5", fontSize: "1.3rem" }}
-                initial={{ opacity: 0, x:780 }}
-                whileInView={{ opacity: 1, x: 730 }}
+                initial={{ opacity: 0, x:'130%' }}
+                whileInView={{ opacity: 1, x:'110%' }}
                 transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
             >
                 This analysis helps you understand how food affects your energy and vitality.
