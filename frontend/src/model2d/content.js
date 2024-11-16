@@ -38,6 +38,9 @@ function Content() {
     checkSignIn();
   });
 
+
+
+
   if (token) {
     try {
       console.log("Entered token check");
@@ -349,6 +352,11 @@ function Content() {
 
 
   const consumedFoodsText = consumedFoods; //.map(item => `${item.foodItem} `).join('\n');
+
+
+  useEffect(() => {
+    
+  });
 
   return (
     <>
