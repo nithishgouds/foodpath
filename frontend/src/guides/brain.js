@@ -2,6 +2,7 @@ import './Brain.css';
 import axios from "axios";
 import React, { useState } from 'react';
 import { jwtDecode } from "jwt-decode";
+import { useEffect } from 'react';
 
 function Brain() {
 
@@ -9,9 +10,7 @@ function Brain() {
   const [guides_brain_consumed_text, setguides_brain_consumed_text] = useState("This is the initial text.");
   const [guides_brain_info_text, setguides_brain_info_text] = useState("This is the initial text.");
 
-    // Ensure jwt-decode is imported
     const [isSignIn, setSingIn] = useState(false);
-    const navigate = useNavigate();
     let email;
   
     const token = localStorage.getItem("jwtToken");
