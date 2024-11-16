@@ -10,14 +10,13 @@ import burger from './burger.png';
 import dot from "./dot.png";
 
 const pacmanStates = [pmo,pmc];
-const foodItems = [apple,burger];
+const foodItems = [burger];
 
 const generateInitialFoodQueue = () => {
   const initialQueue = [];
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 2; i++) {
     initialQueue.push(dot);
     initialQueue.push(foodItems[Math.floor(Math.random() * foodItems.length)]);
-    initialQueue.push(dot);
   }
   return initialQueue;
 };
@@ -35,10 +34,9 @@ const EatAnimation = () => {
       setFoodQueue((prevQueue) => {
         const newQueue = [...prevQueue.slice(1)];
         var i=false;
-        if (newQueue.filter((item) => item !== dot).length < 3 && !i) {
+        if (newQueue.filter((item) => item !== dot).length < 3 ) {
           var a = Math.floor(Math.random() * foodItems.length);
           newQueue.push(foodItems[a]);
-          i=true;
         } else {
           newQueue.push(dot);
           i=false;

@@ -217,12 +217,14 @@ function Content() {
   const [IOglucose, setIOglucose] = useState("");
   const [IOcalories, setIOcalories] = useState("");
   const [IOoxygen, setIOoxygen] = useState("");
+  const [organName, setOrganName] = useState("");
   var svgCapitalName;
 
   const handleSvgClick = async (svgName) => {
     try {
       svgCapitalName=svgName.charAt(0).toUpperCase() + svgName.slice(1);
       setIOorgan(svgCapitalName);
+      setOrganName(svgName)
 
       if (!handleAddRes) {
         setEat(false);
@@ -254,9 +256,13 @@ function Content() {
   const handleHistoryButton = () => {
     setActive(false);
   };
+  const handleGuideButton = () => {
+    navigate('/guides/'+organName)
+  }
 
   const ResetModel = async () => {
     setActive(false);
+    setEating(false);
     setConsumedFoods("resetting...");
     try {
       const response = await axios.post(
@@ -293,31 +299,32 @@ function Content() {
     <>
       {!isSignIn && (
         <div>
-          <div>
+          <div className="notsignedin" style={{height:'calc(100vh - 250px)',width:'100%',textAlign:'center'}}>
+            <div style={{height:'100px'}}></div>
             <label
               className="inputinfoheading"
               style={{
                 textAlign: "center",
                 fontSize: "50px",
-                minWidth: "100%",
-                minHeight: "100%",
-                marginLeft: "100px",
+                margin:'0px'
               }}
             >
               Please Sign In to use model
-            </label>
-          </div>
+            </label><br></br>
+            <div style={{minHeight:'40px'}}></div>
           <a
             href="/login"
             className="organinfolabel"
             style={{
               textDecoration: "underline",
-              marginLeft: "100px",
               fontSize: "30px",
+                margin:'0px',
+                marginTop:'40px'
             }}
           >
             Proceed to Log In
           </a>
+          </div>
         </div>
       )}
       {isSignIn && (
@@ -548,6 +555,7 @@ function Content() {
                     <button
                       className="inputbuttons"
                       style={{ marginLeft: "20px" }}
+                      onClick={handleGuideButton}
                     >
                       Go to Guides
                     </button>

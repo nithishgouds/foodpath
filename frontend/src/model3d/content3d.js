@@ -191,6 +191,7 @@ function Content3d(){
     try {
       // setActive(false);
       // isActive()
+      setActive(false);
       setIOorgan(OrgName);
       if (!handleAddRes) {
         console.error("Error: handleAddRes is not set. Please call handleAddItem first.");
@@ -242,14 +243,36 @@ function Content3d(){
 
   return (
     <>
-    {!isSignIn && 
-      <div>
-      <div>
-        <label className="inputinfoheading" style={{textAlign:'center', fontSize:'50px', minWidth:'100%', minHeight:'100%',marginLeft:'100px'}}> Please Sign In to use model</label>
-      </div>
-      <a href='/login' className="organinfolabel" style={{textDecoration:'underline', marginLeft:'100px',fontSize:'30px'}}>Proceed to Log In</a>
-      </div>
-      }
+    {!isSignIn && (
+        <div >
+          <div className="Hi" style={{height:'calc(100vh - 250px)',width:'100%',textAlign:'center'}}>
+            <div style={{height:'100px'}}></div>
+            <label
+              className="inputinfoheading"
+              style={{
+                textAlign: "center",
+                fontSize: "50px",
+                margin:'0px'
+              }}
+            >
+              Please Sign In to use model
+            </label><br></br>
+            <div style={{minHeight:'40px'}}></div>
+          <a
+            href="/login"
+            className="organinfolabel"
+            style={{
+              textDecoration: "underline",
+              fontSize: "30px",
+                margin:'0px',
+                marginTop:'40px'
+            }}
+          >
+            Proceed to Log In
+          </a>
+          </div>
+        </div>
+      )}
     {isSignIn && (
       <div className="mainelements">
       <div class="inputinfo">

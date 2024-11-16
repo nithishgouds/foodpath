@@ -12,11 +12,16 @@ body {
   background-color: #6B7280;
 }
 
+/* .notsignedin{
+  background: radial-gradient(circle at center, #1c2a3b 50%, #2a3d52 80%, #3e4b64 100%);
+} */
+
 .mainelements {
   font-family: Arial, Helvetica, sans-serif;
   height: 100%;
   display: flex;
   flex-direction: row;
+  
 }
 
 .organinfo {
@@ -24,9 +29,10 @@ body {
   width: calc(50vw - 381px);
   display: flex;
   flex-direction: column;
-  max-height: 80%;
-  overflow-y: auto; 
+  max-height: 95%;
+  overflow-y: auto; /* Enables vertical scrolling */
   overflow-x: hidden;
+  
 }
 
 .organinfolabel {

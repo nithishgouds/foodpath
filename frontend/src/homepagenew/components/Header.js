@@ -60,7 +60,7 @@ const Header = () => {
             className="bg-custom-blue text-white shadow-md w-[95%] m-auto mt-7 rounded-full fixed top-0 left-0 right-0 z-custom"
         >
             <div className="container mx-auto flex items-center py-4 px-6">
-                <a href="/" className="text-2xl pl-8 font-marcellus">FoodPath</a>
+                <a href="/" className="text-2xl pl-8 font-cinzel">FoodPath®</a>
                 <nav className="flex-1 font-helvetica">
                     <ul className="flex justify-center gap-10 font-helvetica">
                         <li className="nav-item mr-12">
@@ -71,6 +71,11 @@ const Header = () => {
                         </li>
                         <li className="nav-item mr-12">
                             <a href="/model3dpage" className="hover:text-customHoverColor transition duration-300">3D MODEL</a>
+                        </li>
+                        <li className="nav-item mr-12">
+                            <a href="/guides" className="hover:text-customHoverColor transition duration-300">
+                                GUIDES
+                            </a>
                         </li>
                     </ul>
                 </nav>
