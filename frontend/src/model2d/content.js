@@ -240,12 +240,12 @@ function Content() {
       // Access properties from handleAddRes directly
       setIOstatus(Ostatus(handleAddRes.health_status[svgName].rating));
       setIOglucose(
-        handleAddRes.post_consumption_values.blood_glucose_levels[svgName]
+        handleAddRes.post_consumption_values.blood_glucose_levels
       );
       setIOcalories(
-        handleAddRes.post_consumption_values.calorie_levels[svgName]
+        handleAddRes.post_consumption_values.calorie_levels
       );
-      setIOoxygen(handleAddRes.post_consumption_values.oxygen_levels[svgName]);
+      setIOoxygen(handleAddRes.post_consumption_values.oxygen_levels);
       setActive(true);
       console.log("Values are set");
     } catch (error) {
