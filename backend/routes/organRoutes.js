@@ -5,7 +5,7 @@ const { getOrganStatus } = require('../controllers/healthStatus');
 const { resetConsumedFoods } = require('../controllers/organController');
 const { getSpecificOrganStatus } = require('../controllers/individualOrganStatusController');
 const { validfood } = require('../controllers/organController');
-const { organGuides } =require('../controllers/organController')
+const { validateOrganGuide } =require('../controllers/organController')
 
 // Controllers for 2D and 3D models (assuming you have separate controllers)
 // const { get2DModel } = require('../controllers/bodyModelsController');

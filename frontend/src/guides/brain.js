@@ -2,16 +2,17 @@ import './Brain.css';
 import axios from "axios";
 import React, { useState } from 'react';
 import { jwtDecode } from "jwt-decode";
+import { useEffect } from 'react';
 
 function Brain() {
 
-  const [guides_brain_status_text, setguides_brain_status_text] = useState("This is the initial text .");
-  const [guides_brain_consumed_text, setguides_brain_consumed_text] = useState("This is the initial text.");
-  const [guides_brain_info_text, setguides_brain_info_text] = useState("This is the initial text.");
+  const [guides_brain_status_text, setguides_brain_status_text] = useState("Analysing...");
+  const [guides_brain_consumed_text, setguides_brain_consumed_text] = useState("Getting...");
+  const [guides_brain_info_text, setguides_brain_info_text] = useState("Analysing...");
 
     // Ensure jwt-decode is imported
     const [isSignIn, setSingIn] = useState(false);
-    const navigate = useNavigate();
+
     let email;
   
     const token = localStorage.getItem("jwtToken");
@@ -52,32 +53,58 @@ function Brain() {
     }
 
 
-  const [organName, setOrganName] = useState("Brain");        // Set default or dynamic organ name
+  const [organName, setOrganName] = useState("Brain");
+  
+  function Ostatus(a) {
+    switch (a) {
+      case 0:
+        return "DEAD";
+        break;
+      case 1:
+        return "Healthy";
+        break;
+      case 2:
+        return "Very Healthy";
+        break;
+      case 3:
+        return "UnHealthy";
+        break;
+      case 4:
+        return "Very UnHealthy";
+        break;
+      default:
+        return "Normal";
+    }
+  }
 
   useEffect(() => {
     // Make POST request with email and organName in the body
-    axios.post('http://localhost:3001/api/organs/organ-status', {
+    axios.post('http://localhost:3001/api/organs/organGuides', {
       email: email,
       organName: organName,
     })
       .then(response => {
+        const { message, AIorganGuideRes, consumedFoods } = response.data;
+    
         // Update state with the response data
-        setguides_brain_status_text(response.data.status);
-        setguides_brain_consumed_text(response.data.foodsConsumed.join(', '));
+        setguides_brain_status_text(Ostatus(AIorganGuideRes.rating)); // Set the status to the message received
+        // setguides_brain_consumed_text(consumedFoods.join(', '));
+        setguides_brain_consumed_text(consumedFoods);  // Convert consumedFoods array to a comma-separated string
         setguides_brain_info_text(`
-          ${response.data.guides1}
-          ${response.data.guides2}
-          ${response.data.guides3}
-          ${response.data.guides4}
-          ${response.data.guides5}
-          ${response.data.guides6}
-          ${response.data.guides7}
-          ${response.data.guides8}
-        `);
+        1) ${AIorganGuideRes.guide1}
+        2) ${AIorganGuideRes.guide2}
+        3) ${AIorganGuideRes.guide3}
+        4) ${AIorganGuideRes.guide4}
+        5) ${AIorganGuideRes.guide5}
+        6) ${AIorganGuideRes.guide6}
+        7) ${AIorganGuideRes.guide7}
+        8) ${AIorganGuideRes.guide8}
+        `); // Format guides in separate lines
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
+    
   }, [email, organName]);
 
   
@@ -115,7 +142,12 @@ function Brain() {
       <h2 className='heading'>Info about the brain :</h2>
           <div class="containernew">
           
-  <p className='guides_brain_info_text'> {guides_brain_info_text}</p>
+            <div>
+    {guides_brain_info_text.split('\n').map((line, index) => (
+      <p className='guides_brain_info_text'> {line}</p>
+    ))}
+  </div>
+
 <img src="https://th.bing.com/th/id/R.3cd0ee5e418250f2d18a186841ce60cc?rik=vJb2qOAZkQJ8Zw&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f04%2fBrain-PNG-Image.png&ehk=cIrtlwwNSqpbI9itUL0CMD3%2b0C59yTt37Wj8jOauEAU%3d&risl=&pid=ImgRaw&r=0"
 alt='.'
   
