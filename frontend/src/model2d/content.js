@@ -178,7 +178,7 @@ function Content() {
           email: email,
         }
       );
-
+      //http://localhost:3001/trophies/updateTrophy  email,index,value
       const { aiResponse,consumedFoods } = response.data;
       console.log("something is happening");
       consumedFoods.forEach((food, index) => {
