@@ -92,13 +92,30 @@
     width: 100%;
     padding: 10px;
     margin-top: 10px;
-    border: 2px solid #ddd;
-    border-radius: 10px;
+    border: 0;
+    border-top: 1px solid #ddd;
+    border-radius: 0;
     font-size: 14px;
     min-height: 60px;
     resize: none;
     color: #fffdf9;
     background-color: transparent;
+    pointer-events: auto; /* Enables focus */
+    overflow: hidden;
+  }
+  
+  .trophies-container .trophy-box textarea::placeholder {
+    color: #fffdf9; /* Initial placeholder color */
+  }
+  
+  .trophies-container .trophy-box textarea:focus::placeholder {
+    color: #007BFF; /* Placeholder turns blue on focus */
+  }
+  
+  .trophies-container .trophy-box textarea:focus {
+    color: #007BFF; /* Text turns blue on focus */
+    background-color: #142e8e; /* Background becomes white on focus */
+    outline: none;
   }
   
   .trophies-container .content-container > div:nth-child(-n+3) {
