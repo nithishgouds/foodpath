@@ -10,14 +10,6 @@
 
 
 
-/* @keyframes backgroundFade {
-  0% {
-      background-color: #f9f9f9;
-  }
-  100% {
-      background-color: #e0f7fa;
-  }
-} */
 
 h1 {
   text-align: center;
@@ -30,8 +22,8 @@ h1 {
   display: flex;
  
 
-  justify-content: space-between; /* Or use 'flex-end' to push the image to the right */
-  align-items: center; /* Aligns vertically */
+  justify-content: space-between; 
+  align-items: center; 
   transition: transform 0.3s;
 }
 
@@ -186,22 +178,18 @@ img
 .head3 {
   font-size: 1.5rem;
   color:white;
-/*   animation: textGlow 3s ease-in-out infinite; */
 }
 .head2 {
   font-size: 1.5rem;
   color:white;
-/*   animation: teextGlow 3s ease-in-out infinite; */
 }
 .head4 {
   font-size: 1.5rem;
   color: #f9f9f9;
- /*  animation: teextGlow 3s ease-in-out infinite; */
 }
 .head5 {
   font-size: 1.5rem;
   color:black;
-/*   animation: teextGlow 3s ease-in-out infinite; */
 }
 .heading{
   text-align: justify;
@@ -277,7 +265,6 @@ p {
   
 }
 
-/* Adding animated waves */
 @keyframes waveAnimation {
   0% {
       transform: translateX(0);
@@ -286,8 +273,6 @@ p {
       transform: translateX(-50%);
   }
 }
-
-/* Adding a floating particle effect */
 @keyframes floatParticles {
   0% {
       transform: translateY(0);
@@ -313,7 +298,6 @@ p {
   opacity: 0.8;
 }
 
-/* Generating multiple particles */
 .particle:nth-child(18) {
   left:20%;
   animation-duration: 7s;
@@ -341,7 +325,6 @@ p {
   opacity: 0.8;
 }
 
-/* Generating multiple particles */
 .nparticle:nth-child(18) {
   left:20%;
   animation-duration: 7s;

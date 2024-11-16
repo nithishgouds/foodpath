@@ -7,6 +7,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from "react-router-dom";
+import EatAnimation from "../pacanimation/pacmananimation";
 //import Organstructure from './organstructure.js';
 
 
@@ -139,6 +140,7 @@ function Content3d(){
   const [quantity, setquantity] = useState("");
   const [consumedFoods, setConsumedFoods] = useState([]);
   const [isEat, setEat] = useState(false);
+  const [isEating,setEating]=useState(false);
 
 
 
@@ -153,6 +155,7 @@ function Content3d(){
 
     try {
       setConsumedFoods("eating...");
+      setEating(true);
       console.log(selectedItem);
       const response = await axios.post("http://localhost:3001/api/organs/add-food", {
         foodItems: selectedItem,
@@ -162,6 +165,7 @@ function Content3d(){
       const { aiResponse } = response.data;
       console.log("something is happening");
       setConsumedFoods("ate...");
+      setEating(false);
       setHandleAddRes(aiResponse); // Update state with aiResponse
 
       // Update the state with color changes
@@ -175,6 +179,8 @@ function Content3d(){
       
 
     } catch (error) {
+      setEating(false);
+      setConsumedFoods('error!');
       console.error("Error adding food item:", error);
     }
   };
@@ -275,7 +281,7 @@ function Content3d(){
       )}
     {isSignIn && (
       <div className="mainelements">
-      <div class="inputinfo">
+      {/* <div class="inputinfo">
             <div style={{ marginTop: "50px" }}></div>
             <p class="inputinfoheading">Enter Food </p>
             <input
@@ -293,6 +299,33 @@ function Content3d(){
               class="textareas"
               value={consumedFoodsText}
             ></textarea>
+            <button
+              class="inputbuttons"
+              onClick={ResetModel}
+              style={{ marginTop: "20px" }}
+            >
+              Reset Model
+            </button>
+          </div> */}
+        <div class="inputinfo">
+            <div style={{ marginTop: "50px" }}></div>
+            <p class="inputinfoheading">ENTER FOOD</p>
+            <input
+              value={selectedItem}
+              onChange={(event) => setSelectedItem(event.target.value)}
+              class="textareas"
+              type="text"
+              style={{marginBottom:'50px',borderRadius:'6px',paddingBottom:'20px',paddingTop:'20px',lineHeight:'50px',color:'#1c2e3b'}}
+            ></input>
+            <button class="inputbuttons1" onClick={handleAddItem}>
+              Add Food
+            </button>
+            <p class="inputinfoheading">{consumedFoodsText}</p>
+            {isEating && (
+              <>
+                <EatAnimation />
+              </>
+            )}
             <button
               class="inputbuttons"
               onClick={ResetModel}
