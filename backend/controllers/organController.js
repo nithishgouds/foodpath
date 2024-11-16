@@ -7,7 +7,7 @@ const ConsumedFoods = require('../models/consumedFoodSchema'); // Ensure this pa
 const { run } = require('../Gemini_API/APImodelstatus');
 const { runseparate } = require('../Gemini_API/separate_model_factors');
 const { validatefood } = require('../Gemini_API/foodvalidation');
-
+const { validateOrganGuide } =require('../GEMINI_API/organGuidesAPI');
 // Route handler for adding food items
 
 
@@ -137,4 +137,49 @@ const resetConsumedFoods= async(req,res)=>
     }
 };
 
-module.exports = { addFood , resetConsumedFoods,validfood };
+
+
+const validateOrganGuide = async (req, res) => {
+    const { email, organName } = req.body;
+
+    console.log('Received body:', req.body);
+
+    if (!email) {
+        return res.status(400).json({ error: 'Email is required.' });
+    }
+
+    if (!organName) {
+        return res.status(400).json({ error: 'Organ name is required.' });
+    }
+
+    try {
+        const user = await ConsumedFoods.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found.' });
+        }
+
+        try {
+            const organGuideResponse = await organGuide(email, organName);
+            const parsedResponse = JSON.parse(organGuideResponse);
+
+            res.json({
+                message: 'Organ guide data retrieved successfully',
+                organGuide: parsedResponse,
+            });
+        } catch (apiError) {
+            res.status(500).json({
+                error: 'Error processing organ guide data in AI',
+                details: apiError.message,
+            });
+        }
+    } catch (dbError) {
+        res.status(500).json({
+            error: 'Error validating email in the database',
+            details: dbError.message,
+        });
+    }
+};
+
+
+module.exports = { addFood , resetConsumedFoods,validfood,validateOrganGuide };

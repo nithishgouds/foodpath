@@ -75,7 +75,7 @@ function Content() {
     handleAddItem();
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/organs/organ-status",
+        "http://localhost:3001/api/organs/organ",
         {
           token: localStorage.getItem("jwtToken"),
         }
