@@ -110,6 +110,7 @@ function Heart() {
   return (
     <div className="App">
       <Header />
+      <div style={{paddingTop:'90px',backgroundColor:'#a09c9c'}}></div>
 
       <div className="newflex">
         <h3 className="head3">Current Status Of The Heart</h3>
