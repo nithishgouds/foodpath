@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import "./SplashScreen.css";
 
 const SplashScreen = () => {
-    const [text, setText] = useState(""); // Initialize text as empty
-    const fullText = "FoodPath®"; // The text to animate
-    const [animationComplete, setAnimationComplete] = useState(false); // Track animation state
+    const [text, setText] = useState("");
+    const fullText = "FoodPath®";
+    const [animationComplete, setAnimationComplete] = useState(false);
 
     useEffect(() => {
         let index = 0;
@@ -14,12 +14,17 @@ const SplashScreen = () => {
                 setText(fullText.slice(0, index + 1));
                 index++;
             } else {
-                clearInterval(interval); // Stop the interval when done
-                setAnimationComplete(true); // Mark animation as complete
+                clearInterval(interval);
+                setAnimationComplete(true);
             }
-        }, 150); // Adjust speed as needed
+        }, 150);
 
-        return () => clearInterval(interval); // Cleanup on component unmount
+        // Delay the start of the animation
+        setTimeout(() => {
+            // Trigger the animation
+        }, 2000); // Delay for 2 seconds
+
+        return () => clearInterval(interval);
     }, [fullText]);
 
     return (
@@ -32,19 +37,19 @@ const SplashScreen = () => {
         >
             <motion.h1
                 className="splash-text"
-                initial={{ scale: 1, opacity: 1, x: 0, y: 0 }} // Start with large scale and original position
+                initial={{ scale: 1, opacity: 1, x: 0, y: 0 }}
                 animate={{
-                    scale: animationComplete ? 0.5 : 1, // Shrink after animation completes
-                    // opacity: animationComplete ? 0 : 1, // Fade out after animation completes
-                    x: animationComplete ? -610 : 0, // Move towards top-left corner position
-                    y: animationComplete ? -310 : 0,  // Move vertically to the header position
+                    scale: animationComplete ? 0.5 : 1,
+                    x: animationComplete ? -610 : 0,
+                    y: animationComplete ? -310 : 0,
                     fontSize: animationComplete ? "48px" : "120px",
                 }}
                 transition={{
                     type: "tween",
                     stiffness: 100,
                     damping: 25,
-                    duration: 1,
+                    duration: 1, // Increase the duration of the animation
+                    delay: 0, // Delay the start of the animation (already handled in useEffect)
                 }}
             >
                 {text.slice(0, -1)}<sup className="superscript">®</sup>

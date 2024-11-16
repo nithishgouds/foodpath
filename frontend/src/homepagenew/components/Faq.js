@@ -23,12 +23,14 @@ function Faq() {
     visible: { opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.1 } },
   };
 
+
   return (
     <div className="main-background2 bg-gray-500 flex flex-col min-h-screen items-center px-4 pt-24">
       <Header />
-      <div className="content-overlay4 flex-grow w-full max-w-9xl mt-30px">
+      <div className="content-overlay4 flex-grow w-full max-w-9xl mt-30px bg-cover bg-center
+      bg-no-repeat bg-fixed bg-[url('../assets/123.jpg')]"  >
         {/* Q1 */}
-        <div className="q1 mt-40 ml-20">
+        <div className="about-text mt-40 ml-20" >
           <motion.p
             id="q1que"
             className="font-worksans text-5xl font-light"
