@@ -133,7 +133,7 @@ function Content() {
   }
 
   const [selectedItem, setSelectedItem] = useState("");
-  const [consumedFoods, setConsumedFoods] = useState("");
+  const [foodStatus, setFoodStatus] = useState("");
   const [isEating, setEating] = useState(false);
   const [handleAddRes, setHandleAddRes] = useState(null);
 
@@ -145,7 +145,7 @@ function Content() {
     }
 
     try {
-      setConsumedFoods("checking food...");
+      setFoodStatus("checking food...");
       console.log(selectedItem);
       const response = await axios.post(
         "http://localhost:3001/api/organs/validatefood",
@@ -157,20 +157,19 @@ function Content() {
       const { aiResponse } = response.data;
 
       console.log("something is happening");
-
       if (!aiResponse.consumable) {
-        setConsumedFoods("You can't eat that!");
+        setFoodStatus("You can't eat that!");
         return;
       }
 
-      setConsumedFoods("consumable");
+      setFoodStatus("consumable");
     } catch (error) {
       console.error("Error adding food item:", error);
     }
 
     try {
       setEating(true);
-      setConsumedFoods("eating...");
+      setFoodStatus("eating...");
       console.log(selectedItem);
       const response = await axios.post(
         "http://localhost:3001/api/organs/add-food",
@@ -180,11 +179,15 @@ function Content() {
         }
       );
 
-      const { aiResponse } = response.data;
+      const { aiResponse,consumedFoods } = response.data;
       console.log("something is happening");
+      consumedFoods.forEach((food, index) => {
+        console.log(`Item ${index + 1}:`, food);
+      });
+      console.log(consumedFoods.length);
       setEating(false);
       setEat(true);
-      setConsumedFoods("Food Consumed");
+      setFoodStatus("Food Consumed");
       setHandleAddRes(aiResponse); // Update state with aiResponse
 
       // Update the state with color changes
@@ -198,13 +201,13 @@ function Content() {
       );
       setOpacity(0.5);
     } catch (error) {
-      setConsumedFoods("Error!");
+      setFoodStatus("Error!");
       setEating(false);
       console.error("Error adding food item:", error);
     }
   };
 
-  //consumedFoodsText
+  //foodStatusText
 
   const [IOorgan, setIOorgan] = useState("");
   const [isActive, setActive] = useState(false); //for checking if an organ is selected
@@ -307,7 +310,7 @@ function Content() {
   const ResetModel = async () => {
     setActive(false);
     setEating(false);
-    setConsumedFoods("resetting...");
+    setFoodStatus("resetting...");
     try {
       const response = await axios.post(
         "http://localhost:3001/api/organs/reset-consumed-foods",
@@ -315,8 +318,8 @@ function Content() {
           email: email,
         }
       );
-      setConsumedFoods("Model Reset Successfully");
-      // setConsumedFoods(response.data.consumedFoods);
+      setFoodStatus("Model Reset Successfully");
+      // setFoodStatus(response.data.foodStatus);
       setOpacity(0);
       setIOstatus(" ");
       setIOglucose(" ");
@@ -330,14 +333,14 @@ function Content() {
       setstomachColor("");
       setintestineColor("");
       setHandleAddRes(null);
-      //setConsumedFoods(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
+      //setFoodStatus(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
       console.log("Food item added successfully:", response.data);
     } catch (error) {
       console.error("Error adding food item:", error);
     }
   };
 
-  const consumedFoodsText = consumedFoods; //.map(item => `${item.foodItem} `).join('\n');
+  const foodStatusText = foodStatus; //.map(item => `${item.foodItem} `).join('\n');
 
   return (
     <>
@@ -406,7 +409,7 @@ function Content() {
             <button class="inputbuttons1" onClick={handleAddItem}>
               Add Food
             </button>
-            <p class="inputinfoheading">{consumedFoodsText}</p>
+            <p class="inputinfoheading">{foodStatusText}</p>
             {isEating && (
               <>
                 <EatAnimation />
@@ -570,11 +573,11 @@ function Content() {
                         height: "auto",
                         maxHeight: "300px",
                       }}
-                      value="" /*{consumedFoodsText}*/
+                      value={foodStatus} /*{foodStatusText}*/
                     ></textarea>
                     {/* <div
                       className="organinfolabel"
-                      style={{
+                      style={{                                        ???????????????????????????
                         paddingLeft: "10px",
                         borderWidth: "0px",
                         fontSize: "20px",
@@ -687,4 +690,4 @@ function Content() {
   );
 }
 
-export default Content;
+export default Content; 
