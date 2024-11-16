@@ -5,7 +5,7 @@ app.use(express.json());
 const ConsumedFoods = require('../models/consumedFoodSchema'); // Ensure this path is correct
 //const { run } = require('../Gemini_API/modelStatusAPI'); // If you're using the AI function
 const { run } = require('../Gemini_API/APImodelstatus');
-const { runseparate } = require('../Gemini_API/separate_model_factors');
+// const { runseparate } = require('../Gemini_API/separate_model_factors');
 const { validatefood } = require('../Gemini_API/foodvalidation');
 const {organGuide}= require('../Gemini_API/organGuidesAPI');
 // Route handler for adding food items

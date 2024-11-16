@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
+import { jwtDecode } from "jwt-decode";
 
 const Header = () => {
     const [loggedin, setLoggedin] = useState(false);
@@ -11,24 +12,19 @@ const Header = () => {
     const [visible, setVisible] = useState(true);
     const navigate = useNavigate();
     const controls = useAnimation();
+    const token = localStorage.getItem('jwtToken');
 
     useEffect(() => {
-      // Check if token exists and redirect if already logged in
-      const token = localStorage.getItem('jwtToken');
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i); // Get the key at index i
-        const value = localStorage.getItem(key); // Get the value associated with the key
-        console.log(i, `${key}: ${value}`);
-      }
       if (token) {
+        const decodedToken = jwtDecode(token);
+        const un = decodedToken.email.toUpperCase();
         setLoggedin(true);
-        setLogin("LOGOUT");
+        setLogin(un);
         setPath("/login");
       }
-    }, []);
+    });
 
     useEffect(() => {
-        // Scroll listener
         const handleScroll = () => {
             const currentScrollPos = window.pageYOffset;
             setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
@@ -75,6 +71,11 @@ const Header = () => {
                         <li className="nav-item mr-12">
                             <a href="/guides" className="hover:text-customHoverColor transition duration-300">
                                 GUIDES
+                            </a>
+                        </li>
+                        <li className="nav-item mr-12">
+                            <a href="/trophies" className="hover:text-customHoverColor transition duration-300">
+                                TROPHIES
                             </a>
                         </li>
                     </ul>

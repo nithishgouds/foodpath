@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState } from 'react';
 import { jwtDecode } from "jwt-decode";
 import { useEffect } from 'react';
+import Header from '../homepagenew/components/Header'
 
 function Brain() {
 
@@ -10,9 +11,7 @@ function Brain() {
   const [guides_brain_consumed_text, setguides_brain_consumed_text] = useState("Getting...");
   const [guides_brain_info_text, setguides_brain_info_text] = useState("Analysing...");
 
-    // Ensure jwt-decode is imported
     const [isSignIn, setSingIn] = useState(false);
-
     let email;
   
     const token = localStorage.getItem("jwtToken");
@@ -111,6 +110,7 @@ function Brain() {
 
   return(
 <div className='newapp'>
+  <Header/>
     <div className="App">
   
    <div className='newflex'>

@@ -1,13 +1,9 @@
 import './loginsignup.css';
-import Snavbar from '../homepage/snavbar';
 import { useState, useEffect } from 'react';
 import Birds from 'vanta/src/vanta.birds';
 import { useNavigate } from 'react-router-dom';
-import HeaderStationary from '../homepagenew/components/HeaderStationary';
 import Header from '../homepagenew/components/HeaderStationary';
 import Axios from 'axios';
-
-// // export default function (){
 
 export default function Login(){
   const [email,setEmail]=useState("");
@@ -69,7 +65,7 @@ export default function Login(){
     } else {
       setPWLength(false);
     }
-    if (!pwLength && !emailLength) {
+    if (pwLength && emailLength) {
       try {
         const response = await Axios.post("http://localhost:3001/auth/signup", {
           email: email,
@@ -77,6 +73,9 @@ export default function Login(){
         });
         if (response.data.message == "User created successfully") {
           navigate("/login");
+        }
+        else{
+          console.log('user exists')
         }
 
         console.log(response.data);
