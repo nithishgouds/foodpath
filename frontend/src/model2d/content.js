@@ -6,6 +6,7 @@ import EatAnimation from "../pacanimation/pacmananimation";
 import { useRef } from "react";
 import "./contentstyle.css";
 
+
 function Content() {
 
   
