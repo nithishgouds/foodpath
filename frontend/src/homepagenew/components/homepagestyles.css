@@ -154,7 +154,8 @@ body {
     display: flex;
 }
 .paragraph2{
-    transform: translate(580px,70px);
+    position: absolute;
+    left:calc(100%-40px)
 }
 .paragraph1{
     transform: translate(0px,40px);

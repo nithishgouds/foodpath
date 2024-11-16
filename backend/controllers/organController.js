@@ -81,7 +81,7 @@ const addFood = async (req, res) => {
 
 
             aiResponse = JSON.parse(aiResponse);
-            aiResponse = JSON.parse(aiResponseSeparate);
+            aiResponseSeparate = JSON.parse(aiResponseSeparate);
 
             res.json({
                 
