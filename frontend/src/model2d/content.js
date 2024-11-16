@@ -198,6 +198,8 @@ function Content() {
       );
       setOpacity(0.5);
     } catch (error) {
+      setConsumedFoods('Error!');
+      setEating(false);
       console.error("Error adding food item:", error);
     }
   };
@@ -380,7 +382,6 @@ function Content() {
       {isSignIn && (
         <div className="mainelements" style={{ marginTop: "20px" }}>
           <div class="inputinfo">
-            <div style={{ marginTop: "50px" }}></div>
             <p class="inputinfoheading">ENTER FOOD</p>
             <input
               value={selectedItem}
@@ -396,6 +397,7 @@ function Content() {
                 color: "#1c2e3b",
               }}
             ></input>
+            <textarea className="textareas" style={{}} >Hoo</textarea>
             <button class="inputbuttons1" onClick={handleAddItem}>
               Add Food
             </button>
@@ -523,8 +525,7 @@ function Content() {
           </div>
           <div class="organinfo">
             <div class="organinfostats">
-              <div class="organstats">
-                <div style={{ height: "50px" }}></div>
+              <div class="organstats" style={{maxHeight:'70vw'}}>
                 {!isActive && (
                   <div>
                     <p class="inputinfoheading">History</p>
@@ -567,8 +568,8 @@ function Content() {
                   </div>
                 )}
                 {isActive && (
-                  <div>
-                    <label className="organinfolabel">Organ:</label>
+                  <div >
+                    <label className="organinfolabel" style={{}}>Organ:</label>
                     <textarea
                       readOnly
                       className="organinfoinputsingle"
@@ -638,6 +639,7 @@ function Content() {
                     <button
                       className="inputbuttons"
                       onClick={handleHistoryButton}
+                      style={{marginLeft:'20px'}}
                     >
                       View History
                     </button>

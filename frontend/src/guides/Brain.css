@@ -11,21 +11,21 @@
 
 
 
-h1 {
+/* h1 {
   text-align: center;
   border-radius: 30%;
   font-size: 5em;
   color:white;
 
-}
-.container {
+} */
+/* .container {
   display: flex;
  
 
   justify-content: space-between; 
   align-items: center; 
   transition: transform 0.3s;
-}
+} */
 
 .food-image-i{
   float: right;
