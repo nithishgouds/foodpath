@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState } from 'react';
 import { jwtDecode } from "jwt-decode";
 import { useEffect } from 'react';
+import Header from '../homepagenew/components/Header'
 
 function Brain() {
 
@@ -109,6 +110,7 @@ function Brain() {
 
   return(
 <div className='newapp'>
+  <Header/>
     <div className="App">
   
    <div className='newflex'>

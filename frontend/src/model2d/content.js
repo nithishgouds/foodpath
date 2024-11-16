@@ -198,7 +198,7 @@ function Content() {
       );
       setOpacity(0.5);
     } catch (error) {
-      setConsumedFoods('Error!');
+      setConsumedFoods("Error!");
       setEating(false);
       console.error("Error adding food item:", error);
     }
@@ -397,7 +397,12 @@ function Content() {
                 color: "#1c2e3b",
               }}
             ></input>
-            <textarea className="textareas" style={{}} >Hoo</textarea>
+            <textarea
+              className="textareas"
+              style={{ height: "70px", backgroundColor: "darkgrey" }}
+            >
+              Hoo
+            </textarea>
             <button class="inputbuttons1" onClick={handleAddItem}>
               Add Food
             </button>
@@ -525,9 +530,35 @@ function Content() {
           </div>
           <div class="organinfo">
             <div class="organinfostats">
-              <div class="organstats" style={{maxHeight:'70vw'}}>
+              <div class="organstats" style={{ maxHeight: "70vw" }}>
                 {!isActive && (
                   <div>
+                    {/* <div
+                      className="organinfolabel"
+                      style={{
+                        paddingLeft: "10px",
+                        borderWidth: "0px",
+                        fontSize: "20px",
+                        fontSize: "23px",
+                        paddingBottom:'20px'
+                      }}
+                    >
+                      Click on organ to view its stats!
+                    </div> */}
+                    {!isEat && (
+                      <div
+                        className="organinfolabel"
+                        style={{
+                          paddingLeft: "10px",
+                          borderWidth: "0px",
+                          fontSize: "20px",
+                          fontSize: "23px",
+                          paddingBottom: "20px",
+                        }}
+                      >
+                        Please Eat some food!
+                      </div>
+                    )}
                     <p class="inputinfoheading">History</p>
                     <textarea
                       readOnly
@@ -541,7 +572,7 @@ function Content() {
                       }}
                       value="" /*{consumedFoodsText}*/
                     ></textarea>
-                    <div
+                    {/* <div
                       className="organinfolabel"
                       style={{
                         paddingLeft: "10px",
@@ -551,8 +582,8 @@ function Content() {
                       }}
                     >
                       Click on organ to view its stats!
-                    </div>
-                    {!isEat && (
+                    </div> */}
+                    {/* {!isEat && (
                       <div
                         className="organinfolabel"
                         style={{
@@ -564,12 +595,14 @@ function Content() {
                       >
                         Please Eat some food!
                       </div>
-                    )}
+                    )} */}
                   </div>
                 )}
                 {isActive && (
-                  <div >
-                    <label className="organinfolabel" style={{}}>Organ:</label>
+                  <div>
+                    <label className="organinfolabel" style={{}}>
+                      Organ:
+                    </label>
                     <textarea
                       readOnly
                       className="organinfoinputsingle"
@@ -639,7 +672,7 @@ function Content() {
                     <button
                       className="inputbuttons"
                       onClick={handleHistoryButton}
-                      style={{marginLeft:'20px'}}
+                      style={{ marginLeft: "20px" }}
                     >
                       View History
                     </button>
