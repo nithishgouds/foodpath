@@ -7,9 +7,7 @@ const { getSpecificOrganStatus } = require('../controllers/individualOrganStatus
 const { validfood } = require('../controllers/organController');
 const { validateOrganGuide } =require('../controllers/organController')
 
-// Controllers for 2D and 3D models (assuming you have separate controllers)
-// const { get2DModel } = require('../controllers/bodyModelsController');
-// const { get3DModel } = require('../controllers/bodyModelsController');
+
 
 // Food and status routes
 router.post('/add-food', addFood);

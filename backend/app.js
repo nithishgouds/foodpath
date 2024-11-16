@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/database');
 const organRoutes = require('./routes/organRoutes');
 const authRoutes=require('./routes/authRoutes');
-
+const trophiesRoutes=require('./routes/trophiesRoutes');
 
 
 dotenv.config({ path: path.resolve(__dirname, '../frontend/.env') });
@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/organs', organRoutes);
 app.use('/auth',authRoutes);
+app.use('/trophies',trophiesRoutes);
 
 
 app.listen(port, () => {

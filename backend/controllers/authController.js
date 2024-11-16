@@ -1,8 +1,8 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/user');  // The user model we updated earlier
+const User = require('../models/user');  
 
-// Signup function
+
 const signup = async (req, res) => {
   const { email, password } = req.body;
   console.log('Request body:', req.body);
@@ -13,14 +13,14 @@ const signup = async (req, res) => {
       return res.status(400).json({ message: "Email already in use" });
     }
 
-    // Hash the password
+    
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
     console.log('Email:', email);
     console.log('Hashed Password:', hashedPassword);
 
-    const newUser = new User({ email, password: hashedPassword });  // Storing the hashed password
+    const newUser = new User({ email, password: hashedPassword });  
     console.log("Attempting to create new user");
     await newUser.save();
     console.log("New user created", newUser);
@@ -31,7 +31,7 @@ const signup = async (req, res) => {
   }
 };
 
-// Login function
+
 const login = async (req, res) => {
   console.log(req.body);
   const { email, password } = req.body;
@@ -47,11 +47,10 @@ const login = async (req, res) => {
 
     console.log("Email found, checking password");
 
-    // Compare the entered password with the stored hashed password
+    
     const isMatch = await bcrypt.compare(password, user.password);
     console.log("Is password match:", isMatch);
 
-    // Logging details for troubleshooting
     console.log("Plaintext password:", password);
     console.log("Stored hashed password:", user.password);
     console.log("Password comparison result:", isMatch);
