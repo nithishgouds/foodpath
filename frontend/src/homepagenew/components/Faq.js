@@ -27,7 +27,7 @@ function Faq() {
   return (
     <div className="main-background2 bg-gray-500 flex flex-col min-h-screen items-center px-4 pt-24">
       <Header />
-      <div className="content-overlay4 flex-grow w-full max-w-9xl mt-30px bg-cover bg-center
+      <div className="content-overlay4 flex-grow w-full max-w-9xl text-white mt-30px bg-cover bg-center
       bg-no-repeat bg-fixed bg-[url('../assets/123.jpg')]"  >
         {/* Q1 */}
         <div className="about-text mt-40 ml-20" >
@@ -57,7 +57,7 @@ function Faq() {
 
         {/* Q2 */}
         <div className="q2 mt-36 mr-24 text-right">
-          <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px] ml-auto mr-0"></div>
+          <div className="linex w-[321px] h-[1px] bg-white my-[10px] mb-[75px] ml-auto mr-0"></div>
           <motion.p
             id="q2que"
             className="font-worksans text-5xl font-light"
@@ -84,7 +84,7 @@ function Faq() {
 
         {/* Q3 */}
         <div className="q3 mt-40 ml-20">
-          <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px]"></div>
+          <div className="linex w-[321px] h-[1px] bg-white my-[10px] mb-[75px]"></div>
           <motion.p
             id="q3que"
             className="font-worksans text-5xl font-light"
@@ -110,7 +110,7 @@ function Faq() {
 
         {/* Q4 */}
         <div className="q4 mt-40 mr-24 text-right">
-          <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px] ml-auto mr-0"></div>
+          <div className="linex w-[321px] h-[1px] bg-white my-[10px] mb-[75px] ml-auto mr-0"></div>
           <motion.p
             id="q4que"
             className="font-worksans text-5xl font-light"
@@ -137,7 +137,7 @@ function Faq() {
 
         {/* Q5 */}
         <div className="q5 mt-40 ml-20">
-          <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px]"></div>
+          <div className="linex w-[321px] h-[1px] bg-white my-[10px] mb-[75px]"></div>
           <motion.p
             id="q5que"
             className="font-worksans text-5xl font-light max-w-screen-md"
@@ -164,7 +164,7 @@ function Faq() {
 
         {/* Q6 */}
         <div className="q6 mt-40 mr-24 text-right">
-          <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px] ml-auto mr-0"></div>
+          <div className="linex w-[321px] h-[1px] bg-white my-[10px] mb-[75px] ml-auto mr-0"></div>
           <motion.p
             id="q6que"
             className="font-worksans text-5xl font-light max-w-screen-md text-right"
@@ -191,7 +191,7 @@ function Faq() {
 
         {/* Q7 */}
         <div className="q7 mt-40 ml-20">
-          <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px]"></div>
+          <div className="linex w-[321px] h-[1px] bg-white my-[10px] mb-[75px]"></div>
           <motion.p
             id="q7que"
             className="font-worksans text-5xl font-light max-w-screen-md"
@@ -216,7 +216,7 @@ function Faq() {
 
         {/* Q8 */}
         <div className="q8 mt-40 mr-24 text-right">
-          <div className="linex w-[421px] h-[1px] bg-black my-[10px] mb-[75px] ml-auto mr-0 "></div>
+          <div className="linex w-[421px] h-[1px] bg-white my-[10px] mb-[75px] ml-auto mr-0 "></div>
           <motion.p
             id="q8que"
             className="font-worksans text-5xl font-light max-w-screen-md text-right"
@@ -243,7 +243,7 @@ function Faq() {
 
         {/* Q9 */}
         <div className="q9 mt-40 ml-20">
-          <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px]"></div>
+          <div className="linex w-[321px] h-[1px] bg-white my-[10px] mb-[75px]"></div>
           <motion.p
             id="q9que"
             className="font-worksans text-5xl font-light max-w-screen-md"
@@ -268,7 +268,7 @@ function Faq() {
 
         {/* Q10 */}
         {/* <div className="q10 mt-40 mr-24 text-right">
-          <div className="linex w-[321px] h-[1px] bg-black my-[10px] mb-[75px] ml-auto mr-0"></div>
+          <div className="linex w-[321px] h-[1px] bg-white my-[10px] mb-[75px] ml-auto mr-0"></div>
           <motion.p
             id="q10que"
             className="font-worksans text-5xl font-light max-w-screen-md"
