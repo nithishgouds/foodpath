@@ -26,14 +26,7 @@ h1 {
   color:white;
 
 }
-.container {
-  display: flex;
- 
 
-  justify-content: space-between; /* Or use 'flex-end' to push the image to the right */
-  align-items: center; /* Aligns vertically */
-  transition: transform 0.3s;
-}
 
 .food-image-i{
   float: right;
@@ -383,10 +376,7 @@ margin-bottom: 2em;
 body{
   font-family:  Georgia, 'Times New Roman', Times, serif;
 }
-.container{
-  border-radius: 1px;
-  font-family:  Georgia, 'Times New Roman', Times, serif;
-}
+
 .food-iteml{
   margin-right: 45%;
   text-align: left;
