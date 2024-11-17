@@ -521,6 +521,7 @@ function Content3d() {
             <input readOnly class="organinfoinputs" value={IOcalories}></input>
             <label class="organinfolabel">Oxygen Levels:</label>
             <input readOnly class="organinfoinputs" value={IOoxygen}></input>
+            
           <button class='inputbuttons' style={{marginLeft:'20px'}}>Go to Guides</button>
 
         </div>
