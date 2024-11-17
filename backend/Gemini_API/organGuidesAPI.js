@@ -6,11 +6,11 @@ const {
     HarmBlockThreshold,
   } = require("@google/generative-ai");
   
-  const apiKey = process.env.API_KEY;
+  const apiKey = process.env.API_KEY1;
   const genAI = new GoogleGenerativeAI(apiKey);
   
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-pro",
+    model: "gemini-1.5-flash-8b",
     systemInstruction: "Analyze the impact of the provided food item on the specified organ and return its status as a rating from 0 to 4, along with 8 specific, actionable guides for improving the condition of the organ. Ratings are defined as:\n\n0 = Very Severe Damage\n1 = Healthy\n2 = Very Healthy\n3 = Unhealthy\n4 = Very Unhealthy\n\ninput: status brain bonda\noutput:\n{\n  \"rating\": 1,\n  \"guide1\": \"Eat more leafy greens to boost overall brain function.\",\n  \"guide2\": \"Incorporate foods rich in omega-3 fatty acids like fish.\",\n  \"guide3\": \"Reduce intake of processed and deep-fried foods.\",\n  \"guide4\": \"Stay hydrated to enhance cognitive performance.\",\n  \"guide5\": \"Exercise regularly to improve blood flow to the brain.\",\n  \"guide6\": \"Ensure adequate sleep to support brain health.\",\n  \"guide7\": \"Practice mindfulness or meditation for mental clarity.\",\n  \"guide8\": \"Limit caffeine and sugar intake to avoid spikes in brain activity.\"\n}\n",
   });
   
