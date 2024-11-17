@@ -522,6 +522,7 @@ function Content() {
 
   return (
     <>
+    {/* Not signed in */}
       {!isSignIn && (
         <div>
           <div

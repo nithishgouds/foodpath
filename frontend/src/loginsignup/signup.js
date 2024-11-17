@@ -45,10 +45,10 @@ export default function Login() {
     } else {
       setPWLength(false);
     }
-    if (!pwLength || !emailLength){
-        return;
-    }
-    else{
+    // if (!pwLength || !emailLength){
+    //     return;
+    // }
+    
       try {
         const response = await Axios.post("http://localhost:3001/auth/signup", {
           email: email,
@@ -68,7 +68,7 @@ export default function Login() {
           // Handle other errors or rethrow
         }
       }
-    }
+    
   };
 
   return (
