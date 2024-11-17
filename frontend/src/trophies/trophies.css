@@ -51,6 +51,8 @@
   box-sizing: border-box;
   margin-left: 350px;
   margin-top: 50px;
+  border-top: black;
+  border-width:1px;
 }
 
 .trophies-container .content-container {

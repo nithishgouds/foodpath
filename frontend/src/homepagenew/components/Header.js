@@ -68,7 +68,7 @@ const Header = () => {
     };
 
     const handleBadges = () => {
-        navigate("/badges"); // Redirect to the badges page
+        navigate("/trophies"); // Redirect to the badges page
     };
 
     const toggleDropdown = () => {
@@ -99,16 +99,11 @@ const Header = () => {
                                 3D MODEL
                             </a>
                         </li>
-                        <li className="nav-item mr-12">
-                            <a href="/guides" className="hover:text-[#CA8263] hover:bg-[#1C2E3B] px-4 py-2 transition duration-300 rounded-md">
-                                GUIDES
-                            </a>
-                        </li>
-                        <li className="nav-item mr-12">
-                            <a href="/trophies" className="hover:text-customHoverColor transition duration-300">
-                                TROPHIES
-                            </a>
-                        </li>
+                        {/*<li className="nav-item mr-12">*/}
+                        {/*    <a href="/guides" className="hover:text-[#CA8263] hover:bg-[#1C2E3B] px-4 py-2 transition duration-300 rounded-md">*/}
+                        {/*        GUIDES*/}
+                        {/*    </a>*/}
+                        {/*</li>*/}
                     </ul>
                 </nav>
                 <div className="relative flex items-center space-x-2 pr-8 font-helvetica">

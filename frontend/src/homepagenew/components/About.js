@@ -28,12 +28,12 @@ const About = () => {
             </motion.p>
 
             <motion.p
-                className="paragraph2 mt-14 font-helvetica font-extralight max-w-screen-sm text-right"
+                className="paragraph2 mt-14 font-helvetica font-extralight  text-right"
                 style={{
                     lineHeight: "1.5",
                     fontSize: "1.3rem",
                     position: "absolute", // Absolutely position paragraph2
-                    right: "10px",        // 30px from the right border of the container
+                    right: "-30px",        // 30px from the right border of the container
                     bottom: "auto",       // Align vertically as needed
                 }}
                 initial={{ opacity: 0, x: '100%' }}

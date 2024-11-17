@@ -40,8 +40,8 @@ const SplashScreen = () => {
                 initial={{ scale: 1, opacity: 1, x: 0, y: 0 }}
                 animate={{
                     scale: animationComplete ? 0.5 : 1,
-                    x: animationComplete ? -610 : 0,
-                    y: animationComplete ? -310 : 0,
+                    x: animationComplete ? -650 : 0,
+                    y: animationComplete ? -340 : 0,
                     fontSize: animationComplete ? "48px" : "120px",
                 }}
                 transition={{
