@@ -12,6 +12,7 @@ function Kidney() {
     useState("Getting...");
   const [guides_kidney_info_text, setguides_kidney_info_text] =
     useState("Analysing...");
+    const [showBulletedList, setShowBulletedList] = useState(false);
 
   const [isSignIn, setSingIn] = useState(false);
 
@@ -93,20 +94,21 @@ function Kidney() {
         // setguides_brain_consumed_text(consumedFoods.join(', '));
         setguides_kidney_consumed_text(consumedFoods); // Convert consumedFoods array to a comma-separated string
         setguides_kidney_info_text(`
-      1) ${AIorganGuideRes.guide1}
-      2) ${AIorganGuideRes.guide2}
-      3) ${AIorganGuideRes.guide3}
-      4) ${AIorganGuideRes.guide4}
-      5) ${AIorganGuideRes.guide5}
-      6) ${AIorganGuideRes.guide6}
-      7) ${AIorganGuideRes.guide7}
-      8) ${AIorganGuideRes.guide8}
+        ${AIorganGuideRes.guide1}
+        ${AIorganGuideRes.guide2}
+        ${AIorganGuideRes.guide3}
+        ${AIorganGuideRes.guide4}
+        ${AIorganGuideRes.guide5}
+        ${AIorganGuideRes.guide6}
+        ${AIorganGuideRes.guide7}
+        ${AIorganGuideRes.guide8}
       `); // Format guides in separate lines
+      setShowBulletedList(true);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [email, organName]);
+  }, []);
 
   return (
     <div className="App">
@@ -138,7 +140,20 @@ function Kidney() {
 
         <h2 className="heading">Info about the Kidney:</h2>
         <div className="containernew">
-          <p className="guides_kidney_info_text">{guides_kidney_info_text}</p>
+        <div className="guides_kidney_info_text">
+  {showBulletedList ? (
+    <ul className="custom-bulleted-list">
+      {guides_kidney_info_text.split('\n').map((line, index) => (
+        line.trim() && (
+          <li key={index} className="custom-bulleted-item">{line}</li>
+        )
+      ))}
+    </ul>
+  ) : (
+    <p>{guides_kidney_info_text}</p>
+  )}
+</div>
+
 
           <img
             src="https://static.skillshare.com/uploads/parentClasses/a72e90e7ea1de970ac435da53448dee5/91ca8ce1"

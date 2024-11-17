@@ -283,7 +283,7 @@ p {
       opacity: 0.7;
   }
   100% {
-      transform: translateY(10px);
+      transform: translateY(10);
       opacity: 1000;
   }
 }
@@ -500,66 +500,16 @@ body{
 
 
 }
-/* Card Container for Better Layout */
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
+/* Target only the specific list */
+.custom-bulleted-list {
+  list-style-type: disc; /* Enables bullet points */
+  margin-left: 20px; /* Adds indentation for the bullets */
+  padding-left: 20px; /* Adjusts spacing */
 }
 
-/* Food Card Styling */
-.food-card {
-  background: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s;
-  width: 300px;
-  margin-bottom: 20px;
-}
-
-.food-card:hover {
-  transform: translateY(-10px);
-}
-
-.food-card-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-bottom: 3px solid #ca8263; /* Separate the image with a border */
-}
-
-.food-card-content {
-  padding: 15px;
-  text-align: left;
-}
-
-.food-card-title {
-  font-family: 'Work Sans';
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #1c2e3b;
-  margin-bottom: 10px;
-}
-
-.foodpara {
-  font-size: 1rem;
-  color: #333;
-  line-height: 1.4;
-}
-
-.head31 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #1c2e3b;
-}
-
-.head4 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #fffdf9;
+/* Target the list items */
+.custom-bulleted-item {
+  margin-bottom: 8px; /* Adds spacing between items */
 }
 
 

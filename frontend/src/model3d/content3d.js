@@ -129,7 +129,7 @@ function Content3d() {
 
   const [selectedItem, setSelectedItem] = useState("");
   const [quantity, setquantity] = useState("");
-  const [consumedFoods, setConsumedFoods] = useState([]);
+  const [foodStatus, setFoodStatus] = useState([]);
   const [isEat, setEat] = useState(false);
   const [isEating, setEating] = useState(false);
 
@@ -143,7 +143,30 @@ function Content3d() {
     }
 
     try {
-      setConsumedFoods("eating...");
+      setFoodStatus("checking food...");
+      console.log(selectedItem);
+      const response = await axios.post(
+        "http://localhost:3001/api/organs/validatefood",
+        {
+          foodItems: selectedItem,
+        }
+      );
+
+      const { aiResponse } = response.data;
+
+      console.log("something is happening");
+      if (!aiResponse.consumable) {
+        setFoodStatus("You can't eat that!");
+        return;
+      }
+
+      setFoodStatus("consumable");
+    } catch (error) {
+      console.error("Error adding food item:", error);
+    }
+
+    try {
+      setFoodStatus("eating...");
       setEating(true);
       console.log(selectedItem);
       const response = await axios.post(
@@ -156,8 +179,9 @@ function Content3d() {
 
       const { aiResponse } = response.data;
       console.log("something is happening");
-      setConsumedFoods("ate...");
+      setFoodStatus("ate...");
       setEating(false);
+      setEat(true);
       setHandleAddRes(aiResponse); // Update state with aiResponse
 
       // Update the state with color changes
@@ -172,9 +196,13 @@ function Content3d() {
       setkidneycolor(colourrating(aiResponse.health_status.kidneys.rating));
     } catch (error) {
       setEating(false);
-      setConsumedFoods("error!");
+      setFoodStatus("error!");
       console.error("Error adding food item:", error);
     }
+  };
+
+  const handleHistoryButton = () => {
+    setActive(false);
   };
 
   const [isActive, setActive] = useState(false);
@@ -183,6 +211,49 @@ function Content3d() {
   const [IOglucose, setIOglucose] = useState("");
   const [IOcalories, setIOcalories] = useState("");
   const [IOoxygen, setIOoxygen] = useState("");
+
+  const [seperateFactor1label, setseperateFactor1label] = useState("SF1");
+  const [seperateFactor2label, setseperateFactor2label] = useState("SF2");
+  const [seperateFactor1value, setseperateFactor1value] = useState("SV1");
+  const [seperateFactor2value, setseperateFactor2value] = useState("SV2");
+
+  const getSeperateFactor1 = (svgName) => {
+    switch (svgName) {
+      case "brain":
+        return "Neurotransmitter_Levels";
+      case "heart":
+        return "Plant_Sterols";
+      case "liver":
+        return "Choline";
+      case "kidneys":
+        return "Phosphorus";
+      case "lungs":
+        return "Vitamin_C";
+      case "stomach":
+        return "Polyphenols";
+      case "intestines":
+        return "Prebiotics";
+    }
+  };
+
+  const getSeperateFactor2 = (svgName) => {
+    switch (svgName) {
+      case "brain":
+        return "Amino_Acids";
+      case "heart":
+        return "Magnesium";
+      case "liver":
+        return "Fats";
+      case "kidneys":
+        return "Potassium";
+      case "lungs":
+        return "Carotenoids";
+      case "stomach":
+        return "Zinc";
+      case "intestines":
+        return "Polyphenols";
+    }
+  };
 
   const handleOrganClick = async (OrgName) => {
     try {
@@ -200,15 +271,20 @@ function Content3d() {
       console.log(`3d clicked ${OrgName}`);
       console.log(handleAddRes.health_status.intestines.rating); // Debug to check if it exists
 
+      var sf1 = getSeperateFactor1(OrgName);
+      var sf2 = getSeperateFactor2(OrgName);
+
+      setseperateFactor1label(sf1);
+      setseperateFactor2label(sf2);
+      setseperateFactor1value(handleAddRes.post_consumption_values[sf1]);
+      setseperateFactor2value(handleAddRes.post_consumption_values[sf2]);
+
       // Access properties from handleAddRes directly
       setIOstatus(Ostatus(handleAddRes.health_status[OrgName].rating));
-      setIOglucose(
-        handleAddRes.post_consumption_values.blood_glucose_levels[OrgName]
-      );
-      setIOcalories(
-        handleAddRes.post_consumption_values.calorie_levels[OrgName]
-      );
-      setIOoxygen(handleAddRes.post_consumption_values.oxygen_levels[OrgName]);
+      setIOglucose(handleAddRes.post_consumption_values.blood_glucose_levels);
+      setIOcalories(handleAddRes.post_consumption_values.calorie_levels);
+      setIOoxygen(handleAddRes.post_consumption_values.oxygen_levels);
+      setActive(true);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -236,14 +312,67 @@ function Content3d() {
       setintestinecolor("");
       setkidneycolor("");
       setHandleAddRes(null);
-      //setConsumedFoods(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
+      //setfoodStatus(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
       console.log("Food item added successfully:", response.data);
     } catch (error) {
       console.error("Error adding food item:", error);
     }
   };
 
-  const consumedFoodsText = consumedFoods;
+  const foodStatusText = foodStatus;
+  const [foodHistory, setfoodHistory] = useState("");
+
+
+  const handleHistory = async () => {
+    try {
+
+
+      const response = await axios.post(
+        "http://localhost:3001/api/organs/history",
+        {
+          email: email
+        }
+      );
+
+      const { aiResponse,consumedFoods } = response.data;
+      console.log("some is happening");
+      if(consumedFoods.length===0){
+        setEat(false);
+        return;
+      }else{
+        setEat(true);
+      }
+      console.log(consumedFoods);
+      const foodItemsString = consumedFoods.map(item => item.foodItem);
+
+      const foodsString = foodItemsString
+        .map((food, index) => `Item ${index + 1}: ${food}`)
+        .join('\n');
+   
+      setfoodHistory(foodsString);
+      
+
+      setHandleAddRes(aiResponse);
+
+      // Update the state with color changes
+      setbraincolor(colourrating(aiResponse.health_status.brain.rating));
+      setlungscolor(colourrating(aiResponse.health_status.lungs.rating));
+      setheartcolor(colourrating(aiResponse.health_status.heart.rating));
+      setlivercolor(colourrating(aiResponse.health_status.liver.rating));
+      setstomachcolor(colourrating(aiResponse.health_status.stomach.rating));
+      setintestinecolor(colourrating(aiResponse.health_status.intestines.rating));
+      setkidneycolor(colourrating(aiResponse.health_status.kidneys.rating));
+    } catch (error) {
+      setFoodStatus("Error!");
+      setEating(false);
+      console.error("Error adding food item:", error);
+    }
+  };
+
+useEffect(() => {
+  handleHistory();
+}, []);
+
 
   return (
     <>
@@ -303,7 +432,7 @@ function Content3d() {
             <textarea
               readOnly
               class="textareas"
-              value={consumedFoodsText}
+              value={foodStatusText}
             ></textarea>
             <button
               class="inputbuttons"
@@ -333,7 +462,7 @@ function Content3d() {
             <button class="inputbuttons1" onClick={handleAddItem}>
               Add Food
             </button>
-            <p class="inputinfoheading">{consumedFoodsText}</p>
+            <p class="inputinfoheading">{foodStatusText}</p>
             {isEating && (
               <>
                 <EatAnimation />
@@ -401,7 +530,7 @@ function Content3d() {
                         height: "auto",
                         maxHeight: "300px",
                       }}
-                      value="" /*{consumedFoodsText}*/
+                      value={foodHistory}
                     ></textarea>
                     <div
                       className="organinfolabel"
@@ -472,23 +601,23 @@ function Content3d() {
                     />
 
                     <label className="organinfolabel">
-                      {/* {seperateFactor1label} */}Dummy 1
+                      {seperateFactor1label}
                     </label>
                     <textarea
                       readOnly
                       className="organinfoinputs"
                       style={{ height: "auto" }}
-                      // value={seperateFactor1value}
+                      value={seperateFactor1value}
                     />
 
                     <label className="organinfolabel">
-                      {/* {seperateFactor2label} */} Dummy 2
+                      {seperateFactor2label}
                     </label>
                     <textarea
                       readOnly
                       className="organinfoinputs"
                       style={{ height: "auto" }}
-                      // value={seperateFactor2value}
+                      value={seperateFactor2value}
                     />
 
                     <button
@@ -500,7 +629,7 @@ function Content3d() {
                     </button>
                     <button
                       className="inputbuttons"
-                      // onClick={handleHistoryButton}
+                       onClick={handleHistoryButton}
                     >
                       View History
                     </button>

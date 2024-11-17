@@ -11,6 +11,7 @@ function Lungs() {
     useState("Getting...");
   const [guides_lungs_info_text, setguides_lungs_info_text] =
     useState("Analysing...");
+    const [showBulletedList, setShowBulletedList] = useState(false);
 
   // Ensure jwt-decode is imported
   const [isSignIn, setSingIn] = useState(false);
@@ -93,20 +94,21 @@ function Lungs() {
         // setguides_brain_consumed_text(consumedFoods.join(', '));
         setguides_lungs_consumed_text(consumedFoods); // Convert consumedFoods array to a comma-separated string
         setguides_lungs_info_text(`
-        1) ${AIorganGuideRes.guide1}
-        2) ${AIorganGuideRes.guide2}
-        3) ${AIorganGuideRes.guide3}
-        4) ${AIorganGuideRes.guide4}
-        5) ${AIorganGuideRes.guide5}
-        6) ${AIorganGuideRes.guide6}
-        7) ${AIorganGuideRes.guide7}
-        8) ${AIorganGuideRes.guide8}
+        ${AIorganGuideRes.guide1}
+        ${AIorganGuideRes.guide2}
+        ${AIorganGuideRes.guide3}
+        ${AIorganGuideRes.guide4}
+        ${AIorganGuideRes.guide5}
+        ${AIorganGuideRes.guide6}
+        ${AIorganGuideRes.guide7}
+        ${AIorganGuideRes.guide8}
         `); // Format guides in separate lines
+        setShowBulletedList(true);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [email, organName]);
+  }, []);
 
   return (
     <div className="App">
@@ -136,11 +138,20 @@ function Lungs() {
         </div>
         <h2 className="heading">Info about the Lungs :</h2>
         <div class="containernew">
-          <div>
-            {guides_lungs_info_text.split("\n").map((line, index) => (
-              <p className="guides_brain_info_text"> {line}</p>
-            ))}
-          </div>
+        <div className="guides_lungs_info_text">
+  {showBulletedList ? (
+    <ul className="custom-bulleted-list">
+      {guides_lungs_info_text.split('\n').map((line, index) => (
+        line.trim() && (
+          <li key={index} className="custom-bulleted-item">{line}</li>
+        )
+      ))}
+    </ul>
+  ) : (
+    <p>{guides_lungs_info_text}</p>
+  )}
+</div>
+
           <img
             src="https://static.vecteezy.com/system/resources/previews/035/589/357/original/ai-generated-3d-realistic-human-lungs-with-a-transparent-background-png.png"
             alt="."
