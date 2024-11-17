@@ -10,6 +10,8 @@ function Brain() {
   const [guides_brain_status_text, setguides_brain_status_text] = useState("Analysing...");
   const [guides_brain_consumed_text, setguides_brain_consumed_text] = useState("Getting...");
   const [guides_brain_info_text, setguides_brain_info_text] = useState("Analysing...");
+  const [showBulletedList, setShowBulletedList] = useState(false); // or false, based on your logic
+
 
     const [isSignIn, setSingIn] = useState(false);
     let email;
@@ -90,21 +92,23 @@ function Brain() {
         // setguides_brain_consumed_text(consumedFoods.join(', '));
         setguides_brain_consumed_text(consumedFoods);  // Convert consumedFoods array to a comma-separated string
         setguides_brain_info_text(`
-        1) ${AIorganGuideRes.guide1}
-        2) ${AIorganGuideRes.guide2}
-        3) ${AIorganGuideRes.guide3}
-        4) ${AIorganGuideRes.guide4}
-        5) ${AIorganGuideRes.guide5}
-        6) ${AIorganGuideRes.guide6}
-        7) ${AIorganGuideRes.guide7}
-        8) ${AIorganGuideRes.guide8}
+        ${AIorganGuideRes.guide1}
+        ${AIorganGuideRes.guide2}
+        ${AIorganGuideRes.guide3}
+        ${AIorganGuideRes.guide4}
+        ${AIorganGuideRes.guide5}
+        ${AIorganGuideRes.guide6}
+        ${AIorganGuideRes.guide7}
+        ${AIorganGuideRes.guide8}
         `); // Format guides in separate lines
+
+        setShowBulletedList(true);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
     
-  }, [email, organName]);
+  }, []);
 
   
 
@@ -142,11 +146,20 @@ function Brain() {
       <h2 className='heading'>Info about the brain :</h2>
           <div class="containernew">
           
-            <div>
-    {guides_brain_info_text.split('\n').map((line, index) => (
-      <p className='guides_brain_info_text'> {line}</p>
-    ))}
-  </div>
+          <div className="guides_brain_info_text">
+  {showBulletedList ? (
+    <ul className="custom-bulleted-list">
+      {guides_brain_info_text.split('\n').map((line, index) => (
+        line.trim() && (
+          <li key={index} className="custom-bulleted-item">{line}</li>
+        )
+      ))}
+    </ul>
+  ) : (
+    <p>{guides_brain_info_text}</p>
+  )}
+</div>
+
 
 <img src="https://th.bing.com/th/id/R.3cd0ee5e418250f2d18a186841ce60cc?rik=vJb2qOAZkQJ8Zw&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f04%2fBrain-PNG-Image.png&ehk=cIrtlwwNSqpbI9itUL0CMD3%2b0C59yTt37Wj8jOauEAU%3d&risl=&pid=ImgRaw&r=0"
 alt='.'

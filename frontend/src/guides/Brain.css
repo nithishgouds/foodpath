@@ -500,6 +500,17 @@ body{
 
 
 }
+/* Target only the specific list */
+.custom-bulleted-list {
+  list-style-type: disc; /* Enables bullet points */
+  margin-left: 20px; /* Adds indentation for the bullets */
+  padding-left: 20px; /* Adjusts spacing */
+}
+
+/* Target the list items */
+.custom-bulleted-item {
+  margin-bottom: 8px; /* Adds spacing between items */
+}
 
 
 

@@ -11,6 +11,7 @@ function Intestine() {
     useState("Getting...");
   const [guides_intestine_info_text, setguides_intestine_info_text] =
     useState("Analysing...");
+    const [showBulletedList, setShowBulletedList] = useState(false);
 
   const [isSignIn, setSingIn] = useState(false);
 
@@ -92,20 +93,21 @@ function Intestine() {
         // setguides_brain_consumed_text(consumedFoods.join(', '));
         setguides_intestine_consumed_text(consumedFoods); // Convert consumedFoods array to a comma-separated string
         setguides_intestine_info_text(`
-      1) ${AIorganGuideRes.guide1}
-      2) ${AIorganGuideRes.guide2}
-      3) ${AIorganGuideRes.guide3}
-      4) ${AIorganGuideRes.guide4}
-      5) ${AIorganGuideRes.guide5}
-      6) ${AIorganGuideRes.guide6}
-      7) ${AIorganGuideRes.guide7}
-      8) ${AIorganGuideRes.guide8}
+        ${AIorganGuideRes.guide1}
+        ${AIorganGuideRes.guide2}
+        ${AIorganGuideRes.guide3}
+        ${AIorganGuideRes.guide4}
+        ${AIorganGuideRes.guide5}
+        ${AIorganGuideRes.guide6}
+        ${AIorganGuideRes.guide7}
+        ${AIorganGuideRes.guide8}
       `); // Format guides in separate lines
+      setShowBulletedList(true);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [email, organName]);
+  }, []);
 
   return (
     <div className="App">
@@ -136,11 +138,20 @@ function Intestine() {
         </div>
         <h2 className="heading">Info about the Intestine :</h2>
         <div class="containernew">
-          <div>
-            {guides_intestine_info_text.split("\n").map((line, index) => (
-              <p className="guides_heart_info_text"> {line}</p>
-            ))}
-          </div>
+        <div className="guides_intestine_info_text">
+  {showBulletedList ? (
+    <ul className="custom-bulleted-list">
+      {guides_intestine_info_text.split('\n').map((line, index) => (
+        line.trim() && (
+          <li key={index} className="custom-bulleted-item">{line}</li>
+        )
+      ))}
+    </ul>
+  ) : (
+    <p>{guides_intestine_info_text}</p>
+  )}
+</div>
+
           <img
             src="https://img.freepik.com/premium-photo/life-art_1139222-8704.jpg"
             alt="."
