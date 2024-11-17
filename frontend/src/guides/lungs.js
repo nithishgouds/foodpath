@@ -78,7 +78,7 @@ function Lungs() {
   useEffect(() => {
     // Make POST request with email and organName in the body
     axios
-        .post("http://localhost:3001/api/organs/organGuides", {
+        .post("https://foodpath-backend.onrender.com/api/organs/organGuides", {
           email: email,
           organName: organName,
         })

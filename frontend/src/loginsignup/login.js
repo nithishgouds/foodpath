@@ -34,7 +34,7 @@ export default function Login() {
     console.log("Email:", email);
     console.log("Password:", password);
     try {
-      const response = await Axios.post('http://localhost:3001/auth/login', {
+      const response = await Axios.post('https://foodpath-backend.onrender.com/auth/login', {
         email: email,
         password: password,
       });
