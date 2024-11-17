@@ -93,7 +93,7 @@ const Trophies = () => {
         const email = decodedToken.email;
 
         const response = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 12,
@@ -123,7 +123,6 @@ const Trophies = () => {
           <div className="content-container">
             {none && (
               <div className='trophyheading'>
-                Tinker with model to get Badges
               </div>
               
             )}

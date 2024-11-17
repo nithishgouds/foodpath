@@ -67,7 +67,7 @@ function Content3d() {
   //   handleAddItem();
   //   try {
   //     const response = await axios.get(
-  //       "http://localhost:3001/api/organs/organ-status",
+  //       "https://foodpath-backend.onrender.com/api/organs/organ-status",
   //       { token: localStorage.getItem("jwtToken") }
   //     );
 
@@ -145,7 +145,7 @@ function Content3d() {
       setFoodStatus("checking food...");
       console.log(selectedItem);
       const response = await axios.post(
-        "http://localhost:3001/api/organs/validatefood",
+        "https://foodpath-backend.onrender.com/api/organs/validatefood",
         {
           foodItems: selectedItem,
         }
@@ -169,7 +169,7 @@ function Content3d() {
       setEating(true);
       console.log(selectedItem);
       const response = await axios.post(
-        "http://localhost:3001/api/organs/add-food",
+        "https://foodpath-backend.onrender.com/api/organs/add-food",
         {
           foodItems: selectedItem,
           email: email,
@@ -292,7 +292,7 @@ function Content3d() {
   const ResetModel = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/organs/reset-consumed-foods",
+        "https://foodpath-backend.onrender.com/api/organs/reset-consumed-foods",
         {
           email: email,
         }
@@ -328,7 +328,7 @@ function Content3d() {
 
 
       const response = await axios.post(
-        "http://localhost:3001/api/organs/history",
+        "https://foodpath-backend.onrender.com/api/organs/history",
         {
           email: email
         }

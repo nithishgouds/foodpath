@@ -69,7 +69,7 @@ function Content() {
     handleAddItem();
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/organs/organ",
+        "https://foodpath-backend.onrender.com/api/organs/organ",
         {
           token: localStorage.getItem("jwtToken"),
         }
@@ -146,7 +146,7 @@ function Content() {
       setFoodStatus("Checking if food is edible...");
       console.log(selectedItem);
       const response = await axios.post(
-        "http://localhost:3001/api/organs/validatefood",
+        "https://foodpath-backend.onrender.com/api/organs/validatefood",
         {
           foodItems: selectedItem,
         }
@@ -170,13 +170,13 @@ function Content() {
       setFoodStatus("eating...");
       console.log(selectedItem);
       const response = await axios.post(
-        "http://localhost:3001/api/organs/add-food",
+        "https://foodpath-backend.onrender.com/api/organs/add-food",
         {
           foodItems: selectedItem,
           email: email,
         }
       );
-      //http://localhost:3001/trophies/updateTrophy  email,index,value
+      //https://foodpath-backend.onrender.com/trophies/updateTrophy  email,index,value
       const { aiResponse, consumedFoods } = response.data;
       console.log("something is happening");
       consumedFoods.forEach((food, index) => {
@@ -185,7 +185,7 @@ function Content() {
       console.log(consumedFoods.length);
       
       const responsetrophy = await axios.post(
-        "http://localhost:3001/trophies/updateTrophy",
+        "https://foodpath-backend.onrender.com/trophies/updateTrophy",
         {
           email: email,
           index: 12,
@@ -196,7 +196,7 @@ function Content() {
 
       if(consumedFoods.length===5 && !achievementarray[0]){
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 0,
@@ -208,7 +208,7 @@ function Content() {
 
       if(consumedFoods.length===10 && !achievementarray[1]){
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 1,
@@ -220,7 +220,7 @@ function Content() {
 
       if(consumedFoods.length===20 && !achievementarray[2]){
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 2,
@@ -252,7 +252,7 @@ function Content() {
 
       if(noD>1 && !achievementarray[3] ){
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 3,
@@ -264,7 +264,7 @@ function Content() {
       
       if(noD>3 && !achievementarray[4]){
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 4,
@@ -276,7 +276,7 @@ function Content() {
       
       if(noD===6 && !achievementarray[5]){
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 5,
@@ -288,7 +288,7 @@ function Content() {
 
       if(noVH==6 && !achievementarray[6]){
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 6,
@@ -433,7 +433,7 @@ function Content() {
     setFoodStatus("resetting...");
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/organs/reset-consumed-foods",
+        "https://foodpath-backend.onrender.com/api/organs/reset-consumed-foods",
         {
           email: email,
         }
@@ -466,7 +466,7 @@ function Content() {
 
 
   // const response = await axios.post(
-  //   "http://localhost:3001/trophies/updateTrophy",
+  //   "https://foodpath-backend.onrender.com/trophies/updateTrophy",
   //   {
   //     email: email,
   //     index: indexToChange,
@@ -477,7 +477,7 @@ function Content() {
   const handleHistory = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/organs/history",
+        "https://foodpath-backend.onrender.com/api/organs/history",
         {
           email: email,
         }
