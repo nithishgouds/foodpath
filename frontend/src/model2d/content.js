@@ -188,10 +188,21 @@ function Content() {
         console.log(`Item ${index + 1}:`, food);
       });
       console.log(consumedFoods.length);
+
+
       setEating(false);
       setEat(true);
       setFoodStatus("Food Consumed");
-      setHandleAddRes(aiResponse); // Update state with aiResponse
+      setHandleAddRes(aiResponse);
+      const foodItemsString = consumedFoods.map(item => item.foodItem);
+
+      const foodsString = foodItemsString
+        .map((food, index) => `Item ${index + 1}: ${food}`)
+        .join('\n');
+   
+      setfoodHistory(foodsString);
+
+      // Update state with aiResponse
 
       // Update the state with color changes
       setBrainColor(colourrating(aiResponse.health_status.brain.rating));
@@ -323,6 +334,7 @@ function Content() {
       );
       setFoodStatus("Model Reset Successfully");
       // setFoodStatus(response.data.foodStatus);
+      setfoodHistory("");
       setOpacity(0);
       setIOstatus(" ");
       setIOglucose(" ");
@@ -344,11 +356,93 @@ function Content() {
   };
 
   const foodStatusText = foodStatus; //.map(item => `${item.foodItem} `).join('\n');
+  const [foodHistory, setfoodHistory] = useState("");
 
 
-  useEffect(() => {
+  const handleHistory = async () => {
+    try {
+
+
+      const response = await axios.post(
+        "http://localhost:3001/api/organs/history",
+        {
+          email: email
+        }
+      );
+
+      const { aiResponse,consumedFoods } = response.data;
+      console.log("some is happening");
+      if(consumedFoods.length===0){
+        setEat(false);
+        return;
+      }else{
+        setEat(true);
+      }
+      console.log(consumedFoods);
+      const foodItemsString = consumedFoods.map(item => item.foodItem);
+
+      const foodsString = foodItemsString
+        .map((food, index) => `Item ${index + 1}: ${food}`)
+        .join('\n');
+   
+      setfoodHistory(foodsString);
+      
+
+      setHandleAddRes(aiResponse);
+
+      // Update the state with color changes
+      setBrainColor(colourrating(aiResponse.health_status.brain.rating));
+      setlungsColor(colourrating(aiResponse.health_status.lungs.rating));
+      setheartColor(colourrating(aiResponse.health_status.heart.rating));
+      setliverColor(colourrating(aiResponse.health_status.liver.rating));
+      setstomachColor(colourrating(aiResponse.health_status.stomach.rating));
+      setintestineColor(colourrating(aiResponse.health_status.intestines.rating));
+      setOpacity(0.5);
+    } catch (error) {
+      setFoodStatus("Error!");
+      setEating(false);
+      console.error("Error adding food item:", error);
+    }
+  };
+
+useEffect(() => {
+  handleHistory();
+}, []);
+
+  // axios.post("http://localhost:3001/api/organs/history", { email: email })
+  // .then((response) => {
+  //   const { aiResponse, consumedFoods } = response.data;
+  //   console.log("some is happening");
     
-  });
+  //   if (consumedFoods.length === 0) {
+  //     setEat(false);
+  //     return;
+  //   } else {
+  //     setEat(true);
+  //   }
+
+  //   const foodsString = consumedFoods
+  //     .map((food, index) => `Item ${index + 1}: ${food}`)
+  //     .join('\n');
+    
+  //   setfoodHistory(foodsString);
+  //   setHandleAddRes(aiResponse);
+
+  //   // Update the state with color changes
+  //   setBrainColor(colourrating(aiResponse.health_status.brain.rating));
+  //   setlungsColor(colourrating(aiResponse.health_status.lungs.rating));
+  //   setheartColor(colourrating(aiResponse.health_status.heart.rating));
+  //   setliverColor(colourrating(aiResponse.health_status.liver.rating));
+  //   setstomachColor(colourrating(aiResponse.health_status.stomach.rating));
+  //   setintestineColor(colourrating(aiResponse.health_status.intestines.rating));
+  //   setOpacity(0.5);
+  // })
+  // .catch((error) => {
+  //   setFoodStatus("Error!");
+  //   setEating(false);
+  //   console.error("Error adding food item:", error);
+  // });
+
 
   return (
     <>
@@ -581,7 +675,7 @@ function Content() {
                         height: "auto",
                         maxHeight: "300px",
                       }}
-                      value={foodStatus} /*{foodStatusText}*/
+                      value={foodHistory} /*{foodStatusText}*/
                     ></textarea>
                     {/* <div
                       className="organinfolabel"
