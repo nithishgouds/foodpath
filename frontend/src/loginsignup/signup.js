@@ -50,7 +50,7 @@ export default function Login() {
     // }
     
       try {
-        const response = await Axios.post("https://foodpath-backend.onrender.comauth/signup", {
+        const response = await Axios.post("https://foodpath-backend.onrender.com/auth/signup", {
           email: email,
           password: password,
         });
