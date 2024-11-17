@@ -73,7 +73,7 @@ export function Model3d(props) {
         castShadow
         receiveShadow
         geometry={nodes.Stomach.geometry}
-        material={new MeshStandardMaterial({ color: props.stomachcolor })}
+        material={new MeshStandardMaterial({ color:   stomachcolor, transparent: true,opacity: props.stomachOpacity})}
         position={[0.18, -0.052, -0.173]}
         rotation={[-Math.PI, 1.472, -Math.PI]}
         scale={3.667}>
@@ -82,7 +82,7 @@ export function Model3d(props) {
           castShadow
           receiveShadow
           geometry={nodes.Mucosa_of_stomach.geometry}
-          material={new MeshStandardMaterial({ color: props.stomachcolor })}
+          material={new MeshStandardMaterial({ color:   stomachcolor, transparent: true, opacity: props.stomachOpacity})}
         />
       </mesh>
       </group>
@@ -92,7 +92,7 @@ export function Model3d(props) {
         castShadow
         receiveShadow
         geometry={nodes.lungs.geometry}
-        material={new MeshStandardMaterial({ color: props.lungscolor })}
+        material={new MeshStandardMaterial({ color:   lungscolor, transparent: true, opacity: props.lungsOpacity })}
         position={[0.644, 0.511, -0.09]}
         rotation={[Math.PI / 2, 0, -1.67]}
         scale={18.337}
@@ -109,36 +109,36 @@ export function Model3d(props) {
           castShadow
           receiveShadow
           geometry={nodes.Mesh.geometry}
-          material={new MeshStandardMaterial({ color: props.livercolor })}
+          material={new MeshStandardMaterial({ color:   livercolor , transparent: true, opacity: props.liverOpacity})}
         />
         <mesh
           name="Mesh_1"
           castShadow
           receiveShadow
           geometry={nodes.Mesh_1.geometry}
-          material={new MeshStandardMaterial({ color: props.livercolor })}
+          material={new MeshStandardMaterial({ color:   livercolor , transparent: true, opacity: props.liverOpacity})}
         />
       </group>
       </group>
-      <group onClick={() => props.handleClick('kidney')}>
+      <group onClick={() => props.handleClick('kidneys')}>
       <mesh
         name="kidney"
         castShadow
         receiveShadow
         geometry={nodes.kidney.geometry}
-        material={new MeshStandardMaterial({ color: props.kidneycolor })}
+        material={new MeshStandardMaterial({ color:   kidneycolor, transparent: true, opacity: props.kidneyOpacity })}
         position={[0.034, -0.334, 0.17]}
         rotation={[-Math.PI, 1.472, -Math.PI]}
         scale={3.667}
       />
       </group>
-      <group onClick={() => props.handleClick('intestine')}>
+      <group onClick={() => props.handleClick('intestines')}>
       <mesh
         name="Jejunum"
         castShadow
         receiveShadow
         geometry={nodes.Jejunum.geometry}
-        material={new MeshStandardMaterial({ color: props.intestinecolor  })}
+        material={new MeshStandardMaterial({ color:   intestinecolor , transparent: true , opacity: props.intestineOpacity})}
         position={[0.23, -0.695, -0.072]}
         rotation={[-Math.PI, 1.472, -Math.PI]}
         scale={3.667}
@@ -148,7 +148,7 @@ export function Model3d(props) {
         castShadow
         receiveShadow
         geometry={nodes.Ascending_colon.geometry}
-        material={new MeshStandardMaterial({ color: props.intestinecolor })}
+        material={new MeshStandardMaterial({ color:   intestinecolor , transparent: true, opacity: props.intestineOpacity})}
         position={[0.126, -0.857, 0.288]}
         rotation={[-Math.PI, 1.472, -Math.PI]}
         scale={0.092}
@@ -158,7 +158,7 @@ export function Model3d(props) {
         castShadow
         receiveShadow
         geometry={nodes.Descending_colon.geometry}
-        material={new MeshStandardMaterial({ color: props.intestinecolor })}
+        material={new MeshStandardMaterial({ color:   intestinecolor , transparent: true, opacity: props.intestineOpacity})}
         position={[0.126, -0.857, 0.288]}
         rotation={[-Math.PI, 1.472, -Math.PI]}
         scale={0.092}
@@ -168,7 +168,7 @@ export function Model3d(props) {
         castShadow
         receiveShadow
         geometry={nodes.Transverse_colon.geometry}
-        material={new MeshStandardMaterial({ color: props.intestinecolor })}
+        material={new MeshStandardMaterial({ color:   intestinecolor , transparent: true, opacity: props.intestineOpacity})}
         position={[0.126, -0.857, 0.288]}
         rotation={[-Math.PI, 1.472, -Math.PI]}
         scale={0.092}
@@ -180,7 +180,7 @@ export function Model3d(props) {
         castShadow
         receiveShadow
         geometry={nodes.Right_atrium.geometry}
-        material={new MeshStandardMaterial({ color: props.heartcolor })}
+        material={new MeshStandardMaterial({ color:   heartcolor , transparent: true, opacity: props.heartOpacity})}
         position={[0.038, -4.351, -0.025]}
         rotation={[Math.PI / 2, 0, -1.67]}
         scale={3.667}
@@ -190,7 +190,7 @@ export function Model3d(props) {
         castShadow
         receiveShadow
         geometry={nodes.Right_ventricle.geometry}
-        material={new MeshStandardMaterial({ color: props.heartcolor })}
+        material={new MeshStandardMaterial({ color:   heartcolor, transparent: true, opacity: props.heartOpacity })}
         position={[0.038, -4.351, -0.025]}
         rotation={[Math.PI / 2, 0, -1.67]}
         scale={3.667}
@@ -200,7 +200,7 @@ export function Model3d(props) {
         castShadow
         receiveShadow
         geometry={nodes.Left_atrium.geometry}
-        material={new MeshStandardMaterial({ color: props.heartcolor })}
+        material={new MeshStandardMaterial({ color:   heartcolor , transparent: true, opacity: props.heartOpacity})}
         position={[0.038, -4.351, -0.025]}
         rotation={[Math.PI / 2, 0, -1.67]}
         scale={3.667}
@@ -210,7 +210,7 @@ export function Model3d(props) {
         castShadow
         receiveShadow
         geometry={nodes.Left_ventricle.geometry}
-        material={new MeshStandardMaterial({ color: props.heartcolor })}
+        material={new MeshStandardMaterial({ color:   heartcolor , transparent: true, opacity: props.heartOpacity})}
         position={[0.038, -4.351, -0.025]}
         rotation={[Math.PI / 2, 0, -1.67]}
         scale={3.667}
@@ -220,7 +220,7 @@ export function Model3d(props) {
         castShadow
         receiveShadow
         geometry={nodes.Pulmonary_trunk.geometry}
-        material={new MeshStandardMaterial({ color: props.heartcolor })}
+        material={new MeshStandardMaterial({ color:   heartcolor, transparent: true, opacity: props.heartOpacity })}
         position={[-0.026, 0.442, -0.045]}
         rotation={[-Math.PI, 1.472, -Math.PI]}
         scale={3.667}
@@ -230,7 +230,7 @@ export function Model3d(props) {
         castShadow
         receiveShadow
         geometry={nodes.Ascending_aorta.geometry}
-        material={new MeshStandardMaterial({ color: props.heartcolor })}
+        material={new MeshStandardMaterial({ color:   heartcolor , transparent: true, opacity: props.heartOpacity})}
         position={[0.125, 0.549, -0.074]}
         rotation={[-Math.PI, 1.472, -Math.PI]}
         scale={3.667}
@@ -240,7 +240,7 @@ export function Model3d(props) {
         castShadow
         receiveShadow
         geometry={nodes.Superior_vena_cava.geometry}
-        material={new MeshStandardMaterial({ color: props.heartcolor  })}
+        material={new MeshStandardMaterial({ color:   heartcolor, transparent: true , opacity: props.heartOpacity })}
         position={[0.118, 0.629, 0.024]}
         rotation={[-Math.PI, 1.472, -Math.PI]}
         scale={3.667}
@@ -257,98 +257,98 @@ export function Model3d(props) {
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor , transparent: true, opacity: props.brainOpacity})}
         />
         <mesh
           name="Superior_frontal_gyrus_1"
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus_1.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor, transparent: true, opacity: props.brainOpacity })}
         />
         <mesh
           name="Superior_frontal_gyrus_2"
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus_2.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor, transparent: true , opacity: props.brainOpacity})}
         />
         <mesh
           name="Superior_frontal_gyrus_3"
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus_3.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor, transparent: true , opacity: props.brainOpacity})}
         />
         <mesh
           name="Superior_frontal_gyrus_4"
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus_4.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor, transparent: true, opacity: props.brainOpacity })}
         />
         <mesh
           name="Superior_frontal_gyrus_5"
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus_5.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor, transparent: true , opacity: props.brainOpacity})}
         />
         <mesh
           name="Superior_frontal_gyrus_6"
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus_6.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor, transparent: true , opacity: props.brainOpacity})}
         />
         <mesh
           name="Superior_frontal_gyrus_7"
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus_7.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor, transparent: true, opacity: props.brainOpacity })}
         />
         <mesh
           name="Superior_frontal_gyrus_8"
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus_8.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor , transparent: true, opacity: props.brainOpacity})}
         />
         <mesh
           name="Superior_frontal_gyrus_9"
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus_9.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor , transparent: true, opacity: props.brainOpacity})}
         />
         <mesh
           name="Superior_frontal_gyrus_10"
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus_10.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor , transparent: true, opacity: props.brainOpacity})}
         />
         <mesh
           name="Superior_frontal_gyrus_11"
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus_11.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor , transparent: true, opacity: props.brainOpacity})}
         />
         <mesh
           name="Superior_frontal_gyrus_12"
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus_12.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor, transparent: true, opacity: props.brainOpacity })}
         />
         <mesh
           name="Superior_frontal_gyrus_13"
           castShadow
           receiveShadow
           geometry={nodes.Superior_frontal_gyrus_13.geometry}
-          material={new MeshStandardMaterial({ color: props.braincolor })}
+          material={new MeshStandardMaterial({ color:   braincolor, transparent: true , opacity: props.brainOpacity})}
         />
       </group>
       </group>

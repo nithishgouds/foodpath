@@ -21,7 +21,7 @@ function Content() {
   let email;
 
   const token = localStorage.getItem("jwtToken");
-  console.log(token);
+  // console.log(token);
 
   const checkSignIn = () => {
     if (token) {
@@ -31,22 +31,22 @@ function Content() {
 
   useEffect(() => {
     checkSignIn();
-  });
+    handleHistory();
+  }, []);
 
   if (token) {
     try {
-      console.log("Entered token check");
 
       // Decode the JWT token to extract the payload
       const decodedToken = jwtDecode(token);
-      console.log(decodedToken); // Log the entire decoded token to check its structure
+      // console.log(decodedToken);
 
-      console.log(decodedToken.email);
+      // console.log(decodedToken.email);
 
       // Check if the decoded token contains the email property
       if (decodedToken && decodedToken.email) {
         email = decodedToken.email;
-        console.log("Decoded email:", email);
+        // console.log("Decoded email:", email);
       } else {
         console.log("Email not found in token payload.");
       }
@@ -57,7 +57,6 @@ function Content() {
     console.log("No JWT token found in localStorage.");
   }
 
-  console.log("entered content function");
   const [braincolor, setBrainColor] = useState("");
   const [lungscolor, setlungsColor] = useState("");
   const [heartcolor, setheartColor] = useState("#000000");
@@ -70,7 +69,7 @@ function Content() {
     handleAddItem();
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/organs/organ",
+        "https://foodpath-backend.onrender.com/api/organs/organ",
         {
           token: localStorage.getItem("jwtToken"),
         }
@@ -133,22 +132,21 @@ function Content() {
   }
 
   const [selectedItem, setSelectedItem] = useState("");
-  const [consumedFoods, setConsumedFoods] = useState("");
+  const [foodStatus, setFoodStatus] = useState("");
   const [isEating, setEating] = useState(false);
   const [handleAddRes, setHandleAddRes] = useState(null);
+  const [indexToChange, setIndex] = useState(12);
 
   const handleAddItem = async () => {
-    console.log("button working");
     if (!selectedItem) {
       console.log("Please select an item and enter a quantity.");
       return;
     }
-
     try {
-      setConsumedFoods("checking food...");
+      setFoodStatus("Checking if food is edible...");
       console.log(selectedItem);
       const response = await axios.post(
-        "http://localhost:3001/api/organs/validatefood",
+        "https://foodpath-backend.onrender.com/api/organs/validatefood",
         {
           foodItems: selectedItem,
         }
@@ -157,37 +155,162 @@ function Content() {
       const { aiResponse } = response.data;
 
       console.log("something is happening");
-
       if (!aiResponse.consumable) {
-        setConsumedFoods("You can't eat that!");
+        setFoodStatus("You can't eat that!");
         return;
       }
 
-      setConsumedFoods("consumable");
+      setFoodStatus("consumable");
     } catch (error) {
       console.error("Error adding food item:", error);
     }
 
     try {
       setEating(true);
-      setConsumedFoods("eating...");
+      setFoodStatus("eating...");
       console.log(selectedItem);
       const response = await axios.post(
-        "http://localhost:3001/api/organs/add-food",
+        "https://foodpath-backend.onrender.com/api/organs/add-food",
         {
           foodItems: selectedItem,
           email: email,
         }
       );
-
-      const { aiResponse } = response.data;
+      //https://foodpath-backend.onrender.com/trophies/updateTrophy  email,index,value
+      const { aiResponse, consumedFoods } = response.data;
       console.log("something is happening");
+      consumedFoods.forEach((food, index) => {
+        console.log(`Item ${index + 1}:`, food);
+      });
+      console.log(consumedFoods.length);
+      
+      const responsetrophy = await axios.post(
+        "https://foodpath-backend.onrender.com/trophies/updateTrophy",
+        {
+          email: email,
+          index: 12,
+          value: false
+        }
+      );
+      const achievementarray = responsetrophy.data.trophies;
+
+      if(consumedFoods.length===5 && !achievementarray[0]){
+        const response0 = await axios.post(
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
+          {
+            email: email,
+            index: 0,
+            value: true
+          }
+        );
+        console.log('a0 done!');
+      }
+
+      if(consumedFoods.length===10 && !achievementarray[1]){
+        const response0 = await axios.post(
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
+          {
+            email: email,
+            index: 1,
+            value: true
+          }
+        );
+        console.log('a1 done!');
+      }
+
+      if(consumedFoods.length===20 && !achievementarray[2]){
+        const response0 = await axios.post(
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
+          {
+            email: email,
+            index: 2,
+            value: true
+          }
+        );
+        console.log('a2 done!');
+      }
+      var noD = 0;
+      var noVH = 0;
+      const br = aiResponse.health_status.brain.rating;
+      if(br==0){noD++;}
+      if(br==2){noVH++;}
+      const lr = aiResponse.health_status.lungs.rating;
+      if(lr==0){noD++;}
+      if(lr==2){noVH++;}
+      const hr = aiResponse.health_status.heart.rating;
+      if(hr==0){noD++;}
+      if(hr==2){noVH++;}
+      const lir = aiResponse.health_status.liver.rating;
+      if(lir==0){noD++;}
+      if(lir==2){noVH++;}
+      const sr = aiResponse.health_status.stomach.rating;
+      if(sr==0){noD++;}
+      if(sr==2){noVH++;}
+      const ir = aiResponse.health_status.intestines.rating;
+      if(ir==0){noD++;}
+      if(ir==2){noVH++;}
+
+      if(noD>1 && !achievementarray[3] ){
+        const response0 = await axios.post(
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
+          {
+            email: email,
+            index: 3,
+            value: true
+          }
+        );
+        console.log('a3 done!');
+      }
+      
+      if(noD>3 && !achievementarray[4]){
+        const response0 = await axios.post(
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
+          {
+            email: email,
+            index: 4,
+            value: true
+          }
+        );
+        console.log('a4 done!');
+      }
+      
+      if(noD===6 && !achievementarray[5]){
+        const response0 = await axios.post(
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
+          {
+            email: email,
+            index: 5,
+            value: true
+          }
+        );
+        console.log('a5 done!');
+      }
+
+      if(noVH==6 && !achievementarray[6]){
+        const response0 = await axios.post(
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
+          {
+            email: email,
+            index: 6,
+            value: true
+          }
+        );
+        console.log('a3 done!');
+      }
+
       setEating(false);
       setEat(true);
-      setConsumedFoods("Food Consumed");
-      setHandleAddRes(aiResponse); // Update state with aiResponse
+      setFoodStatus("Food Consumed");
+      setHandleAddRes(aiResponse);
+      const foodItemsString = consumedFoods.map((item) => item.foodItem);
+      console.log('fis length : '+foodItemsString.length)
+      
 
-      // Update the state with color changes
+      const foodsString = foodItemsString
+        .map((food, index) => `Item ${index + 1}: ${food}`)
+        .join("\n");
+
+      setfoodHistory(foodsString);
       setBrainColor(colourrating(aiResponse.health_status.brain.rating));
       setlungsColor(colourrating(aiResponse.health_status.lungs.rating));
       setheartColor(colourrating(aiResponse.health_status.heart.rating));
@@ -198,13 +321,13 @@ function Content() {
       );
       setOpacity(0.5);
     } catch (error) {
-      setConsumedFoods("Error!");
+      setFoodStatus("Error!");
       setEating(false);
       console.error("Error adding food item:", error);
     }
   };
 
-  //consumedFoodsText
+  //foodStatusText
 
   const [IOorgan, setIOorgan] = useState("");
   const [isActive, setActive] = useState(false); //for checking if an organ is selected
@@ -307,16 +430,17 @@ function Content() {
   const ResetModel = async () => {
     setActive(false);
     setEating(false);
-    setConsumedFoods("resetting...");
+    setFoodStatus("resetting...");
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/organs/reset-consumed-foods",
+        "https://foodpath-backend.onrender.com/api/organs/reset-consumed-foods",
         {
           email: email,
         }
       );
-      setConsumedFoods("Model Reset Successfully");
-      // setConsumedFoods(response.data.consumedFoods);
+      setFoodStatus("Model Reset Successfully");
+      // setFoodStatus(response.data.foodStatus);
+      setfoodHistory("");
       setOpacity(0);
       setIOstatus(" ");
       setIOglucose(" ");
@@ -330,17 +454,75 @@ function Content() {
       setstomachColor("");
       setintestineColor("");
       setHandleAddRes(null);
-      //setConsumedFoods(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
+      //setFoodStatus(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
       console.log("Food item added successfully:", response.data);
     } catch (error) {
       console.error("Error adding food item:", error);
     }
   };
 
-  const consumedFoodsText = consumedFoods; //.map(item => `${item.foodItem} `).join('\n');
+  const foodStatusText = foodStatus; //.map(item => `${item.foodItem} `).join('\n');
+  const [foodHistory, setfoodHistory] = useState("");
+
+
+  // const response = await axios.post(
+  //   "https://foodpath-backend.onrender.com/trophies/updateTrophy",
+  //   {
+  //     email: email,
+  //     index: indexToChange,
+  //     value: true
+  //   }
+  // );
+
+  const handleHistory = async () => {
+    try {
+      const response = await axios.post(
+        "https://foodpath-backend.onrender.com/api/organs/history",
+        {
+          email: email,
+        }
+      );
+
+      const { aiResponse, consumedFoods } = response.data;
+      if (consumedFoods.length === 0) {
+        setEat(false);
+        return;
+      } else {
+        setEat(true);
+      }
+      console.log("--------------------------------------------------");
+      const foodItemsString = consumedFoods.map((item) => item.foodItem);
+      console.log("consumed foods" + foodItemsString);
+
+      const foodsString = foodItemsString
+        .map((food, index) => `Item ${index + 1}: ${food}`)
+        .join("\n");
+      console.log('foodsString' + consumedFoods);
+      setfoodHistory(foodsString);
+
+      setHandleAddRes(aiResponse);
+
+      // Update the state with color changes
+      setBrainColor(colourrating(aiResponse.health_status.brain.rating));
+      setlungsColor(colourrating(aiResponse.health_status.lungs.rating));
+      setheartColor(colourrating(aiResponse.health_status.heart.rating));
+      setliverColor(colourrating(aiResponse.health_status.liver.rating));
+      setstomachColor(colourrating(aiResponse.health_status.stomach.rating));
+      setintestineColor(
+        colourrating(aiResponse.health_status.intestines.rating)
+      );
+      setOpacity(0.5);
+    } catch (error) {
+      setFoodStatus("Error!");
+      setEating(false);
+      console.error("Error adding food item:", error);
+    }
+  };
+
 
   return (
     <>
+    {/* Not signed in */}
       {!isSignIn && (
         <div>
           <div
@@ -389,7 +571,7 @@ function Content() {
               class="textareas"
               type="text"
               style={{
-                marginBottom: "50px",
+                marginBottom: "30px",
                 borderRadius: "6px",
                 paddingBottom: "20px",
                 paddingTop: "20px",
@@ -399,14 +581,17 @@ function Content() {
             ></input>
             <textarea
               className="textareas"
-              style={{ height: "70px", backgroundColor: "darkgrey" }}
+              style={{ height: "70px", backgroundColor: "darkgrey",marginTop:'' }}
+              readOnly
+              value={'How to add food:\n'}
             >
-              Hoo
+              How to add food:
+              {"\n"}h
             </textarea>
             <button class="inputbuttons1" onClick={handleAddItem}>
               Add Food
             </button>
-            <p class="inputinfoheading">{consumedFoodsText}</p>
+            <p class="inputinfoheading">{foodStatusText}</p>
             {isEating && (
               <>
                 <EatAnimation />
@@ -415,7 +600,7 @@ function Content() {
             <button
               class="inputbuttons"
               onClick={ResetModel}
-              style={{ marginTop: "20px" }}
+              style={{ marginTop: "20px",justifyContent:'flex-end' }}
             >
               Reset Model
             </button>
@@ -560,6 +745,7 @@ function Content() {
                     )}
                     <p class="inputinfoheading">History</p>
                     <textarea
+                    placeholder="Stomach empty :("
                       readOnly
                       ref={textareaRef}
                       class="textareas"
@@ -569,11 +755,11 @@ function Content() {
                         height: "auto",
                         maxHeight: "300px",
                       }}
-                      value="" /*{consumedFoodsText}*/
+                      value={foodHistory} /*{foodStatusText}*/
                     ></textarea>
                     {/* <div
                       className="organinfolabel"
-                      style={{
+                      style={{                                        ???????????????????????????
                         paddingLeft: "10px",
                         borderWidth: "0px",
                         fontSize: "20px",

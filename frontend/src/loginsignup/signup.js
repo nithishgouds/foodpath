@@ -11,6 +11,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
   const [emailLength, setEmailLength] = useState(false);
   const [pwLength, setPWLength] = useState(false);
+  const [userExist, setUserExist] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,7 +45,10 @@ export default function Login() {
     } else {
       setPWLength(false);
     }
-    if (!pwLength && !emailLength) {
+    // if (!pwLength || !emailLength){
+    //     return;
+    // }
+    
       try {
         const response = await Axios.post("http://localhost:3001/auth/signup", {
           email: email,
@@ -52,15 +56,19 @@ export default function Login() {
         });
         if (response.data.message === "User created successfully") {
           navigate("/login");
-        } else {
-          console.log('User already exists');
-        }
+        } 
 
         console.log(response.data);
-      } catch (e) {
-        console.log(e);
+      } catch (error) {
+        if (error.response && error.response.status === 400) {
+          console.log('Error 400: Bad Request');
+          setUserExist(true);
+        } else {
+          console.error('An error occurred:', error.message);
+          // Handle other errors or rethrow
+        }
       }
-    }
+    
   };
 
   return (
@@ -109,6 +117,11 @@ export default function Login() {
             <button className="loginbutton" onClick={handleButton}>
               Sign Up
             </button>
+              {userExist && (
+                  <label className="asulabel" style={{ color: "#ca8263", marginTop:'20px' }}>
+                    User already exists!
+                  </label>
+              )}
             <div className="asksignup">
               <label className="asulabel">Have an Account? </label>
               <a className="asua" href="/login">

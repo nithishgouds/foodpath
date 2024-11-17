@@ -139,47 +139,7 @@ const resetConsumedFoods= async(req,res)=>
 
 
 
-// const validateOrganGuide = async (req, res) => {
-//     const { email, organName } = req.body;
 
-//     console.log('Received body:', req.body);
-
-//     if (!email) {
-//         return res.status(400).json({ error: 'Email is required.' });
-//     }
-
-//     if (!organName) {
-//         return res.status(400).json({ error: 'Organ name is required.' });
-//     }
-
-//     try {
-//         const user = await ConsumedFoods.findOne({ email });
-
-//         if (!user) {
-//             return res.status(404).json({ error: 'User not found.' });
-//         }
-
-//         try {
-//             const organGuideResponse = await organGuide(email, organName);
-//             const parsedResponse = JSON.parse(organGuideResponse);
-
-//             res.json({
-//                 message: 'Organ guide data retrieved successfully',
-//                 organGuide: parsedResponse,
-//             });
-//         } catch (apiError) {
-//             res.status(500).json({
-//                 error: 'Error processing organ guide data in AI',
-//                 details: apiError.message,
-//             });
-//         }
-//     } catch (dbError) {
-//         res.status(500).json({
-//             error: 'Error validating email in the database',
-//             details: dbError.message,
-//         });
-//     }
-// };
 
 
 const validateOrganGuide = async (req, res) => {
@@ -234,6 +194,59 @@ const validateOrganGuide = async (req, res) => {
     }
 };
 
+const history = async (req, res) => {
+    const { email } = req.body;
+
+    console.log('Received body:', req.body);
+
+    // Ensure email and foodItems are provided
+    if (!email) {
+        return res.status(400).json({ error: 'Email is required.' });
+    }
 
 
-module.exports = { addFood , resetConsumedFoods,validfood,validateOrganGuide };
+
+    // Split the foodItems string by spaces and filter out any empty items
+
+
+    try {
+        // Find the user in ConsumedFoods or create a new entry if not found
+        let user = await ConsumedFoods.findOne({ email });
+
+        if (!user) {
+            // If the user doesn't exist, create a new user document with an empty consumedFoods array
+            user = new ConsumedFoods({ email, consumedFoods: [] });
+        }
+
+
+        // Prepare the food items as a string to send back
+        const foodItemsString = user.consumedFoods.map(item => item.foodItem).join(' ');
+
+        // Optionally process the food items with AI
+        try {
+            let aiResponse = await run(foodItemsString);
+            //let aiResponseSeparate= await runseparate(foodItemsString);
+
+
+            aiResponse = JSON.parse(aiResponse);
+            
+
+            res.json({
+                
+                message: 'history added successfully',
+                consumedFoods: user.consumedFoods, // You can return the food items as a string
+                aiResponse: aiResponse
+                //aiResponseSeparate: aiResponseSeparate
+            });
+        } catch (aiError) {
+            res.status(500).json({ error: 'Error processing food data in AI', details: aiError.message });
+        }
+
+    } catch (error) {
+        res.status(500).json({ error: 'Error adding food to the user account', details: error.message });
+    }
+};
+
+
+
+module.exports = { addFood , resetConsumedFoods,validfood,validateOrganGuide ,history};

@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function Login() {
     console.log("Email:", email);
     console.log("Password:", password);
     try {
-      const response = await Axios.post('http://localhost:3001/auth/login', {
+      const response = await Axios.post('https://foodpath-backend.onrender.com/auth/login', {
         email: email,
         password: password,
       });
