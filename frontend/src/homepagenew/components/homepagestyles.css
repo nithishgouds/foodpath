@@ -143,7 +143,7 @@ body {
     background-color: #CA8263;
     width: 94%;
     margin-top: 20px;
-    height: 110vh;
+    height: 128vh;
     border-radius: 20px;
     padding: 20px;
     position: relative;
@@ -172,10 +172,9 @@ body {
         background-position: 0% 50%;
     }
 }
-.paragraph2{
-    position: absolute;
-    left:calc(100%- 20px)
-}
+/*.paragraph2{*/
+/*    position: relative;*/
+/*}*/
 .paragraph1{
     transform: translate(0px,40px);
 }

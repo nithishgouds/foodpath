@@ -12,6 +12,7 @@ export default {
         worksans:['Work Sans', 'sans-serif'],
         marcellus: ['Marcellus', 'sans-serif'],
         cinzel :  ['Cinzel', 'sans-serif'],
+        hehe: ['Nunito', 'sans-serif'],
       },
       colors: {'custom-blue' : '#1C2E3B',
         'customHoverColor' : '#CA8263',

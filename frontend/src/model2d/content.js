@@ -531,7 +531,7 @@ function Content() {
           >
             <div style={{ height: "100px" }}></div>
             <label
-              className="inputinfoheading"
+              className="inputinfoheading font-"
               style={{
                 textAlign: "center",
                 fontSize: "50px",
@@ -732,7 +732,6 @@ function Content() {
                         style={{
                           paddingLeft: "10px",
                           borderWidth: "0px",
-                          fontSize: "20px",
                           fontSize: "23px",
                           paddingBottom: "20px",
                         }}
