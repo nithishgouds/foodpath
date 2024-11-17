@@ -99,11 +99,11 @@ const Header = () => {
                                 3D MODEL
                             </a>
                         </li>
-                        <li className="nav-item mr-12">
-                            <a href="/guides" className="hover:text-[#CA8263] hover:bg-[#1C2E3B] px-4 py-2 transition duration-300 rounded-md">
-                                GUIDES
-                            </a>
-                        </li>
+                        {/*<li className="nav-item mr-12">*/}
+                        {/*    <a href="/guides" className="hover:text-[#CA8263] hover:bg-[#1C2E3B] px-4 py-2 transition duration-300 rounded-md">*/}
+                        {/*        GUIDES*/}
+                        {/*    </a>*/}
+                        {/*</li>*/}
                     </ul>
                 </nav>
                 <div className="relative flex items-center space-x-2 pr-8 font-helvetica">

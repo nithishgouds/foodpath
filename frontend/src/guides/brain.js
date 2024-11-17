@@ -1,4 +1,4 @@
-import './Brain.css';
+import './Guide.css';
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode";
@@ -75,31 +75,43 @@ function Brain() {
     }, [email, organName]);
 
     return (
-        <div className='newapp'>
+        <div className='guide-brain pt-28 mb-8 '>
             <Header />
-            <div className="App">
-                <div className='newflex'>
+            <div className="guide-content pl-12 ">
+                <div className='newflex '>
                     <h3 className='head3'>Current Status Of The Brain</h3>
-                    <h2 className='heading'>Status of the Organ :</h2>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+
+                    <h2 className='heading'>Status of the Brain :</h2>
                     <div className="containernew">
                         <p className='guides_brain_status_text'>{guides_brain_status_text}</p>
                     </div>
+                    <br></br>
+                    <br></br>
 
                     <h2 className='heading'>Foods Consumed :</h2>
                     <div className="containernew">
                         <p className='guides_brain_consumed_text'>{guides_brain_consumed_text}</p>
                     </div>
+                    <br></br>
+                    <br></br>
 
-                    <h2 className='heading'>Info about the brain :</h2>
+                    <h2 className='heading'>Info about the Brain :</h2>
                     <div className="containernew">
                         <div>
                             {guides_brain_info_text.split('\n').map((line, index) => (
                                 <p className='guides_brain_info_text' key={index}>{line}</p>
                             ))}
                         </div>
-                        <img src="https://th.bing.com/th/id/R.3cd0ee5e418250f2d18a186841ce60cc?rik=vJb2qOAZkQJ8Zw&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f04%2fBrain-PNG-Image.png&ehk=cIrtlwwNSqpbI9itUL0CMD3%2b0C59yTt37Wj8jOauEAU%3d&risl=&pid=ImgRaw&r=0"
-                             alt='Brain'
-                             className="food-image-i" />
+                        <br></br>
+                        <br></br>
+
+                        {/*<img*/}
+                        {/*    src="https://th.bing.com/th/id/R.3cd0ee5e418250f2d18a186841ce60cc?rik=vJb2qOAZkQJ8Zw&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f04%2fBrain-PNG-Image.png&ehk=cIrtlwwNSqpbI9itUL0CMD3%2b0C59yTt37Wj8jOauEAU%3d&risl=&pid=ImgRaw&r=0"*/}
+                        {/*    alt='Brain'*/}
+                        {/*    className="food-image-i"/>*/}
                     </div>
                 </div>
 
@@ -241,7 +253,7 @@ function Brain() {
 
                 {/* Bad Foods Section */}
                 <section className="bad-foods">
-                    <h4 className='head4'>FOOD THAT'S BAD FOR BRAIN</h4>
+                    <h4 className="head31 pt-8">FOOD THAT'S BAD FOR BRAIN</h4>
                     <div className="card-container">
                         {/* Bad Foods Cards */}
                         <motion.article className="food-card"
