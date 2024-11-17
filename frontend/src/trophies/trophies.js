@@ -123,7 +123,6 @@ const Trophies = () => {
           <div className="content-container">
             {none && (
               <div className='trophyheading'>
-                Tinker with model to get Badges
               </div>
               
             )}
