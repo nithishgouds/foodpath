@@ -47,6 +47,7 @@ import * as THREE from "three";
 import WAVES from "vanta/dist/vanta.waves.min";
 import Header from "../homepagenew/components/Header";
 import "./trophies.css";
+import Footer from "../homepagenew/components/Footer";
 
 const Trophies = () => {
   useEffect(() => {
@@ -70,6 +71,7 @@ const Trophies = () => {
   const [a7, setA7] = useState(false);
   const [a8, setA8] = useState(false);
   const [a9, setA9] = useState(false);
+  const [none,setNone]=useState(false);
 
   const setFunctions = [
     setA1,
@@ -100,6 +102,9 @@ const Trophies = () => {
         );
         const trophyarray = response.data.trophies;
         for (var i = 1; i <= 10; i++) {
+          if(trophyarray[i-1]){
+            setNone(true);
+          }
           setFunctions[i - 1](trophyarray[i - 1]);
         }
       }
@@ -116,6 +121,12 @@ const Trophies = () => {
 
         <div className="scroll-container">
           <div className="content-container">
+            {none && (
+              <div className='trophyheading'>
+                Tinker with model to get Badges
+              </div>
+              
+            )}
             {a1 && (
               <div className="trophy-box">
                 <h2>Achievement 1</h2>

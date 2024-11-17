@@ -68,7 +68,7 @@ const Header = () => {
     };
 
     const handleBadges = () => {
-        navigate("/badges"); // Redirect to the badges page
+        navigate("/trophies"); // Redirect to the badges page
     };
 
     const toggleDropdown = () => {
