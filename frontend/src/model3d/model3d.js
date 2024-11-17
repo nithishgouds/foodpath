@@ -120,7 +120,7 @@ export function Model3d(props) {
         />
       </group>
       </group>
-      <group onClick={() => props.handleClick('kidney')}>
+      <group onClick={() => props.handleClick('kidneys')}>
       <mesh
         name="kidney"
         castShadow
@@ -132,7 +132,7 @@ export function Model3d(props) {
         scale={3.667}
       />
       </group>
-      <group onClick={() => props.handleClick('intestine')}>
+      <group onClick={() => props.handleClick('intestines')}>
       <mesh
         name="Jejunum"
         castShadow
