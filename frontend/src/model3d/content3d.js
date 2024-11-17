@@ -181,9 +181,7 @@ function Content3d() {
       setFoodStatus("ate...");
       setEating(false);
       setEat(true);
-      setHandleAddRes(aiResponse); // Update state with aiResponse
-
-      // Update the state with color changes
+      setHandleAddRes(aiResponse); 
       setbrainOpacity(colourrating(aiResponse.health_status.brain.rating));
       setlungsOpacity(colourrating(aiResponse.health_status.lungs.rating));
       setheartOpacity(colourrating(aiResponse.health_status.heart.rating));
