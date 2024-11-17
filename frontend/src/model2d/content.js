@@ -327,10 +327,9 @@ function Content() {
     }
   };
 
-  //foodStatusText
 
   const [IOorgan, setIOorgan] = useState("");
-  const [isActive, setActive] = useState(false); //for checking if an organ is selected
+  const [isActive, setActive] = useState(false); 
   const [isEat, setEat] = useState(true);
   const [IOstatus, setIOstatus] = useState("");
   const [IOglucose, setIOglucose] = useState("");
@@ -399,8 +398,7 @@ function Content() {
       setEat(true);
 
       console.log(`svg clicked ${svgName}`);
-      console.log(handleAddRes.health_status.intestines.rating); // Debug to check if it exists
-      // Access properties from handleAddRes directly
+      console.log(handleAddRes.health_status.intestines.rating); 
       var sf1 = getSeperateFactor1(svgName);
       var sf2 = getSeperateFactor2(svgName);
 
@@ -439,7 +437,6 @@ function Content() {
         }
       );
       setFoodStatus("Model Reset Successfully");
-      // setFoodStatus(response.data.foodStatus);
       setfoodHistory("");
       setOpacity(0);
       setIOstatus(" ");
@@ -454,14 +451,13 @@ function Content() {
       setstomachColor("");
       setintestineColor("");
       setHandleAddRes(null);
-      //setFoodStatus(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
       console.log("Food item added successfully:", response.data);
     } catch (error) {
       console.error("Error adding food item:", error);
     }
   };
 
-  const foodStatusText = foodStatus; //.map(item => `${item.foodItem} `).join('\n');
+  const foodStatusText = foodStatus; 
   const [foodHistory, setfoodHistory] = useState("");
 
 
