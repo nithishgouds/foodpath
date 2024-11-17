@@ -135,15 +135,15 @@ function Content() {
   const [foodStatus, setFoodStatus] = useState("");
   const [isEating, setEating] = useState(false);
   const [handleAddRes, setHandleAddRes] = useState(null);
+  const [indexToChange, setIndex] = useState(12);
 
   const handleAddItem = async () => {
     if (!selectedItem) {
       console.log("Please select an item and enter a quantity.");
       return;
     }
-
     try {
-      setFoodStatus("checking food...");
+      setFoodStatus("Checking if food is edible...");
       console.log(selectedItem);
       const response = await axios.post(
         "http://localhost:3001/api/organs/validatefood",
@@ -176,13 +176,127 @@ function Content() {
           email: email,
         }
       );
-      //http://localhost:3001/trophies/updateTrophy  email,index,value-------------------------------
+      //http://localhost:3001/trophies/updateTrophy  email,index,value
       const { aiResponse, consumedFoods } = response.data;
       console.log("something is happening");
       consumedFoods.forEach((food, index) => {
         console.log(`Item ${index + 1}:`, food);
       });
       console.log(consumedFoods.length);
+      
+      const responsetrophy = await axios.post(
+        "http://localhost:3001/trophies/updateTrophy",
+        {
+          email: email,
+          index: 12,
+          value: false
+        }
+      );
+      const achievementarray = responsetrophy.data.trophies;
+
+      if(consumedFoods.length===5 && !achievementarray[0]){
+        const response0 = await axios.post(
+          "http://localhost:3001/trophies/updateTrophy",
+          {
+            email: email,
+            index: 0,
+            value: true
+          }
+        );
+        console.log('a0 done!');
+      }
+
+      if(consumedFoods.length===10 && !achievementarray[1]){
+        const response0 = await axios.post(
+          "http://localhost:3001/trophies/updateTrophy",
+          {
+            email: email,
+            index: 1,
+            value: true
+          }
+        );
+        console.log('a1 done!');
+      }
+
+      if(consumedFoods.length===20 && !achievementarray[2]){
+        const response0 = await axios.post(
+          "http://localhost:3001/trophies/updateTrophy",
+          {
+            email: email,
+            index: 2,
+            value: true
+          }
+        );
+        console.log('a2 done!');
+      }
+      var noD = 0;
+      var noVH = 0;
+      const br = aiResponse.health_status.brain.rating;
+      if(br==0){noD++;}
+      if(br==2){noVH++;}
+      const lr = aiResponse.health_status.lungs.rating;
+      if(lr==0){noD++;}
+      if(lr==2){noVH++;}
+      const hr = aiResponse.health_status.heart.rating;
+      if(hr==0){noD++;}
+      if(hr==2){noVH++;}
+      const lir = aiResponse.health_status.liver.rating;
+      if(lir==0){noD++;}
+      if(lir==2){noVH++;}
+      const sr = aiResponse.health_status.stomach.rating;
+      if(sr==0){noD++;}
+      if(sr==2){noVH++;}
+      const ir = aiResponse.health_status.intestines.rating;
+      if(ir==0){noD++;}
+      if(ir==2){noVH++;}
+
+      if(noD>1 && !achievementarray[3] ){
+        const response0 = await axios.post(
+          "http://localhost:3001/trophies/updateTrophy",
+          {
+            email: email,
+            index: 3,
+            value: true
+          }
+        );
+        console.log('a3 done!');
+      }
+      
+      if(noD>3 && !achievementarray[4]){
+        const response0 = await axios.post(
+          "http://localhost:3001/trophies/updateTrophy",
+          {
+            email: email,
+            index: 4,
+            value: true
+          }
+        );
+        console.log('a4 done!');
+      }
+      
+      if(noD===6 && !achievementarray[5]){
+        const response0 = await axios.post(
+          "http://localhost:3001/trophies/updateTrophy",
+          {
+            email: email,
+            index: 5,
+            value: true
+          }
+        );
+        console.log('a5 done!');
+      }
+
+      if(noVH==6 && !achievementarray[6]){
+        const response0 = await axios.post(
+          "http://localhost:3001/trophies/updateTrophy",
+          {
+            email: email,
+            index: 6,
+            value: true
+          }
+        );
+        console.log('a3 done!');
+      }
 
       setEating(false);
       setEat(true);
@@ -191,17 +305,6 @@ function Content() {
       const foodItemsString = consumedFoods.map((item) => item.foodItem);
       console.log('fis length : '+foodItemsString.length)
       
-      if(foodItemsString.length === 5 || !achievementsarray[0]){
-        console.log('achievement 0 unlocked');
-        setIndex(0);
-        // console.log(indexToChange);
-        console.log(indexToChange);
-        changeAchievementStatus();
-        console.log('Changed '+achievementsarray)
-      }
-      else{
-        console.log('not unlocked a1');
-      }
 
       const foodsString = foodItemsString
         .map((food, index) => `Item ${index + 1}: ${food}`)
@@ -360,77 +463,16 @@ function Content() {
 
   const foodStatusText = foodStatus; //.map(item => `${item.foodItem} `).join('\n');
   const [foodHistory, setfoodHistory] = useState("");
-  const [indexToChange, setIndex] = useState(12);
-  const [indexValueToChange, setIndexValue] = useState(false);
-  let achievementsarray = Array(13);
-
-  useEffect(() => {
-    resetAchievementStatus();
-    getAchievementState();
-  }, []);
-
-  const resetAchievementStatus = async () => {
-    for(var i=0;i<13;i++){
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/trophies/updateTrophy",
-        {
-          email: email,
-          index: i,
-          value: false
-        }
-      );
-      console.log(response.data.trophies);
-      achievementsarray = response.data.trophies;
-      console.log(achievementsarray)
-      console.log(i+' set '+indexToChange);
-    } catch (error) {
-      console.log("Error in change achievements");
-      console.log(error);
-    }
-    }
-  };
 
 
-  const changeAchievementStatus = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/trophies/updateTrophy",
-        {
-          email: email,
-          index: indexToChange,
-          value: true
-        }
-      );
-      achievementsarray=response.data.trophies;
-      console.log('Changed '+indexToChange+'to '+indexValueToChange);
-      console.log(achievementsarray)
-      return;
-    } catch (error) {
-      console.log("Error in change achievements");
-      console.log(error);
-    }
-  };
-
-  const getAchievementState = async () => {
-    try {
-      console.log("sending the data to the backend");
-      const response = await axios.post(
-        "http://localhost:3001/trophies/updateTrophy",
-        {
-          email: email,
-          index: 12,
-          value: true
-        }
-      );
-      achievementsarray = response.data.trophies;
-      console.log('achievement array :'+ achievementsarray);
-      changeAchievementStatus();
-    } catch (error) {
-      console.log("get achievement error");
-      console.log(error);
-    }
-  };
+  // const response = await axios.post(
+  //   "http://localhost:3001/trophies/updateTrophy",
+  //   {
+  //     email: email,
+  //     index: indexToChange,
+  //     value: true
+  //   }
+  // );
 
   const handleHistory = async () => {
     try {
@@ -451,16 +493,6 @@ function Content() {
       console.log("--------------------------------------------------");
       const foodItemsString = consumedFoods.map((item) => item.foodItem);
       console.log("consumed foods" + foodItemsString);
-      console.log('achievement array : '+achievementsarray)
-      // if(foodItemsString.length === 5 || achievementsarray[1]){
-      //   console.log('achievement 1 unlocked');
-      //   setIndex(1);
-      //   // console.log(indexToChange);
-      //   setIndexValue(true);
-      //   console.log(indexToChange);
-      //   changeAchievementStatus();
-      //   console.log('in achievement 1 block '+achievementsarray)
-      // }
 
       const foodsString = foodItemsString
         .map((food, index) => `Item ${index + 1}: ${food}`)
