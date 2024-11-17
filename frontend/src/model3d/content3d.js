@@ -55,53 +55,52 @@ function Content3d() {
   },[]);
 
   console.log("entered content function");
-  const [stomachcolor, setstomachcolor] = useState("#66ff66");
-  const [heartcolor, setheartcolor] = useState("#ff0000");
-  const [braincolor, setbraincolor] = useState("#ff9999");
-  const [lungscolor, setlungscolor] = useState("#cc9900");
-  const [kidneycolor, setkidneycolor] = useState("#ff0000");
-  const [livercolor, setlivercolor] = useState("#993300");
-  const [intestinecolor, setintestinecolor] = useState("#ffff00");
+  const [stomachOpacity, setstomachOpacity] = useState(1);
+  const [heartOpacity, setheartOpacity] = useState(1);
+  const [brainOpacity, setbrainOpacity] = useState(1);
+  const [lungsOpacity, setlungsOpacity] = useState(1);
+  const [kidneyOpacity, setkidneyOpacity] = useState(1);
+  const [liverOpacity, setliverOpacity] = useState(1);
+  const [intestineOpacity, setintestineOpacity] = useState(1);
 
-  const fetchOrganColors = async () => {
-    handleAddItem();
-    try {
-      const response = await axios.get(
-        "http://localhost:3001/api/organs/organ-status",
-        { token: localStorage.getItem("jwtToken") }
-      );
+  // const fetchOrganColors = async () => {
+  //   handleAddItem();
+  //   try {
+  //     const response = await axios.get(
+  //       "http://localhost:3001/api/organs/organ-status",
+  //       { token: localStorage.getItem("jwtToken") }
+  //     );
 
-      setbraincolor(response.data.brain);
-      setlungscolor(response.data.lungs);
-      setheartcolor(response.data.heart);
-      setlivercolor(response.data.liver);
-      setstomachcolor(response.data.stomach);
-      setintestinecolor(response.data.intestine);
-      setkidneycolor(response.data.kideny);
-    } catch (error) {
-      console.error("Error fetching color and opacity:", error);
-    }
-  };
+  //     setbraincolor(response.data.brain);
+  //     setlungscolor(response.data.lungs);
+  //     setheartcolor(response.data.heart);
+  //     setlivercolor(response.data.liver);
+  //     setstomachcolor(response.data.stomach);
+  //     setintestinecolor(response.data.intestine);
+  //     setkidneycolor(response.data.kideny);
+  //   } catch (error) {
+  //     console.error("Error fetching color and opacity:", error);
+  //   }
+  // };
 
   function colourrating(a) {
     switch (a) {
       case 0:
-        return "#610B21";
+        return 0.1;//dead
         break;
       case 1:
-        return "#01DF01";
+        return 0.8;//healthy
         break;
       case 2:
-        return "#86B404";
+        return 1;//very healthy
         break;
       case 3:
-        return "#610B0B";
+        return 0.6;//unhealthy
         break;
       case 4:
-        return "#DF3A01";
+        return 0.3;//very unhealthy
         break;
-      default:
-        return "#000000";
+
     }
   }
 
@@ -185,15 +184,15 @@ function Content3d() {
       setHandleAddRes(aiResponse); // Update state with aiResponse
 
       // Update the state with color changes
-      setbraincolor(colourrating(aiResponse.health_status.brain.rating));
-      setlungscolor(colourrating(aiResponse.health_status.lungs.rating));
-      setheartcolor(colourrating(aiResponse.health_status.heart.rating));
-      setlivercolor(colourrating(aiResponse.health_status.liver.rating));
-      setstomachcolor(colourrating(aiResponse.health_status.stomach.rating));
-      setintestinecolor(
+      setbrainOpacity(colourrating(aiResponse.health_status.brain.rating));
+      setlungsOpacity(colourrating(aiResponse.health_status.lungs.rating));
+      setheartOpacity(colourrating(aiResponse.health_status.heart.rating));
+      setliverOpacity(colourrating(aiResponse.health_status.liver.rating));
+      setstomachOpacity(colourrating(aiResponse.health_status.stomach.rating));
+      setintestineOpacity(
         colourrating(aiResponse.health_status.intestines.rating)
       );
-      setkidneycolor(colourrating(aiResponse.health_status.kidneys.rating));
+      setkidneyOpacity(colourrating(aiResponse.health_status.kidneys.rating));
     } catch (error) {
       setEating(false);
       setFoodStatus("error!");
@@ -298,19 +297,20 @@ function Content3d() {
           email: email,
         }
       );
-
+      setActive(false);
+      setfoodHistory("");
       setIOstatus(" ");
       setIOglucose(" ");
       setIOcalories(" ");
       setIOoxygen(" ");
       setIOorgan(" ");
-      setbraincolor("");
-      setlungscolor("");
-      setheartcolor("");
-      setlivercolor("");
-      setstomachcolor("");
-      setintestinecolor("");
-      setkidneycolor("");
+      setbrainOpacity(1);
+      setlungsOpacity(1);
+      setheartOpacity(1);
+      setliverOpacity(1);
+      setstomachOpacity(1);
+      setintestineOpacity(1);
+      setkidneyOpacity(1);
       setHandleAddRes(null);
       //setfoodStatus(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
       console.log("Food item added successfully:", response.data);
@@ -354,14 +354,14 @@ function Content3d() {
 
       setHandleAddRes(aiResponse);
 
-      // Update the state with color changes
-      setbraincolor(colourrating(aiResponse.health_status.brain.rating));
-      setlungscolor(colourrating(aiResponse.health_status.lungs.rating));
-      setheartcolor(colourrating(aiResponse.health_status.heart.rating));
-      setlivercolor(colourrating(aiResponse.health_status.liver.rating));
-      setstomachcolor(colourrating(aiResponse.health_status.stomach.rating));
-      setintestinecolor(colourrating(aiResponse.health_status.intestines.rating));
-      setkidneycolor(colourrating(aiResponse.health_status.kidneys.rating));
+      // Update the state with Opacity changes
+      setbrainOpacity(colourrating(aiResponse.health_status.brain.rating));
+      setlungsOpacity(colourrating(aiResponse.health_status.lungs.rating));
+      setheartOpacity(colourrating(aiResponse.health_status.heart.rating));
+      setliverOpacity(colourrating(aiResponse.health_status.liver.rating));
+      setstomachOpacity(colourrating(aiResponse.health_status.stomach.rating));
+      setintestineOpacity(colourrating(aiResponse.health_status.intestines.rating));
+      setkidneyOpacity(colourrating(aiResponse.health_status.kidneys.rating));
     } catch (error) {
       setFoodStatus("Error!");
       setEating(false);
@@ -491,13 +491,13 @@ useEffect(() => {
                 <Model3d
                   scale={1}
                   handleClick={handleOrganClick}
-                  stomachcolor={stomachcolor}
-                  heartcolor={heartcolor}
-                  braincolor={braincolor}
-                  lungscolor={lungscolor}
-                  livercolor={livercolor}
-                  kidneycolor={kidneycolor}
-                  intestinecolor={intestinecolor}
+                  stomachOpacity={stomachOpacity}
+                  heartOpacity={heartOpacity}
+                  brainOpacity={brainOpacity}
+                  lungsOpacity={lungsOpacity}
+                  liverOpacity={liverOpacity}
+                  kidneyOpacity={kidneyOpacity}
+                  intestineOpacity={intestineOpacity}
                 />
 
                 {/* Add OrbitControls for interactivity */}
