@@ -6,7 +6,7 @@ const ConsumedFoods = require('../models/consumedFoodSchema');
 const { run } = require('../Gemini_API/APImodelstatus');
 const { runseparate } = require('../Gemini_API/separate_model_factors');
 const { validatefood } = require('../Gemini_API/foodvalidation');
-const { validateOrganGuide } =require('../GEMINI_API/organGuidesAPI');
+const { organGuide } =require('../GEMINI_API/organGuidesAPI');
 
 
 const validfood = async (req, res) => {
