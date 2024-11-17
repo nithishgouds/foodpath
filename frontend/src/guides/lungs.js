@@ -1,12 +1,22 @@
 
 import './Brain.css';
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 function Lungs(){
 
        
   const [guides_lungs_status_text, setguides_lungs_status_text] = useState("This is the initial text .");
   const [guides_lungs_consumed_text, setguides_lungs_consumed_text] = useState("This is the initial text.");
   const [guides_lungs_info_text, setguides_lungs_info_text] = useState("This is the initial text.");
+  const slideInFromLeft = {
+    hidden: { x: -200, opacity: 0},
+    visible: { x: 0, opacity: 1, transition: { duration: 1.5 } }
+  };
+
+  const slideInFromRight = {
+    hidden: { x: 200, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 1.5 } }
+  };
   return(
 
     <div className="App">
@@ -57,14 +67,20 @@ alt='.'
             alt='.' 
             className="food-image"
           />
-          <div className="food-contentl">
+         < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
             <h5  className='head5'>Leafy Greens (Spinach, Kale)</h5><br></br>
             <p className='foodpara'><p className = "foodtext">Rich in Antioxidants:</p> Help protect lung tissue from damage caused by pollution and cigarette smoke.</p><br></br>
       
 
             <p className='foodpara'><p className = "foodtext">Vitamin C and E:</p> These vitamins support lung function by fighting oxidative stress.</p><br></br>
             <p className='foodpara'><p className = "foodtext">Anti-inflammatory Properties:</p> Reducing lung inflammation can improve respiratory health.</p><br></br>
-           </div>
+            </motion.div>
         </article>
         <div class="particle"></div>
  
@@ -74,7 +90,13 @@ alt='.'
             alt='.'
             className="food-image"
           />
-          <div className="food-contentr">
+         < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromRight}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
             <h5  className='head5'>Fatty Fish (Salmon, Sardines)</h5><br></br>
           
 
@@ -82,7 +104,7 @@ alt='.'
             <p className='foodpara'><p className = "foodtext">Reduces Asthma Symptoms:</p> Regular consumption of fatty fish can alleviate asthma symptoms.</p><br></br>
            
             <p className='foodpara'><p className = "foodtext">Prevents Respiratory Illness:</p> Omega-3s support lung health by reducing inflammation caused by respiratory diseases.</p><br></br>
-          </div>
+            </motion.div>
         </article>
       
         <article className="food-iteml">
@@ -91,7 +113,13 @@ alt='.'
           alt='.'
             className="food-image"
           />
-          <div className="food-contentl">
+         < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
             <h5  className='head5'> Apples</h5><br></br>
            
             <p className='foodpara'><p className = "foodtext">High in Antioxidants:</p> Help reduce the decline of lung function as people age.</p><br></br>
@@ -99,7 +127,7 @@ alt='.'
             
             <p className='foodpara'><p className = "foodtext">Quercetin:</p> A flavonoid in apples that helps reduce oxidative damage to the lungs.</p><br></br>
            
-          </div>
+            </motion.div>
         </article>
         <article className="food-itemr">
   <img
@@ -107,12 +135,18 @@ alt='.'
   alt='.'
     className="food-image"
   />
-  <div className="food-contentr">
+ < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromRight}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
     <h5 className='head5'> Berries (Blueberries, Raspberries)</h5><br></br>
     <p className='foodpara'><p className = "foodtext">High in Antioxidants:</p> Berries are rich in anthocyanins, which reduce lung damage and inflammation.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Supports Lung Function:</p> Regular consumption can help maintain respiratory health.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Prevents Oxidative Damage:</p> The antioxidants in berries protect lung tissue from pollutants.</p><br></br>
-  </div>
+    </motion.div>
 </article>
 
 <article className="food-iteml">
@@ -121,12 +155,18 @@ alt='.'
    alt='.'
     className="food-image"
   />
-  <div className="food-contentl">
+ < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
     <h5 className='head5'> Nuts and Seeds (Almonds, Flaxseeds)</h5><br></br>
     <p className='foodpara'><p className = "foodtext">Rich in Vitamin E:</p> Helps protect cells from oxidative damage, supporting lung function.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Anti-inflammatory:</p> Reduces inflammation in lung tissues.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Omega-3 Fatty Acids:</p> Found in flaxseeds, beneficial for respiratory health.</p><br></br>
-  </div>
+    </motion.div>
 </article>
 
 <article className="food-itemr">
@@ -135,12 +175,18 @@ alt='.'
    alt='.'
     className="food-image"
   />
-  <div className="food-contentr">
+ < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromRight}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
     <h5 className='head5'>Ginger</h5><br></br>
     <p className='foodpara'><p className = "foodtext">Clears Airways:</p> Known for reducing mucus and opening up airways.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Anti-inflammatory Properties:</p> Reduces inflammation in the lungs and eases breathing.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Antioxidant Effects:</p> Helps in detoxifying the lungs from pollutants.</p><br></br>
-  </div>
+    </motion.div>
 </article>
 
 <article className="food-iteml">
@@ -149,12 +195,18 @@ alt='.'
     alt='.'
     className="food-image"
   />
-  <div className="food-contentl">
+ < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
     <h5 className='head5'>Beets and Beet Greens</h5><br></br>
     <p className='foodpara'><p className = "foodtext">Nitric Oxide Production:</p> Improves lung function and helps dilate blood vessels.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Rich in Antioxidants:</p> Beet greens provide compounds that support lung health.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Reduces Inflammation:</p> The nitrates in beets contribute to reducing lung inflammation.</p><br></br>
-  </div>
+    </motion.div>
 </article>
 
 <article className="food-itemr">
@@ -163,12 +215,18 @@ alt='.'
     alt='.'
     className="food-image"
   />
-  <div className="food-contentr">
+ < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromRight}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
     <h5 className='head5'>Turmeric</h5><br></br>
     <p className='foodpara'><p className = "foodtext">Curcumin:</p> The active compound has strong anti-inflammatory effects.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Protects Lungs:</p> Regular consumption can reduce the risk of lung disease.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Improves Airflow:</p> Known to benefit people with asthma and COPD.</p><br></br>
-  </div>
+    </motion.div>
 </article>
       </section>
 
@@ -182,7 +240,13 @@ alt='.'
            alt='.'
             className="food-image"
           />
-          <div className="food-contentl">
+         < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
             <h5  className='head5'>Processed Meats (Bacon, Sausage)</h5><br></br>
            
 
@@ -193,7 +257,7 @@ alt='.'
  
             <p className='foodpara'><p className = "foodtext">Promotes Inflammation:</p> Processed meats contribute to inflammation, which can exacerbate lung conditions.</p><br></br>
           
-            </div>
+            </motion.div>
         </article>
 
         <article className="food-itemr">
@@ -202,7 +266,13 @@ alt='.'
           alt='.'
             className="food-image"
           />
-          <div className="food-contentr">
+         < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromRight}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
           <div class="nparticle"></div>
      
             <h5  className='head5'>Sugary Beverages (Soda, Energy Drinks)</h5><br></br>
@@ -213,7 +283,7 @@ alt='.'
       
   
             <p className='foodpara'><p className = "foodtext">Obesity:</p> Weight gain from sugary drinks can strain the lungs and lead to respiratory problems.</p><br></br>
-          </div>
+            </motion.div>
         </article>
 
         <article className="food-iteml">
@@ -222,7 +292,13 @@ alt='.'
           alt='.'
             className="food-image"
           />
-          <div className="food-contentl">
+         < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
             <h5  className='head5'> Fried Foods (French Fries, Fried Chicken)</h5><br></br>
           
             <p className='foodpara'><p className = "foodtext">Trans Fats:</p> Increase inflammation in the lungs, worsening lung conditions.</p><br></br>
@@ -231,7 +307,7 @@ alt='.'
  
             <p className='foodpara'><p className = "foodtext">Weight Gain:</p> Obesity from high-calorie fried foods can make it harder for the lungs to function properly.</p><br></br>
            
-            </div>
+            </motion.div>
             <div class="nparticle"></div>
         </article>
         <article className="food-itemr">
@@ -240,12 +316,18 @@ alt='.'
     alt='.'
     className="food-image"
   />
-  <div className="food-contentr">
+ < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromRight}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
     <h5 className='head5'>Dairy Products (Full-fat Milk, Cheese)</h5><br></br>
     <p className='foodpara'><p className = "foodtext">Produces Mucus:</p> Dairy can thicken mucus, making it harder to clear airways.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Triggers Asthma Symptoms:</p> Some individuals may find that dairy worsens asthma.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Inflammatory Potential:</p> Full-fat dairy products can contribute to inflammation.</p><br></br>
-  </div>
+    </motion.div>
 </article>
 
 <article className="food-iteml">
@@ -254,12 +336,18 @@ alt='.'
     alt='.'
     className="food-image"
   />
-  <div className="food-contentl">
+ < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
     <h5 className='head5'>Excessive Alcohol</h5><br></br>
     <p className='foodpara'><p className = "foodtext">Dehydration:</p> Can dry out the respiratory tract.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Suppresses Immune Function:</p> Alcohol can impair the body's ability to fight respiratory infections.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Reduces Lung Defense:</p> Chronic use may weaken the lung's natural defense system.</p><br></br>
-  </div>
+    </motion.div>
 </article>
 
 <article className="food-itemr">
@@ -268,12 +356,18 @@ alt='.'
     alt='.'
     className="food-image"
   />
-  <div className="food-contentr">
+ < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromRight}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
     <h5 className='head5'>White Bread and Pasta</h5><br></br>
     <p className='foodpara'><p className = "foodtext">Low Nutritional Value:</p> Processed carbs provide little benefit for lung health.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Causes Inflammation:</p> High glycemic index can trigger inflammation in the body.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Potential for Obesity:</p> Excessive intake may lead to weight gain, impacting lung function.</p><br></br>
-  </div>
+    </motion.div>
 </article>
 
 <article className="food-iteml">
@@ -282,12 +376,18 @@ alt='.'
     alt='.' 
     className="food-image"
   />
-  <div className="food-contentl">
+ < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
     <h5 className='head5'> Salty Foods (Chips, Pickles)</h5><br></br>
     <p className='foodpara'><p className = "foodtext">Water Retention:</p> High salt intake can lead to water retention, affecting lung function.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Exacerbates Asthma:</p> Excessive sodium may increase asthma symptoms.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Contributes to Inflammation:</p> Can worsen lung health by promoting fluid buildup.</p><br></br>
-  </div>
+    </motion.div>
 </article>
 
 <article className="food-itemr">
@@ -296,12 +396,18 @@ alt='.'
     alt='.'
     className="food-image"
   />
-  <div className="food-contentr">
+ < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromRight}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
     <h5 className='head5'>Artificial Sweeteners</h5><br></br>
     <p className='foodpara'><p className = "foodtext">Potential Lung Irritant:</p> Certain artificial sweeteners may trigger respiratory issues.</p><br></br>
     <p className='foodpara'><p className = "foodtext">Linked to Inflammation:</p> Some studies suggest they can promote inflammation in the body.</p><br></br>
     <p className='foodpara'><p className = "foodtext">May Trigger Asthma:</p> Artificial sweeteners could exacerbate asthma or allergy symptoms.</p><br></br>
-  </div>
+  </motion.div>
 </article>
 
       </section>

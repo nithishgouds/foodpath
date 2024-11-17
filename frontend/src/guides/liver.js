@@ -1,10 +1,20 @@
 
 import './Brain.css';
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 function Liver(){
   const [guides_liver_status_text, setguides_liver_status_text] = useState("This is the initial text .");
   const [guides_liver_consumed_text, setguides_liver_consumed_text] = useState("This is the initial text.");
   const [guides_liver_info_text, setguides_liver_info_text] = useState("This is the initial text.");
+  const slideInFromLeft = {
+    hidden: { x: -200, opacity: 0},
+    visible: { x: 0, opacity: 1, transition: { duration: 1.5 } }
+  };
+
+  const slideInFromRight = {
+    hidden: { x: 200, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 1.5 } }
+  };
   return(
 
     <div className="App">
@@ -62,13 +72,19 @@ function Liver(){
              
               className="food-image"
             />
-            <div className="food-contentl">
+           <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <h5  className='head5'> Leafy Greens (Spinach, Kale)</h5><br></br>
                <p className='foodpara'><p className = "foodtext">Rich in Antioxidants:</p> Leafy greens contain antioxidants that help reduce oxidative stress on the liver.</p><br></br>
                <p className='foodpara'><p className = "foodtext">Detoxifying Properties:</p> They help in cleansing the liver by neutralizing harmful substances.</p><br></br>
               
                <p className='foodpara'><p className = "foodtext">Lowers Fat Levels:</p> Consuming leafy greens regularly can reduce liver fat, which promotes better liver function.</p><br></br>
-            </div>
+               </motion.div>
           </article>
          
   
@@ -80,14 +96,20 @@ function Liver(){
              
               className="food-image"
             />
-            <div className="food-contentr">
+           <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
            
             <div class="particle"></div>
               <h5  className='head5'>Green Tea</h5><br></br>
                <p className='foodpara'><p className = "foodtext">Contains Catechins:</p> A type of antioxidant that boosts liver function and protects it from damage.</p><br></br>
                <p className='foodpara'><p className = "foodtext">Improves Fat Metabolism:</p> Green tea helps in reducing liver fat and supports its detoxification processes.</p><br></br>
                <p className='foodpara'><p className = "foodtext">Protects Against Toxins:</p> Regular consumption can protect the liver from the damage caused by toxins like alcohol.</p><br></br>
-            </div>
+               </motion.div>
           </article>
          
 
@@ -98,7 +120,13 @@ function Liver(){
              
               className="food-image"
             />
-            <div className="food-contentl">
+           <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
             <div class="particle"></div>
   
               <h5  className='head5'> Fatty Fish (Salmon, Mackerel)</h5><br></br>
@@ -106,7 +134,7 @@ function Liver(){
                <p className='foodpara'><p className = "foodtext">Reduces Liver Fat Accumulation:</p> Omega-3s help balance the levels of liver fat, promoting better overall function.</p><br></br>
             
                <p className='foodpara'><p className = "foodtext">Improves Enzyme Levels:</p> Fatty fish can help regulate liver enzyme levels, enhancing liver health.</p><br></br>
-            </div>
+               </motion.div>
           </article>
           <article className="food-itemr">
           <img
@@ -114,12 +142,18 @@ function Liver(){
             alt='.'
             className="food-image"
           />
-          <div className="food-contentr">
+         <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
             <h5 className='head5'> Garlic</h5><br></br>
              <p className='foodpara'><p className = "foodtext">Boosts Liver Detoxification:</p> Garlic contains sulfur compounds that enhance the liver's ability to detoxify harmful substances.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Reduces Liver Inflammation:</p> Garlic has anti-inflammatory properties that can help reduce liver damage.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Supports Antioxidant Defense:</p> Garlic promotes antioxidant activity, protecting liver cells from oxidative damage.</p><br></br>
-          </div>
+             </motion.div>
         </article>
 
         <article className="food-iteml">
@@ -128,12 +162,18 @@ function Liver(){
             alt='.'
             className="food-image"
           />
-          <div className="food-contentl">
+         <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
             <h5 className='head5'> Walnuts</h5><br></br>
              <p className='foodpara'><p className = "foodtext">Rich in Healthy Fats:</p> Walnuts contain omega-3 fatty acids, which reduce inflammation and protect the liver.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Enhances Detoxification:</p> They aid the liver's detox processes and improve its function.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Supports Liver Repair:</p> Walnuts help regenerate liver tissue by supporting its natural repair processes.</p><br></br>
-          </div>
+             </motion.div>
         </article>
         <div class="particle"></div>
         <article className="food-itemr">
@@ -142,12 +182,18 @@ function Liver(){
             alt='.'
             className="food-imager"
           />
-          <div className="food-content">
+         <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
             <h5 className='head5'>Turmeric</h5><br></br>
              <p className='foodpara'><p className = "foodtext">Reduces Liver Inflammation:</p> Curcumin in turmeric is known to reduce liver inflammation and protect liver cells.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Boosts Antioxidants:</p> Turmeric promotes the production of antioxidants in the liver, enhancing its detoxification ability.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Supports Liver Repair:</p> Turmeric helps regenerate liver cells and promotes overall liver health.</p><br></br>
-          </div>
+             </motion.div>
         </article>
 
         <article className="food-iteml">
@@ -156,12 +202,18 @@ function Liver(){
             alt='.'
             className="food-image"
           />
-          <div className="food-contentl">
+         <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
             <h5 className='head5'>Beets</h5><br></br>
              <p className='foodpara'><p className = "foodtext">Rich in Fiber:</p> Beets help in detoxifying the liver by promoting the elimination of toxins.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Supports Liver Health:</p> Beets improve the liver's natural detoxification processes and promote healthy bile production.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Improves Liver Function:</p> Beets have been shown to help reduce fatty deposits in the liver and enhance its function.</p><br></br>
-          </div>
+             </motion.div>
         </article>
         <div class="particle"></div>
         <article className="food-itemr">
@@ -170,12 +222,18 @@ function Liver(){
             alt='.'
             className="food-image"
           />
-          <div className="food-contentr">
+         <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
             <h5 className='head5'>Avocados</h5><br></br>
              <p className='foodpara'><p className = "foodtext">Rich in Healthy Fats:</p> Avocados contain healthy fats that help lower cholesterol levels and improve liver function.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Enhances Detoxification:</p> They support the liver's ability to detoxify and neutralize harmful substances.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Promotes Liver Health:</p> Regular consumption of avocados helps protect the liver from oxidative stress and inflammation.</p><br></br>
-          </div>
+             </motion.div>
         </article>
  
         </section>
@@ -191,7 +249,13 @@ function Liver(){
             
               className="food-image"
             />
-            <div className="food-contentl">
+           <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
       
               <h5 className='head5'> Alcohol</h5><br></br>
                <p className='foodpara'><p className = "foodtext">Causes Liver Damage:</p> Excessive alcohol intake can lead to liver inflammation and scarring, resulting in conditions like cirrhosis.</p><br></br>
@@ -201,7 +265,7 @@ function Liver(){
 
             
                <p className='foodpara'><p className = "foodtext">Promotes Liver Inflammation:</p> Regular alcohol consumption can trigger inflammation and oxidative stress in the liver.</p><br></br>
-            </div>
+               </motion.div>
           </article>
           <div class="nparticle"></div>
 
@@ -213,7 +277,13 @@ function Liver(){
              
               className="food-image"
             />
-            <div className="food-contentr">
+           <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
        
 
               <h5  className='head5'>Sugary Foods (Candy, Soft Drinks)</h5><br></br>
@@ -221,7 +291,7 @@ function Liver(){
                <p className='foodpara'><p className = "foodtext">Increases Inflammation:</p> A diet high in sugar can cause inflammation, leading to liver damage.</p><br></br>
              
                <p className='foodpara'><p className = "foodtext">Impairs Liver Function:</p> Over time, high sugar intake reduces the liver’s ability to function effectively.</p><br></br>
-            </div>
+               </motion.div>
           </article>
 
   <div class="nparticle"></div>
@@ -236,7 +306,13 @@ function Liver(){
              
               className="food-image"
             />
-            <div className="food-contentl">
+           <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           
 
               <h5  className='head5'>Fried Foods (Fast Food, Chips)</h5><br></br>
@@ -246,7 +322,7 @@ function Liver(){
      
                <p className='foodpara'><p className = "foodtext">Leads to Non-Alcoholic Fatty Liver Disease (NAFLD):</p> Frequent consumption of fried foods can result in fat buildup and liver inflammation.</p><br></br>
            
-              </div>  <div class="nparticle"></div>
+               </motion.div><div class="nparticle"></div>
           </article>
           <article className="food-itemr">
           <img
@@ -254,12 +330,18 @@ function Liver(){
             alt='.'
             className="food-image"
           />
-          <div className="food-contentr">
+         <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
             <h5 className='head5'> Processed Meats</h5><br></br>
              <p className='foodpara'><p className = "foodtext">High in Sodium and Preservatives:</p> Processed meats like sausages and bacon are high in sodium and chemicals, which stress the liver.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Leads to Inflammation:</p> The preservatives and fats found in processed meats can lead to liver inflammation and disease.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Harmful to Liver Health:</p> Excessive intake of processed meats can harm the liver’s ability to detoxify.</p><br></br>
-          </div>
+             </motion.div>
         </article>
 
         <article className="food-iteml">
@@ -268,12 +350,18 @@ function Liver(){
             alt='.'
             className="food-image"
           />
-          <div className="food-contentl">
+         <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
             <h5 className='head5'> Excessive Salt</h5><br></br>
              <p className='foodpara'><p className = "foodtext">Strains the Liver:</p> Too much salt causes water retention, which makes the liver work harder to detoxify the body.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Leads to Fatty Liver:</p> Excess sodium can also lead to fat accumulation around the liver.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Increases Blood Pressure:</p> Excessive salt intake raises blood pressure, further putting strain on the liver.</p><br></br>
-          </div>
+             </motion.div>
         </article>  <div class="nparticle"></div>
 
         <article className="food-itemr">
@@ -282,12 +370,18 @@ function Liver(){
             alt='.'
             className="food-image"
           />
-          <div className="food-contentr">
+         <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
             <h5 className='head5'> Artificial Sweeteners</h5><br></br>
              <p className='foodpara'><p className = "foodtext">Damages Liver Cells:</p> Long-term consumption of artificial sweeteners can damage liver cells and impair liver function.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Disrupts Metabolism:</p> They can disrupt metabolic processes and lead to liver inflammation.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Hinders Detoxification:</p> Artificial sweeteners can hinder the liver's detoxification processes, leading to a buildup of toxins in the body.</p><br></br>
-          </div>
+             </motion.div>
         </article>
 
         <article className="food-iteml">
@@ -296,12 +390,18 @@ function Liver(){
             alt='.'
             className="food-image"
           />
-          <div className="food-contentl">
+         <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
             <h5 className='head5'>High-Fructose Corn Syrup</h5><br></br>
              <p className='foodpara'><p className = "foodtext">Increases Fatty Liver Disease Risk:</p> High-fructose corn syrup is converted to fat in the liver, which can lead to fatty liver disease.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Impairs Liver Function:</p> Excessive consumption of high-fructose corn syrup leads to oxidative stress and impaired liver function.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Promotes Insulin Resistance:</p> This can result in insulin resistance, which increases fat accumulation in the liver.</p><br></br>
-          </div>
+             </motion.div>
         </article>
         <div class="nparticle"></div>
         <article className="food-itemr">
@@ -310,12 +410,18 @@ function Liver(){
             alt='.'
             className="food-image"
           />
-          <div className="food-contentr">
+         <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
             <h5 className='head5'>White Bread</h5><br></br>
              <p className='foodpara'><p className = "foodtext">Increases Blood Sugar Levels:</p> White bread spikes blood sugar, which can lead to fat accumulation in the liver.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Promotes Inflammation:</p> Refined carbohydrates like white bread increase inflammation, which negatively affects liver health.</p><br></br>
              <p className='foodpara'><p className = "foodtext">Reduces Liver Function:</p> Consuming too much white bread can decrease the liver's efficiency at processing nutrients.</p><br></br>
-          </div>
+          </motion.div>
         </article>
  
         </section>

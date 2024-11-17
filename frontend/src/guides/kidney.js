@@ -1,11 +1,20 @@
 import './Brain.css';
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 function Kidney() {
   const [guides_kidney_status_text, setguides_kidney_status_text] = useState("This is the initial text.");
   const [guides_kidney_consumed_text, setguides_kidney_consumed_text] = useState("This is the initial text.");
   const [guides_kidney_info_text, setguides_kidney_info_text] = useState("This is the initial text.");
+  const slideInFromLeft = {
+    hidden: { x: -200, opacity: 0},
+    visible: { x: 0, opacity: 1, transition: { duration: 1.5 } }
+  };
 
+  const slideInFromRight = {
+    hidden: { x: 200, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 1.5 } }
+  };
   return (
     <div className="App">
      
@@ -48,11 +57,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-            <div className="food-contentl">
+           <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'> Red Bell Peppers</h5><br></br>
           <p className='foodpara'><p className = "foodtext">Low in Potassium:</p> Helps reduce the workload on kidneys.</p><br></br>
           <p className='foodpara'><p className = "foodtext">High in Vitamins:</p> Rich in vitamin C and antioxidants.</p><br></br>
-       </div> </article>
+          </motion.div>  </article>
 
         <article className="food-itemr">
         <img
@@ -60,11 +75,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentr">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'>Cabbage</h5><br></br>
           <p className='foodpara'><p className = "foodtext">Nutrient-Rich:</p> Contains vitamins C, K, and B, with very low potassium.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Antioxidant Benefits:</p> Helps combat free radicals.</p><br></br>
-          </div> </article>
+          </motion.div>  </article>
 
 
         <article className="food-iteml">
@@ -73,11 +94,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentl">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'>Cauliflower</h5><br></br>
           <p className='foodpara'><p className = "foodtext">Detoxifying Agent:</p> Contains compounds that neutralize toxins.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Rich in Vitamins:</p> Provides vitamin C and fiber.</p><br></br>
-      </div>  </article>
+          </motion.div>   </article>
 
         <article className="food-itemr">
         <img
@@ -85,11 +112,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentr">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'> Garlic</h5><br></br>
           <p className='foodpara'><p className = "foodtext">Reduces Inflammation:</p> Has anti-inflammatory properties.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Flavor Enhancer:</p> Reduces the need for added salt.</p><br></br>
-      </div>  </article>
+          </motion.div>   </article>
 
         <article className="food-iteml">
         <img
@@ -97,11 +130,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentl">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'>Onions</h5><br></br>
           <p className='foodpara'><p className = "foodtext">Low in Potassium:</p> Great for kidney-friendly diets.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Rich in Antioxidants:</p> Contains quercetin to fight free radicals.</p><br></br>
-      </div>  </article>
+          </motion.div>   </article>
 
         <article className="food-itemr">
         <img
@@ -109,11 +148,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentr">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'> Apples</h5><br></br>
           <p className='foodpara'><p className = "foodtext">High in Fiber:</p> Supports heart health and digestion.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Anti-Inflammatory:</p> Reduces kidney inflammation.</p><br></br>
-       </div> </article>
+          </motion.div>  </article>
 
         <article className="food-iteml">
         <img
@@ -121,11 +166,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentl">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'>Cranberries</h5><br></br>
           <p className='foodpara'><p className = "foodtext">Prevents UTIs:</p> Supports bladder and kidney health.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Rich in Antioxidants:</p> Good for overall kidney function.</p><br></br>
-       </div> </article>
+          </motion.div>  </article>
 
         <article className="food-itemr">
         <img
@@ -133,11 +184,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentr">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'>Blueberries</h5><br></br>
           <p className='foodpara'><p className = "foodtext">High in Antioxidants:</p> Reduces inflammation and supports kidneys.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Low in Potassium:</p> Safe for kidney diets.</p><br></br>
-      </div>  </article>
+          </motion.div>   </article>
 
         <article className="food-iteml">
         <img
@@ -145,11 +202,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentl">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'>Strawberries</h5><br></br>
           <p className='foodpara'><p className = "foodtext">Nutrient-Dense:</p> Contains antioxidants and vitamins.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Protects Against Damage:</p> Reduces oxidative stress on kidneys.</p><br></br>
-      </div>  </article>
+          </motion.div>   </article>
 
         <article className="food-itemr">
         <img
@@ -157,11 +220,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentr">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'> Fish (Salmon, Mackerel)</h5><br></br>
           <p className='foodpara'><p className = "foodtext">Omega-3 Fatty Acids:</p> Reduces inflammation and improves blood pressure.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Supports Heart Health:</p> Essential for kidney health.</p><br></br>
-        </div></article>
+          </motion.div> </article>
       </section>
 
       <section className="bad-foods">
@@ -173,11 +242,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentl">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'>Processed Meats (Hot Dogs, Sausages)</h5><br></br>
           <p className='foodpara'><p className = "foodtext">High in Sodium:</p> Increases blood pressure and kidney strain.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Preservatives:</p> Contains additives harmful to kidneys.</p><br></br>
-       </div> </article>
+          </motion.div>  </article>
 
         <article className="food-itemr">
         <img
@@ -185,11 +260,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentr">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'>Canned Foods</h5><br></br>
           <p className='foodpara'><p className = "foodtext">High in Sodium:</p> Can lead to water retention and kidney strain.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Preservatives:</p> Chemicals in canned foods are harsh on kidneys.</p><br></br>
-      </div>  </article>
+          </motion.div>   </article>
 
         <article className="food-iteml">
         <img
@@ -197,11 +278,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentl">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'> Soda and Sugary Drinks</h5><br></br>
           <p className='foodpara'><p className = "foodtext">High in Sugar:</p> Increases risk of diabetes and kidney disease.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Contributes to Dehydration:</p> Puts additional strain on kidneys.</p><br></br>
-     </div>   </article>
+          </motion.div>    </article>
 
         <article className="food-itemr">
         <img
@@ -209,11 +296,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentr">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'>Alcohol</h5><br></br>
           <p className='foodpara'><p className = "foodtext">Dehydrating:</p> Causes kidney dehydration and impairs function.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Toxic Metabolites:</p> Puts extra pressure on the kidneys to filter.</p><br></br>
-       </div> </article>
+          </motion.div>  </article>
 
         <article className="food-iteml">
         <img
@@ -221,11 +314,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentl">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'> Red Meat</h5><br></br>
           <p className='foodpara'><p className = "foodtext">Hard to Digest:</p> Can lead to constipation and strain kidneys.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Linked to Cancer:</p> High consumption associated with colorectal cancer.</p><br></br>
-       </div> </article>
+          </motion.div> </article>
 
         <article className="food-itemr">
         <img
@@ -233,11 +332,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentr">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'>Dairy Products</h5><br></br>
           <p className='foodpara'><p className = "foodtext">High in Phosphorus:</p> Can lead to weakened bones for those with kidney issues.</p><br></br>
           <p className='foodpara'><p className = "foodtext">High Protein Load:</p> May increase kidney workload.</p><br></br>
-      </div>  </article>
+          </motion.div>   </article>
 
         <article className="food-iteml">
         <img
@@ -245,11 +350,17 @@ function Kidney() {
               alt='.'
               className="food-image"
             />
-              <div className="food-contentl">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'> Bananas</h5><br></br>
           <p className='foodpara'><p className = "foodtext">High in Potassium:</p> Can be harmful for those with compromised kidney function.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Leads to Hyperkalemia:</p> Excess potassium can affect heart function.</p><br></br>
-      </div>  </article>
+          </motion.div>  </article>
 
         <article className="food-itemr">
         <img
@@ -257,11 +368,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentr">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'>Avocados</h5><br></br>
           <p className='foodpara'><p className = "foodtext">High in Potassium:</p> Too much potassium can strain kidneys.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Should Be Limited:</p> Best avoided for those with kidney issues.</p><br></br>
-       </div> </article>
+          </motion.div> </article>
 
         <article className="food-iteml">
         <img
@@ -269,11 +386,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentl">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'>Oranges and Orange Juice</h5><br></br>
           <p className='foodpara'><p className = "foodtext">High in Potassium:</p> Not suitable for people with kidney problems.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Leads to Hyperkalemia:</p> Can disrupt normal kidney function.</p><br></br>
-     </div>   </article>
+          </motion.div>   </article>
 
         <article className="food-itemr">
         <img
@@ -281,11 +404,17 @@ function Kidney() {
             alt='.'
               className="food-image"
             />
-              <div className="food-contentr">
+             <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
           <h5 className='head5'>Pickled and Fermented Foods</h5><br></br>
           <p className='foodpara'><p className = "foodtext">High in Sodium:</p> Can cause fluid retention and increase blood pressure.</p><br></br>
           <p className='foodpara'><p className = "foodtext">Strains Kidneys:</p> Excess sodium can impair kidney function.</p><br></br>
-       </div> </article>
+       </motion.div> </article>
       </section>
     </div>
   );

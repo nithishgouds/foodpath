@@ -1,11 +1,21 @@
 
 import './Brain.css';
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 function Heart(){
 
   const [guides_heart_status_text, setguides_heart_status_text] = useState("This is the initial text .");
   const [guides_heart_consumed_text, setguides_heart_consumed_text] = useState("This is the initial text.");
   const [guides_heart_info_text, setguides_heart_info_text] = useState("This is the initial text.");
+  const slideInFromLeft = {
+    hidden: { x: -100, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.5 } }
+  };
+
+  const slideInFromRight = {
+    hidden: { x: 100, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.5 } }
+  };
     return(
 
         <div className="App">
@@ -63,7 +73,13 @@ function Heart(){
               className="food-image"
             />
 
-            <div className="food-contentl">
+             < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
               <h5 className='head5'>Fatty Fish (Salmon, Mackerel, Sardines)</h5><br></br>
               <p className='foodpara'><p className = "foodtext">Omega-3 Fatty Acids:</p>
                Help reduce inflammation, lower triglycerides, and decrease the risk of arrhythmias.</p><br></br>
@@ -73,7 +89,7 @@ function Heart(){
                Regular consumption can reduce blood pressure, lowering the risk of stroke and heart attack.</p><br></br>
               <p className='foodpara'><p className = "foodtext">Reduces Risk of Heart Failure:</p>
               Omega-3s may lower the risk of heart failure by supporting overall heart function.</p><br></br>
-            </div>
+              </motion.div>
           </article><div class="particle"></div>
       
           <article className="food-itemr">
@@ -83,7 +99,13 @@ function Heart(){
            
               className="food-image"
             />
-            <div className="food-contentr">
+           <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
             <div class="particle"></div>
               <h5 className='head5'>2. Nuts (Almonds, Walnuts)</h5><br></br>
               <p className='foodpara'><p className = "foodtext">Rich in Healthy Fats:</p> 
@@ -94,7 +116,7 @@ function Heart(){
               Compounds found in nuts that help lower cholesterol.</p><br></br>
               <p className='foodpara'><p className = "foodtext">Magnesium Source:</p>
               Supports healthy heart rhythms and prevents the hardening of arteries.</p><br></br>
-            </div>
+              </motion.div>
           </article>
   
           <article className="food-iteml">
@@ -104,7 +126,13 @@ function Heart(){
              
               className="food-image"
             /><div class="particle"></div>
-            <div className="food-contentl">
+             < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
            
 
               <h5 className='head5'>3. Oats</h5><br></br>
@@ -116,7 +144,7 @@ function Heart(){
             Oats prevent sharp rises in blood sugar, reducing the risk of heart disease.</p><br></br>
               <p className='foodpara'><p className = "foodtext">Weight Management:</p> 
              The fiber in oats promotes weight management, aiding heart health.</p><br></br>
-            </div>
+             </motion.div>
           </article>
          
 
@@ -128,7 +156,13 @@ function Heart(){
 
               className="food-image"
             /> <div class="particle"></div>
-            <div className="food-contentr">
+           <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <h5 className='head5'>4. Leafy Greens (Spinach, Kale)</h5><br></br>
               <p className='foodpara'><p className = "foodtext">Rich in Potassium:</p>
                Helps control blood pressure, reducing the strain on your heart.</p><br></br>
@@ -138,7 +172,7 @@ function Heart(){
             Help reduce blood pressure and improve arterial function.</p><br></br>
               <p className='foodpara'><p className = "foodtext">Antioxidants:</p> 
               Protect against oxidative stress, a key factor in heart disease development.</p><br></br>
-            </div>
+              </motion.div>
           </article>
           <div class="particle"></div>
           <article className="food-iteml">
@@ -147,7 +181,13 @@ function Heart(){
             alt='.'
       className="food-image"
     />
-    <div className="food-contentl">
+     < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
       <h5 className='head5'>5. Avocados</h5><br></br>
       <p className='foodpara'><p className = "foodtext">Rich in Monounsaturated Fats:</p> 
       Avocados can help reduce LDL cholesterol levels and improve heart health.</p><br></br>
@@ -157,7 +197,7 @@ function Heart(){
       Avocados contain folate, which supports heart health and helps reduce homocysteine levels, a risk factor for heart disease.</p><br></br>
       <p className='foodpara'><p className = "foodtext">Anti-Inflammatory:</p> 
       Their compounds can reduce inflammation, improving overall cardiovascular health.</p><br></br>
-    </div>
+      </motion.div>
   </article>
 
   <article className="food-itemr">
@@ -166,7 +206,13 @@ function Heart(){
             alt='.'
       className="food-image"
     />
-    <div className="food-contentr">
+   <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
       <h5 className='head5'>Beans (Black Beans, Kidney Beans, Chickpeas)</h5><br></br>
       <p className='foodpara'><p className = "foodtext">High in Fiber:</p>
       Beans can help lower cholesterol and improve overall heart health.</p><br></br>
@@ -176,7 +222,7 @@ function Heart(){
      The fiber in beans helps promote a feeling of fullness and can aid in weight management.</p><br></br>
       <p className='foodpara'><p className = "foodtext">Lower Blood Pressure:</p>
       Beans are rich in potassium and magnesium, which help regulate blood pressure.</p><br></br>
-    </div>
+      </motion.div>
   </article>
 
   <article className="food-iteml">
@@ -185,7 +231,13 @@ function Heart(){
             alt='.'
       className="food-image"
     />
-    <div className="food-contentl">
+     < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
       <h5 className='head5'> Berries (Strawberries, Blueberries, Raspberries)</h5><br></br>
       <p className='foodpara'><p className = "foodtext">High in Antioxidants:</p>
        Berries are packed with anthocyanins, which reduce inflammation and lower the risk of heart disease.</p><br></br>
@@ -195,7 +247,7 @@ function Heart(){
      The compounds in berries help improve blood vessel function and reduce oxidative stress.</p><br></br>
       <p className='foodpara'><p className = "foodtext">Regulate Blood Pressure:</p>
       Berries are rich in flavonoids that support healthy blood pressure levels.</p><br></br>
-    </div>
+      </motion.div>
   </article>
 
   <article className="food-itemr">
@@ -204,7 +256,13 @@ function Heart(){
             alt='.'
       className="food-image"
     />
-    <div className="food-contentr">
+   <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
       <h5 className='head5'> Dark Chocolate</h5><br></br>
       < p className='foodpara'><p className = "foodtext">Rich in Flavonoids:</p>
       Dark chocolate, especially varieties with 70% cocoa or more, helps lower blood pressure and improves circulation.</p><br></br>
@@ -214,7 +272,7 @@ function Heart(){
       The antioxidants in dark chocolate can help reduce inflammation and protect heart health.</p><br></br>
       <p className='foodpara'><p className = "foodtext">Enhances Blood Vessel Function:</p>
       Dark chocolate can help improve blood vessel function, reducing the risk of heart disease.</p><br></br>
-    </div>
+      </motion.div>
   </article>
         </section>
   
@@ -229,7 +287,13 @@ function Heart(){
               
               className="food-image"
             /> 
-            <div className="food-contentl"> <div class="nparticle"></div>
+             < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}> <div class="nparticle"></div>
               <h5 className='head5'> Processed Meats (Bacon, Sausage, Hot Dogs)</h5><br></br>
               <p className='foodpara'><p className = "foodtext">High in Sodium:</p>
           Increases blood pressure, leading to heart disease.</p>
@@ -241,7 +305,7 @@ function Heart(){
              Nitrates in processed meats are linked to heart disease and cancer.</p><br></br>
               <p className='foodpara' ><p className = "foodtext">Increases Inflammation:</p>
            Triggers inflammation, contributing to heart disease.</p><br></br>
-            </div>
+           </motion.div>
           </article>
   
           <article className="food-itemr">
@@ -255,7 +319,13 @@ function Heart(){
                     <div class="nparticle"></div>
   
  
-            <div className="food-contentr">
+           <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <h5 className='head5'> Sugary Beverages (Soda, Energy Drinks)</h5><br></br>
               <p className='foodpara'><p className = "foodtext">Increases Blood Sugar:</p> 
               <br></br>Leads to weight gain and insulin resistance, increasing heart disease risk.</p><br></br>
@@ -267,7 +337,7 @@ function Heart(){
               High sugar intake raises triglyceride levels, risking heart attacks.</p><br></br>
               <p className='foodpara'><p className = "foodtext">Leads to Fatty Liver Disease:</p> 
             Excess sugar can lead to non-alcoholic fatty liver disease, linked to heart disease.</p><br></br>
-            </div>
+            </motion.div>
           </article>
           <div class="nparticle"></div>
           <article className="food-iteml">
@@ -277,7 +347,13 @@ function Heart(){
              
               className="food-image"
             />
-            <div className="food-contentl">
+             < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
            
  
  
@@ -295,7 +371,7 @@ function Heart(){
               Calorie-dense fried foods contribute to obesity, increasing heart disease risk.</p><br></br>
               <p className='foodpara'><p className = "foodtext">Increases Blood Pressure:</p> 
             High in salt and unhealthy fats, fried foods elevate blood pressure.</p><br></br>
-            </div>
+            </motion.div>
            
           </article>
           <article className="food-itemr">
@@ -304,7 +380,13 @@ function Heart(){
             alt='.'
       className="food-image"
     />
-    <div className="food-contentr">
+   <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
       <h5 className='head5'> Refined Carbs (White Bread, Pastries)</h5><br></br>
       <p className='foodpara'><p className = "foodtext">Increases Blood Sugar:</p>
  Refined carbs lead to blood sugar spikes, contributing to insulin resistance and heart disease.</p><br></br>
@@ -314,7 +396,7 @@ function Heart(){
       These carbs increase inflammation in the body, impacting heart health.</p><br></br>
       <p className='foodpara'><p className = "foodtext">Raises Triglycerides:</p>
     They contribute to higher triglyceride levels, a major risk factor for heart attacks.</p><br></br>
-    </div>
+    </motion.div>
   </article>
 
   <article className="food-iteml">
@@ -323,12 +405,18 @@ function Heart(){
             alt='.'
       className="food-image"
     />
-    <div className="food-contentl">
+     < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
       <h5 className='head5'>High-Sodium Foods (Canned Soups, Frozen Meals)</h5><br></br>
       <p className='foodpara'><p className = "foodtext">Increases Blood Pressure:</p> Excessive sodium in the diet raises blood pressure, straining the heart.</p><br></br>
       <p className='foodpara'><p className = "foodtext">Promotes Water Retention:</p> Sodium causes the body to retain water, putting additional strain on the heart.</p><br></br>
       <p className='foodpara'><p className = "foodtext">Contributes to Heart Disease:</p> A high-sodium diet increases the risk of heart attacks and strokes.</p><br></br>
-    </div>
+      </motion.div>
   </article>
 
   <article className="food-itemr">
@@ -337,7 +425,13 @@ function Heart(){
             alt='.'
       className="food-image"
     />
-    <div className="food-contentr">
+   <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
       <h5 className='head5'>Alcohol</h5><br></br>
       <p className='foodpara'><p className = "foodtext">Increases Blood Pressure:</p>
   Chronic alcohol consumption can raise blood pressure, contributing to heart disease.</p><br></br>
@@ -345,7 +439,7 @@ function Heart(){
      Excessive drinking can lead to cardiomyopathy, a condition that weakens the heart muscle.</p><br></br>
       <p className='foodpara'><p className = "foodtext">Promotes Weight Gain:</p>
        Alcohol is calorie-dense and can contribute to obesity, increasing the risk of heart disease.</p><br></br>
-    </div>
+       </motion.div>
   </article>
 
   <article className="food-iteml">
@@ -354,7 +448,13 @@ function Heart(){
             alt='.'
       className="food-image"
     />
-    <div className="food-contentl">
+     < motion.div
+           className="food-contentl"
+          
+           variants={slideInFromLeft}
+           initial="hidden"
+           whileInView="visible"
+           viewport={{ once: true }}>
       <h5 className='head5'> Dairy (Whole Milk, Cheese)</h5><br></br>
       <p className='foodpara'><p className = "foodtext">High in Saturated Fat:</p> 
      Saturated fats can raise LDL cholesterol, increasing the risk of heart disease.</p><br></br>
@@ -362,7 +462,7 @@ function Heart(){
      Dairy products high in fat can contribute to obesity, a risk factor for heart disease.</p><br></br>
       <p className='foodpara'><p className = "foodtext">May Increase Inflammation:</p>
       Dairy consumption has been linked to increased inflammation, contributing to heart disease.</p><br></br>
-    </div>
+      </motion.div>
   </article>
 
   <article className="food-itemr">
@@ -371,7 +471,13 @@ function Heart(){
       alt='.'
       className="food-image"
     />
-    <div className="food-contentr">
+   <motion.div
+              className="food-contentr"
+              variants={slideInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
       <h5 className='head5'> Packaged Snacks (Chips, Crackers)</h5><br></br>
       <p className='foodpara'><p className = "foodtext">High in Trans Fats:</p> 
      Trans fats increase LDL cholesterol, which contributes to plaque buildup in arteries.</p><br></br>
@@ -379,7 +485,7 @@ function Heart(){
        These snacks often contain unhealthy fats that increase inflammation in the body.</p><br></br>
       <p className='foodpara'><p className = "foodtext">Contribute to Obesity:</p> 
       These calorie-dense snacks are linked to weight gain, a major risk factor for heart disease.</p><br></br>
-    </div>
+    </motion.div>
   </article>
         </section>
       </div>);
