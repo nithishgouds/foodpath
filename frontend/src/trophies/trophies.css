@@ -114,7 +114,7 @@
   
   .trophies-container .trophy-box textarea:focus {
     color: #007BFF; /* Text turns blue on focus */
-    background-color: #142e8e; /* Background becomes white on focus */
+    background-color: #ffffff; /* Background becomes white on focus */
     outline: none;
   }
   
