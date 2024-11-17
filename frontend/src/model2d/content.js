@@ -21,7 +21,7 @@ function Content() {
   let email;
 
   const token = localStorage.getItem("jwtToken");
-  console.log(token);
+  // console.log(token);
 
   const checkSignIn = () => {
     if (token) {
@@ -31,25 +31,22 @@ function Content() {
 
   useEffect(() => {
     checkSignIn();
-  });
-
-
-
+    handleHistory();
+  }, []);
 
   if (token) {
     try {
-      console.log("Entered token check");
 
       // Decode the JWT token to extract the payload
       const decodedToken = jwtDecode(token);
-      console.log(decodedToken); // Log the entire decoded token to check its structure
+      // console.log(decodedToken);
 
-      console.log(decodedToken.email);
+      // console.log(decodedToken.email);
 
       // Check if the decoded token contains the email property
       if (decodedToken && decodedToken.email) {
         email = decodedToken.email;
-        console.log("Decoded email:", email);
+        // console.log("Decoded email:", email);
       } else {
         console.log("Email not found in token payload.");
       }
@@ -60,7 +57,6 @@ function Content() {
     console.log("No JWT token found in localStorage.");
   }
 
-  console.log("entered content function");
   const [braincolor, setBrainColor] = useState("");
   const [lungscolor, setlungsColor] = useState("");
   const [heartcolor, setheartColor] = useState("#000000");
@@ -141,7 +137,6 @@ function Content() {
   const [handleAddRes, setHandleAddRes] = useState(null);
 
   const handleAddItem = async () => {
-    console.log("button working");
     if (!selectedItem) {
       console.log("Please select an item and enter a quantity.");
       return;
@@ -182,29 +177,37 @@ function Content() {
         }
       );
       //http://localhost:3001/trophies/updateTrophy  email,index,value-------------------------------
-      const { aiResponse,consumedFoods } = response.data;
+      const { aiResponse, consumedFoods } = response.data;
       console.log("something is happening");
       consumedFoods.forEach((food, index) => {
         console.log(`Item ${index + 1}:`, food);
       });
       console.log(consumedFoods.length);
 
-
       setEating(false);
       setEat(true);
       setFoodStatus("Food Consumed");
       setHandleAddRes(aiResponse);
-      const foodItemsString = consumedFoods.map(item => item.foodItem);
+      const foodItemsString = consumedFoods.map((item) => item.foodItem);
+      console.log('fis length : '+foodItemsString.length)
+      
+      if(foodItemsString.length === 5 || !achievementsarray[0]){
+        console.log('achievement 0 unlocked');
+        setIndex(0);
+        // console.log(indexToChange);
+        console.log(indexToChange);
+        changeAchievementStatus();
+        console.log('Changed '+achievementsarray)
+      }
+      else{
+        console.log('not unlocked a1');
+      }
 
       const foodsString = foodItemsString
         .map((food, index) => `Item ${index + 1}: ${food}`)
-        .join('\n');
-   
+        .join("\n");
+
       setfoodHistory(foodsString);
-
-      // Update state with aiResponse
-
-      // Update the state with color changes
       setBrainColor(colourrating(aiResponse.health_status.brain.rating));
       setlungsColor(colourrating(aiResponse.health_status.lungs.rating));
       setheartColor(colourrating(aiResponse.health_status.heart.rating));
@@ -357,36 +360,113 @@ function Content() {
 
   const foodStatusText = foodStatus; //.map(item => `${item.foodItem} `).join('\n');
   const [foodHistory, setfoodHistory] = useState("");
+  const [indexToChange, setIndex] = useState(12);
+  const [indexValueToChange, setIndexValue] = useState(false);
+  let achievementsarray = Array(13);
 
+  useEffect(() => {
+    resetAchievementStatus();
+    getAchievementState();
+  }, []);
+
+  const resetAchievementStatus = async () => {
+    for(var i=0;i<13;i++){
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/trophies/updateTrophy",
+        {
+          email: email,
+          index: i,
+          value: false
+        }
+      );
+      console.log(response.data.trophies);
+      achievementsarray = response.data.trophies;
+      console.log(achievementsarray)
+      console.log(i+' set '+indexToChange);
+    } catch (error) {
+      console.log("Error in change achievements");
+      console.log(error);
+    }
+    }
+  };
+
+
+  const changeAchievementStatus = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/trophies/updateTrophy",
+        {
+          email: email,
+          index: indexToChange,
+          value: true
+        }
+      );
+      achievementsarray=response.data.trophies;
+      console.log('Changed '+indexToChange+'to '+indexValueToChange);
+      console.log(achievementsarray)
+      return;
+    } catch (error) {
+      console.log("Error in change achievements");
+      console.log(error);
+    }
+  };
+
+  const getAchievementState = async () => {
+    try {
+      console.log("sending the data to the backend");
+      const response = await axios.post(
+        "http://localhost:3001/trophies/updateTrophy",
+        {
+          email: email,
+          index: 12,
+          value: true
+        }
+      );
+      achievementsarray = response.data.trophies;
+      console.log('achievement array :'+ achievementsarray);
+      changeAchievementStatus();
+    } catch (error) {
+      console.log("get achievement error");
+      console.log(error);
+    }
+  };
 
   const handleHistory = async () => {
     try {
-
-
       const response = await axios.post(
         "http://localhost:3001/api/organs/history",
         {
-          email: email
+          email: email,
         }
       );
 
-      const { aiResponse,consumedFoods } = response.data;
-      console.log("some is happening");
-      if(consumedFoods.length===0){
+      const { aiResponse, consumedFoods } = response.data;
+      if (consumedFoods.length === 0) {
         setEat(false);
         return;
-      }else{
+      } else {
         setEat(true);
       }
-      console.log(consumedFoods);
-      const foodItemsString = consumedFoods.map(item => item.foodItem);
+      console.log("--------------------------------------------------");
+      const foodItemsString = consumedFoods.map((item) => item.foodItem);
+      console.log("consumed foods" + foodItemsString);
+      console.log('achievement array : '+achievementsarray)
+      // if(foodItemsString.length === 5 || achievementsarray[1]){
+      //   console.log('achievement 1 unlocked');
+      //   setIndex(1);
+      //   // console.log(indexToChange);
+      //   setIndexValue(true);
+      //   console.log(indexToChange);
+      //   changeAchievementStatus();
+      //   console.log('in achievement 1 block '+achievementsarray)
+      // }
 
       const foodsString = foodItemsString
         .map((food, index) => `Item ${index + 1}: ${food}`)
-        .join('\n');
-   
+        .join("\n");
+      console.log('foodsString' + consumedFoods);
       setfoodHistory(foodsString);
-      
 
       setHandleAddRes(aiResponse);
 
@@ -396,7 +476,9 @@ function Content() {
       setheartColor(colourrating(aiResponse.health_status.heart.rating));
       setliverColor(colourrating(aiResponse.health_status.liver.rating));
       setstomachColor(colourrating(aiResponse.health_status.stomach.rating));
-      setintestineColor(colourrating(aiResponse.health_status.intestines.rating));
+      setintestineColor(
+        colourrating(aiResponse.health_status.intestines.rating)
+      );
       setOpacity(0.5);
     } catch (error) {
       setFoodStatus("Error!");
@@ -404,44 +486,6 @@ function Content() {
       console.error("Error adding food item:", error);
     }
   };
-
-useEffect(() => {
-  handleHistory();
-}, []);
-
-  // axios.post("http://localhost:3001/api/organs/history", { email: email })
-  // .then((response) => {
-  //   const { aiResponse, consumedFoods } = response.data;
-  //   console.log("some is happening");
-    
-  //   if (consumedFoods.length === 0) {
-  //     setEat(false);
-  //     return;
-  //   } else {
-  //     setEat(true);
-  //   }
-
-  //   const foodsString = consumedFoods
-  //     .map((food, index) => `Item ${index + 1}: ${food}`)
-  //     .join('\n');
-    
-  //   setfoodHistory(foodsString);
-  //   setHandleAddRes(aiResponse);
-
-  //   // Update the state with color changes
-  //   setBrainColor(colourrating(aiResponse.health_status.brain.rating));
-  //   setlungsColor(colourrating(aiResponse.health_status.lungs.rating));
-  //   setheartColor(colourrating(aiResponse.health_status.heart.rating));
-  //   setliverColor(colourrating(aiResponse.health_status.liver.rating));
-  //   setstomachColor(colourrating(aiResponse.health_status.stomach.rating));
-  //   setintestineColor(colourrating(aiResponse.health_status.intestines.rating));
-  //   setOpacity(0.5);
-  // })
-  // .catch((error) => {
-  //   setFoodStatus("Error!");
-  //   setEating(false);
-  //   console.error("Error adding food item:", error);
-  // });
 
 
   return (
@@ -792,4 +836,4 @@ useEffect(() => {
   );
 }
 
-export default Content; 
+export default Content;
