@@ -3,9 +3,11 @@ const app = express();
 app.use(express.json());
 
 const ConsumedFoods = require('../models/consumedFoodSchema'); // Ensure this path is correct
-const { run } = require('../Gemini_API/modelStatusAPI'); // If you're using the AI function
+//const { run } = require('../Gemini_API/modelStatusAPI'); // If you're using the AI function
+const { run } = require('../Gemini_API/APImodelstatus');
+// const { runseparate } = require('../Gemini_API/separate_model_factors');
 const { validatefood } = require('../Gemini_API/foodvalidation');
-
+const {organGuide}= require('../Gemini_API/organGuidesAPI');
 // Route handler for adding food items
 
 
@@ -21,7 +23,7 @@ const validfood = async (req, res) => {
        try {
             let aiResponse = await validatefood(foodItems);
 
-            console.log(aiResponse);
+            //console.log(aiResponse);
             aiResponse = JSON.parse(aiResponse);
 
             res.json({
@@ -50,7 +52,7 @@ const addFood = async (req, res) => {
     }
 
     // Split the foodItems string by spaces and filter out any empty items
-    const foodItemsArray = foodItems.split(' ').filter(item => item.trim() !== '');
+    const foodItemsArray = foodItems.split(',').filter(item => item.trim() !== '');
 
     try {
         // Find the user in ConsumedFoods or create a new entry if not found
@@ -76,15 +78,18 @@ const addFood = async (req, res) => {
         // Optionally process the food items with AI
         try {
             let aiResponse = await run(foodItemsString);
+            //let aiResponseSeparate= await runseparate(foodItemsString);
 
-            //console.log(aiResponse);
+
             aiResponse = JSON.parse(aiResponse);
+            
 
             res.json({
                 
                 message: 'Foods added successfully',
                 consumedFoods: user.consumedFoods, // You can return the food items as a string
                 aiResponse: aiResponse
+                //aiResponseSeparate: aiResponseSeparate
             });
         } catch (aiError) {
             res.status(500).json({ error: 'Error processing food data in AI', details: aiError.message });
@@ -98,8 +103,6 @@ const addFood = async (req, res) => {
 
 const resetConsumedFoods= async(req,res)=>
 {
-
-    console.log("Entered the reset");
     const { email }=req.body;
 
     if(!email)
@@ -134,4 +137,116 @@ const resetConsumedFoods= async(req,res)=>
     }
 };
 
-module.exports = { addFood , resetConsumedFoods,validfood };
+
+
+
+
+
+const validateOrganGuide = async (req, res) => {
+    const { email, organName } = req.body;
+
+    console.log('Received body:', req.body);
+
+    // Ensure both email and organName are provided
+    if (!email) {
+        return res.status(400).json({ error: 'Email is required.' });
+    }
+
+    if (!organName) {
+        return res.status(400).json({ error: 'Organ name is required.' });
+    }
+
+    try {
+        // Check if the email exists in the database and fetch their consumedFoods
+        const user = await ConsumedFoods.findOne({ email });
+
+        if (!user || !user.consumedFoods || user.consumedFoods.length === 0) {
+            return res.status(404).json({ error: 'User not found or no consumed foods available.' });
+        }
+
+        // Extract food items from the user's consumedFoods array
+        const foodItemsArray = user.consumedFoods.map(item => item.foodItem).filter(item => item.trim() !== '');
+        const foodItemsString = foodItemsArray.join(','); // Prepare food items as a single string separated by commas
+
+        // Send data to the organGuides API
+        try {
+            const organGuideResponse = await organGuide(organName, foodItemsString);
+
+            // Assume organGuide returns a response in JSON format
+            const parsedResponse = JSON.parse(organGuideResponse);
+
+            res.json({
+                message: 'Organ guide data retrieved successfully',
+                AIorganGuideRes: parsedResponse,
+                consumedFoods: foodItemsString
+            });
+        } catch (apiError) {
+            res.status(500).json({
+                error: 'Error processing organ guide data in AI',
+                details: apiError.message,
+            });
+        }
+    } catch (dbError) {
+        res.status(500).json({
+            error: 'Error fetching user data from the database',
+            details: dbError.message,
+        });
+    }
+};
+
+const history = async (req, res) => {
+    const { email } = req.body;
+
+    console.log('Received body:', req.body);
+
+    // Ensure email and foodItems are provided
+    if (!email) {
+        return res.status(400).json({ error: 'Email is required.' });
+    }
+
+
+
+    // Split the foodItems string by spaces and filter out any empty items
+
+
+    try {
+        // Find the user in ConsumedFoods or create a new entry if not found
+        let user = await ConsumedFoods.findOne({ email });
+
+        if (!user) {
+            // If the user doesn't exist, create a new user document with an empty consumedFoods array
+            user = new ConsumedFoods({ email, consumedFoods: [] });
+        }
+
+
+        // Prepare the food items as a string to send back
+        const foodItemsString = user.consumedFoods.map(item => item.foodItem).join(' ');
+
+        // Optionally process the food items with AI
+        try {
+            let aiResponse = await run(foodItemsString);
+            //let aiResponseSeparate= await runseparate(foodItemsString);
+
+
+            aiResponse = JSON.parse(aiResponse);
+            
+
+            res.json({
+                
+                message: 'history added successfully',
+                consumedFoods: user.consumedFoods, // You can return the food items as a string
+                aiResponse: aiResponse
+                //aiResponseSeparate: aiResponseSeparate
+            });
+        } catch (aiError) {
+            res.status(500).json({ error: 'Error processing food data in AI', details: aiError.message });
+        }
+
+    } catch (error) {
+        res.status(500).json({ error: 'Error adding food to the user account', details: error.message });
+    }
+};
+
+
+
+module.exports = { addFood , resetConsumedFoods,validfood,validateOrganGuide ,history};

@@ -74,7 +74,7 @@
   border-radius: 0px;
   font-size:17px;
   color:#CA8263;
-  
+
 }
 .logininput:focus{
   border-radius:0px;
@@ -115,3 +115,14 @@
 .asua:hover{
   color:#CA8263;
 }
+ .eye-icon {
+   cursor: pointer;
+   color: white; /* Default color */
+   font-size: 1.2rem; /* Adjust the size of the eye icon */
+   transition: transform 0.2s ease, color 0.3s ease;
+ }
+
+ .eye-icon:hover {
+   transform: scale(1.1); /* Slightly enlarge the icon on hover */
+   color: #ca8263; /* Change color on hover */
+ }
