@@ -57,7 +57,7 @@ function Content3d() {
   console.log("entered content function");
   const [stomachcolor, setstomachcolor] = useState("#66ff66");
   const [heartcolor, setheartcolor] = useState("#ff0000");
-  const [braincolor, setbraincolor] = useState("#ff9999");
+  const [braincolor, setbraincolor] = useState("rgba(255,153,153,0)");
   const [lungscolor, setlungscolor] = useState("#cc9900");
   const [kidneycolor, setkidneycolor] = useState("#ff0000");
   const [livercolor, setlivercolor] = useState("#993300");

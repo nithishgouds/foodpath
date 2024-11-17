@@ -570,7 +570,7 @@ function Content() {
               class="textareas"
               type="text"
               style={{
-                marginBottom: "50px",
+                marginBottom: "30px",
                 borderRadius: "6px",
                 paddingBottom: "20px",
                 paddingTop: "20px",
@@ -580,9 +580,12 @@ function Content() {
             ></input>
             <textarea
               className="textareas"
-              style={{ height: "70px", backgroundColor: "darkgrey" }}
+              style={{ height: "70px", backgroundColor: "darkgrey",marginTop:'' }}
+              readOnly
+              value={'How to add food:\n'}
             >
-              Hoo
+              How to add food:
+              {"\n"}h
             </textarea>
             <button class="inputbuttons1" onClick={handleAddItem}>
               Add Food
@@ -596,7 +599,7 @@ function Content() {
             <button
               class="inputbuttons"
               onClick={ResetModel}
-              style={{ marginTop: "20px" }}
+              style={{ marginTop: "20px",justifyContent:'flex-end' }}
             >
               Reset Model
             </button>
@@ -742,6 +745,7 @@ function Content() {
                     )}
                     <p class="inputinfoheading">History</p>
                     <textarea
+                    placeholder="Stomach empty :("
                       readOnly
                       ref={textareaRef}
                       class="textareas"

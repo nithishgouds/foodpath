@@ -5,7 +5,7 @@ import pmo from "./pmo.png";
 import pmc from "./pmc.png";
 
 import apple from './apple.png';
-import burger from './burger.png';
+import burger from './dot.png';
 
 import dot from "./dot.png";
 

@@ -45,8 +45,8 @@ export default function Login() {
     } else {
       setPWLength(false);
     }
-    if (pwLength || emailLength){
-
+    if (!pwLength || !emailLength){
+        return;
     }
     else{
       try {
