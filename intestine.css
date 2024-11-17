@@ -1,0 +1,351 @@
+.App {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  background-color:rgb(255, 255, 255);
+  animation: backgroundFade 5s infinite alternate;
+}
+
+@keyframes backgroundFade {
+  0% {
+      background-color: #f9f9f9;
+  }
+  100% {
+      background-color: #e0f7fa;
+  }
+}
+
+h1 {
+  text-align: center;
+  border-radius: 30%;
+  font-size: 5em;
+  color: #000000;
+
+  animation: pulse 2s infinite;
+
+}
+.container {
+  display: flex;
+  background-color: white;
+  justify-content: space-between; /* Or use 'flex-end' to push the image to the right */
+  align-items: center; /* Aligns vertically */
+  transition: transform 0.3s;
+}
+.container:hover {
+  transform: scale(1.02);
+}
+
+.food-image-i{
+  float: right;
+  margin-right: 20px;
+  width: 400px;
+  height: 300px;
+ 
+  object-fit: cover;
+  border-radius: 10px 0 0 10px;
+  transition: filter 0.5s ease-in-out;
+  border-radius: 20%;
+  filter: brightness(1.159);
+  transition: transform 0.3s;
+
+}
+.food-image-i:hover {
+  filter: brightness(1.2);
+  transform: scale(1.4);
+}
+img
+{
+  transition: transform 0.3s;
+}
+.img:hover{
+  transform: scale(1.4);
+}
+
+
+
+.newhead{
+  border-radius:1em;
+ padding-top: 2em;
+  height:5em ;
+  text-align: center;
+  background-color: rgb(200, 238, 225);
+}
+@keyframes pulse {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.05);
+  }
+}
+
+.food-item {
+  display: flex;
+  align-items: flex-start;
+  margin: 20px 0;
+  background-color: #fff;
+
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.food-item-s {
+  display: flex;
+  align-items: flex-start;
+  margin: 20px 0;
+  background-color: #fff;
+  width:70%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.food-item-c {
+  display: flex;
+  align-items: flex-start;
+  margin: 20px 0;
+  height:7em;
+  width:70%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.heading{
+  text-align: justify;
+}
+.newflex{
+  position: relative;
+ direction: ltr;
+}
+.food-item-i {
+  display: flex;
+ 
+  align-items: flex-start;
+  height: 10em;
+  margin: 20px 0;
+  width: 70%;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .food-image {
+      margin-top: 1em;
+      padding-left: 0.5em;
+      padding-top: 1em;
+      padding-bottom: 0.3em;
+      width: 45%;
+      height: auto;
+      filter: drop-shadow(0px 0px 10px grey);
+  }
+
+  .food-content {
+      padding: 15px;
+  }
+}
+
+.food-item:hover {
+  transform: scale(1.02);
+}
+.food-item-c:hover {
+  transform: scale(1.02);
+}
+.food-item-s:hover {
+  transform: scale(1.02);
+}
+.food-item-i:hover {
+  transform: scale(1.02);
+}
+.food-image {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px 0 0 10px;
+  transition: filter 0.5s ease-in-out;
+}
+
+.food-image:hover {
+  filter: brightness(1.2);
+}
+
+.food-content {
+  padding: 20px;
+  text-align: left;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #2e8b57;
+  animation: textGlow 3s ease-in-out infinite;
+}
+h2 {
+  font-size: 1.5rem;
+  color:  #de4331;
+  animation: teextGlow 3s ease-in-out infinite;
+}
+h4 {
+  font-size: 1.5rem;
+  color:  #de4331;
+  animation: teextGlow 3s ease-in-out infinite;
+}
+@keyframes teextGlow {
+  0%, 100% {
+      text-shadow: 0 0 5px  #de4331;
+  }
+  50% {
+      text-shadow: 0 0 10px  #de4331;
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+      text-shadow: 0 0 5px #2e8b57;
+  }
+  50% {
+      text-shadow: 0 0 15px #2e8b57;
+  }
+}
+
+p {
+  font-size: 1rem;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.good-foods, .bad-foods {
+  margin: 2rem 0;
+}
+
+@media (max-width: 768px) {
+  .food-item {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .food-image {
+      margin-top: 1em;
+      padding-left: 0.5em;
+      padding-top: 1em;
+      padding-bottom: 0.3em;
+      width: 45%;
+      height: auto;
+      filter: drop-shadow(0px 0px 10px grey);
+  }
+
+  .food-content {
+      padding: 15px;
+  }
+}
+.App {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  background: linear-gradient(135deg, #f9f9f9 25%, #e0f7fa 75%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Adding animated waves */
+@keyframes waveAnimation {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-50%);
+  }
+}
+
+/* Adding a floating particle effect */
+@keyframes floatParticles {
+  0% {
+      transform: translateY(0);
+      opacity: 1000;
+  }
+  50% {
+      transform: translateY(-30px);
+      opacity: 0.7;
+  }
+  100% {
+      transform: translateY(10);
+      opacity: 1000;
+  }
+}
+
+.particle {
+  width: 10px;
+  height: 10px;
+  background-color: #38d94b;
+  border-radius: 40%;
+  position: absolute;
+  animation: floatParticles 5s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+/* Generating multiple particles */
+.particle:nth-child(18) {
+  left:20%;
+  animation-duration: 7s;
+}
+.particle:nth-child(3) {
+  left: 40%;
+  animation-duration: 9s;
+}
+.particle:nth-child(4) {
+  left: 60%;
+  animation-duration: 6s;
+}
+.particle:nth-child(5) {
+  left: 80%;
+  animation-duration: 8s;
+}
+
+.nparticle {
+  width: 10px;
+  height: 10px;
+  background-color: #de4331;
+  border-radius: 40%;
+  position: absolute;
+  animation: floatParticles 5s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+/* Generating multiple particles */
+.nparticle:nth-child(18) {
+  left:20%;
+  animation-duration: 7s;
+}
+.nparticle:nth-child(3) {
+  left: 40%;
+  animation-duration: 9s;
+}
+.nparticle:nth-child(4) {
+  left: 60%;
+  animation-duration: 6s;
+}
+.nparticle:nth-child(5) {
+  left: 80%;
+  animation-duration: 8s;
+}
+.right-section {
+  flex: 1;
+  display: flex;
+  width:10%;
+  height:5%;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #e9ecef;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
