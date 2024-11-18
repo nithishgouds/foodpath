@@ -174,7 +174,6 @@ body {
 }
 .paragraph2{
     position: absolute;
-    left:calc(100%- 20px)
 }
 .paragraph1{
     transform: translate(0px,40px);
