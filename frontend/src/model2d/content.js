@@ -26,13 +26,13 @@ function Content() {
   const checkSignIn = () => {
     if (token) {
       setSingIn(true);
+      chkGuideBadge();
     }
   };
 
   useEffect(() => {
     checkSignIn();
     handleHistory();
-    chkGuideBadge();
   }, []);
 
   const chkGuideBadge = async () => {

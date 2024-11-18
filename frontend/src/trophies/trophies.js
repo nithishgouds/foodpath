@@ -294,7 +294,7 @@ const Trophies = () => {
             )}
             {!a9 && (
               <div className="trophy-box">
-                <h2>-----------------</h2>
+                <h2>???????</h2>
                 <textarea
                   readOnly
                   rows="4"
