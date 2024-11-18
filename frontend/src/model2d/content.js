@@ -210,7 +210,7 @@ function Content() {
       );
       const achievementarray = responsetrophy.data.trophies;
 
-      if (consumedFoods.length === 5 && !achievementarray[0]) {
+      if (consumedFoods.length > 5 && !achievementarray[0]) {
         const response0 = await axios.post(
           "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
@@ -222,7 +222,7 @@ function Content() {
         console.log("a0 done!");
       }
 
-      if (consumedFoods.length === 10 && !achievementarray[1]) {
+      if (consumedFoods.length > 10 && !achievementarray[1]) {
         const response0 = await axios.post(
           "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
@@ -234,7 +234,7 @@ function Content() {
         console.log("a1 done!");
       }
 
-      if (consumedFoods.length === 20 && !achievementarray[2]) {
+      if (consumedFoods.length > 20 && !achievementarray[2]) {
         const response0 = await axios.post(
           "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
@@ -555,44 +555,6 @@ function Content() {
   return (
     <>
       {/* Not signed in */}
-      {!isSignIn && (
-        <div>
-          <div
-            className="notsignedin"
-            style={{
-              height: "calc(100vh - 250px)",
-              width: "100%",
-              textAlign: "center",
-            }}
-          >
-            <div style={{ height: "100px" }}></div>
-            <label
-              className="inputinfoheading"
-              style={{
-                textAlign: "center",
-                fontSize: "50px",
-                margin: "0px",
-              }}
-            >
-              Please Sign In to use model
-            </label>
-            <br></br>
-            <div style={{ minHeight: "40px" }}></div>
-            <a
-              href="/login"
-              className="organinfolabel"
-              style={{
-                textDecoration: "underline",
-                fontSize: "30px",
-                margin: "0px",
-                marginTop: "40px",
-              }}
-            >
-              Proceed to Log In
-            </a>
-          </div>
-        </div>
-      )}
       {isSignIn && (
         <div className="mainelements" style={{ marginTop: "20px" }}>
           <div class="inputinfo">
@@ -801,7 +763,7 @@ function Content() {
                         minHeight: "40vh",
                         maxHeight: "40vh",
                       }}
-                      value={foodHistory} /*{foodStatusText}*/
+                      value={foodHistory} 
                     ></textarea>
                     {/* <div
                       className="organinfolabel"

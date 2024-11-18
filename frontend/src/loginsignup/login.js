@@ -10,6 +10,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isValidCredentials, setValidCredentials] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -47,11 +48,10 @@ export default function Login() {
         localStorage.setItem('organarray',JSON.stringify(Array(6).fill(false)) );
         navigate('/');
       } else {
-        alert("Login failed: No token received");
       }
     } catch (error) {
       console.error("Error logging in:", error);
-      alert("Login failed: Please check your credentials and try again.");
+      setValidCredentials(true);
     }
   };
 
@@ -79,6 +79,11 @@ export default function Login() {
               ></i>
             </div>
             <button className="loginbutton" onClick={handleButton}>Login</button>
+            {isValidCredentials && (
+                  <label className="asulabel" style={{ color: "#ca8263", marginTop:'20px' }}>
+                    Please enter Valid Credentials
+                  </label>
+              )}
             <div className="asksignup">
               <label className="asulabel">No Account? </label>
               <a className="asua" href='/signup'>Register</a>

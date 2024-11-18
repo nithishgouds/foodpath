@@ -1,0 +1,11 @@
+.nosigninbackground{
+  background-image: linear-gradient(
+            225deg,
+            #e2b571 0%,
+            #d3a174 25%,
+            #CA8263 50%,
+            #ca8263 75%,
+            #e2b571 100%
+    );
+    animation: gradientMove 7s ease infinite;
+}

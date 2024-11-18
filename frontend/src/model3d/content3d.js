@@ -14,21 +14,18 @@ import EatAnimation from "../pacanimation/pacmananimation";
 function Content3d() {
   const textareaRef = useRef(null);
   let email;
-
+  const navigate = useNavigate();
   const token = localStorage.getItem("jwtToken");
   console.log(token);
 
   if (token) {
     try {
       console.log("Entered token check");
-
-      // Decode the JWT token to extract the payload
       const decodedToken = jwtDecode(token);
-      console.log(decodedToken); // Log the entire decoded token to check its structure
+      console.log(decodedToken); 
 
       console.log(decodedToken.email);
 
-      // Check if the decoded token contains the email property
       if (decodedToken && decodedToken.email) {
         email = decodedToken.email;
         console.log("Decoded email:", email);
@@ -42,11 +39,15 @@ function Content3d() {
     console.log("No JWT token found in localStorage.");
   }
 
+
   const [isSignIn, setSingIn] = useState(false);
   //const token = localStorage.getItem("jwtToken");
   const checkSignIn = () => {
     if (token) {
       setSingIn(true);
+    }
+    else{
+      navigate('/login')
     }
   };
   useEffect(() => {
@@ -375,43 +376,47 @@ useEffect(() => {
   return (
     <>
       {!isSignIn && (
-        <div>
-          <div
-            className="Hi"
-            style={{
-              height: "calc(100vh - 250px)",
-              width: "100%",
-              textAlign: "center",
-            }}
-          >
-            <div style={{ height: "100px" }}></div>
-            <label
-              className="inputinfoheading"
-              style={{
-                textAlign: "center",
-                fontSize: "50px",
-                margin: "0px",
-              }}
-            >
-              Please Sign In to use model
-            </label>
-            <br></br>
-            <div style={{ minHeight: "40px" }}></div>
-            <a
-              href="/login"
-              className="organinfolabel"
-              style={{
-                textDecoration: "underline",
-                fontSize: "30px",
-                margin: "0px",
-                marginTop: "40px",
-              }}
-            >
-              Proceed to Log In
-            </a>
-          </div>
+        <div style={{height:'100vh'}}>
+          
         </div>
-      )}
+      )
+        // <div>
+        //   <div
+        //     className="Hi"
+        //     style={{
+        //       height: "calc(100vh - 250px)",
+        //       width: "100%",
+        //       textAlign: "center",
+        //     }}
+        //   >
+        //     <div style={{ height: "100px" }}></div>
+        //     <label
+        //       className="inputinfoheading"
+        //       style={{
+        //         textAlign: "center",
+        //         fontSize: "50px",
+        //         margin: "0px",
+        //       }}
+        //     >
+        //       Please Sign In to use model
+        //     </label>
+        //     <br></br>
+        //     <div style={{ minHeight: "40px" }}></div>
+        //     <a
+        //       href="/login"
+        //       className="organinfolabel"
+        //       style={{
+        //         textDecoration: "underline",
+        //         fontSize: "30px",
+        //         margin: "0px",
+        //         marginTop: "40px",
+        //       }}
+        //     >
+        //       Proceed to Log In
+        //     </a>
+        //   </div>
+        // </div>
+      }
       {isSignIn && (
         <div className="mainelements">
           {/* <div class="inputinfo">
@@ -526,7 +531,7 @@ useEffect(() => {
                 {!isActive && (
                   <div>
                     <p class="inputinfoheading">History</p>
-                    <textarea
+                    {/* <textarea
                       readOnly
                       ref={textareaRef}
                       class="textareas"
@@ -537,18 +542,20 @@ useEffect(() => {
                         maxHeight: "300px",
                       }}
                       value={foodHistory}
-                    ></textarea>
-                    <div
-                      className="organinfolabel"
+                    ></textarea> */}
+                    <textarea
+                      placeholder="Stomach empty :("
+                      readOnly
+                      ref={textareaRef}
+                      class="textareas"
                       style={{
-                        paddingLeft: "10px",
-                        borderWidth: "0px",
-                        fontSize: "20px",
-                        fontSize: "23px",
+                        paddingBottom: "20px",
+                        textAlign: "top",
+                        minHeight: "40vh",
+                        maxHeight: "40vh",
                       }}
-                    >
-                      Click on organ to view its stats!
-                    </div>
+                      value={foodHistory} 
+                    ></textarea>
                     {!isEat && (
                       <div
                         className="organinfolabel"

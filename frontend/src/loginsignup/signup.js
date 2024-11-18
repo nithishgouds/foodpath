@@ -45,9 +45,9 @@ export default function Login() {
     } else {
       setPWLength(false);
     }
-    // if (!pwLength || !emailLength){
-    //     return;
-    // }
+    if (pwLength || emailLength){
+        return;
+    }
     
       try {
         const response = await Axios.post("https://foodpath-backend.onrender.com/auth/signup", {
