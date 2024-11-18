@@ -172,9 +172,9 @@ body {
         background-position: 0% 50%;
     }
 }
-/*.paragraph2{*/
-/*    position: relative;*/
-/*}*/
+.paragraph2{
+    position: absolute;
+}
 .paragraph1{
     transform: translate(0px,40px);
 }

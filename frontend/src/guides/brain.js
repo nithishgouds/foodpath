@@ -36,6 +36,12 @@ function Brain() {
     }
 
     useEffect(() => {
+        const ga = JSON.parse(localStorage.getItem('guidearray'));
+        ga[0] = true;
+        localStorage.setItem('guidearray',JSON.stringify(ga));
+    }, []);
+
+    useEffect(() => {
         // Token check logic
         if (token) {
             try {

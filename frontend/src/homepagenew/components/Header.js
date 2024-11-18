@@ -60,7 +60,7 @@ const Header = () => {
     }, []);
 
     const handleLogout = () => {
-        localStorage.removeItem('jwtToken');
+        localStorage.clear();
         setLoggedin(false);
         setLogin("LOGIN");
         setPath("/login");

@@ -181,9 +181,7 @@ function Content3d() {
       setFoodStatus("ate...");
       setEating(false);
       setEat(true);
-      setHandleAddRes(aiResponse); // Update state with aiResponse
-
-      // Update the state with color changes
+      setHandleAddRes(aiResponse); 
       setbrainOpacity(colourrating(aiResponse.health_status.brain.rating));
       setlungsOpacity(colourrating(aiResponse.health_status.lungs.rating));
       setheartOpacity(colourrating(aiResponse.health_status.heart.rating));
@@ -451,7 +449,7 @@ useEffect(() => {
               class="textareas"
               type="text"
               style={{
-                marginBottom: "50px",
+                marginBottom: "20px",
                 borderRadius: "6px",
                 paddingBottom: "20px",
                 paddingTop: "20px",
@@ -459,6 +457,14 @@ useEffect(() => {
                 color: "#1c2e3b",
               }}
             ></input>
+            
+            <textarea
+              className="textareas"
+              style={{ height: "70px", backgroundColor: "darkgrey",marginTop:'' }}
+              readOnly
+              value={'You can add any *edible* food!\nSeperate multiple foods with a comma'}
+            >
+            </textarea>
             <button class="inputbuttons1" onClick={handleAddItem}>
               Add Food
             </button>

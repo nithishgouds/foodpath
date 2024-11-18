@@ -25,6 +25,7 @@ export default function Login() {
 
   useEffect(() => {
     const token = localStorage.getItem("jwtToken");
+    
     if (token) {
       navigate("/");
     }
@@ -42,6 +43,8 @@ export default function Login() {
 
       if (response.data.token) {
         localStorage.setItem('jwtToken', response.data.token);
+        localStorage.setItem('guidearray',JSON.stringify(Array(6).fill(false)) );
+        localStorage.setItem('organarray',JSON.stringify(Array(6).fill(false)) );
         navigate('/');
       } else {
         alert("Login failed: No token received");

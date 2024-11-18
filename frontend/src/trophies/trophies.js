@@ -71,7 +71,7 @@ const Trophies = () => {
   const [a7, setA7] = useState(false);
   const [a8, setA8] = useState(false);
   const [a9, setA9] = useState(false);
-  const [none,setNone]=useState(false);
+  const [none, setNone] = useState(false);
 
   const setFunctions = [
     setA1,
@@ -102,7 +102,7 @@ const Trophies = () => {
         );
         const trophyarray = response.data.trophies;
         for (var i = 1; i <= 10; i++) {
-          if(trophyarray[i-1]){
+          if (trophyarray[i - 1]) {
             setNone(true);
           }
           setFunctions[i - 1](trophyarray[i - 1]);
@@ -121,63 +121,185 @@ const Trophies = () => {
 
         <div className="scroll-container">
           <div className="content-container">
-            {none && (
-              <div className='trophyheading'>
-              </div>
-              
-            )}
+            {none && <div className="trophyheading"></div>}
             {a1 && (
               <div className="trophy-box">
-                <h2>Achievement 1</h2>
-                <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
+                <h2>Snack Samurai </h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Successfully made the model consume 5 foods!"
+                ></textarea>
+              </div>
+            )}
+            {!a1 && (
+              <div className="trophy-box">
+                <h2>???????</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Discover this achievement!"
+                ></textarea>
               </div>
             )}
             {a2 && (
               <div className="trophy-box">
-                <h2>Achievement 2</h2>
-                <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
+                <h2>Meal Master</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="The model has consumed 10 foods, showing extended effects!"
+                ></textarea>
+              </div>
+            )}
+            {!a2 && (
+              <div className="trophy-box">
+                <h2>???????</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Discover this achievement!"
+                ></textarea>
               </div>
             )}
             {a3 && (
               <div className="trophy-box">
-                <h2>Achievement 3</h2>
-                <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
+                <h2>Feast Fanatic</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="The model has consumed 20 foods, simulating heavy impact!"
+                ></textarea>
+              </div>
+            )}
+            {!a3 && (
+              <div className="trophy-box">
+                <h2>???????</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Discover this achievement!"
+                ></textarea>
               </div>
             )}
             {a4 && (
               <div className="trophy-box">
-                <h2>Achievement </h2>
-                <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
+                <h2>Critical Care</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Achieved DEAD status on one organ!  "
+                ></textarea>
+              </div>
+            )}
+            {!a4 && (
+              <div className="trophy-box">
+                <h2>???????</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Discover this achievement!"
+                ></textarea>
               </div>
             )}
             {a5 && (
               <div className="trophy-box">
-                <h2>Achievement </h2>
-                <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
+                <h2>Organ Apocalypse</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Brought three organs to DEAD status!"
+                ></textarea>
+              </div>
+            )}
+            {!a5 && (
+              <div className="trophy-box">
+                <h2>???????</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Discover this achievement!"
+                ></textarea>
               </div>
             )}
             {a6 && (
               <div className="trophy-box">
-                <h2>Achievement </h2>
-                <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
+                <h2>Walking Dead</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Reached DEAD status for all organs"
+                ></textarea>
+              </div>
+            )}
+            {!a6 && (
+              <div className="trophy-box">
+                <h2>???????</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Discover this achievement!"
+                ></textarea>
               </div>
             )}
             {a7 && (
               <div className="trophy-box">
-                <h2>Achievement </h2>
-                <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
+                <h2>Peak Performance</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Achieved Very Healthy statusfor all organs!"
+                ></textarea>
+              </div>
+            )}
+            {!a7 && (
+              <div className="trophy-box">
+                <h2>???????</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Discover this achievement!"
+                ></textarea>
               </div>
             )}
             {a8 && (
               <div className="trophy-box">
-                <h2>Achievement </h2>
-                <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
+                <h2>Organ Explorer </h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="All organs clicked in the model!"
+                ></textarea>
+              </div>
+            )}
+            {!a8 && (
+              <div className="trophy-box">
+                <h2>???????</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Discover this achievement!"
+                ></textarea>
               </div>
             )}
             {a9 && (
               <div className="trophy-box">
-                <h2>Achievement </h2>
-                <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
+                <h2>Health Guru</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Visited every guide in the model"
+                ></textarea>
+              </div>
+            )}
+            {!a9 && (
+              <div className="trophy-box">
+                <h2>-----------------</h2>
+                <textarea
+                  readOnly
+                  rows="4"
+                  placeholder="Discover this achievement!"
+                ></textarea>
               </div>
             )}
           </div>

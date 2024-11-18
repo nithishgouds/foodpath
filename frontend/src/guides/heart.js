@@ -32,6 +32,12 @@ function Heart() {
         return "Normal";
     }
   }
+  
+  useEffect(() => {
+    const ga = JSON.parse(localStorage.getItem('guidearray'));
+    ga[1] = true;
+    localStorage.setItem('guidearray',JSON.stringify(ga));
+}, []);
 
   useEffect(() => {
     // Token check logic

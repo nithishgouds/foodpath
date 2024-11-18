@@ -78,9 +78,8 @@ function Kidney() {
         return "Normal";
     }
   }
-
+  
   useEffect(() => {
-    // Make POST request with email and organName in the body
     axios
         .post("https://foodpath-backend.onrender.com/api/organs/organGuides", {
           email: email,
