@@ -128,55 +128,55 @@ const Trophies = () => {
             )}
             {a1 && (
               <div className="trophy-box">
-                <h2>Achievement 1</h2>
-                <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
+                <h2>Snack Samurai </h2>
+                <textarea readOnly rows="4" placeholder="Make a model eat 5 foods"></textarea>
               </div>
             )}
             {a2 && (
               <div className="trophy-box">
-                <h2>Achievement 2</h2>
+                <h2>Meal Master</h2>
                 <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
               </div>
             )}
             {a3 && (
               <div className="trophy-box">
-                <h2>Achievement 3</h2>
+                <h2>Feast Fanatic</h2>
                 <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
               </div>
             )}
             {a4 && (
               <div className="trophy-box">
-                <h2>Achievement </h2>
+                <h2>Critical Care</h2>
                 <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
               </div>
             )}
             {a5 && (
               <div className="trophy-box">
-                <h2>Achievement </h2>
+                <h2>Organ Apocalypse</h2>
                 <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
               </div>
             )}
             {a6 && (
               <div className="trophy-box">
-                <h2>Achievement </h2>
+                <h2>Walking Dead</h2>
                 <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
               </div>
             )}
             {a7 && (
               <div className="trophy-box">
-                <h2>Achievement </h2>
+                <h2>Peak Performance</h2>
                 <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
               </div>
             )}
             {a8 && (
               <div className="trophy-box">
-                <h2>Achievement </h2>
+                <h2>Organ Explorer </h2>
                 <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
               </div>
             )}
             {a9 && (
               <div className="trophy-box">
-                <h2>Achievement </h2>
+                <h2>Health Guru</h2>
                 <textarea readOnly rows="4" placeholder="Hello Guys"></textarea>
               </div>
             )}
