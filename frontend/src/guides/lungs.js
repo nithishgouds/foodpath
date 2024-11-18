@@ -74,6 +74,14 @@ function Lungs() {
         return "Normal";
     }
   }
+  
+  useEffect(() => {
+    const ga = JSON.parse(localStorage.getItem('guidearray'));
+    ga[4] = true;
+    localStorage.setItem('guidearray',JSON.stringify(ga));
+}, []);
+
+  
 
   useEffect(() => {
     // Make POST request with email and organName in the body
