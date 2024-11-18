@@ -28,7 +28,7 @@ const About = () => {
             </motion.p>
 
             <motion.p
-                className="paragraph2 mt-14 font-helvetica font-extralight text-right absolute right-[1rem]"
+                className="paragraph2 mt-14 font-helvetica font-extralight text-right absolute right-[12px]"
                 style={{
                     lineHeight: "1.5",
                     fontSize: "1.3rem",

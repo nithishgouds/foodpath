@@ -398,7 +398,8 @@ function Content() {
       setEat(true);
 
       console.log(`svg clicked ${svgName}`);
-      console.log(handleAddRes.health_status.intestines.rating); 
+      console.log(handleAddRes.health_status.intestines.rating); // Debug to check if it exists
+      // Access properties from handleAddRes directly
       var sf1 = getSeperateFactor1(svgName);
       var sf2 = getSeperateFactor2(svgName);
 
@@ -437,6 +438,7 @@ function Content() {
         }
       );
       setFoodStatus("Model Reset Successfully");
+      // setFoodStatus(response.data.foodStatus);
       setfoodHistory("");
       setOpacity(0);
       setIOstatus(" ");
@@ -451,13 +453,14 @@ function Content() {
       setstomachColor("");
       setintestineColor("");
       setHandleAddRes(null);
+      //setFoodStatus(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
       console.log("Food item added successfully:", response.data);
     } catch (error) {
       console.error("Error adding food item:", error);
     }
   };
 
-  const foodStatusText = foodStatus; 
+  const foodStatusText = foodStatus; //.map(item => `${item.foodItem} `).join('\n');
   const [foodHistory, setfoodHistory] = useState("");
 
 
@@ -531,7 +534,7 @@ function Content() {
           >
             <div style={{ height: "100px" }}></div>
             <label
-              className="inputinfoheading font-"
+              className="inputinfoheading"
               style={{
                 textAlign: "center",
                 fontSize: "50px",
@@ -577,9 +580,9 @@ function Content() {
             ></input>
             <textarea
               className="textareas"
-              style={{ height: "70px", backgroundColor: "darkgrey",marginTop:'' }}
+              style={{ height: "90px", backgroundColor: "darkgrey",marginTop:'' }}
               readOnly
-              value={'How to add food:\n'}
+              value={'How to add food:\nEnter any food in the field above\nSeperate different foods with a comma'}
             >
               How to add food:
               {"\n"}h
@@ -732,6 +735,7 @@ function Content() {
                         style={{
                           paddingLeft: "10px",
                           borderWidth: "0px",
+                          fontSize: "20px",
                           fontSize: "23px",
                           paddingBottom: "20px",
                         }}
