@@ -13,7 +13,7 @@ const About = () => {
                 whileInView={{opacity: 1, y: 0}}
                 transition={{duration: 0.8, ease: "easeInOut"}}
             >
-                How our Platform <br/> Works
+                The Way Our Platform <br/> Works
             </motion.p>
 
             <motion.p
@@ -23,7 +23,7 @@ const About = () => {
                 whileInView={{opacity: 1, x: 0}}
                 transition={{duration: 0.5, ease: "easeInOut"}}
             >
-                Our nutritional evaluation platform uses three key parameters—calories, glucose, and oxygen—to comprehensively assess how your food choices impact your health
+                Our nutritional evaluation platform uses three key parameters—calories, glucose, and oxygen— and two organ specific parameters to comprehensively assess how your food choices impact your health
                 . By focusing on these vital factors, we provide personalized insights that can help optimize your dietary habits
             </motion.p>
 
