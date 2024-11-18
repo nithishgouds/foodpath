@@ -34,7 +34,7 @@ const EatAnimation = () => {
       setFoodQueue((prevQueue) => {
         const newQueue = [...prevQueue.slice(1)];
         var i=false;
-        if (newQueue.filter((item) => item !== dot).length < 3 ) {
+        if (newQueue.filter((item) => item !== dot).length < 3) {
           var a = Math.floor(Math.random() * foodItems.length);
           newQueue.push(foodItems[a]);
         } else {
