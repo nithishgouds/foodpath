@@ -4,16 +4,20 @@ import React from "react";
 import Header from "./homepagenew/components/Header";
 import Footer from "./homepagenew/components/Footer";
 import { useEffect,useState } from "react";
+import { useNavigate } from "react-router-dom";
 import './App.css'
 function Model2dpage() {
   const token = localStorage.getItem("jwtToken");
   const [isSignIn, setSignIn] = useState(false);
-
+  const navigate = useNavigate();
   const chkSignIn = () => {
     if (token) {
       setSignIn(true);
     }
   };
+  const handleClick = () => {
+    navigate('/login');
+  }
 
   useEffect(() => {
     chkSignIn();
@@ -26,12 +30,13 @@ function Model2dpage() {
         <div
           className="nosigninbackground"
           style={{
-            backgroundColor: "#ca8263",
+            backgroundColor: "#1C2E3B",
             width: "94%",
             marginTop: "20px",
             marginBottom: "20px",
             borderRadius: "20px",
             padding: "20px",
+            paddingBottom:'100px',
             position: "relative",
             zIndex: "10",
             diplay: "flex",
@@ -51,6 +56,7 @@ function Model2dpage() {
             <label
               className="inputinfoheading"
               style={{
+                color:'#1C2E3B',
                 textAlign: "center",
                 fontSize: "50px",
                 margin: "0px",
@@ -62,6 +68,7 @@ function Model2dpage() {
             <button
               className="inputbuttons"
               style={{ marginLeft: "0px", fontSize: "20px",paddingTop:'1%',paddingBottom:'1%',alignItems:'center',height:'auto' }}
+              onClick={handleClick}
             >
               Log in
             </button>

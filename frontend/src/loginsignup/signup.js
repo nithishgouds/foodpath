@@ -8,10 +8,12 @@ import Axios from 'axios';
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // State to manage password visibility
-  const [emailLength, setEmailLength] = useState(false);
-  const [pwLength, setPWLength] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); 
+  const [clickOnce,setClickOnce] = useState(false);
+  const [emailLength, setEmailLength] = useState(true);
+  const [pwLength, setPWLength] = useState(true);
   const [userExist, setUserExist] = useState(false);
+  const [isChecking,setChecking] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,21 +33,27 @@ export default function Login() {
   }, []);
 
   const handleButton = async () => {
+    setClickOnce(true);
+    setChecking(true);
+    setUserExist(false);
     console.log(email);
     console.log(password);
-    if (email.length < 6 || email.length > 20) {
-      console.log("low email");
+    if (email.length <= 5 || email.length > 20) {
       setEmailLength(true);
+      console.log("low email :" +emailLength);
     } else {
       setEmailLength(false);
     }
-    if (password.length < 6 || password.length > 20) {
-      console.log("low pw");
+    if (password.length <= 5  || password.length > 20) {
       setPWLength(true);
+      console.log("low pw : "+pwLength);
     } else {
       setPWLength(false);
     }
+    console.log('pw '+pwLength+' em '+emailLength)
     if (pwLength || emailLength){
+      setChecking(false);
+      console.log('in not enough length return')
         return;
     }
     
@@ -55,6 +63,7 @@ export default function Login() {
           password: password,
         });
         if (response.data.message === "User created successfully") {
+          setChecking(false);
           navigate("/login");
         } 
 
@@ -62,6 +71,7 @@ export default function Login() {
       } catch (error) {
         if (error.response && error.response.status === 400) {
           console.log('Error 400: Bad Request');
+          setChecking(false);
           setUserExist(true);
         } else {
           console.error('An error occurred:', error.message);
@@ -86,7 +96,7 @@ export default function Login() {
                 }}
             />
             <div>
-              {emailLength && (
+              {clickOnce && emailLength && (
                   <label className="asulabel" style={{ color: "#fc2828", marginBottom: "6px" }}>
                     Enter a valid username with 6-20 characters
                   </label>
@@ -108,7 +118,7 @@ export default function Login() {
               ></i>
             </div>
             <div>
-              {pwLength && (
+              {clickOnce && pwLength && (
                   <label className="asulabel" style={{ color: "red" }}>
                     Enter a valid password with 6-20 characters
                   </label>
@@ -117,6 +127,11 @@ export default function Login() {
             <button className="loginbutton" onClick={handleButton}>
               Sign Up
             </button>
+              {isChecking && (
+                  <label className="asulabel" style={{ color: "#ca8263", marginTop:'20px' }}>
+                    Processing...
+                  </label>
+              )}
               {userExist && (
                   <label className="asulabel" style={{ color: "#ca8263", marginTop:'20px' }}>
                     User already exists!
