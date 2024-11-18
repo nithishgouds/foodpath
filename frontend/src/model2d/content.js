@@ -210,7 +210,7 @@ function Content() {
       );
       const achievementarray = responsetrophy.data.trophies;
 
-      if (consumedFoods.length > 5 && !achievementarray[0]) {
+      if (consumedFoods.length >= 5 && !achievementarray[0]) {
         const response0 = await axios.post(
           "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
@@ -222,7 +222,7 @@ function Content() {
         console.log("a0 done!");
       }
 
-      if (consumedFoods.length > 10 && !achievementarray[1]) {
+      if (consumedFoods.length >= 10 && !achievementarray[1]) {
         const response0 = await axios.post(
           "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
@@ -234,7 +234,7 @@ function Content() {
         console.log("a1 done!");
       }
 
-      if (consumedFoods.length > 20 && !achievementarray[2]) {
+      if (consumedFoods.length >= 20 && !achievementarray[2]) {
         const response0 = await axios.post(
           "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {

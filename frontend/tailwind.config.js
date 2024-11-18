@@ -17,6 +17,7 @@ export default {
       colors: {'custom-blue' : '#1C2E3B',
         'customHoverColor' : '#CA8263',
         "customtextcolor" : '#1C2E3B',
+       ' customGray': '#f0f0f0',
       }
 
     },
