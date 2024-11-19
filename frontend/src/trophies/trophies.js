@@ -138,7 +138,7 @@ const Trophies = () => {
                 <textarea
                   readOnly
                   rows="4"
-                  placeholder="Discover this achievement!"
+                  placeholder="Yet to unlock!"
                 ></textarea>
               </div>
             )}
@@ -158,12 +158,12 @@ const Trophies = () => {
                 <textarea
                   readOnly
                   rows="4"
-                  placeholder="Discover this achievement!"
+                  placeholder="Yet to unlock!"
                 ></textarea>
               </div>
             )}
             {a3 && (
-              <div className="trophy-box">
+              <div className="trophy-box" style={{marginTop:'20px'}}>
                 <h2>Feast Fanatic</h2>
                 <textarea
                   readOnly
@@ -173,12 +173,12 @@ const Trophies = () => {
               </div>
             )}
             {!a3 && (
-              <div className="trophy-box">
+              <div className="trophy-box" style={{marginTop:'20px'}}>
                 <h2>???????</h2>
                 <textarea
                   readOnly
                   rows="4"
-                  placeholder="Discover this achievement!"
+                  placeholder="Yet to unlock!"
                 ></textarea>
               </div>
             )}
@@ -198,7 +198,7 @@ const Trophies = () => {
                 <textarea
                   readOnly
                   rows="4"
-                  placeholder="Discover this achievement!"
+                  placeholder="Yet to unlock!"
                 ></textarea>
               </div>
             )}
@@ -218,7 +218,7 @@ const Trophies = () => {
                 <textarea
                   readOnly
                   rows="4"
-                  placeholder="Discover this achievement!"
+                  placeholder="Yet to unlock!"
                 ></textarea>
               </div>
             )}
@@ -238,7 +238,7 @@ const Trophies = () => {
                 <textarea
                   readOnly
                   rows="4"
-                  placeholder="Discover this achievement!"
+                  placeholder="Yet to unlock!"
                 ></textarea>
               </div>
             )}
@@ -258,7 +258,7 @@ const Trophies = () => {
                 <textarea
                   readOnly
                   rows="4"
-                  placeholder="Discover this achievement!"
+                  placeholder="Yet to unlock!"
                 ></textarea>
               </div>
             )}
@@ -278,7 +278,7 @@ const Trophies = () => {
                 <textarea
                   readOnly
                   rows="4"
-                  placeholder="Discover this achievement!"
+                  placeholder="Yet to unlock!"
                 ></textarea>
               </div>
             )}
@@ -294,11 +294,11 @@ const Trophies = () => {
             )}
             {!a9 && (
               <div className="trophy-box">
-                <h2>-----------------</h2>
+                <h2>???????</h2>
                 <textarea
                   readOnly
                   rows="4"
-                  placeholder="Discover this achievement!"
+                  placeholder="Yet to unlock!"
                 ></textarea>
               </div>
             )}

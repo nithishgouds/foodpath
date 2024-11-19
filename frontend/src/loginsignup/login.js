@@ -10,6 +10,8 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isValidCredentials, setValidCredentials] = useState(false);
+  const [isChecking,setChecking]=useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,6 +34,8 @@ export default function Login() {
   }, [navigate]);
 
   const handleButton = async () => {
+    setChecking(true);
+    setValidCredentials(false);
     console.log("Email:", email);
     console.log("Password:", password);
     try {
@@ -42,16 +46,16 @@ export default function Login() {
       console.log("Response:", response.data);
 
       if (response.data.token) {
+        setChecking(false);
         localStorage.setItem('jwtToken', response.data.token);
         localStorage.setItem('guidearray',JSON.stringify(Array(6).fill(false)) );
         localStorage.setItem('organarray',JSON.stringify(Array(6).fill(false)) );
         navigate('/');
-      } else {
-        alert("Login failed: No token received");
-      }
+      } 
     } catch (error) {
       console.error("Error logging in:", error);
-      alert("Login failed: Please check your credentials and try again.");
+      setValidCredentials(true);
+      setChecking(false);
     }
   };
 
@@ -79,6 +83,16 @@ export default function Login() {
               ></i>
             </div>
             <button className="loginbutton" onClick={handleButton}>Login</button>
+            {isChecking && (
+                  <label className="asulabel" style={{ color: "#ca8263", marginTop:'20px' }}>
+                    Processing...
+                  </label>
+              )}
+            {isValidCredentials && (
+                  <label className="asulabel" style={{ color: "#ca8263", marginTop:'20px' }}>
+                    Please enter Valid Credentials
+                  </label>
+              )}
             <div className="asksignup">
               <label className="asulabel">No Account? </label>
               <a className="asua" href='/signup'>Register</a>

@@ -31,8 +31,8 @@ function App() {
             <Route path='/guides/liver' element={<Liver/>}/>
             <Route path='/guides/lungs' element={<Lungs/>}/>
             <Route path='/guides/stomach' element={<Stomach/>}/>
-            <Route path='/guides/intestine' element={<Intestine/>}/>
-            <Route path='/guides/kidney' element={<Kidney/>}/>
+            <Route path='/guides/intestines' element={<Intestine/>}/>
+            <Route path='/guides/kidneys' element={<Kidney/>}/>
             <Route path='/trophies' element={<TrophiesPage/>}/>
               <Route path="/guides/brain" element={<Brain />} />
               <Route path="/guides/lungs" element={<Lungs />} />

@@ -14,21 +14,18 @@ import EatAnimation from "../pacanimation/pacmananimation";
 function Content3d() {
   const textareaRef = useRef(null);
   let email;
-
+  const navigate = useNavigate();
   const token = localStorage.getItem("jwtToken");
   console.log(token);
 
   if (token) {
     try {
       console.log("Entered token check");
-
-      // Decode the JWT token to extract the payload
       const decodedToken = jwtDecode(token);
-      console.log(decodedToken); // Log the entire decoded token to check its structure
+      console.log(decodedToken);
 
       console.log(decodedToken.email);
 
-      // Check if the decoded token contains the email property
       if (decodedToken && decodedToken.email) {
         email = decodedToken.email;
         console.log("Decoded email:", email);
@@ -47,12 +44,14 @@ function Content3d() {
   const checkSignIn = () => {
     if (token) {
       setSingIn(true);
+    } else {
+      navigate("/login");
     }
   };
   useEffect(() => {
     const textarea = textareaRef.current;
     checkSignIn();
-  },[]);
+  }, []);
 
   console.log("entered content function");
   const [stomachOpacity, setstomachOpacity] = useState(1);
@@ -86,21 +85,20 @@ function Content3d() {
   function colourrating(a) {
     switch (a) {
       case 0:
-        return 0.1;//dead
+        return 0.1; //dead
         break;
       case 1:
-        return 0.8;//healthy
+        return 0.8; //healthy
         break;
       case 2:
-        return 1;//very healthy
+        return 1; //very healthy
         break;
       case 3:
-        return 0.6;//unhealthy
+        return 0.6; //unhealthy
         break;
       case 4:
-        return 0.3;//very unhealthy
+        return 0.3; //very unhealthy
         break;
-
     }
   }
 
@@ -181,7 +179,7 @@ function Content3d() {
       setFoodStatus("ate...");
       setEating(false);
       setEat(true);
-      setHandleAddRes(aiResponse); 
+      setHandleAddRes(aiResponse);
       setbrainOpacity(colourrating(aiResponse.health_status.brain.rating));
       setlungsOpacity(colourrating(aiResponse.health_status.lungs.rating));
       setheartOpacity(colourrating(aiResponse.health_status.heart.rating));
@@ -200,6 +198,10 @@ function Content3d() {
 
   const handleHistoryButton = () => {
     setActive(false);
+  };
+  const handleGuideButton = () => {
+    const organsmall = IOorgan.charAt(0).toLowerCase() + IOorgan.slice(1);
+    navigate("/guides/" + organsmall);
   };
 
   const [isActive, setActive] = useState(false);
@@ -257,7 +259,8 @@ function Content3d() {
       // setActive(false);
       // isActive()
       setActive(false);
-      setIOorgan(OrgName);
+      const organcapital = OrgName.charAt(0).toUpperCase() + OrgName.slice(1);
+      setIOorgan(organcapital);
       if (!handleAddRes) {
         console.error(
           "Error: handleAddRes is not set. Please call handleAddItem first."
@@ -320,35 +323,31 @@ function Content3d() {
   const foodStatusText = foodStatus;
   const [foodHistory, setfoodHistory] = useState("");
 
-
   const handleHistory = async () => {
     try {
-
-
       const response = await axios.post(
         "https://foodpath-backend.onrender.com/api/organs/history",
         {
-          email: email
+          email: email,
         }
       );
 
-      const { aiResponse,consumedFoods } = response.data;
+      const { aiResponse, consumedFoods } = response.data;
       console.log("some is happening");
-      if(consumedFoods.length===0){
+      if (consumedFoods.length === 0) {
         setEat(false);
         return;
-      }else{
+      } else {
         setEat(true);
       }
       console.log(consumedFoods);
-      const foodItemsString = consumedFoods.map(item => item.foodItem);
+      const foodItemsString = consumedFoods.map((item) => item.foodItem);
 
       const foodsString = foodItemsString
         .map((food, index) => `Item ${index + 1}: ${food}`)
-        .join('\n');
-   
+        .join("\n");
+
       setfoodHistory(foodsString);
-      
 
       setHandleAddRes(aiResponse);
 
@@ -358,7 +357,9 @@ function Content3d() {
       setheartOpacity(colourrating(aiResponse.health_status.heart.rating));
       setliverOpacity(colourrating(aiResponse.health_status.liver.rating));
       setstomachOpacity(colourrating(aiResponse.health_status.stomach.rating));
-      setintestineOpacity(colourrating(aiResponse.health_status.intestines.rating));
+      setintestineOpacity(
+        colourrating(aiResponse.health_status.intestines.rating)
+      );
       setkidneyOpacity(colourrating(aiResponse.health_status.kidneys.rating));
     } catch (error) {
       setFoodStatus("Error!");
@@ -367,79 +368,15 @@ function Content3d() {
     }
   };
 
-useEffect(() => {
-  handleHistory();
-}, []);
-
+  useEffect(() => {
+    handleHistory();
+  }, []);
 
   return (
     <>
-      {!isSignIn && (
-        <div>
-          <div
-            className="Hi"
-            style={{
-              height: "calc(100vh - 250px)",
-              width: "100%",
-              textAlign: "center",
-            }}
-          >
-            <div style={{ height: "100px" }}></div>
-            <label
-              className="inputinfoheading"
-              style={{
-                textAlign: "center",
-                fontSize: "50px",
-                margin: "0px",
-              }}
-            >
-              Please Sign In to use model
-            </label>
-            <br></br>
-            <div style={{ minHeight: "40px" }}></div>
-            <a
-              href="/login"
-              className="organinfolabel"
-              style={{
-                textDecoration: "underline",
-                fontSize: "30px",
-                margin: "0px",
-                marginTop: "40px",
-              }}
-            >
-              Proceed to Log In
-            </a>
-          </div>
-        </div>
-      )}
+      {!isSignIn && <div style={{ height: "100vh" }}></div>}
       {isSignIn && (
         <div className="mainelements">
-          {/* <div class="inputinfo">
-            <div style={{ marginTop: "50px" }}></div>
-            <p class="inputinfoheading">Enter Food </p>
-            <input
-              value={selectedItem}
-              onChange={(event) => setSelectedItem(event.target.value)}
-              class="textareas"
-              type="text"
-            ></input>
-            <button class="inputbuttons" onClick={handleAddItem}>
-              Add Food
-            </button>
-            <p class="inputinfoheading">Eaten Food:</p>
-            <textarea
-              readOnly
-              class="textareas"
-              value={foodStatusText}
-            ></textarea>
-            <button
-              class="inputbuttons"
-              onClick={ResetModel}
-              style={{ marginTop: "20px" }}
-            >
-              Reset Model
-            </button>
-          </div> */}
           <div class="inputinfo">
             <div style={{ marginTop: "50px" }}></div>
             <p class="inputinfoheading">ENTER FOOD</p>
@@ -457,14 +394,19 @@ useEffect(() => {
                 color: "#1c2e3b",
               }}
             ></input>
-            
+
             <textarea
               className="textareas"
-              style={{ height: "70px", backgroundColor: "darkgrey",marginTop:'' }}
+              style={{
+                height: "85px",
+                backgroundColor: "darkgrey",
+                marginTop: "",
+              }}
               readOnly
-              value={'You can add any *edible* food!\nSeperate multiple foods with a comma'}
-            >
-            </textarea>
+              value={
+                "You can add any *edible* food!\nSeperate multiple foods with a comma"
+              }
+            ></textarea>
             <button class="inputbuttons1" onClick={handleAddItem}>
               Add Food
             </button>
@@ -473,6 +415,17 @@ useEffect(() => {
               <>
                 <EatAnimation />
               </>
+            )}
+            {isActive && (
+              <div>
+                <button
+                  className="inputbuttons"
+                  onClick={handleHistoryButton}
+                  style={{ marginLeft: "30px" }}
+                >
+                  View History
+                </button>
+              </div>
             )}
             <button
               class="inputbuttons"
@@ -526,7 +479,7 @@ useEffect(() => {
                 {!isActive && (
                   <div>
                     <p class="inputinfoheading">History</p>
-                    <textarea
+                    {/* <textarea
                       readOnly
                       ref={textareaRef}
                       class="textareas"
@@ -537,18 +490,20 @@ useEffect(() => {
                         maxHeight: "300px",
                       }}
                       value={foodHistory}
-                    ></textarea>
-                    <div
-                      className="organinfolabel"
+                    ></textarea> */}
+                    <textarea
+                      placeholder="Stomach empty :("
+                      readOnly
+                      ref={textareaRef}
+                      class="textareas"
                       style={{
-                        paddingLeft: "10px",
-                        borderWidth: "0px",
-                        fontSize: "20px",
-                        fontSize: "23px",
+                        paddingBottom: "20px",
+                        textAlign: "top",
+                        minHeight: "40vh",
+                        maxHeight: "40vh",
                       }}
-                    >
-                      Click on organ to view its stats!
-                    </div>
+                      value={foodHistory}
+                    ></textarea>
                     {!isEat && (
                       <div
                         className="organinfolabel"
@@ -566,6 +521,21 @@ useEffect(() => {
                 )}
                 {isActive && (
                   <div>
+                    <button
+                      className="inputbuttons"
+                      style={{
+                        marginLeft: "20%",
+                        marginRight:'20%',
+                        fontSize: "15px",
+                        paddingLeft:'0',
+                        paddingRight:'0',
+                        width:'60%'
+                      }}
+                      onClick={handleGuideButton}
+                      value={"Make " + { IOorgan } + " healthier!"}
+                    >
+                      Know more
+                    </button>
                     <label className="organinfolabel">Organ:</label>
                     <textarea
                       readOnly
@@ -626,7 +596,7 @@ useEffect(() => {
                       value={seperateFactor2value}
                     />
 
-                    <button
+                    {/* <button
                       className="inputbuttons"
                       style={{ marginLeft: "20px" }}
                       // onClick={handleGuideButton}
@@ -638,7 +608,7 @@ useEffect(() => {
                        onClick={handleHistoryButton}
                     >
                       View History
-                    </button>
+                    </button> */}
                   </div>
                 )}
               </div>
