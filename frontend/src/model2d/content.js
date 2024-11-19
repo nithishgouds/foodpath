@@ -576,7 +576,7 @@ function Content() {
             <textarea
               className="textareas"
               style={{
-                height: "70px",
+                height: "85px",
                 backgroundColor: "darkgrey",
                 marginTop: "",
               }}
@@ -725,18 +725,6 @@ function Content() {
               <div class="organstats" style={{ maxHeight: "70vw" }}>
                 {!isActive && (
                   <div>
-                    {/* <div
-                      className="organinfolabel"
-                      style={{
-                        paddingLeft: "10px",
-                        borderWidth: "0px",
-                        fontSize: "20px",
-                        fontSize: "23px",
-                        paddingBottom:'20px'
-                      }}
-                    >
-                      Click on organ to view its stats!
-                    </div> */}
                     {!isEat && (
                       <div
                         className="organinfolabel"
