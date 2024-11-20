@@ -9,7 +9,7 @@ const { validateOrganGuide } =require('../controllers/organController')
 
 
 
-// Food and status routes
+
 router.post('/add-food', addFood);
 router.post('/validatefood', validfood);
 router.get('/organ-status', getOrganStatus);
