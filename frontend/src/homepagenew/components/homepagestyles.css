@@ -143,7 +143,7 @@ body {
     background-color: #CA8263;
     width: 94%;
     margin-top: 20px;
-    height: 110vh;
+    height: 128vh;
     border-radius: 20px;
     padding: 20px;
     position: relative;
@@ -174,7 +174,6 @@ body {
 }
 .paragraph2{
     position: absolute;
-    left:calc(100%- 20px)
 }
 .paragraph1{
     transform: translate(0px,40px);
@@ -191,3 +190,20 @@ body {
 .z-custom{
     z-index: 200;
 }
+.about-heading{
+
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+

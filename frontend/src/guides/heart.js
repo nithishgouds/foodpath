@@ -32,6 +32,12 @@ function Heart() {
         return "Normal";
     }
   }
+  
+  useEffect(() => {
+    const ga = JSON.parse(localStorage.getItem('guidearray'));
+    ga[1] = true;
+    localStorage.setItem('guidearray',JSON.stringify(ga));
+}, []);
 
   useEffect(() => {
     // Token check logic
@@ -48,7 +54,7 @@ function Heart() {
   }, [token]);
 
   useEffect(() => {
-    axios.post('http://localhost:3001/api/organs/organGuides', {
+    axios.post('https://foodpath-backend.onrender.com/api/organs/organGuides', {
       email: email,
       organName: organName,
     })

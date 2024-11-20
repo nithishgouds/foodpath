@@ -79,11 +79,19 @@ function Liver() {
         return "Normal";
     }
   }
+  
+  useEffect(() => {
+    const ga = JSON.parse(localStorage.getItem('guidearray'));
+    ga[3] = true;
+    localStorage.setItem('guidearray',JSON.stringify(ga));
+}, []);
+
+  
 
   useEffect(() => {
     // Make POST request with email and organName in the body
     axios
-        .post("http://localhost:3001/api/organs/organGuides", {
+        .post("https://foodpath-backend.onrender.com/api/organs/organGuides", {
           email: email,
           organName: organName,
         })

@@ -26,6 +26,7 @@ function Content() {
   const checkSignIn = () => {
     if (token) {
       setSingIn(true);
+      chkGuideBadge();
     }
   };
 
@@ -34,9 +35,24 @@ function Content() {
     handleHistory();
   }, []);
 
+  const chkGuideBadge = async () => {
+    const ga = JSON.parse(localStorage.getItem("guidearray"));
+    console.log("ga :" + ga);
+    if (ga.every((value) => value === true)) {
+      const response0 = await axios.post(
+        "https://foodpath-backend.onrender.com/trophies/updateTrophy",
+        {
+          email: email,
+          index: 8,
+          value: true,
+        }
+      );
+      console.log("a8 all guides done");
+    }
+  };
+
   if (token) {
     try {
-
       // Decode the JWT token to extract the payload
       const decodedToken = jwtDecode(token);
       // console.log(decodedToken);
@@ -69,7 +85,7 @@ function Content() {
     handleAddItem();
     try {
       const response = await axios.get(
-        "http://localhost:3001/api/organs/organ",
+        "https://foodpath-backend.onrender.com/api/organs/organ",
         {
           token: localStorage.getItem("jwtToken"),
         }
@@ -146,7 +162,7 @@ function Content() {
       setFoodStatus("Checking if food is edible...");
       console.log(selectedItem);
       const response = await axios.post(
-        "http://localhost:3001/api/organs/validatefood",
+        "https://foodpath-backend.onrender.com/api/organs/validatefood",
         {
           foodItems: selectedItem,
         }
@@ -170,132 +186,156 @@ function Content() {
       setFoodStatus("eating...");
       console.log(selectedItem);
       const response = await axios.post(
-        "http://localhost:3001/api/organs/add-food",
+        "https://foodpath-backend.onrender.com/api/organs/add-food",
         {
           foodItems: selectedItem,
           email: email,
         }
       );
-      //http://localhost:3001/trophies/updateTrophy  email,index,value
+      //https://foodpath-backend.onrender.com/trophies/updateTrophy  email,index,value
       const { aiResponse, consumedFoods } = response.data;
       console.log("something is happening");
       consumedFoods.forEach((food, index) => {
         console.log(`Item ${index + 1}:`, food);
       });
       console.log(consumedFoods.length);
-      
+
       const responsetrophy = await axios.post(
-        "http://localhost:3001/trophies/updateTrophy",
+        "https://foodpath-backend.onrender.com/trophies/updateTrophy",
         {
           email: email,
           index: 12,
-          value: false
+          value: false,
         }
       );
       const achievementarray = responsetrophy.data.trophies;
 
-      if(consumedFoods.length===5 && !achievementarray[0]){
+      if (consumedFoods.length >= 5 && !achievementarray[0]) {
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 0,
-            value: true
+            value: true,
           }
         );
-        console.log('a0 done!');
+        console.log("a0 done!");
       }
 
-      if(consumedFoods.length===10 && !achievementarray[1]){
+      if (consumedFoods.length >= 10 && !achievementarray[1]) {
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 1,
-            value: true
+            value: true,
           }
         );
-        console.log('a1 done!');
+        console.log("a1 done!");
       }
 
-      if(consumedFoods.length===20 && !achievementarray[2]){
+      if (consumedFoods.length >= 20 && !achievementarray[2]) {
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 2,
-            value: true
+            value: true,
           }
         );
-        console.log('a2 done!');
+        console.log("a2 done!");
       }
       var noD = 0;
       var noVH = 0;
       const br = aiResponse.health_status.brain.rating;
-      if(br==0){noD++;}
-      if(br==2){noVH++;}
+      if (br == 0) {
+        noD++;
+      }
+      if (br == 2) {
+        noVH++;
+      }
       const lr = aiResponse.health_status.lungs.rating;
-      if(lr==0){noD++;}
-      if(lr==2){noVH++;}
+      if (lr == 0) {
+        noD++;
+      }
+      if (lr == 2) {
+        noVH++;
+      }
       const hr = aiResponse.health_status.heart.rating;
-      if(hr==0){noD++;}
-      if(hr==2){noVH++;}
+      if (hr == 0) {
+        noD++;
+      }
+      if (hr == 2) {
+        noVH++;
+      }
       const lir = aiResponse.health_status.liver.rating;
-      if(lir==0){noD++;}
-      if(lir==2){noVH++;}
+      if (lir == 0) {
+        noD++;
+      }
+      if (lir == 2) {
+        noVH++;
+      }
       const sr = aiResponse.health_status.stomach.rating;
-      if(sr==0){noD++;}
-      if(sr==2){noVH++;}
+      if (sr == 0) {
+        noD++;
+      }
+      if (sr == 2) {
+        noVH++;
+      }
       const ir = aiResponse.health_status.intestines.rating;
-      if(ir==0){noD++;}
-      if(ir==2){noVH++;}
+      if (ir == 0) {
+        noD++;
+      }
+      if (ir == 2) {
+        noVH++;
+      }
 
-      if(noD>1 && !achievementarray[3] ){
+      if (noD > 1 && !achievementarray[3]) {
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 3,
-            value: true
+            value: true,
           }
         );
-        console.log('a3 done!');
+        console.log("a3 done!");
       }
-      
-      if(noD>3 && !achievementarray[4]){
+
+      if (noD > 3 && !achievementarray[4]) {
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 4,
-            value: true
+            value: true,
           }
         );
-        console.log('a4 done!');
+        console.log("a4 done!");
       }
-      
-      if(noD===6 && !achievementarray[5]){
+
+      if (noD === 6 && !achievementarray[5]) {
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 5,
-            value: true
+            value: true,
           }
         );
-        console.log('a5 done!');
+        console.log("a5 done!");
       }
 
-      if(noVH==6 && !achievementarray[6]){
+      if (noVH == 6 && !achievementarray[6]) {
         const response0 = await axios.post(
-          "http://localhost:3001/trophies/updateTrophy",
+          "https://foodpath-backend.onrender.com/trophies/updateTrophy",
           {
             email: email,
             index: 6,
-            value: true
+            value: true,
           }
         );
-        console.log('a3 done!');
+        console.log("a3 done!");
       }
 
       setEating(false);
@@ -303,8 +343,7 @@ function Content() {
       setFoodStatus("Food Consumed");
       setHandleAddRes(aiResponse);
       const foodItemsString = consumedFoods.map((item) => item.foodItem);
-      console.log('fis length : '+foodItemsString.length)
-      
+      console.log("fis length : " + foodItemsString.length);
 
       const foodsString = foodItemsString
         .map((food, index) => `Item ${index + 1}: ${food}`)
@@ -327,10 +366,8 @@ function Content() {
     }
   };
 
-  //foodStatusText
-
   const [IOorgan, setIOorgan] = useState("");
-  const [isActive, setActive] = useState(false); //for checking if an organ is selected
+  const [isActive, setActive] = useState(false);
   const [isEat, setEat] = useState(true);
   const [IOstatus, setIOstatus] = useState("");
   const [IOglucose, setIOglucose] = useState("");
@@ -399,8 +436,7 @@ function Content() {
       setEat(true);
 
       console.log(`svg clicked ${svgName}`);
-      console.log(handleAddRes.health_status.intestines.rating); // Debug to check if it exists
-      // Access properties from handleAddRes directly
+      console.log(handleAddRes.health_status.intestines.rating);
       var sf1 = getSeperateFactor1(svgName);
       var sf2 = getSeperateFactor2(svgName);
 
@@ -430,16 +466,15 @@ function Content() {
   const ResetModel = async () => {
     setActive(false);
     setEating(false);
-    setFoodStatus("resetting...");
+    setFoodStatus("Reset in Progress");
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/organs/reset-consumed-foods",
+        "https://foodpath-backend.onrender.com/api/organs/reset-consumed-foods",
         {
           email: email,
         }
       );
-      setFoodStatus("Model Reset Successfully");
-      // setFoodStatus(response.data.foodStatus);
+      setFoodStatus("Model Reset Successful");
       setfoodHistory("");
       setOpacity(0);
       setIOstatus(" ");
@@ -454,19 +489,17 @@ function Content() {
       setstomachColor("");
       setintestineColor("");
       setHandleAddRes(null);
-      //setFoodStatus(prevFoods => [...prevFoods, { foodItem: selectedItem, quantity: quantity }]); // Add new food item to the array
       console.log("Food item added successfully:", response.data);
     } catch (error) {
       console.error("Error adding food item:", error);
     }
   };
 
-  const foodStatusText = foodStatus; //.map(item => `${item.foodItem} `).join('\n');
+  const foodStatusText = foodStatus;
   const [foodHistory, setfoodHistory] = useState("");
 
-
   // const response = await axios.post(
-  //   "http://localhost:3001/trophies/updateTrophy",
+  //   "https://foodpath-backend.onrender.com/trophies/updateTrophy",
   //   {
   //     email: email,
   //     index: indexToChange,
@@ -477,7 +510,7 @@ function Content() {
   const handleHistory = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/organs/history",
+        "https://foodpath-backend.onrender.com/api/organs/history",
         {
           email: email,
         }
@@ -497,7 +530,7 @@ function Content() {
       const foodsString = foodItemsString
         .map((food, index) => `Item ${index + 1}: ${food}`)
         .join("\n");
-      console.log('foodsString' + consumedFoods);
+      console.log("foodsString" + consumedFoods);
       setfoodHistory(foodsString);
 
       setHandleAddRes(aiResponse);
@@ -513,54 +546,15 @@ function Content() {
       );
       setOpacity(0.5);
     } catch (error) {
-      setFoodStatus("Error!");
+      setFoodStatus("Error! Try again");
       setEating(false);
       console.error("Error adding food item:", error);
     }
   };
 
-
   return (
     <>
-    {/* Not signed in */}
-      {!isSignIn && (
-        <div>
-          <div
-            className="notsignedin"
-            style={{
-              height: "calc(100vh - 250px)",
-              width: "100%",
-              textAlign: "center",
-            }}
-          >
-            <div style={{ height: "100px" }}></div>
-            <label
-              className="inputinfoheading"
-              style={{
-                textAlign: "center",
-                fontSize: "50px",
-                margin: "0px",
-              }}
-            >
-              Please Sign In to use model
-            </label>
-            <br></br>
-            <div style={{ minHeight: "40px" }}></div>
-            <a
-              href="/login"
-              className="organinfolabel"
-              style={{
-                textDecoration: "underline",
-                fontSize: "30px",
-                margin: "0px",
-                marginTop: "40px",
-              }}
-            >
-              Proceed to Log In
-            </a>
-          </div>
-        </div>
-      )}
+      {/* Not signed in */}
       {isSignIn && (
         <div className="mainelements" style={{ marginTop: "20px" }}>
           <div class="inputinfo">
@@ -581,13 +575,16 @@ function Content() {
             ></input>
             <textarea
               className="textareas"
-              style={{ height: "70px", backgroundColor: "darkgrey",marginTop:'' }}
+              style={{
+                height: "85px",
+                backgroundColor: "darkgrey",
+                marginTop: "",
+              }}
               readOnly
-              value={'How to add food:\n'}
-            >
-              How to add food:
-              {"\n"}h
-            </textarea>
+              value={
+                "You can add any *edible* food!\nSeperate multiple foods with a comma"
+              }
+            ></textarea>
             <button class="inputbuttons1" onClick={handleAddItem}>
               Add Food
             </button>
@@ -597,10 +594,20 @@ function Content() {
                 <EatAnimation />
               </>
             )}
+            {isActive &&
+             <div>
+              <button
+                      className="inputbuttons"
+                      onClick={handleHistoryButton}
+                      style={{ marginLeft: "30px" }}
+                    >
+                      View History
+                    </button>
+              </div>}
             <button
               class="inputbuttons"
               onClick={ResetModel}
-              style={{ marginTop: "20px",justifyContent:'flex-end' }}
+              style={{ marginTop: "20px", justifyContent: "flex-end" }}
             >
               Reset Model
             </button>
@@ -718,18 +725,6 @@ function Content() {
               <div class="organstats" style={{ maxHeight: "70vw" }}>
                 {!isActive && (
                   <div>
-                    {/* <div
-                      className="organinfolabel"
-                      style={{
-                        paddingLeft: "10px",
-                        borderWidth: "0px",
-                        fontSize: "20px",
-                        fontSize: "23px",
-                        paddingBottom:'20px'
-                      }}
-                    >
-                      Click on organ to view its stats!
-                    </div> */}
                     {!isEat && (
                       <div
                         className="organinfolabel"
@@ -746,21 +741,21 @@ function Content() {
                     )}
                     <p class="inputinfoheading">History</p>
                     <textarea
-                    placeholder="Stomach empty :("
+                      placeholder="Stomach empty :("
                       readOnly
                       ref={textareaRef}
                       class="textareas"
                       style={{
                         paddingBottom: "20px",
                         textAlign: "top",
-                        height: "auto",
-                        maxHeight: "300px",
+                        minHeight: "40vh",
+                        maxHeight: "40vh",
                       }}
-                      value={foodHistory} /*{foodStatusText}*/
+                      value={foodHistory} 
                     ></textarea>
                     {/* <div
                       className="organinfolabel"
-                      style={{                                        ???????????????????????????
+                      style={{                                        
                         paddingLeft: "10px",
                         borderWidth: "0px",
                         fontSize: "20px",
@@ -786,6 +781,22 @@ function Content() {
                 )}
                 {isActive && (
                   <div>
+                    <button
+                      className="inputbuttons"
+                      style={{
+                        marginLeft: "20%",
+                        marginRight:'20%',
+                        fontSize: "15px",
+                        paddingLeft:'0',
+                        paddingRight:'0',
+                        width:'60%'
+                      }}
+                      onClick={handleGuideButton}
+                      value={"Make " + { IOorgan } + " healthier!"}
+                    >
+                      Know more
+                    </button>
+                    
                     <label className="organinfolabel" style={{}}>
                       Organ:
                     </label>
@@ -848,7 +859,7 @@ function Content() {
                       value={seperateFactor2value}
                     />
 
-                    <button
+                    {/* <button
                       className="inputbuttons"
                       style={{ marginLeft: "20px" }}
                       onClick={handleGuideButton}
@@ -861,7 +872,7 @@ function Content() {
                       style={{ marginLeft: "20px" }}
                     >
                       View History
-                    </button>
+                    </button> */}
                   </div>
                 )}
               </div>
