@@ -146,11 +146,7 @@ function Kidney() {
             </p>
             <br></br>
             <br></br>
-            <img
-               src="https://static.skillshare.com/uploads/parentClasses/a72e90e7ea1de970ac435da53448dee5/91ca8ce1"
-              alt="."
-             className="food-image-i"
-            />
+           
           </div>
 
           <h2 className="heading">Foods Consumed:</h2>

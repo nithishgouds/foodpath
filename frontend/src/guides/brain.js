@@ -115,7 +115,7 @@ function Brain() {
                     <br></br>
                     <img
                           src="https://th.bing.com/th/id/R.3cd0ee5e418250f2d18a186841ce60cc?rik=vJb2qOAZkQJ8Zw&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f04%2fBrain-PNG-Image.png&ehk=cIrtlwwNSqpbI9itUL0CMD3%2b0C59yTt37Wj8jOauEAU%3d&risl=&pid=ImgRaw&r=0"
-                            alt='Brain'
+                            alt='.'
                           className="food-image-i"/>
                     <h2 className='heading'>Foods Consumed :</h2>
                     <div className="containernew">

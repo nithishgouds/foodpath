@@ -110,7 +110,7 @@ function Heart() {
             <br></br>
             <br></br>
             <img src="https://png.pngtree.com/png-vector/20240722/ourmid/pngtree-real-human-heart-isolated-on-transparent-background-png-image_13102597.png"
-               alt='Heart'
+               alt='.'
                  className="food-image-i" />
             <h2 className='heading'>Foods Consumed :</h2>
             <div className="containernew">
