@@ -3,8 +3,25 @@ import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode";
 import { motion } from "framer-motion";
+import orangeImage from '../foodimages/oranges.jpg';
+import eggs from '../foodimages/eggs.jpg';
+import berries from '../foodimages/berries.jpg';
+import nutss from  '../foodimages/nuts.jpg';
+import chocolate from '../foodimages/chocolate.jpg';
+import spinach from '../foodimages/leafygreens.jpg';
+import turmeric from '../foodimages/turmeric.jpg';
+import avacado from '../foodimages/avacados.png';
+import fried from '../foodimages/friedfood.jpg';
+import alcohol from '../foodimages/alcohol.jpg';
+import candy from '../foodimages/sugary.jpg';
+import meat from '../foodimages/processed.jpg';
+import refined from '../foodimages/processed.jpg';
+import sweet from '../foodimages/sweetener.jpg';
+import trans from '../foodimages/trans.png';
+import canned from '../foodimages/cann.jpg';
 
 import Header from '../homepagenew/components/Header';
+
 
 function Brain() {
     // State variables
@@ -96,7 +113,10 @@ function Brain() {
                     </div>
                     <br></br>
                     <br></br>
-
+                    <img
+                          src="https://th.bing.com/th/id/R.3cd0ee5e418250f2d18a186841ce60cc?rik=vJb2qOAZkQJ8Zw&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f04%2fBrain-PNG-Image.png&ehk=cIrtlwwNSqpbI9itUL0CMD3%2b0C59yTt37Wj8jOauEAU%3d&risl=&pid=ImgRaw&r=0"
+                            alt='Brain'
+                          className="food-image-i"/>
                     <h2 className='heading'>Foods Consumed :</h2>
                     <div className="containernew">
                         <p className='guides_brain_consumed_text'>{guides_brain_consumed_text}</p>
@@ -114,10 +134,7 @@ function Brain() {
                         <br></br>
                         <br></br>
 
-                        {/*<img*/}
-                        {/*    src="https://th.bing.com/th/id/R.3cd0ee5e418250f2d18a186841ce60cc?rik=vJb2qOAZkQJ8Zw&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f04%2fBrain-PNG-Image.png&ehk=cIrtlwwNSqpbI9itUL0CMD3%2b0C59yTt37Wj8jOauEAU%3d&risl=&pid=ImgRaw&r=0"*/}
-                        {/*    alt='Brain'*/}
-                        {/*    className="food-image-i"/>*/}
+                      
                     </div>
                 </div>
 
@@ -132,7 +149,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://th.bing.com/th/id/OIP.L1KZ9kz1QJoYJ089IYH4jQHaFV?w=294&h=212&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                            <img src = {orangeImage}
                                  alt='Oranges'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -148,7 +165,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://tse4.mm.bing.net/th/id/OIP.l2WJdPUIQezUJc6rRxv9EAHaE7?w=264&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                            <img src={eggs}
                                  alt='Eggs'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -165,7 +182,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://www.bing.com/th/id/OIP.GEyLT9N8t1gV5pXZDNXHUAHaFg?w=259&h=192&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                            <img src={berries}
                                  alt='Blueberries'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -181,7 +198,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://www.bing.com/th?id=OIP.j1WfA-1HnuUuicubXhR1OwHaEq&w=315&h=198&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                            <img src={nutss}
                                  alt='Walnuts'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -197,7 +214,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://www.bing.com/th/id/OIP.tWq2a6lTpuwIa-4U4dWjSgAAAA?w=188&h=141&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                            <img src={chocolate}
                                  alt='Dark Chocolate'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -213,7 +230,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://th.bing.com/th?id=OIP.Qmk7f6puo63EoqkKdIAP-QAAAA&w=300&h=199&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                            <img src={spinach}
                                  alt='Spinach'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -229,7 +246,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://www.bing.com/th/id/OIP.p6e_BQT1_HF222FsOhSgYAHaE8?w=252&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                            <img src={turmeric}
                                  alt='Turmeric'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -245,7 +262,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://www.pngmart.com/files/15/Avocado-PNG-Transparent-HD-Photo.png"
+                            <img src={avacado}
                                  alt='Avocados'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -268,7 +285,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://tse1.mm.bing.net/th/id/OIP.3B3kU6ZYJdDzN8b1jdeh6QHaFc?w=245&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                            <img src={fried}
                                  alt='Fried Foods'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -285,7 +302,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://tse1.mm.bing.net/th/id/OIP.WFyvuU65H6puydI-H1yxwQHaGg?w=223&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                            <img src={alcohol}
                                  alt='Alcohol'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -303,7 +320,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://www.bing.com/th/id/OIP.YHffM3-8eeJZMh-kQnhvPQAAAA?w=186&h=159&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                            <img src={candy}
                                  alt='Sugary Snacks'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -321,7 +338,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://tse1.mm.bing.net/th/id/OIP.CW22Grctx2l5DxNmU4wZ5gHaEn?w=274&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                            <img src={meat}
                                  alt='Processed Meats'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -339,7 +356,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://www.bing.com/th/id/OIP.BEH8rpIxoiUt_AQDRmSYTAHaFY?w=240&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                            <img src={refined}
                                  alt='Refined Carbohydrates'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -357,7 +374,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://www.bing.com/th/id/OIP.p_pebnS80ESbaxIixeE25gAAAA?w=210&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                            <img src={sweet}
                                  alt='Artificial Sweeteners'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -374,7 +391,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://www.venturafoods.com/wp-content/uploads/2022/02/margerines-spreads.png"
+                            <img src={trans}
                                  alt='Trans Fats'
                                  className="food-card-image" />
                             <div className="food-card-content">
@@ -391,7 +408,7 @@ function Brain() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}>
-                            <img src="https://www.bing.com/th/id/OIP.8ZANzjQpk38obzYbB9GKYwAAAA?w=179&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                            <img src={canned}
                                  alt='High-Sodium Foods'
                                  className="food-card-image" />
                             <div className="food-card-content">

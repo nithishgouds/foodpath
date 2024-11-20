@@ -5,6 +5,22 @@ import { jwtDecode } from "jwt-decode";
 import { motion } from "framer-motion";
 import Header from '../homepagenew/components/Header';
 
+import fish from  '../foodimages/fish.jpg';
+import nutss from  '../foodimages/nuts.jpg';
+import oats from '../foodimages/oats.jpg';
+import spinach from '../foodimages/leafygreens.jpg';
+import berries from '../foodimages/berries.jpg';
+import avacado from '../foodimages/avacados.png';
+import beans from '../foodimages/beans.png';
+import chocolate from '../foodimages/chocolate.jpg';
+import meat from '../foodimages/processed.jpg';
+import drink from '../foodimages/drink.jpg';
+
+import fried from '../foodimages/friedfood.jpg';
+import bread from '../foodimages/bread.webp';
+import pizza from '../foodimages/pizza.jpg';
+import alcohol from '../foodimages/alcohol.jpg'
+
 function Heart() {
   // State variables
   const [guides_heart_status_text, setguides_heart_status_text] = useState("Analysing...");
@@ -93,7 +109,9 @@ function Heart() {
             </div>
             <br></br>
             <br></br>
-
+            <img src="https://png.pngtree.com/png-vector/20240722/ourmid/pngtree-real-human-heart-isolated-on-transparent-background-png-image_13102597.png"
+               alt='Heart'
+                 className="food-image-i" />
             <h2 className='heading'>Foods Consumed :</h2>
             <div className="containernew">
               <p className='guides_heart_consumed_text'>{guides_heart_consumed_text}</p>
@@ -108,9 +126,7 @@ function Heart() {
                     <p className='guides_heart_info_text' key={index}>{line}</p>
                 ))}
               </div>
-              {/*<img src="https://png.pngtree.com/png-vector/20240722/ourmid/pngtree-real-human-heart-isolated-on-transparent-background-png-image_13102597.png"*/}
-              {/*     alt='Heart'*/}
-              {/*     className="food-image-i" />*/}
+              
             </div>
           </div>
 
@@ -121,7 +137,7 @@ function Heart() {
               {/* Good Foods Cards */}
 
             <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <img src="https://tse2.mm.bing.net/th/id/OIP.XJ0VwZaNBPPm8hJoGrEXEgHaEQ?w=273&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt='Fatty Fish' className="food-card-image" />
+              <img src={fish} alt='Fatty Fish' className="food-card-image" />
               <div className="food-card-content">
                 <h5 className='food-card-title'>Fatty Fish (Salmon, Mackerel, Sardines)</h5>
                 <p className='foodpara'><strong>Omega-3 Fatty Acids:</strong> Help reduce inflammation, lower triglycerides, and decrease the risk of arrhythmias.</p>
@@ -129,7 +145,7 @@ function Heart() {
               </div>
             </motion.article>
             <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <img src="https://www.bing.com/th?id=OIP.j1WfA-1HnuUuicubXhR1OwHaEq&w=315&h=198&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt='Nuts' className="food-card-image" />
+              <img src={nutss} alt='Nuts' className="food-card-image" />
               <div className="food-card-content">
                 <h5 className='food-card-title'>Nuts (Almonds, Walnuts)</h5>
                 <p className='foodpara'><strong>Rich in Healthy Fats:</strong> Contain monounsaturated and polyunsaturated fats, which lower LDL (bad cholesterol).</p>
@@ -137,7 +153,7 @@ function Heart() {
               </div>
             </motion.article>
             <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <img src="https://th.bing.com/th?id=OIP.b9It-_1kiy-uxqOalKV1JwHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt='Oats' className="food-card-image" />
+              <img src={oats} alt='Oats' className="food-card-image" />
               <div className="food-card-content">
                 <h5 className='food-card-title'>Oats</h5>
                 <p className='foodpara'><strong>High in Soluble Fiber:</strong> Soluble fiber reduces cholesterol absorption, lowering LDL cholesterol.</p>
@@ -145,7 +161,7 @@ function Heart() {
               </div>
             </motion.article>
             <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <img src="https://th.bing.com/th?id=OIP.Qmk7f6puo63EoqkKdIAP-QAAAA&w=300&h=199&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt='Leafy Greens' className="food-card-image" />
+              <img src={spinach} alt='Leafy Greens' className="food-card-image" />
               <div className="food-card-content">
                 <h5 className='food-card-title'>Leafy Greens (Spinach, Kale)</h5>
                 <p className='foodpara'><strong>Rich in Potassium:</strong> Helps control blood pressure, reducing the strain on your heart.</p>
@@ -153,7 +169,7 @@ function Heart() {
               </div>
             </motion.article>
             <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <img src="https://www.pngmart.com/files/15/Avocado-PNG-Transparent-HD-Photo.png" alt='Avocados' className="food-card-image" />
+              <img src={avacado} alt='Avocados' className="food-card-image" />
               <div className="food-card-content">
                 <h5 className='food-card-title'>Avocados</h5>
                 <p className='foodpara'><strong>Rich in Monounsaturated Fats:</strong> Avocados can help reduce LDL cholesterol levels and improve heart health.</p>
@@ -161,7 +177,7 @@ function Heart() {
               </div>
             </motion.article>
             <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <img src="https://pngimg.com/uploads/kidney_beans/kidney_beans_PNG28.png" alt='Beans' className="food-card-image" />
+              <img src={beans} alt='Beans' className="food-card-image" />
               <div className="food-card-content">
                 <h5 className='food-card-title'>Beans (Black Beans, Kidney Beans, Chickpeas)</h5>
                 <p className='foodpara'><strong>High in Fiber:</strong> Beans can help lower cholesterol and improve overall heart health.</p>
@@ -169,7 +185,7 @@ function Heart() {
               </div>
             </motion.article>
             <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <img src="https://www.bing.com/th/id/OIP.GEyLT9N8t1gV5pXZDNXHUAHaFg?w=259&h=192&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt='Berries' className="food-card-image" />
+              <img src={berries} alt='Berries' className="food-card-image" />
               <div className="food-card-content">
                 <h5 className='food-card-title'>Berries (Strawberries, Blueberries, Raspberries)</h5>
                 <p className='foodpara'><strong>High in Antioxidants:</strong> Berries are packed with anthocyanins, which reduce inflammation and lower the risk of heart disease.</p>
@@ -177,7 +193,7 @@ function Heart() {
               </div>
             </motion.article>
             <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <img src="https://www.bing.com/th/id/OIP.tWq2a6lTpuwIa-4U4dWjSgAAAA?w=188&h=141&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt='Dark Chocolate' className="food-card-image" />
+              <img src={chocolate} alt='Dark Chocolate' className="food-card-image" />
               <div className="food-card-content">
                 <h5 className='food-card-title'>Dark Chocolate</h5>
                 <p className='foodpara'><strong>Rich in Flavonoids:</strong> Dark chocolate is high in flavonoids, which boost brain plasticity, improve memory, and enhance cognitive function.</p>
@@ -194,7 +210,7 @@ function Heart() {
     <div className="card-container four-elements " style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
       {/* Bad Foods Cards */}
       <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <img src="https://tse1.mm.bing.net/th/id/OIP.CW22Grctx2l5DxNmU4wZ5gHaEn?w=274&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt='Processed Meats' className="food-card-image" />
+        <img src={meat} alt='Processed Meats' className="food-card-image" />
         <div className="food-card-content">
           <h5 className='food-card-title'>Processed Meats (Bacon, Sausage, Hot Dogs)</h5>
           <p className='foodpara'><strong>High in Sodium:</strong> Increases blood pressure, leading to heart disease.</p>
@@ -202,7 +218,7 @@ function Heart() {
         </div>
       </motion.article>
       <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <img src="https://th.bing.com/th?id=OIP.cf8I0fDPz9qAxQkbpQxmhAHaLb&w=201&h=310&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt='Sugary Beverages' className="food-card-image" />
+        <img src={drink} alt='Sugary Beverages' className="food-card-image" />
         <div className="food-card-content">
           <h5 className='food-card-title'>Sugary Beverages (Soda, Energy Drinks)</h5>
           <p className='foodpara'><strong>Increases Blood Sugar:</strong> Leads to weight gain and insulin resistance, increasing heart disease risk.</p>
@@ -210,7 +226,7 @@ function Heart() {
         </div>
       </motion.article>
       <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <img src="https://tse1.mm.bing.net/th/id/OIP.3B3kU6ZYJdDzN8b1jdeh6QHaFc?w=245&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt='Fried Foods' className="food-card-image" />
+        <img src={fried} alt='Fried Foods' className="food-card-image" />
         <div className="food-card-content">
           <h5 className='food-card-title'>Fried Foods (French Fries, Fried Chicken)</h5>
           <p className='foodpara'><strong>Trans Fats:</strong> Raise LDL cholesterol, increasing heart disease risk.</p>
@@ -218,7 +234,7 @@ function Heart() {
         </div>
       </motion.article>
       <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <img src="https://static.vecteezy.com/system/resources/previews/030/214/371/original/sliced-white-bread-png.png" alt='Refined Carbs' className="food-card-image" />
+        <img src={bread} alt='Refined Carbs' className="food-card-image" />
         <div className="food-card-content">
           <h5 className='food-card-title'>Refined Carbs (White Bread, Pastries)</h5>
           <p className='foodpara'><strong>Increases Blood Sugar:</strong> Refined carbs lead to blood sugar spikes, contributing to insulin resistance and heart disease.</p>
@@ -226,7 +242,7 @@ function Heart() {
         </div>
       </motion.article>
       <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <img src="https://static.vecteezy.com/system/resources/previews/024/108/097/non_2x/frozen-pizza-with-cheese-and-tomatoes-on-transparent-background-png.png" alt='High-Sodium Foods' className="food-card-image" />
+        <img src={pizza} alt='High-Sodium Foods' className="food-card-image" />
         <div className="food-card-content">
           <h5 className='food-card-title'>High-Sodium Foods (Canned Soups, Frozen Meals)</h5>
           <p className='foodpara'><strong>Increases Blood Pressure:</strong> Excessive sodium in the diet raises blood pressure, straining the heart.</p>
@@ -234,7 +250,7 @@ function Heart() {
         </div>
       </motion.article>
       <motion.article className="food-card" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <img src="https://tse1.mm.bing.net/th/id/OIP.WFyvuU65H6puydI-H1yxwQHaGg?w=223&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt='Alcohol' className="food-card-image" />
+        <img src={alcohol} alt='Alcohol' className="food-card-image" />
         <div className="food-card-content">
           <h5 className='food-card-title'>Alcohol</h5>
           <p className='foodpara'><strong>Increases Blood Pressure:</strong> Chronic alcohol consumption can raise blood pressure, contributing to heart disease.</p>
