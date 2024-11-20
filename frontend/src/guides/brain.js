@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import Header from '../homepagenew/components/Header';
 
 function Brain() {
-    // State variables
     const [guides_brain_status_text, setguides_brain_status_text] = useState("Analysing...");
     const [guides_brain_consumed_text, setguides_brain_consumed_text] = useState("Getting...");
     const [guides_brain_info_text, setguides_brain_info_text] = useState("Analysing...");
@@ -17,7 +16,6 @@ function Brain() {
     const token = localStorage.getItem("jwtToken");
     let email;
 
-    // Ostatus function definition
     function Ostatus(a) {
         switch (a) {
             case 0:
@@ -42,7 +40,6 @@ function Brain() {
     }, []);
 
     useEffect(() => {
-        // Token check logic
         if (token) {
             try {
                 const decodedToken = jwtDecode(token);

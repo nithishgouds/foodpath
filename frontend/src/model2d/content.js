@@ -11,19 +11,22 @@ function Content() {
   useEffect(() => {
     const textarea = textareaRef.current;
     if (textarea) {
-      textarea.style.height = "auto"; // Reset height
-      textarea.style.height = `${textarea.scrollHeight}px`; // Set to scroll height
+      textarea.style.height = "auto";
+      textarea.style.height = `${textarea.scrollHeight}px`;
     }
   }, []);
-  // Ensure jwt-decode is imported
   const [isSignIn, setSingIn] = useState(false);
   const navigate = useNavigate();
   let email;
 
   const token = localStorage.getItem("jwtToken");
-  // console.log(token);
+  const currentTime = Math.floor(Date.now() / 1000);
 
   const checkSignIn = () => {
+    if(token.exp < currentTime){
+      console.out('token expired')
+      return;
+    }
     if (token) {
       setSingIn(true);
       chkGuideBadge();
@@ -53,16 +56,11 @@ function Content() {
 
   if (token) {
     try {
-      // Decode the JWT token to extract the payload
       const decodedToken = jwtDecode(token);
-      // console.log(decodedToken);
 
-      // console.log(decodedToken.email);
 
-      // Check if the decoded token contains the email property
       if (decodedToken && decodedToken.email) {
         email = decodedToken.email;
-        // console.log("Decoded email:", email);
       } else {
         console.log("Email not found in token payload.");
       }
@@ -173,6 +171,7 @@ function Content() {
       console.log("something is happening");
       if (!aiResponse.consumable) {
         setFoodStatus("You can't eat that!");
+        setSelectedItem("");
         return;
       }
 
@@ -359,8 +358,10 @@ function Content() {
         colourrating(aiResponse.health_status.intestines.rating)
       );
       setOpacity(0.5);
+      setSelectedItem("");
     } catch (error) {
       setFoodStatus("Error!");
+      setSelectedItem("");
       setEating(false);
       console.error("Error adding food item:", error);
     }

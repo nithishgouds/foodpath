@@ -42,7 +42,6 @@ const addFood = async (req, res) => {
 
     console.log('Received body:', req.body);
 
-    // Ensure email and foodItems are provided
     if (!email) {
         return res.status(400).json({ error: 'Email is required.' });
     }
@@ -51,34 +50,25 @@ const addFood = async (req, res) => {
         return res.status(400).json({ error: 'Food items string is required.' });
     }
 
-    // Split the foodItems string by spaces and filter out any empty items
     const foodItemsArray = foodItems.split(',').filter(item => item.trim() !== '');
 
     try {
-        // Find the user in ConsumedFoods or create a new entry if not found
         let user = await ConsumedFoods.findOne({ email });
 
         if (!user) {
-            // If the user doesn't exist, create a new user document with an empty consumedFoods array
             user = new ConsumedFoods({ email, consumedFoods: [] });
         }
 
-        // Map the food items into the required format
         const newFoods = foodItemsArray.map(item => ({ foodItem: item }));
 
-        // Add new food items to the consumedFoods array
         user.consumedFoods.push(...newFoods);
 
-        // Save the updated user data to the database
         await user.save();
 
-        // Prepare the food items as a string to send back
         const foodItemsString = user.consumedFoods.map(item => item.foodItem).join(' ');
 
-        // Optionally process the food items with AI
         try {
             let aiResponse = await run(foodItemsString);
-            //let aiResponseSeparate= await runseparate(foodItemsString);
 
 
             aiResponse = JSON.parse(aiResponse);
@@ -87,9 +77,8 @@ const addFood = async (req, res) => {
             res.json({
                 
                 message: 'Foods added successfully',
-                consumedFoods: user.consumedFoods, // You can return the food items as a string
+                consumedFoods: user.consumedFoods, 
                 aiResponse: aiResponse
-                //aiResponseSeparate: aiResponseSeparate
             });
         } catch (aiError) {
             res.status(500).json({ error: 'Error processing food data in AI', details: aiError.message });
@@ -147,7 +136,6 @@ const validateOrganGuide = async (req, res) => {
 
     console.log('Received body:', req.body);
 
-    // Ensure both email and organName are provided
     if (!email) {
         return res.status(400).json({ error: 'Email is required.' });
     }
@@ -157,22 +145,18 @@ const validateOrganGuide = async (req, res) => {
     }
 
     try {
-        // Check if the email exists in the database and fetch their consumedFoods
         const user = await ConsumedFoods.findOne({ email });
 
         if (!user || !user.consumedFoods || user.consumedFoods.length === 0) {
             return res.status(404).json({ error: 'User not found or no consumed foods available.' });
         }
 
-        // Extract food items from the user's consumedFoods array
         const foodItemsArray = user.consumedFoods.map(item => item.foodItem).filter(item => item.trim() !== '');
-        const foodItemsString = foodItemsArray.join(','); // Prepare food items as a single string separated by commas
+        const foodItemsString = foodItemsArray.join(','); 
 
-        // Send data to the organGuides API
         try {
             const organGuideResponse = await organGuide(organName, foodItemsString);
 
-            // Assume organGuide returns a response in JSON format
             const parsedResponse = JSON.parse(organGuideResponse);
 
             res.json({
@@ -199,33 +183,23 @@ const history = async (req, res) => {
 
     console.log('Received body:', req.body);
 
-    // Ensure email and foodItems are provided
     if (!email) {
         return res.status(400).json({ error: 'Email is required.' });
     }
 
 
 
-    // Split the foodItems string by spaces and filter out any empty items
-
-
     try {
-        // Find the user in ConsumedFoods or create a new entry if not found
         let user = await ConsumedFoods.findOne({ email });
 
         if (!user) {
-            // If the user doesn't exist, create a new user document with an empty consumedFoods array
             user = new ConsumedFoods({ email, consumedFoods: [] });
         }
 
-
-        // Prepare the food items as a string to send back
         const foodItemsString = user.consumedFoods.map(item => item.foodItem).join(' ');
 
-        // Optionally process the food items with AI
         try {
             let aiResponse = await run(foodItemsString);
-            //let aiResponseSeparate= await runseparate(foodItemsString);
 
 
             aiResponse = JSON.parse(aiResponse);
@@ -234,9 +208,8 @@ const history = async (req, res) => {
             res.json({
                 
                 message: 'history added successfully',
-                consumedFoods: user.consumedFoods, // You can return the food items as a string
+                consumedFoods: user.consumedFoods, 
                 aiResponse: aiResponse
-                //aiResponseSeparate: aiResponseSeparate
             });
         } catch (aiError) {
             res.status(500).json({ error: 'Error processing food data in AI', details: aiError.message });

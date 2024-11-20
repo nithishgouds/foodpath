@@ -19,28 +19,24 @@ const updateBoolArrayAtIndex = async (email, index, value) => {
     const userDoc = await Trophies.findOne({ email });
 
     if (!userDoc) {
-      // Create a new document if none exists and return the boolArray
+     
       const newDoc = await Trophies.create({
         email,
-        boolArray: Array(13).fill(false), // Initialize with all false
+        boolArray: Array(13).fill(false),
       });
-      return newDoc.boolArray; // Return the boolArray after creating the new document
+      return newDoc.boolArray; 
     }
 
-    // Check if all elements in the array are false
+   
     const allFalse = userDoc.boolArray.every((val) => val === false);
-    // if (allFalse) {
-    //   return userDoc.boolArray; // Return the original array without updates
-    // }
-
-    // Update the specific index
+    
     const updatedDoc = await Trophies.findOneAndUpdate(
       { email },
       { $set: { [`boolArray.${index}`]: value } },
-      { new: true } // Return the updated document
+      { new: true }
     );
 
-    return updatedDoc.boolArray; // Return the updated boolArray
+    return updatedDoc.boolArray; 
   } catch (error) {
     console.error('Error updating boolArray:', error);
     throw error;
@@ -57,7 +53,7 @@ const updateTrophy = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      trophies: updatedBoolArray || [], // Return boolArray or empty array if not present
+      trophies: updatedBoolArray || [], 
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

@@ -138,7 +138,11 @@ function Kidney() {
 
           <h2 className="heading">Info about the Kidney:</h2>
           <div className="containernew">
-            <p className="guides_kidney_info_text">{guides_kidney_info_text}</p>
+          <div>
+                            {guides_kidney_info_text.split('\n').map((line, index) => (
+                                <p className='guides_kidney_info_text' key={index}>{line}</p>
+                            ))}
+                        </div>
 
             {/*<img*/}
             {/*    src="https://static.skillshare.com/uploads/parentClasses/a72e90e7ea1de970ac435da53448dee5/91ca8ce1"*/}

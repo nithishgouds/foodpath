@@ -154,6 +154,7 @@ function Content3d() {
       console.log("something is happening");
       if (!aiResponse.consumable) {
         setFoodStatus("You can't eat that!");
+        setSelectedItem("");
         return;
       }
 
@@ -174,11 +175,20 @@ function Content3d() {
         }
       );
 
-      const { aiResponse } = response.data;
+      const { aiResponse,consumedFoods  } = response.data;
       console.log("something is happening");
       setFoodStatus("ate...");
       setEating(false);
       setEat(true);
+
+      const foodItemsString = consumedFoods.map((item) => item.foodItem);
+      console.log("fis length : " + foodItemsString.length);
+
+      const foodsString = foodItemsString
+        .map((food, index) => `Item ${index + 1}: ${food}`)
+        .join("\n");
+
+      setfoodHistory(foodsString);
       setHandleAddRes(aiResponse);
       setbrainOpacity(colourrating(aiResponse.health_status.brain.rating));
       setlungsOpacity(colourrating(aiResponse.health_status.lungs.rating));
@@ -189,9 +199,11 @@ function Content3d() {
         colourrating(aiResponse.health_status.intestines.rating)
       );
       setkidneyOpacity(colourrating(aiResponse.health_status.kidneys.rating));
+      setSelectedItem("");
     } catch (error) {
       setEating(false);
       setFoodStatus("error!");
+      setSelectedItem("");
       console.error("Error adding food item:", error);
     }
   };
@@ -300,6 +312,7 @@ function Content3d() {
       );
       setActive(false);
       setfoodHistory("");
+      setFoodStatus("Model Reset Successful");
       setIOstatus(" ");
       setIOglucose(" ");
       setIOcalories(" ");

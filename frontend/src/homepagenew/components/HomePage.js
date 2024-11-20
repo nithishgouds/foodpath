@@ -10,10 +10,9 @@ import "./homepagestyles.css";
 const HomePage = () => {
     const [showSplash, setShowSplash] = useState(true);
 
-    // Hide splash screen after 3 seconds
     useEffect(() => {
-        const timer = setTimeout(() => setShowSplash(false), 3000); // 3 seconds
-        return () => clearTimeout(timer); // Cleanup the timer
+        const timer = setTimeout(() => setShowSplash(false), 3000);
+        return () => clearTimeout(timer);
     }, []);
 
     return (
