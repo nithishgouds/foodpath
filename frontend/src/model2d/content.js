@@ -107,10 +107,10 @@ function Content() {
         return "#610B21";
         break;
       case 1:
-        return "#01DF01";
+        return "#86B404";
         break;
       case 2:
-        return "#86B404";
+        return "#01DF01";
         break;
       case 3:
         return "#610B0B";
