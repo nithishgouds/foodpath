@@ -9,10 +9,10 @@ const Header = () => {
   const [path, setPath] = useState("/login");
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
-  const [showDropdown, setShowDropdown] = useState(false); 
+  const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
   const controls = useAnimation();
-  const dropdownRef = useRef(null); 
+  const dropdownRef = useRef(null);
   const token = localStorage.getItem("jwtToken");
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const Header = () => {
 
   useEffect(() => {
     controls.start({
-      y: visible ? 0 : -100, 
+      y: visible ? 0 : -100,
       opacity: visible ? 1 : 0,
       transition: { duration: 0.4 },
     });
@@ -66,11 +66,11 @@ const Header = () => {
   };
 
   const handleBadges = () => {
-    navigate("/trophies"); 
+    navigate("/trophies");
   };
 
   const toggleDropdown = () => {
-    setShowDropdown(!showDropdown); 
+    setShowDropdown(!showDropdown);
   };
 
   return (
@@ -108,12 +108,20 @@ const Header = () => {
                 3D MODEL
               </a>
             </li>
-                <li className="nav-item mr-12">
+            <li className="nav-item mr-12">
               <a
                 href="/quiz"
                 className="hover:text-[#CA8263] hover:bg-[#1C2E3B] px-4 py-2 transition duration-300 rounded-md"
               >
                 QUIZ
+              </a>
+            </li>
+            <li className="nav-item mr-12">
+              <a
+                href='/trophies'
+                className="hover:text-[#CA8263] hover:bg-[#1C2E3B] px-4 py-2 transition duration-300 rounded-md"
+              >
+                BADGES
               </a>
             </li>
           </ul>
@@ -130,12 +138,6 @@ const Header = () => {
               {showDropdown && (
                 <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg">
                   <ul className="py-2">
-                    <li
-                      className="px-4 py-2 hover:bg-[#1C2E3B] hover:text-[#CA8263] transition duration-300 cursor-pointer rounded-md"
-                      onClick={handleBadges}
-                    >
-                      BADGES
-                    </li>
                     <li
                       className="px-4 py-2 hover:bg-[#1C2E3B] hover:text-[#CA8263] transition duration-300 cursor-pointer rounded-md"
                       onClick={handleLogout}
