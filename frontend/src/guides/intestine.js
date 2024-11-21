@@ -6,6 +6,29 @@ import { useEffect } from "react";
 import Header from "../homepagenew/components/Header";
 import { motion } from "framer-motion";
 
+
+
+import fiber from '../foodimages/cabbage.jpg'
+import feremented from '../foodimages/fermented.jpg'
+import spinach from '../foodimages/leafygreens.jpg';
+import berries from '../foodimages/berries.jpg';
+import yogurt from '../foodimages/yogurt.jpg';
+import banna from  '../foodimages/bannana.jpg';
+import chia from '../foodimages/fennel.jpg';
+import aspar from '../foodimages/applesauce.jpg';
+import oats from '../foodimages/oats.jpg';
+import ginger from '../foodimages/turmeric.jpg';
+import fried from '../foodimages/friedfood.jpg';
+import alcohol from '../foodimages/alcohol.jpg'
+import drink from '../foodimages/drink.jpg';
+import dairy from '../foodimages/dairy.jpg';
+import redmeat from '../foodimages/redmeat.jpg';
+import orangeImage from '../foodimages/oranges.jpg';
+import pick from '../foodimages/pick.jpg';
+import spicy from '../foodimages/spicy.jpg';
+import sweet from '../foodimages/sweetener.jpg';
+import  snacks from '../foodimages/snacks.jpg';
+
 function Intestine() {
   const [guides_intestine_status_text, setguides_intestine_status_text] =
       useState("Analysing...");
@@ -129,6 +152,7 @@ function Intestine() {
             </p>
             <br></br>
             <br></br>
+         
           </div>
 
           <h2 className="heading">Foods Consumed :</h2>
@@ -146,11 +170,7 @@ function Intestine() {
                   <p className="guides_heart_info_text"> {line}</p>
               ))}
             </div>
-            {/*<img*/}
-            {/*    src="https://img.freepik.com/premium-photo/life-art_1139222-8704.jpg"*/}
-            {/*    alt="."*/}
-            {/*    className="food-image-i"*/}
-            {/*/>*/}
+          
           </div>
         </div>
 
@@ -161,7 +181,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://th.bing.com/th?id=OIP.PeS8e8xmZneGh88jE1JcpgHaFu&w=284&h=219&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    src={fiber}
                     alt="High-Fiber Foods" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">High-Fiber Foods (Whole Grains, Vegetables)</h5>
@@ -173,7 +193,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse1.mm.bing.net/th/id/OIP.gQLzkzxIGlHngcgTF4EdxQHaHa?w=169&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={feremented}
                     alt="Fermented Foods" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Fermented Foods (Kimchi, Sauerkraut)</h5>
@@ -185,7 +205,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse1.mm.bing.net/th/id/OIP.Qmk7f6puo63EoqkKdIAP-QAAAA?w=300&h=199&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    src={spinach}
                     alt="Leafy Greens" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Leafy Greens (Spinach, Kale)</h5>
@@ -197,7 +217,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse3.mm.bing.net/th/id/OIP.GEyLT9N8t1gV5pXZDNXHUAHaFg?w=259&h=192&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={berries}
                     alt="Berries" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Berries (Blueberries, Raspberries)</h5>
@@ -209,7 +229,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse2.mm.bing.net/th/id/OIP.4GqtzAqzxTyoWwoBAYu7XQHaF7?w=252&h=202&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={yogurt}
                     alt="Yogurt" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Yogurt</h5>
@@ -221,7 +241,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse3.mm.bing.net/th/id/OIP.5g4XpbXhKdD0V5kF-m-zGgHaFc?w=250&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={banna}
                     alt="Bananas" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Bananas</h5>
@@ -233,7 +253,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse3.mm.bing.net/th/id/OIP.uMlJS9v1uDrl9DoA9yUoSwHaFD?w=276&h=191&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={chia}
                     alt="Chia Seeds" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Chia Seeds</h5>
@@ -245,7 +265,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse4.mm.bing.net/th/id/OIP.5M14IYqORoz0ubP4NEVRgQHaFj?w=237&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={oats}
                     alt="Oats" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Oats</h5>
@@ -257,7 +277,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse2.mm.bing.net/th/id/OIP.R0axX5rXTk0gA5rs4tubngHaEo?w=314&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={ginger}
                     alt="Ginger" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Ginger</h5>
@@ -269,7 +289,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse1.mm.bing.net/th/id/OIP.uQHJ7Lw9UnScbsm4PbgDOAHaE8?w=298&h=199&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={aspar}
                     alt="Asparagus" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Asparagus</h5>
@@ -288,7 +308,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse1.mm.bing.net/th/id/OIP.3B3kU6ZYJdDzN8b1jdeh6QHaFc?w=245&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={fried}
                     alt="Fried Foods" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Fried Foods (French Fries, Onion Rings)</h5>
@@ -304,7 +324,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse1.mm.bing.net/th/id/OIP.WFyvuU65H6puydI-H1yxwQHaGg?w=223&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={alcohol}
                     alt="Alcohol" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Alcohol</h5>
@@ -320,7 +340,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://th.bing.com/th?id=OIP.cf8I0fDPz9qAxQkbpQxmhAHaLb&w=201&h=310&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    src={drink}
                     alt="Sugary Drinks" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Sugary Drinks (Soda, Sweetened Juices)</h5>
@@ -336,7 +356,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://th.bing.com/th/id/OIP.UNWx5QnfFvyIes0hv4rdwgHaGK?w=232&h=193&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={dairy}
                     alt="Dairy Products" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Dairy Products (Milk, Cheese)</h5>
@@ -352,7 +372,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://th.bing.com/th?id=OIP.pbYnjMHa2tA22On6j6eHAQHaEr&w=314&h=198&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    src={redmeat}
                     alt="Red Meat" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Red Meat (Beef, Pork)</h5>
@@ -368,7 +388,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://th.bing.com/th/id/OIP.L1KZ9kz1QJoYJ089IYH4jQHaFV?w=294&h=212&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    src={orangeImage}
                     alt="Citrus Fruits" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Citrus Fruits (Oranges, Grapefruits)</h5>
@@ -384,7 +404,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse3.mm.bing.net/th/id/OIP.mndou8ofE5v67rPNMGlRpQHaHa?w=190&h=190&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={pick}
                     alt="Pickled Foods" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Pickled Foods (Pickles, Sauerkraut)</h5>
@@ -400,7 +420,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th/id/OIP.tqAWK8yGjpV-Fw2XJiCfhAHaGi?w=266&h=234&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    src={spicy}
                     alt="Spicy Foods" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Spicy Foods (Hot Peppers, Chili)</h5>
@@ -416,7 +436,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse4.mm.bing.net/th/id/OIP.2rUg3mGOiAqd8mzYOBZvhwHaGz?w=198&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={sweet}
                     alt="Artificial Sweeteners" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Artificial Sweeteners (Aspartame, Sucralose)</h5>
@@ -432,7 +452,7 @@ function Intestine() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse4.mm.bing.net/th/id/OIP.VF0Cp_AzFwnG1xzbn14mMwHaE8?w=271&h=181&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={snacks}
                     alt="Processed Snacks" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Processed Snacks (Chips, Crackers)</h5>

@@ -6,6 +6,33 @@ import { useEffect } from "react";
 import Header from "../homepagenew/components/Header";
 import { motion } from "framer-motion";
 
+
+
+
+
+
+import yogurt from '../foodimages/yogurt.jpg';
+import ginger from '../foodimages/ginger.jpg';
+import banna from '../foodimages/bannana.jpg';
+import oats from '../foodimages/oats.jpg';
+import papaya from '../foodimages/papaya.jpg';
+import fennel from '../foodimages/fennel.jpg';
+import mint from '../foodimages/mint.webp';
+import mile from '../foodimages/mile.jpg';
+import rice from '../foodimages/rice.jpg';
+import sauce from '../foodimages/applesauce.jpg';
+import spicy from'../foodimages/spicy.jpg';
+import fried from '../foodimages/friedfood.jpg';
+import drinks from '../foodimages/drinks.jpg';
+import orangeImage from '../foodimages/oranges.jpg';
+import chocolate from '../foodimages/chocolate.jpg';
+import meat from '../foodimages/processed.jpg';
+import alcohol from '../foodimages/alcohol.jpg';
+import onion from '../foodimages/onions.jpg';
+import tomato from '../foodimages/tomato.jpg';
+import dairy from '../foodimages/dairy.jpg';
+
+
 function Stomach() {
   const [guides_stomach_status_text, setguides_stomach_status_text] =
       useState("Analysing...");
@@ -133,6 +160,7 @@ function Stomach() {
             </p>
             <br></br>
             <br></br>
+          
           </div>
 
           <h2 className="heading">Foods Consumed :</h2>
@@ -150,11 +178,7 @@ function Stomach() {
                   <p className="guides_brain_info_text"> {line}</p>
               ))}
             </div>
-            {/*<img*/}
-            {/*    src="https://pluspng.com/img-png/stomach-png-hd-stomach-png-238.png"*/}
-            {/*    alt="."*/}
-            {/*    className="food-image-i"*/}
-            {/*/>*/}
+          
           </div>
         </div>
 
@@ -164,7 +188,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.k1stYDeWBudlhWwKxCKZFwAAAA&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    src={yogurt}
                     alt="Yogurt" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Yogurt</h5>
@@ -180,7 +204,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://th.bing.com/th?id=OIP.2GnzkY2_WugcUUHZq7ovxgHaGS&w=271&h=230&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    src={ginger}
                     alt="Ginger" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Ginger</h5>
@@ -196,7 +220,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.tqAWK8yGjpV-Fw2XJiCfhAHaGi&w=266&h=234&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    src={banna}
                     alt="Bananas" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Bananas</h5>
@@ -212,7 +236,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://th.bing.com/th?id=OIP.b9It-_1kiy-uxqOalKV1JwHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    src={oats}
                     alt="Oats" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Oats</h5>
@@ -228,7 +252,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://th.bing.com/th/id/OIP.2QSmRTj6xUNhxY0Hjbb5kQHaE8?w=305&h=203&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={papaya}
                     alt="Papaya" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Papaya</h5>
@@ -244,7 +268,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.H8K65thA0tyyjjIoYNV5swHaHa&w=200&h=198&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={fennel}
                     alt="Fennel" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Fennel</h5>
@@ -260,7 +284,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://th.bing.com/th?id=OIP.sPpeQTSom3zN3OU2M8MS0QHaFj&w=252&h=190&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={mint}
                     alt="Peppermint" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Peppermint</h5>
@@ -276,7 +300,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.fRzV63u1b2p5iJ1Lg7_YPQHaFj&w=220&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={mile}
                     alt="Chamomile" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Chamomile</h5>
@@ -292,7 +316,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.v0le9dFrGheI-x5uV1u6AAHaHa&w=212&h=212&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={rice}
                     alt="Rice" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">White Rice</h5>
@@ -308,7 +332,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.oRXUt8VrDozV_oBCe4ymHgHaEK&w=309&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={sauce}
                     alt="Applesauce" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Applesauce</h5>
@@ -330,7 +354,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.xvCHbEsSpHzjWqHYH2WsqAHaEK&w=309&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={spicy}
                     alt="Spicy Foods" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Spicy Foods</h5>
@@ -346,7 +370,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.VGR2MnAEd6EV_y7P1czHgQHaE8&w=300&h=200&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={fried}
                     alt="Fried Foods" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Fried Foods</h5>
@@ -362,7 +386,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.tNQugbykR4SdjOX2RbeNjgHaEK&w=312&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={drinks}
                     alt="Carbonated Drinks" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Carbonated Drinks</h5>
@@ -378,7 +402,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.RDpDD25rtvDMeK0C7VePpAHaEK&w=300&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={orangeImage}
                     alt="Citrus Fruits" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Citrus Fruits</h5>
@@ -394,7 +418,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.vHRlT5Jo67uZZhLjU6aupgHaFj&w=252&h=190&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={chocolate}
                     alt="Chocolate" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Chocolate</h5>
@@ -410,7 +434,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.eU2dTqtjWBvSiWe_cUY_OQAAAA&w=173&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={meat}
                     alt="Processed Meats" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Processed Meats</h5>
@@ -426,7 +450,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.B9mTsJ46LPJ_rxfnJZQiiwHaGT&w=225&h=191&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={alcohol}
                     alt="Alcohol" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Alcohol</h5>
@@ -442,7 +466,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.oXwZmU0bU9_zOlz9jMR1RgHaE8&w=306&h=204&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={onion}
                     alt="Raw Onions" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Raw Onions</h5>
@@ -458,7 +482,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.l5IGoSmErRjyK7Z9tG8vlAHaE8&w=306&h=204&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={tomato}
                     alt="Tomato-Based Foods" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Tomato-Based Foods</h5>
@@ -474,7 +498,7 @@ function Stomach() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.KCPTJUNQjK8WNSrTFKlgYAHaE8&w=305&h=203&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={dairy}
                     alt="Dairy Products" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Dairy Products</h5>

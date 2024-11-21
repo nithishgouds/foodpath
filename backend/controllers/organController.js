@@ -81,7 +81,7 @@ const addFood = async (req, res) => {
                 aiResponse: aiResponse
             });
         } catch (aiError) {
-            res.status(500).json({ error: 'Error processing food data in AI', details: aiError.message });
+            res.status(500).json({ error: 'Error processing food data in AImodelstatus', details: aiError.message });
         }
 
     } catch (error) {
