@@ -28,7 +28,7 @@ const EatAnimation = () => {
   useEffect(() => {
     const pacmanInterval = setInterval(() => {
       setPacmanIndex((prevIndex) => (prevIndex + 1) % pacmanStates.length);
-    }, 100);
+    }, 200);
 
     const foodInterval = setInterval(() => {
       setFoodQueue((prevQueue) => {

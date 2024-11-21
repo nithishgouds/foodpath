@@ -6,6 +6,29 @@ import { useEffect } from "react";
 import Header from "../homepagenew/components/Header";
 import { motion } from "framer-motion";
 
+
+import spinach from '../foodimages/leafygreens.jpg';
+import tea from '../foodimages/greentea.jpg';
+
+import fish from  '../foodimages/fish.jpg';
+import garlic from  '../foodimages/garlic.jpg';
+import nutss from  '../foodimages/nuts.jpg';
+import turmeric from '../foodimages/turmeric.jpg';
+import beets from '../foodimages/beets.jpg';
+import avacado from '../foodimages/avacados.png';
+import apple from '../foodimages/apple.jpg';
+import meat from '../foodimages/processed.jpg';
+import fried from '../foodimages/friedfood.jpg';
+import alcohol from '../foodimages/alcohol.jpg';
+import dairy from '../foodimages/dairy.jpg';
+import  redmeat   from '../foodimages/redmeat.jpg';
+import drink from '../foodimages/drink.jpg';
+import orangeImage from '../foodimages/oranges.jpg';
+import pick from '../foodimages/pick.jpg';
+import spicy from '../foodimages/spicy.jpg';
+import chocolate from '../foodimages/chocolate.jpg';
+
+
 function Liver() {
   const [guides_liver_status_text, setguides_liver_status_text] =
       useState("Analysing...");
@@ -133,6 +156,12 @@ function Liver() {
             <p className="guides_liver_status_text">{guides_liver_status_text}</p>
             <br></br>
             <br></br>
+            <img
+               src="https://pngfre.com/wp-content/uploads/Liver-21.png"
+              alt="."
+               id="change"
+            className="food-image-i"
+            />
           </div>
 
           <h2 className="heading">Foods Consumed :</h2>
@@ -150,12 +179,7 @@ function Liver() {
                   <p className="guides_brain_info_text"> {line}</p>
               ))}
             </div>
-            {/*<img*/}
-            {/*    src="https://pngfre.com/wp-content/uploads/Liver-21.png"*/}
-            {/*    alt="."*/}
-            {/*    id="change"*/}
-            {/*    className="food-image-i"*/}
-            {/*/>*/}
+            
           </div>
         </div>
 
@@ -165,7 +189,7 @@ function Liver() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://th.bing.com/th?id=OIP.Qmk7f6puo63EoqkKdIAP-QAAAA&w=300&h=199&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    src={spinach}
                     alt="Leafy Greens" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Leafy Greens (Spinach, Kale)</h5>
@@ -181,7 +205,7 @@ function Liver() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://th.bing.com/th?id=OIP.kyRLAQX3QkDh_mxgYYuAtgAAAA&w=277&h=225&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    src={tea}
                     alt="Green Tea" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Green Tea</h5>
@@ -197,7 +221,7 @@ function Liver() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse2.mm.bing.net/th/id/OIP.XJ0VwZaNBPPm8hJoGrEXEgHaEQ?w=273&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={fish}
                     alt="Fatty Fish" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Fatty Fish (Salmon, Mackerel)</h5>
@@ -213,7 +237,7 @@ function Liver() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th/id/OIP.B9mTsJ46LPJ_rxfnJZQiiwHaGT?w=225&h=191&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={garlic}
                     alt="Garlic" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Garlic</h5>
@@ -229,7 +253,7 @@ function Liver() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th?id=OIP.j1WfA-1HnuUuicubXhR1OwHaEq&w=315&h=198&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    src={nutss}
                     alt="Walnuts" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Walnuts</h5>
@@ -245,7 +269,7 @@ function Liver() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://www.bing.com/th/id/OIP.p6e_BQT1_HF222FsOhSgYAHaE8?w=252&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={turmeric}
                     alt="Turmeric" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Turmeric</h5>
@@ -261,7 +285,7 @@ function Liver() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse1.mm.bing.net/th/id/OIP.x1csDKOyN70vsQCvHrYPhAAAAA?w=177&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={beets}
                     alt="Beets" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Beets</h5>
@@ -277,7 +301,7 @@ function Liver() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse4.mm.bing.net/th/id/OIP.tnHP4TZDa1BNEzSSIzk1dwHaGz?w=226&h=208&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={avacado}
                     alt="Avocados" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Avocados</h5>
@@ -293,7 +317,7 @@ function Liver() {
               <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                               initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                 <img
-                    src="https://tse4.mm.bing.net/th/id/OIP.tnHP4TZDa1BNEzSSIzk1dwHaGz?w=226&h=208&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    src={apple}
                     alt="Apples" className="food-card-image"/>
                 <div className="food-card-content">
                   <h5 className="food-card-title">Apples</h5>
@@ -313,7 +337,7 @@ function Liver() {
                 <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                                 initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                   <img
-                      src="https://tse1.mm.bing.net/th/id/OIP.CW22Grctx2l5DxNmU4wZ5gHaEn?w=274&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                      src={meat}
                       alt="Processed Meats" className="food-card-image"/>
                   <div className="food-card-content">
                     <h5 className="food-card-title">Processed Meats (Sausages, Bacon)</h5>
@@ -329,7 +353,7 @@ function Liver() {
                 <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                                 initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                   <img
-                      src="https://tse1.mm.bing.net/th/id/OIP.3B3kU6ZYJdDzN8b1jdeh6QHaFc?w=245&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                      src={fried}
                       alt="Fried Foods" className="food-card-image"/>
                   <div className="food-card-content">
                     <h5 className="food-card-title">Fried Foods (French Fries, Fried Chicken)</h5>
@@ -345,7 +369,7 @@ function Liver() {
                 <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                                 initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                   <img
-                      src="https://tse1.mm.bing.net/th/id/OIP.WFyvuU65H6puydI-H1yxwQHaGg?w=223&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                      src={alcohol}
                       alt="Excessive Alcohol" className="food-card-image"/>
                   <div className="food-card-content">
                     <h5 className="food-card-title">Excessive Alcohol</h5>
@@ -361,7 +385,7 @@ function Liver() {
                 <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                                 initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                   <img
-                      src="https://tse4.mm.bing.net/th/id/OIP.UNWx5QnfFvyIes0hv4rdwgHaGK?w=232&h=193&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                      src={redmeat}
                       alt="Dairy Products" className="food-card-image"/>
                   <div className="food-card-content">
                     <h5 className="food-card-title">Dairy Products (Full-fat Milk, Cheese)</h5>
@@ -377,7 +401,7 @@ function Liver() {
                 <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                                 initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                   <img
-                      src="https://th.bing.com/th?id=OIP.pbYnjMHa2tA22On6j6eHAQHaEr&w=314&h=198&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                      src={redmeat}
                       alt="Red Meat" className="food-card-image"/>
                   <div className="food-card-content">
                     <h5 className="food-card-title">Red Meat (Beef, Pork)</h5>
@@ -393,7 +417,7 @@ function Liver() {
                 <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                                 initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                   <img
-                      src="https://th.bing.com/th?id=OIP.cf8I0fDPz9qAxQkbpQxmhAHaLb&w=201&h=310&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                      src={drink}
                       alt="Sugary Beverages" className="food-card-image"/>
                   <div className="food-card-content">
                     <h5 className="food-card-title">Sugary Beverages (Soda, Energy Drinks)</h5>
@@ -409,7 +433,7 @@ function Liver() {
                 <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                                 initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                   <img
-                      src="https://th.bing.com/th/id/OIP.L1KZ9kz1QJoYJ089IYH4jQHaFV?w=294&h=212&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                      src={orangeImage}
                       alt="Citrus Fruits" className="food-card-image"/>
                   <div className="food-card-content">
                     <h5 className="food-card-title">Citrus Fruits (Oranges, Lemons)</h5>
@@ -425,7 +449,7 @@ function Liver() {
                 <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                                 initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                   <img
-                      src="https://tse3.mm.bing.net/th/id/OIP.mndou8ofE5v67rPNMGlRpQHaHa?w=190&h=190&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                      src={pick}
                       alt="Pickled Foods" className="food-card-image"/>
                   <div className="food-card-content">
                     <h5 className="food-card-title">Pickled Foods</h5>
@@ -441,7 +465,7 @@ function Liver() {
                 <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                                 initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                   <img
-                      src="https://www.bing.com/th/id/OIP.tqAWK8yGjpV-Fw2XJiCfhAHaGi?w=266&h=234&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                      src={spicy}
                       alt="Spicy Foods" className="food-card-image"/>
                   <div className="food-card-content">
                     <h5 className="food-card-title">Spicy Foods</h5>
@@ -457,7 +481,7 @@ function Liver() {
                 <motion.article className="food-card" whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                                 initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}}>
                   <img
-                      src="https://th.bing.com/th?id=OIP.WtnUC_HUGvbchERjKrj-5QHaE8&w=308&h=205&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                      src={chocolate}
                       alt="Chocolate" className="food-card-image"/>
                   <div className="food-card-content">
                     <h5 className="food-card-title">Chocolate</h5>
