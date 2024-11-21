@@ -177,7 +177,7 @@ function Content3d() {
 
       const { aiResponse,consumedFoods  } = response.data;
       console.log("something is happening");
-      setFoodStatus("ate...");
+      setFoodStatus("Consumed");
       setEating(false);
       setEat(true);
 
@@ -281,7 +281,7 @@ function Content3d() {
       }
 
       console.log(`3d clicked ${OrgName}`);
-      console.log(handleAddRes.health_status.intestines.rating); // Debug to check if it exists
+      console.log(handleAddRes.health_status.intestines.rating);
 
       var sf1 = getSeperateFactor1(OrgName);
       var sf2 = getSeperateFactor2(OrgName);
@@ -291,7 +291,6 @@ function Content3d() {
       setseperateFactor1value(handleAddRes.post_consumption_values[sf1]);
       setseperateFactor2value(handleAddRes.post_consumption_values[sf2]);
 
-      // Access properties from handleAddRes directly
       setIOstatus(Ostatus(handleAddRes.health_status[OrgName].rating));
       setIOglucose(handleAddRes.post_consumption_values.blood_glucose_levels);
       setIOcalories(handleAddRes.post_consumption_values.calorie_levels);
