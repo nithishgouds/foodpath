@@ -1,4 +1,16 @@
 Instructions to use FoodPath-
+
+
+Either you can use our deployed link-
+
+
+(https://foodpath-0fyf.onrender.com/)
+
+
+or you follow the below steps -
+
+
+
 1.First install the node package manager  in the backend directory by entering the command in the terminal as-
 <br>
   npm init -y
